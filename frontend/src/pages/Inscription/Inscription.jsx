@@ -1,0 +1,1 @@
+// Inscription.jsx placeholder
