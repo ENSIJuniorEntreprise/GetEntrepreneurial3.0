@@ -11,11 +11,12 @@ import Loader from './components/Loader/Loader';
 const Home = React.lazy(() => import('./pages/Home/Home'));
 const Apropos = React.lazy(() => import('./pages/Apropos/Apropos'));
 const Agenda = React.lazy(() => import('./pages/agenda/agenda'));
-const Collaboration = React.lazy(() => import('./pages/collab/collab')); // En supposant un fichier collab.jsx
+const Collaboration = React.lazy(() => import('./pages/Collaboration/Collaboration')); // En supposant un fichier collab.jsx
 const Contact = React.lazy(() => import('./pages/Contact/Contact'));
 const Inscription = React.lazy(() => import('./pages/Inscription/Inscription'));
 
 // Pages Legacy
+const Edition12 = React.lazy(() => import('./pages/edition12/edition12'));
 const Edition1 = React.lazy(() => import('./pages/edition1/edition1')); // En supposant un fichier edition1.jsx
 const Edition2 = React.lazy(() => import('./pages/edition2/edition2')); // En supposant un fichier edition2.jsx
 
@@ -56,7 +57,7 @@ function App() {
 
           {/* --- Routes pour les pages principales --- */}
           <Route
-            path="/a-propos"
+            path="/apropos"
             element={
               <>
                 <Navbar />
@@ -108,7 +109,7 @@ function App() {
 
           {/* --- Routes pour les pages "Legacy" --- */}
           <Route
-            path="/legacy/edition-1"
+            path="/edition1"
             element={
               <>
                 <Navbar />
@@ -118,7 +119,7 @@ function App() {
             }
           />
           <Route
-            path="/legacy/edition-2"
+            path="/edition2"
             element={
               <>
                 <Navbar />
@@ -127,11 +128,21 @@ function App() {
               </>
             }
           />
+          <Route
+            path="/legacy"
+            element={
+              <>
+                <Navbar />
+                <Edition12 />
+                <Footer />
+              </>
+            }
+          />
 
           {/* --- Routes pour les formulaires d'inscription spécifiques --- */}
           {/* Celles-ci pourraient ne pas avoir de Navbar ou de Footer si ce sont des pages focus */}
-          <Route path="/inscription/participant" element={<Participant />} />
-          <Route path="/inscription/exposant" element={<Exposant />} />
+          <Route path="/participant" element={<Participant />} />
+          <Route path="/exposant" element={<Exposant />} />
           
 
           {/* --- Route pour les pages non trouvées (404) --- */}
