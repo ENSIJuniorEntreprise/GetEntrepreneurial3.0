@@ -1,0 +1,1 @@
+// inscriptionRoutes.js placeholder

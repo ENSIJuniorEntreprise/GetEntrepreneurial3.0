@@ -1,0 +1,1 @@
+// inscriptionController.js placeholder
