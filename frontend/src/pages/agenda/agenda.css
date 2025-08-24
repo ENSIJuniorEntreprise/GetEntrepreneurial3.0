@@ -20,11 +20,6 @@ body {
   font-family: 'Montserrat', sans-serif;
   background-color: var(--background-color);
   color: var(--light-text-color);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  padding: 20px;
   box-sizing: border-box;
   overflow-x: hidden;
 }
@@ -32,10 +27,13 @@ body {
 /* --- Conteneur principal --- */
 .agenda-container {
   width: 100%;
-  /* MODIFIÉ : Augmentation de la largeur pour accommoder 4 colonnes */
   max-width: 1200px; 
   padding: 40px;
+  margin: 0 auto; /* Centre le conteneur sur la page */
   box-sizing: border-box;
+  
+  /* ====> CORRECTION 1 : Descend tout le contenu de la page <==== */
+  padding-top: 120px; /* Ajoute de l'espace en haut (ajustez si nécessaire) */
 }
 
 /* --- En-tête et Titre --- */
@@ -100,10 +98,11 @@ body {
 /* --- Grille des activités --- */
 .agenda-grid {
   display: grid;
-  /* MODIFIÉ : Grille de 4 colonnes pour l'affichage 4 en haut, 4 en bas */
   grid-template-columns: repeat(4, 1fr);
   gap: 25px;
-  margin-top: 200px;
+
+  /* ====> CORRECTION 2 : Remonte le bloc d'activités <==== */
+  margin-top: 50px; /* Réduit l'espace vide */
 }
 
 /* --- Style de chaque carte d'activité --- */
@@ -125,22 +124,17 @@ body {
 .activity-card:nth-child(4) { animation-delay: 0.4s; }
 .activity-card:nth-child(5) { animation-delay: 0.5s; }
 .activity-card:nth-child(6) { animation-delay: 0.6s; }
-/* AJOUTÉ : Délais pour les nouvelles cartes */
 .activity-card:nth-child(7) { animation-delay: 0.7s; }
 .activity-card:nth-child(8) { animation-delay: 0.8s; }
 
-
-/* --- Animation d'agrandissement au survol ET au toucher/clic --- */
 .activity-card:hover,
 .activity-card:active {
     transform: scale(1.05);
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
     cursor: pointer;
-    /* AJOUT : Assure que la carte agrandie passe au-dessus des autres */
     position: relative;
     z-index: 10;
 }
-
 
 /* --- Contenu de la carte --- */
 .activity-header {
@@ -186,21 +180,17 @@ body {
   font-size: 1.2rem;
 }
 
-/* ==========================================================================
-   RESPONSIVITÉ (Media Queries) - AJUSTÉE
-   ========================================================================== */
-
-/* --- Pour les tablettes (passe à 2 colonnes) --- */
+/* --- RESPONSIVITÉ --- */
 @media (max-width: 1100px) {
   .agenda-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-/* --- Pour les mobiles (passe à 1 colonne) --- */
 @media (max-width: 600px) {
   .agenda-container {
     padding: 20px;
+    padding-top: 100px; /* Ajuste pour mobile */
   }
   
   .agenda-header h1 {

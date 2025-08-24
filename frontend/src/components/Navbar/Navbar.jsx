@@ -1,13 +1,16 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useLocation } from 'react-router-dom'; // <-- AJOUT : Pour détecter l'URL
 import './Navbar.css';
-import logo from '../../assets/images/logogete.png'; // <-- AJOUT : Importez votre logo
+import logo from '../../assets/images/logogete.png';
 
 const Navbar = () => {
   const [activeLink, setActiveLink] = useState('Accueil');
   const [lineStyle, setLineStyle] = useState({});
   const navLinksRef = useRef(null);
   const [isScrolled, setIsScrolled] = useState(false);
+  const location = useLocation(); // <-- AJOUT : Récupère l'URL actuelle
 
+  // Ce useEffect est inchangé, il déplace la ligne quand activeLink change
   useEffect(() => {
     if (navLinksRef.current) {
       const activeElement = navLinksRef.current.querySelector(`[data-link-name="${activeLink}"]`);
@@ -20,6 +23,23 @@ const Navbar = () => {
     }
   }, [activeLink]);
 
+  // ====> AJOUT : Ce nouveau useEffect synchronise l'URL avec votre état <====
+  useEffect(() => {
+    const pathToLinkName = {
+      '/': 'Accueil',
+      '/apropos': 'A propos',
+      '/collaboration': 'Collaboration',
+      '/programme': 'Programme',
+      '/legacy': 'Legacy',
+      '/contact': 'Contact',
+    };
+    // Met à jour l'état en fonction du chemin de l'URL
+    const currentLinkName = pathToLinkName[location.pathname] || '';
+    setActiveLink(currentLinkName);
+  }, [location]); // Se déclenche à chaque changement d'URL
+
+
+  // Cet useEffect pour le scroll est inchangé
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 10) {
@@ -28,18 +48,13 @@ const Navbar = () => {
         setIsScrolled(false);
       }
     };
-
     window.addEventListener('scroll', handleScroll);
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
     <header className={`navbar-container ${isScrolled ? 'scrolled' : ''}`}>
       <nav className="navbar">
-        {/* ====> CORRECTION : Remplacement du "G" par une image <==== */}
         <div className="navbar-logo">
           <a href="/">
             <img src={logo} alt="Get Entrepreneurial Logo" />
