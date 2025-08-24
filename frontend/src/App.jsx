@@ -5,7 +5,7 @@ import './App.css';
 // --- Importation des Composants Statiques ---
 import Navbar from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer';
-import Loader from './components/Loader/Loader';
+// import Loader from './components/Loader/Loader'; // <-- Commenté
 
 // --- Importation "Paresseuse" (Lazy Loading) de TOUTES vos Pages ---
 const Home = React.lazy(() => import('./pages/Home/Home'));
@@ -26,8 +26,9 @@ const Exposant = React.lazy(() => import('./pages/exposant/exposant'));
 
 
 function App() {
-  const [isLoading, setIsLoading] = useState(true);
+  // const [isLoading, setIsLoading] = useState(true); // <-- Commenté
 
+  /*
   useEffect(() => {
     // Ce timer s'exécute UNE SEULE FOIS pour le loader d'introduction
     const timer = setTimeout(() => {
@@ -35,11 +36,14 @@ function App() {
     }, 2000); // Durée du loader d'introduction
     return () => clearTimeout(timer);
   }, []);
+  */
 
+  /*
   // Si le chargement d'introduction est en cours, on affiche UNIQUEMENT le loader principal
   if (isLoading) {
     return <Loader />;
   }
+  */
 
   // Une fois le chargement d'introduction terminé, on affiche le site
   return (
