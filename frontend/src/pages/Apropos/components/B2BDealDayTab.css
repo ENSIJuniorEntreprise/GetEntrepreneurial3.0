@@ -1,0 +1,205 @@
+.tab-pane {
+  color: var(--dark-blue);
+}
+
+.section-intro {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.section-intro h3 {
+  color: var(--orange);
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+}
+
+.section-intro p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Grand Public Tab */
+.panel-section {
+  background-color: #f8f7f5;
+  border-left: 4px solid var(--orange);
+  padding: 20px;
+  margin-bottom: 30px;
+  border-radius: 5px;
+}
+
+.panel-section h4 {
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+}
+
+.panel-description {
+    margin-bottom: 20px;
+}
+
+.speakers-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.speaker-card {
+  text-align: center;
+}
+
+.speaker-img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--dark-blue);
+}
+
+.speaker-name {
+  margin-top: 8px;
+  font-weight: bold;
+}
+
+.webinaire-section {
+    background-color: var(--dark-blue);
+    color: var(--white);
+    text-align: center;
+    padding: 20px;
+    margin: 40px 0;
+    border-radius: 5px;
+}
+
+.webinaire-section h5 {
+    color: var(--orange);
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+}
+
+/* B2B Deal Day Tab */
+.b2b-tab {
+    background-color: var(--dark-blue);
+    color: var(--white);
+    padding: 30px;
+    border-radius: 10px;
+}
+
+.stats-container {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin: 40px 0;
+}
+
+.stat-box {
+    background-color: #2a2d3a;
+    padding: 20px 40px;
+    text-align: center;
+    border-radius: 8px;
+    min-width: 250px;
+}
+
+.stat-icon {
+    font-size: 2rem;
+}
+
+.stat-value {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--orange);
+    margin: 10px 0 5px;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.project-info, .conclusion {
+    text-align: center;
+    max-width: 700px;
+    margin: 20px auto;
+    line-height: 1.7;
+}
+
+/* Green & Tech Day Tab */
+.green-tech-tab {
+    background-color: var(--dark-blue);
+    padding: 0;
+}
+
+.workshop-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #2a2d3a;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    color: var(--white);
+    padding: 20px;
+}
+
+.workshop-info {
+    flex-basis: 50%;
+}
+
+.workshop-title {
+    color: var(--orange);
+    font-size: 1.5rem;
+    font-weight: bold;
+    display: block;
+}
+
+.workshop-subtitle {
+    font-size: 1.2rem;
+    margin: 10px 0 20px;
+}
+
+.workshop-speaker-name {
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.workshop-speaker-role {
+    font-size: 0.9rem;
+    color: var(--beige);
+}
+
+.workshop-speaker-img-container {
+    flex-basis: 40%;
+    text-align: right;
+}
+
+.workshop-speaker-img {
+    max-width: 250px;
+    border-radius: 10px;
+}
+
+
+/* Key Points Grid (shared) */
+.key-points-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin: 40px auto;
+    max-width: 900px;
+}
+
+.key-point {
+    border: 1px solid var(--dark-blue);
+    padding: 20px;
+    text-align: center;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+.b2b-tab .key-point {
+    border-color: var(--beige);
+}
+
+.key-point.highlighted {
+    border: 2px solid var(--orange);
+}

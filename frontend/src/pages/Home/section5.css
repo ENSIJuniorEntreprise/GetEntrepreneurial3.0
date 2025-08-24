@@ -1,0 +1,189 @@
+:root {
+  --dark-blue: #1F212D;
+  --orange: #FE9900;
+  --light-beige: #E0DED2;
+}
+
+/* --- Section --- */
+.speakers-section {
+  background-color: var(--dark-blue);
+  padding: 6rem 0;
+  font-family: 'Montserrat', sans-serif;
+  color: var(--light-beige);
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+.speakers-section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* --- Titre --- */
+.speakers-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+.speakers-header h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+.speakers-header .text-orange {
+  color: var(--orange);
+}
+
+/* --- Carrousel 3D --- */
+.gallery-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 350px;
+  margin-bottom: 2rem;
+}
+
+.gallery {
+  position: relative;
+  width: 250px;
+  height: 250px;
+  transform-style: preserve-3d;
+  animation: rotateGallery 25s linear infinite;
+}
+
+@keyframes rotateGallery {
+  from { transform: perspective(1200px) rotateY(0deg); }
+  to { transform: perspective(1200px) rotateY(360deg); }
+}
+
+.gallery span {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  transform-origin: center;
+  transform-style: preserve-3d;
+  transform: rotateY(calc(var(--i) * 45deg)) translateZ(400px);
+}
+
+.gallery span img {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  border-radius: 15px;
+  object-fit: cover;
+  transition: transform 0.5s;
+  -webkit-box-reflect: below 1px linear-gradient(transparent, transparent, #0004);
+}
+
+.gallery span:hover img {
+  transform: translateY(-20px) scale(1.1);
+  cursor: pointer;
+}
+
+.gallery-container:hover .gallery {
+  animation-play-state: paused;
+}
+
+/* --- Informations sur les cartes du carrousel --- */
+.gallery-speaker-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 1.5rem 1rem;
+  background: linear-gradient(to top, rgba(0,0,0,0.95) 20%, transparent);
+  color: white;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s, transform 0.5s;
+  pointer-events: none;
+  border-radius: 0 0 15px 15px;
+}
+
+.gallery span:hover .gallery-speaker-info {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: all;
+}
+
+.gallery-speaker-info h3 {
+  font-size: 1.2rem;
+  margin: 0 0 0.2rem 0;
+}
+
+.gallery-speaker-info p {
+  font-size: 0.9rem;
+  opacity: 0.8;
+  margin: 0 0 0.8rem 0;
+}
+
+.gallery-speaker-info a {
+  color: white;
+  font-size: 1.2rem;
+  transition: color 0.3s;
+}
+
+.gallery-speaker-info a:hover {
+  color: var(--orange);
+}
+
+/* --- Bouton "See all" --- */
+.see-all-container {
+  text-align: center;
+  position: relative;
+  z-index: 10;
+}
+.see-all-button {
+  background-color: var(--orange);
+  color: #E0DED2;
+  border: none;
+  padding: 1rem 2.5rem;
+  margin-top: 20px;
+  border-radius: 50px;
+  font-weight: bold;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.see-all-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 20px rgba(254, 153, 0, 0.4);
+}
+
+/* --- Modale Créative --- */
+.speakers-modal {
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  background-color: rgba(31, 33, 45, 0.95); backdrop-filter: blur(10px);
+  z-index: 3000; opacity: 0; pointer-events: none;
+  transition: opacity 0.5s ease; overflow-y: auto;
+}
+.speakers-modal.open { opacity: 1; pointer-events: all; }
+.modal-close-button {
+  position: fixed; top: 2rem; right: 2rem; background: none; border: none;
+  color: white; font-size: 2rem; cursor: pointer; opacity: 0.7;
+  transition: opacity 0.3s, transform 0.3s;
+}
+.modal-close-button:hover { opacity: 1; transform: rotate(90deg); }
+.modal-content {
+  width: 90%; max-width: 1000px; margin: 6rem auto; text-align: center;
+  transform: scale(0.95); transition: transform 0.5s ease 0.2s;
+}
+.speakers-modal.open .modal-content { transform: scale(1); }
+.modal-content h2 { font-size: 2.5rem; color: var(--orange); margin-bottom: 3rem; }
+.speakers-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 2rem;
+}
+.grid-speaker-card {
+  position: relative; border-radius: 15px; overflow: hidden; height: 280px;
+}
+.grid-speaker-card img { width: 100%; height: 100%; object-fit: cover; }
+.grid-speaker-info {
+  position: absolute; bottom: 0; left: 0; width: 100%; padding: 1rem;
+  background: linear-gradient(to top, rgba(0,0,0,0.9) 30%, transparent);
+  text-align: center;
+}
+.grid-speaker-info h3 { font-size: 1.1rem; margin: 0 0 0.2rem 0; }
+.grid-speaker-info p { font-size: 0.8rem; margin: 0 0 0.5rem 0; opacity: 0.8; }
+.grid-speaker-info a { color: white; font-size: 1rem; }

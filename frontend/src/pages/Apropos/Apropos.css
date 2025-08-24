@@ -1,0 +1,194 @@
+/* Import de la police */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap');
+
+/* Couleurs de la charte graphique */
+:root {
+  --dark-blue: #1F212D;
+  --orange: #FE9900;
+  --beige: #E0DED2;
+  --white: #FFFFFF;
+}
+
+.apropos-page {
+  background-color: var(--dark-blue);
+  min-height: 100vh;
+  padding-bottom: 40px; 
+}
+
+/* --- Section Bannière --- */
+.apropos-header {
+  background: 
+    linear-gradient(rgba(31, 33, 45, 0.6), rgba(31, 33, 45, 0.6));
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  min-height: 45vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: var(--white);
+}
+
+.header-content h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 4rem;
+  margin: 0;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  margin-top: 40px;
+}
+
+.header-content p {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 15px;
+  color: #E0DED2; 
+}
+.apropos-header{
+    padding-top: 40px;
+    padding-bottom: 30px;
+}
+
+.header-content p::before,
+.header-content p::after {
+  content: '';
+  display: block;
+  width: 200px;
+  height: 3px;
+  background-color: var(--orange);
+  border-radius: 20px;
+}
+
+/* --- Conteneur principal du contenu (beige) --- */
+.apropos-main-content {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  background-color: var(--beige);
+  border: 2px solid var(--orange);
+  margin-top: -70px;
+  position: relative;
+  z-index: 2;
+}
+
+/* --- Onglets --- */
+.tabs-container {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  position: absolute;
+  width: 100%;
+  top: 0;
+  transform: translateY(-50%);
+}
+
+.tab-btn {
+  padding: 20px 45px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease-out;
+  border-radius: 0;
+  background-color: var(--beige);
+  color: var(--dark-blue);
+  border: 2px solid var(--orange);
+}
+
+.tab-btn:hover:not(.active) {
+  background-color: #f5f3ed;
+  transform: translateY(-5px); 
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.tab-btn.active {
+  background-color: var(--orange);
+  color: var(--dark-blue);
+  border-color: var(--orange);
+  transform: translateY(-5px);
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* --- Zone de contenu à l'intérieur du bloc beige --- */
+.tab-content {
+  padding: 60px 30px 30px 30px; 
+}
+
+/* --- SECTION DES AJOUTS CRÉATIFS & ANIMATIONS --- */
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.header-content h1,
+.header-content p,
+.apropos-main-content {
+  opacity: 0; /* Cacher au début pour que l'animation fonctionne */
+}
+
+.header-content h1 {
+  animation: fadeInUp 0.6s ease-out 0.3s forwards;
+}
+
+.header-content p {
+  animation: fadeInUp 0.6s ease-out 0.5s forwards;
+}
+
+.apropos-main-content {
+  animation: fadeInUp 0.7s ease-out 0.7s forwards;
+}
+
+@keyframes fadeInContent {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.tab-content-wrapper {
+  animation: fadeInContent 0.4s ease-in-out;
+}
+
+/* --- Responsive --- */
+@media (max-width: 1200px) {
+  .apropos-main-content {
+    margin-left: 20px;
+    margin-right: 20px;
+    width: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .header-content h1 {
+    font-size: 2.5rem;
+  }
+  .header-content p::before,
+  .header-content p::after {
+    width: 60px;
+  }
+  .tabs-container {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .tab-btn {
+    padding: 15px 25px;
+    font-size: 1rem;
+  }
+  .tab-btn:hover:not(.active), .tab-btn.active {
+    transform: none;
+    box-shadow: none;
+  }
+  .tab-content {
+    padding-top: 80px;
+  }
+}
