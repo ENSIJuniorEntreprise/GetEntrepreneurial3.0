@@ -1,0 +1,218 @@
+/* ==========================================================================
+   Fichier CSS complet pour le composant Agenda
+   ========================================================================== */
+
+/* --- Importation de la police --- */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+/* --- Définition des variables de couleur --- */
+:root {
+  --background-color: #1F212D;
+  --card-color: #E0DED2;
+  --highlight-color: #FE9900;
+  --text-color: #1F212D;
+  --light-text-color: #FFFFFF;
+}
+
+/* --- Styles de base --- */
+body {
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  background-color: var(--background-color);
+  color: var(--light-text-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+/* --- Conteneur principal --- */
+.agenda-container {
+  width: 100%;
+  /* MODIFIÉ : Augmentation de la largeur pour accommoder 4 colonnes */
+  max-width: 1200px; 
+  padding: 40px;
+  box-sizing: border-box;
+}
+
+/* --- En-tête et Titre --- */
+.agenda-header {
+  text-align: center;
+}
+
+.agenda-header h1 {
+  font-size: 2.8rem;
+  font-weight: 700;
+  margin: 0 0 30px 0;
+  line-height: 1.2;
+}
+
+.agenda-header h1 span {
+  color: var(--highlight-color);
+}
+
+/* --- Navigation par onglets (jours) --- */
+.agenda-nav {
+  display: flex;
+  justify-content: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  padding-top: 30px;
+}
+
+.agenda-nav button {
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.7);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1rem;
+  padding: 15px 25px;
+  cursor: pointer;
+  border-bottom: 3px solid transparent;
+  transition: color 0.3s, border-color 0.3s;
+  line-height: 1.4;
+}
+
+.agenda-nav button:hover {
+  color: var(--light-text-color);
+}
+
+.agenda-nav button.active {
+  color: var(--light-text-color);
+  border-bottom-color: var(--highlight-color);
+  font-weight: 700;
+}
+
+/* --- Animation d'apparition pour les cartes --- */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* --- Grille des activités --- */
+.agenda-grid {
+  display: grid;
+  /* MODIFIÉ : Grille de 4 colonnes pour l'affichage 4 en haut, 4 en bas */
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
+  margin-top: 200px;
+}
+
+/* --- Style de chaque carte d'activité --- */
+.activity-card {
+  background-color: var(--card-color);
+  color: var(--text-color);
+  border-radius: 15px;
+  padding: 25px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  opacity: 0;
+  animation: fadeInUp 0.5s ease-out forwards;
+}
+
+/* --- Délais pour l'effet de cascade --- */
+.activity-card:nth-child(1) { animation-delay: 0.1s; }
+.activity-card:nth-child(2) { animation-delay: 0.2s; }
+.activity-card:nth-child(3) { animation-delay: 0.3s; }
+.activity-card:nth-child(4) { animation-delay: 0.4s; }
+.activity-card:nth-child(5) { animation-delay: 0.5s; }
+.activity-card:nth-child(6) { animation-delay: 0.6s; }
+/* AJOUTÉ : Délais pour les nouvelles cartes */
+.activity-card:nth-child(7) { animation-delay: 0.7s; }
+.activity-card:nth-child(8) { animation-delay: 0.8s; }
+
+
+/* --- Animation d'agrandissement au survol ET au toucher/clic --- */
+.activity-card:hover,
+.activity-card:active {
+    transform: scale(1.05);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+    /* AJOUT : Assure que la carte agrandie passe au-dessus des autres */
+    position: relative;
+    z-index: 10;
+}
+
+
+/* --- Contenu de la carte --- */
+.activity-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.activity-header img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 15px;
+}
+
+.activity-header h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.activity-header h3 span {
+  color: var(--highlight-color);
+  font-weight: 700;
+}
+
+.activity-description {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+.activity-time {
+  font-size: 1rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+}
+
+.activity-time::before {
+  content: '🕒';
+  margin-right: 10px;
+  font-size: 1.2rem;
+}
+
+/* ==========================================================================
+   RESPONSIVITÉ (Media Queries) - AJUSTÉE
+   ========================================================================== */
+
+/* --- Pour les tablettes (passe à 2 colonnes) --- */
+@media (max-width: 1100px) {
+  .agenda-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* --- Pour les mobiles (passe à 1 colonne) --- */
+@media (max-width: 600px) {
+  .agenda-container {
+    padding: 20px;
+  }
+  
+  .agenda-header h1 {
+    font-size: 2.2rem;
+  }
+
+  .agenda-nav button {
+    padding: 15px 10px;
+    font-size: 0.9rem;
+  }
+
+  .agenda-grid {
+    grid-template-columns: 1fr;
+  }
+}
