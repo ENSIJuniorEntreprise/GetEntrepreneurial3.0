@@ -48,43 +48,43 @@ const Navbar = () => {
         
         <ul className="navbar-links" ref={navLinksRef}>
           <li data-link-name="Accueil">
-            <a href="#accueil" onClick={() => setActiveLink('Accueil')} className={activeLink === 'Accueil' ? 'active' : ''}>Accueil</a>
+            <a href="/" onClick={() => setActiveLink('Accueil')} className={activeLink === 'Accueil' ? 'active' : ''}>Accueil</a>
           </li>
           
           <li className="dropdown" data-link-name="A propos">
-            <a href="#a-propos" onClick={() => setActiveLink('A propos')} className={activeLink === 'A propos' ? 'active' : ''}>A propos</a>
+            <a href="/apropos" onClick={() => setActiveLink('A propos')} className={activeLink === 'A propos' ? 'active' : ''}>A propos</a>
             <ul className="dropdown-menu">
-              <li><a href="#journee1">Journée 1</a></li>
-              <li><a href="#journee2">Journée 2</a></li>
-              <li><a href="#journee3">Journée 3</a></li>
+              <li><a href="/apropos">Journée 1</a></li>
+              <li><a href="/apropos">Journée 2</a></li>
+              <li><a href="/apropos">Journée 3</a></li>
             </ul>
           </li>
 
           <li data-link-name="Collaboration">
-            <a href="#collaboration" onClick={() => setActiveLink('Collaboration')} className={activeLink === 'Collaboration' ? 'active' : ''}>Collaboration</a>
+            <a href="/collaboration" onClick={() => setActiveLink('Collaboration')} className={activeLink === 'Collaboration' ? 'active' : ''}>Collaboration</a>
           </li>
           
           <li data-link-name="Programme">
-            <a href="#programme" onClick={() => setActiveLink('Programme')} className={activeLink === 'Programme' ? 'active' : ''}>Programme</a>
+            <a href="/programme" onClick={() => setActiveLink('Programme')} className={activeLink === 'Programme' ? 'active' : ''}>Programme</a>
           </li>
 
           <li className="dropdown" data-link-name="Legacy">
-            <a href="#legacy" onClick={() => setActiveLink('Legacy')} className={activeLink === 'Legacy' ? 'active' : ''}>Legacy</a>
+            <a href="/legacy" onClick={() => setActiveLink('Legacy')} className={activeLink === 'Legacy' ? 'active' : ''}>Legacy</a>
             <ul className="dropdown-menu">
-              <li><a href="#edition1">1ère édition</a></li>
-              <li><a href="#edition2">2ème édition</a></li>
+              <li><a href="/edition1">1ère édition</a></li>
+              <li><a href="/edition2">2ème édition</a></li>
             </ul>
           </li>
 
           <li data-link-name="Contact">
-            <a href="#contact" onClick={() => setActiveLink('Contact')} className={activeLink === 'Contact' ? 'active' : ''}>Contact</a>
+            <a href="/contact" onClick={() => setActiveLink('Contact')} className={activeLink === 'Contact' ? 'active' : ''}>Contact</a>
           </li>
           
           <div className="magic-line" style={lineStyle}></div>
         </ul>
         
         <div className="navbar-action">
-          <a href="#inscription" className="inscription-button">
+          <a href="/inscription" className="inscription-button">
             Inscription
           </a>
         </div>

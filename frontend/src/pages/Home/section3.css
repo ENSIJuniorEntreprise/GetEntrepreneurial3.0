@@ -1,0 +1,221 @@
+:root {
+  --dark-blue: #1F212D;
+  --orange: #FE9900;
+  --light-beige: #E0DED2;
+}
+
+/* --- Section --- */
+.articles-section {
+  background-color: var(--dark-blue);
+  font-family: 'Montserrat', sans-serif;
+  position: relative;
+  padding-bottom: 20px;
+  overflow-x: hidden; /* Important pour que les cartes ne créent pas de scrollbar */
+}
+
+/* --- Titre (avec animation d'entrée) --- */
+.articles-header {
+  text-align: center;
+  margin-bottom: 4rem;
+  padding: 0 2rem;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease-out 0.4s, transform 0.8s ease-out 0.4s; /* Délai pour apparaître après les cartes */
+}
+.articles-section.visible .articles-header {
+  opacity: 1;
+  transform: translateY(0);
+}
+.articles-header h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--light-beige);
+}
+.articles-header .text-orange {
+  color: var(--orange);
+}
+
+/* --- Carrousel --- */
+.carousel-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+.carousel-viewport {
+  width: 90%;
+  max-width: 1200px;
+  overflow: visible; /* Permet de voir les ombres portées */
+}
+.carousel-track {
+  display: flex;
+  justify-content: center; /* Centre la pile de cartes initiale */
+  position: relative;
+  height: 500px; /* Hauteur pour contenir les cartes */
+}
+
+/* --- NOUVELLE ANIMATION "RIDEAU DE CARTES" --- */
+.article-card {
+  position: absolute; /* Empile les cartes les unes sur les autres au centre */
+  width: calc(100% / 3);
+  box-sizing: border-box;
+  padding: 0 1.5rem;
+  height: 500px;
+  cursor: pointer;
+  /* La transition est la clé de l'animation */
+  transition: transform 1s cubic-bezier(0.86, 0, 0.07, 1);
+}
+
+/* Position finale des cartes quand la section est visible */
+.articles-section.visible .card-1 {
+  transform: translateX(-100%);
+}
+.articles-section.visible .card-2 {
+  transform: translateX(0%); /* La carte du milieu ne bouge pas */
+  transition-delay: 0.1s; /* Petit décalage */
+}
+.articles-section.visible .card-3 {
+  transform: translateX(100%);
+  transition-delay: 0.2s; /* Petit décalage */
+}
+
+.article-card-inner {
+  position: relative;
+  width: 100%;
+  height: 480px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+.article-card:hover .article-card-inner {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
+.card-background {
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+  background-size: cover; background-position: center;
+  transition: transform 0.6s ease;
+}
+.article-card:hover .card-background { transform: scale(1.05); }
+.card-overlay {
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+  background: linear-gradient(to top, rgba(0,0,0,0.95) 25%, rgba(0,0,0,0.1) 60%);
+  opacity: 0.8; transition: opacity 0.4s ease;
+}
+.article-card:hover .card-overlay { opacity: 1; }
+.card-content {
+  position: relative; z-index: 2; height: 100%; padding: 2rem;
+  display: flex; flex-direction: column; justify-content: space-between;
+}
+.category-tag {
+  background-color: var(--orange); color: var(--dark-blue); padding: 0.4rem 0.8rem;
+  border-radius: 8px; font-weight: 700; font-size: 0.8rem; align-self: flex-start;
+}
+.card-footer { text-align: left; }
+.article-date {
+  font-size: 0.9rem; color: var(--light-beige); opacity: 0.8; margin: 0 0 0.5rem 0;
+}
+.article-title {
+  font-size: 2rem;
+  font-weight: 700; 
+  line-height: 1.2;
+}
+
+/* --- Flèches --- */
+.carousel-arrow {
+  background-color: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white; border-radius: 50%; width: 50px; height: 50px;
+  display: flex; justify-content: center; align-items: center; cursor: pointer;
+  position: absolute; z-index: 10; top: 50%; transform: translateY(-50%);
+  transition: background-color 0.3s, transform 0.3s;
+}
+.carousel-arrow:hover {
+  background-color: var(--orange); transform: translateY(-50%) scale(1.1);
+}
+.carousel-arrow.left { left: 2%; }
+.carousel-arrow.right { right: 2%; }
+
+/* --- Vue Détaillée (le code reste le même que la version précédente) --- */
+.article-detail-view {
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  z-index: 2000;
+  display: flex;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.5s ease-out;
+}
+.article-detail-view.open {
+  pointer-events: all;
+  opacity: 1;
+}
+.articles-section.detail-view-active .carousel-wrapper,
+.articles-section.detail-view-active .articles-header {
+  opacity: 0.3;
+  transform: scale(0.95);
+  filter: blur(5px);
+  transition: transform 0.6s ease, opacity 0.6s ease, filter 0.6s ease;
+}
+.detail-image-background {
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+  background-size: cover; background-position: center;
+  transform: scale(1.1);
+  opacity: 0;
+  transition: transform 1.2s cubic-bezier(0.7, 0, 0.2, 1), opacity 0.8s ease-out;
+}
+.article-detail-view.open .detail-image-background {
+  transform: scale(1);
+  opacity: 1;
+}
+.detail-content-overlay {
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+  background: linear-gradient(90deg, var(--dark-blue) 40%, rgba(31, 33, 45, 0.7) 70%, rgba(31, 33, 45, 0.4));
+  display: flex;
+  align-items: center;
+}
+.detail-content {
+  color: var(--light-beige);
+  max-width: 600px;
+  padding: 4rem;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease-out 0.4s, transform 0.8s ease-out 0.4s;
+}
+.article-detail-view.open .detail-content {
+  opacity: 1;
+  transform: translateY(0);
+}
+.close-button {
+  background: none; border: none; color: white;
+  font-size: 1.2rem; cursor: pointer; opacity: 0.7;
+  display: flex; align-items: center; gap: 0.5rem;
+  padding: 0; margin-bottom: 2rem;
+  transition: opacity 0.3s, gap 0.3s;
+}
+.close-button:hover {
+  opacity: 1;
+  gap: 1rem;
+}
+.detail-category { display: inline-block; margin-bottom: 1.5rem; }
+.detail-title { font-size: 3rem; font-weight: 700; margin: 0 0 0.5rem 0; }
+.detail-date { font-size: 1rem; opacity: 0.7; margin-bottom: 2rem; }
+.detail-text { font-size: 1.1rem; line-height: 1.8; }
+
+/* --- Responsive --- */
+@media (max-width: 992px) {
+  .article-card { flex-basis: 50%; }
+  .detail-content-overlay {
+    background: linear-gradient(90deg, var(--dark-blue) 60%, rgba(31, 33, 45, 0.7) 90%);
+  }
+}
+@media (max-width: 768px) {
+  .article-card { flex-basis: 100%; }
+  .carousel-track { justify-content: flex-start; } /* Aligne les cartes à gauche sur mobile */
+  .articles-section.visible .card-1 { transform: translateX(0); } /* La seule carte visible est centrée */
+  .carousel-arrow { width: 40px; height: 40px; }
+  .articles-header h2 { font-size: 2rem; }
+  .detail-content-overlay { background: var(--dark-blue); }
+  .detail-content { padding: 2rem; }
+  .detail-title { font-size: 2.2rem; }
+}

@@ -1,0 +1,198 @@
+/* --- Variables de couleur --- */
+:root {
+  --dark-blue: #1F212D;
+  --orange: #FE9900;
+  --light-beige: #E0DED2;
+  --text-dark: #1F212D;
+}
+
+/* --- Conteneur de la section --- */
+.axes-section {
+  background-color: var(--light-beige);
+  padding: 6rem 5%;
+  font-family: 'Montserrat', sans-serif;
+  color: var(--text-dark);
+  box-sizing: border-box;
+}
+
+/* --- Titre de la section --- */
+.axes-title-group {
+  text-align: center;
+  margin-bottom: 3rem;
+  margin-top: 0;
+  /* Styles pour l'animation d'entrée */
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+.axes-section.visible .axes-title-group {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+.axes-title-group h2 {
+  font-size: 3rem;
+  font-weight: 800;
+  margin: 0 0 1rem 0;
+  color: #1F212D;
+}
+
+.axes-subtitle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  font-weight: 500;
+  font-size: 1.2rem;
+}
+
+
+.axes-subtitle .line {
+  height: 4px;
+  width: 200px;
+  background-color: var(--orange);
+  border-radius: 20px;
+}
+
+/* --- Conteneur des cartes --- */
+.axes-cards-container {
+  display: flex;
+  justify-content: center;
+  gap: 8rem;
+  flex-wrap: wrap;
+  padding-right: 80px;
+  padding-bottom: 40px;
+}
+
+/* --- Effet de Retournement (Flip Card) --- */
+.flip-card {
+  background-color: transparent;
+  width: 320px;
+  height: 450px;
+  perspective: 1000px;
+  /* Styles pour l'animation d'entrée en cascade */
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+/* Apparition quand la section est visible */
+.axes-section.visible .flip-card {
+  opacity: 1;
+  transform: scale(1);
+}
+/* Décalage pour chaque carte */
+.axes-section.visible .flip-card:nth-child(2) { transition-delay: 0.2s; }
+.axes-section.visible .flip-card:nth-child(3) { transition-delay: 0.4s; }
+
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+  border-radius: 20px;
+}
+
+.flip-card:hover .flip-card-inner,
+.flip-card:focus-within .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+/* --- Face Avant de la Carte --- */
+.flip-card-front {
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 2.5rem;
+}
+
+.flip-card-front::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0.2));
+  border-radius: 20px;
+}
+
+/* --- Style pour le Titre à l'Intérieur des Cartes --- */
+.card-title-content {
+  position: relative;
+  z-index: 2;
+  text-align: left;
+  color: var(--light-beige);
+}
+
+.title-decorator-line {
+  width: 50px;
+  height: 4px;
+  background-color: var(--light-beige);
+  margin-bottom: 1rem;
+}
+
+.card-title-content h4 {
+  margin: 0;
+  font-size: 2.2rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.text-orange {
+  color: var(--orange);
+}
+
+/* --- Face Arrière de la Carte --- */
+.flip-card-back {
+  background-color: var(--dark-blue);
+  color: var(--light-beige);
+  transform: rotateY(180deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2.5rem;
+}
+
+.card-back-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.card-back-content p {
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.subscribe-button {
+  border: 2px solid var(--orange);
+  color: var(--orange);
+  background-color: transparent;
+  padding: 0.8rem 1.5rem;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.subscribe-button:hover {
+  background-color: var(--orange);
+  color: var(--dark-blue);
+}
