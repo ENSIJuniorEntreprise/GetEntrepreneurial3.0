@@ -1,9 +1,8 @@
 // src/components/Agenda/Agenda.jsx
-
 import React, { useState } from 'react';
 import './agenda.css';
 
-// MODIFIÉ : Chaque jour a maintenant son propre tableau de 8 activités.
+// ... (votre agendaData reste le même)
 const agendaData = {
   friday: [
     { id: 1, type: 'WORKSHOP', time: '9:00 am-10:00 am', description: 'Description pour l\'activité 1 du vendredi.' },

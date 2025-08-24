@@ -15,6 +15,7 @@
 }
 
 /* --- Styles de base --- */
+/* On retire l'image de fond du body pour la mettre sur le conteneur de la page */
 body {
   margin: 0;
   font-family: 'Montserrat', sans-serif;
@@ -26,19 +27,26 @@ body {
 
 /* --- Conteneur principal --- */
 .agenda-container {
-  width: 100%;
-  max-width: 1200px; 
-  padding: 40px;
-  margin: 0 auto; /* Centre le conteneur sur la page */
-  box-sizing: border-box;
+  /* --- CORRECTIONS POUR L'IMAGE DE FOND --- */
+  background-image: linear-gradient(rgba(31, 33, 45, 0.85), rgba(31, 33, 45, 0.85)), url('./arr.png');
+  background-size: cover; /* Couvre tout l'espace */
+  background-position: center; /* Centre l'image */
+  background-repeat: no-repeat; /* Empêche la répétition */
+  background-attachment: fixed; /* L'image reste fixe au défilement */
   
-  /* ====> CORRECTION 1 : Descend tout le contenu de la page <==== */
-  padding-top: 120px; /* Ajoute de l'espace en haut (ajustez si nécessaire) */
+  width: 100%;
+  min-height: 100vh; /* Prend au minimum toute la hauteur de la fenêtre */
+  box-sizing: border-box;
+
+  /* --- CORRECTIONS POUR L'ESPACEMENT --- */
+  padding: 120px 40px 60px 40px; /* 120px en haut, 60px en bas, 40px sur les côtés */
 }
 
 /* --- En-tête et Titre --- */
 .agenda-header {
   text-align: center;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .agenda-header h1 {
@@ -46,6 +54,7 @@ body {
   font-weight: 700;
   margin: 0 0 30px 0;
   line-height: 1.2;
+  color: #E0DED2;
 }
 
 .agenda-header h1 span {
@@ -63,7 +72,7 @@ body {
 .agenda-nav button {
   background: none;
   border: none;
-  color: rgba(255, 255, 255, 0.7);
+  color: #E0DED2;
   font-family: 'Montserrat', sans-serif;
   font-size: 1rem;
   padding: 15px 25px;
@@ -100,9 +109,10 @@ body {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 25px;
-
-  /* ====> CORRECTION 2 : Remonte le bloc d'activités <==== */
-  margin-top: 50px; /* Réduit l'espace vide */
+  margin-top: 50px;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* --- Style de chaque carte d'activité --- */
@@ -189,8 +199,7 @@ body {
 
 @media (max-width: 600px) {
   .agenda-container {
-    padding: 20px;
-    padding-top: 100px; /* Ajuste pour mobile */
+    padding: 100px 20px 40px 20px; /* Ajuste pour mobile */
   }
   
   .agenda-header h1 {

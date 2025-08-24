@@ -1,80 +1,91 @@
 /* Import Montserrat font from Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
 
-/* General Body Styles */
+
+
 body {
   margin: 0;
-  /* Set Montserrat as the default font */
   font-family: 'Montserrat', sans-serif;
-  background-color: #1F212D; /* A neutral background for the page */
+  background-color: #1F212D;
 }
 
 .contact-page {
+  position: relative; /* Contexte pour la superposition */
   width: 100%;
+  padding-top: 60px; /* Espace pour la Navbar */
+  
+  /* ===> CORRECTION : L'image de fond est maintenant ici <=== */
+  background-image: url('./ejeeten.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed; /* L'image reste fixe pendant le scroll */
 }
+
+/* ===> NOUVEAU : Superposition sombre sur toute la page <=== */
+.background-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color:rgba(31, 33, 45, 0.8); /* Bleu foncé semi-transparent */
+  z-index: 1; /* Se place entre le fond et le contenu */
+}
+
 
 /* Header Section */
 .contact-header {
-  /* MODIFICATION: Ajout de l'image de fond avec un calque sombre */
-  background-image: linear-gradient(rgba(20, 22, 33, 0.7), rgba(20, 22, 33, 0.7)), url('./arriere.png');
-  background-size: cover;
-  background-position: center;
-  color: #FFFFFF; /* Texte blanc pour un meilleur contraste */
+  /* On retire l'image de fond d'ici */
+  color: #FFFFFF;
   text-align: center;
-  padding: 100px 20px;
+  padding: 80px 20px;
+  position: relative; /* Pour être au-dessus de la superposition */
+  z-index: 2;
 }
-.header-content{
-    padding-bottom: 80px;
-    padding-top: 20px;
- }
 
 .header-content h1 {
   font-size: 4rem;
   font-weight: 700;
-  color: #E0DED2; /* "Us" sera de couleur claire */
+  color: #E0DED2;
   margin: 0;
 }
 
-/* The accent color #FE9900 for the word "Contact" */
 .header-content .highlight {
   color: #FE9900;
 }
 
-/* NOUVEAU: Style pour le conteneur du sous-titre avec les lignes */
 .subtitle-container {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 1.5rem; /* Espace entre les lignes et le texte */
-  max-width: 1000px; /* MODIFIÉ: Augmenté pour permettre des barres plus longues */
+  gap: 1.5rem;
+  max-width: 1000px;
   margin: 20px auto 0;
 }
 
 .subtitle-container p {
   margin: 0;
-  color: #E0DED2; /* Couleur claire pour le texte */
-  white-space: nowrap; /* Empêche le texte de revenir à la ligne */
+  color: #E0DED2;
+  white-space: nowrap;
   font-size: 1.2rem;
 }
 
-/* NOUVEAU: Création des lignes orange */
 .subtitle-container::before,
 .subtitle-container::after {
   content: '';
   display: block;
-  width: 100%; /* MODIFIÉ: Permet aux barres de remplir l'espace disponible */
+  width: 100%;
   height: 5px;
-  background-color: #FE9900; /* Couleur orange */
+  background-color: #FE9900;
   border-radius: 20px;
 }
 
 /* Main Content Area */
 .contact-main {
-  /* The light beige color #E0DED2 for the main background */
   background-color: #E0DED2;
   padding: 50px;
-  margin: -60px 5% 5%;
-  position: relative;
+  margin: 0 5% 5% 5%; /* On retire la marge négative */
+  position: relative; /* Pour être au-dessus de la superposition */
   z-index: 2;
   border-radius: 10px;
 }
@@ -84,26 +95,25 @@ body {
   display: flex;
   justify-content: space-around;
   gap: 20px;
-  transform: translateY(-90px);
-  margin-bottom: -50px;
+  margin-top: -90px; /* Remonte les boîtes pour qu'elles chevauchent le header */
+  margin-bottom: 40px;
 }
 
 .contact-info-box {
-  background-color: #E0DED2; /* A slightly lighter beige for contrast */
+  background-color: #FFFFFF; /* Blanc pour plus de contraste */
   padding: 25px;
   border-radius: 8px;
   text-align: center;
   width: 30%;
-  /* The accent color #FE9900 for the border */
-  border: 1px solid #FE9900;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border-top: 4px solid #FE9900; /* Bordure orange en haut */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
 }
 
 .contact-info-box h3 {
   margin-top: 10px;
   font-size: 1.4rem;
   font-weight: 700;
-  color: #1F212D; /* Dark color for headings */
+  color: #1F212D;
 }
 
 .contact-info-box p {
@@ -111,7 +121,6 @@ body {
   color: #555;
 }
 
-/* The accent color #FE9900 for icons */
 .icon-container {
   color: #FE9900;
   font-size: 1.5rem;
@@ -134,12 +143,12 @@ body {
   font-size: 2.5rem;
   margin-bottom: 15px;
   font-weight: 700;
-  color: #1F212D; /* Dark color for the heading */
+  color: #1F212D;
 }
 
 .form-text-content p {
   font-size: 1.1rem;
-  color: #1F212D; /* Dark color for the text */
+  color: #1F212D;
 }
 
 .contact-form {
@@ -159,14 +168,14 @@ body {
   border: 1px solid #ccc;
   border-radius: 5px;
   font-size: 1rem;
-  font-family: 'Montserrat', sans-serif; /* Ensure form elements inherit the font */
+  font-family: 'Montserrat', sans-serif;
   background-color: #FFFFFF;
 }
 
 .contact-form input:focus,
 .contact-form textarea:focus {
   outline: none;
-  border-color: #FE9900; /* Accent color for focus state */
+  border-color: #FE9900;
 }
 
 .full-width {
@@ -181,7 +190,7 @@ body {
 .contact-form button {
   width: 100%;
   padding: 15px;
-  background-color: #FE9900; /* Accent color for the button */
+  background-color: #FE9900;
   color: white;
   border: none;
   border-radius: 5px;
@@ -193,19 +202,18 @@ body {
 }
 
 .contact-form button:hover {
-  background-color: #e68a00; /* A slightly darker orange for hover */
+  background-color: #e68a00;
 }
 
 /* Responsive Design */
 @media (max-width: 992px) {
   .contact-main {
-    margin: -60px 3% 3%;
+    margin: 0 3% 3%;
   }
 
   .contact-info-container {
     flex-direction: column;
-    transform: translateY(0);
-    margin-bottom: 40px;
+    margin-top: -80px;
   }
 
   .contact-info-box {
@@ -226,11 +234,11 @@ body {
 
     .subtitle-container::before,
     .subtitle-container::after {
-        display: none; /* Cache les lignes sur les petits écrans */
+        display: none;
     }
 
     .subtitle-container p {
-        white-space: normal; /* Permet au texte de revenir à la ligne */
+        white-space: normal;
     }
 
     .form-row {

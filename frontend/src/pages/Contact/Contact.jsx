@@ -1,15 +1,19 @@
 import React from 'react';
 import './Contact.css';
+// Importez Font Awesome si vous utilisez les icônes de cette manière
+// import '@fortawesome/fontawesome-free/css/all.min.css';
 
 const Contact = () => {
   return (
+    // Ce conteneur principal aura maintenant l'image de fond
     <div className="contact-page">
+      <div className="background-overlay"></div> {/* Ajout d'une superposition pour la lisibilité */}
+
       <header className="contact-header">
         <div className="header-content">
           <h1>
             <span className="highlight">Contact</span> Us
           </h1>
-          {/* Wrapper ajouté pour faciliter le style des lignes */}
           <div className="subtitle-container">
             <p>Get in touch with us we're here to help and answer your questions</p>
           </div>
@@ -20,6 +24,8 @@ const Contact = () => {
         <div className="contact-info-container">
           <div className="contact-info-box">
             <div className="icon-container">
+              {/* Utilisez des composants React Icons si vous les avez installés */}
+              {/* <FaPhoneAlt /> */}
               <i className="fas fa-phone-alt"></i>
             </div>
             <h3>Phone</h3>
