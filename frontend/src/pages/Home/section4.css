@@ -1,12 +1,10 @@
-/* --- Variables de couleur --- */
+
 :root {
   --dark-blue: #1F212D;
   --orange: #FE9900;
   --light-beige: #E0DED2;
   --text-dark: #1F212D;
 }
-
-/* --- Conteneur de la section --- */
 .axes-section {
   background-color: var(--light-beige);
   padding: 6rem 5%;
@@ -15,12 +13,10 @@
   box-sizing: border-box;
 }
 
-/* --- Titre de la section --- */
 .axes-title-group {
   text-align: center;
   margin-bottom: 3rem;
   margin-top: 0;
-  /* Styles pour l'animation d'entrée */
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 0.8s ease-out, transform 0.8s ease-out;
@@ -54,8 +50,6 @@
   background-color: var(--orange);
   border-radius: 20px;
 }
-
-/* --- Conteneur des cartes --- */
 .axes-cards-container {
   display: flex;
   justify-content: center;
@@ -64,27 +58,21 @@
   padding-right: 80px;
   padding-bottom: 40px;
 }
-
-/* --- Effet de Retournement (Flip Card) --- */
 .flip-card {
   background-color: transparent;
   width: 320px;
   height: 450px;
   perspective: 1000px;
-  /* Styles pour l'animation d'entrée en cascade */
   opacity: 0;
   transform: scale(0.9);
   transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
-/* Apparition quand la section est visible */
 .axes-section.visible .flip-card {
   opacity: 1;
   transform: scale(1);
 }
-/* Décalage pour chaque carte */
 .axes-section.visible .flip-card:nth-child(2) { transition-delay: 0.2s; }
 .axes-section.visible .flip-card:nth-child(3) { transition-delay: 0.4s; }
-
 
 .flip-card-inner {
   position: relative;
@@ -111,8 +99,6 @@
   border-radius: 20px;
   overflow: hidden;
 }
-
-/* --- Face Avant de la Carte --- */
 .flip-card-front {
   background-size: cover;
   background-position: center;
@@ -132,8 +118,6 @@
   background: linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0.2));
   border-radius: 20px;
 }
-
-/* --- Style pour le Titre à l'Intérieur des Cartes --- */
 .card-title-content {
   position: relative;
   z-index: 2;
@@ -158,8 +142,6 @@
 .text-orange {
   color: var(--orange);
 }
-
-/* --- Face Arrière de la Carte --- */
 .flip-card-back {
   background-color: var(--dark-blue);
   color: var(--light-beige);

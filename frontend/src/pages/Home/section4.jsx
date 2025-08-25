@@ -13,7 +13,7 @@ const BackContent1 = () => (
     <p>
       L'événement propose des ateliers, des sessions de networking et des panels pour favoriser la rencontre entre startups et grandes entreprises, afin de développer des partenariats stratégiques durables. Les participants auront l'opportunité d'explorer des technologies innovantes et des solutions permettant d'améliorer l'efficacité opérationnelle. L'objectif est de permettre aux entreprises d'accéder à des innovations et de créer des collaborations qui soutiendront leur croissance.
     </p>
-    <a href="#" className="subscribe-button">SUBSCRIBE</a>
+    <a href="/inscription" className="subscribe-button">SUBSCRIBE</a>
   </div>
 );
 const BackContent2 = () => (
@@ -21,7 +21,7 @@ const BackContent2 = () => (
     <p>
       Des stands d'exposition, des démonstrations en direct et des opportunités d'acquisition de clients sont proposés pour permettre aux startups et entreprises de rencontrer directement leur clientèle cible. C'est l'occasion idéale de tester vos produits, de recueillir des retours instantanés et de fidéliser de nouveaux clients. Les participants peuvent ainsi mieux comprendre les besoins du marché, ajuster leurs offres en temps réel et renforcer leur présence auprès de leur public.
     </p>
-    <a href="#" className="subscribe-button">SUBSCRIBE</a>
+    <a href="/inscription" className="subscribe-button">SUBSCRIBE</a>
   </div>
 );
 const BackContent3 = () => (
@@ -29,19 +29,17 @@ const BackContent3 = () => (
     <p>
       Des sessions privées de pitching avec des investisseurs et des tables rondes avec des décideurs politiques sont proposées, offrant ainsi aux entrepreneurs l'opportunité de se connecter avec des investisseurs, des représentants du gouvernement et des influenceurs du secteur. C'est une occasion clé pour établir des relations cruciales en matière de financement, de réglementation et de croissance. Ces échanges permettent d'influencer les futurs cadres légaux.
     </p>
-    <a href="#" className="subscribe-button">SUBSCRIBE</a>
+    <a href="/inscription" className="subscribe-button">SUBSCRIBE</a>
   </div>
 );
 
 const Section4 = () => {
-  // Hook pour l'animation d'entrée
   const { ref, inView } = useInView({
-    triggerOnce: true, // L'animation ne se joue qu'une seule fois
-    threshold: 0.1,    // Se déclenche quand 10% de la section est visible
+    triggerOnce: true, 
+    threshold: 0.1,    
   });
 
   return (
-    // On ajoute la référence et la classe conditionnelle au conteneur principal
     <section className={`axes-section ${inView ? 'visible' : ''}`} ref={ref}>
       <div className="axes-title-group">
         <h2>Get Entrepreneurial</h2>
