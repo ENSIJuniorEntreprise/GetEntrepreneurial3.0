@@ -69,7 +69,7 @@ const Section3 = () => {
     >
       <div className="articles-header">
         <h2>
-          Discover our exclusive insights through <span className="text-orange">featured articles</span>
+          Découvrez nos analyses exclusives à travers <span className="text-orange">des articles phares</span>
         </h2>
       </div>
 

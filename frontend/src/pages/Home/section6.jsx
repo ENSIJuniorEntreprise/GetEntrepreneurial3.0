@@ -37,7 +37,6 @@ const Section6 = () => {
             {duplicatedSponsors.map((sponsor, index) => (
               <li className="sponsor-item" key={index}>
                 <img src={sponsor.logo} alt={sponsor.name} />
-                {/* Affiche le nom uniquement pour les logos qui en ont besoin */}
                 {sponsor.name === 'Dar Blockchain' && <p>{sponsor.name}</p>}
               </li>
             ))}

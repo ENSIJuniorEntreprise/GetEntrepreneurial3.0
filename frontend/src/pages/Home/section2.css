@@ -7,12 +7,11 @@
 
 .section2-container {
   background-color: var(--dark-blue);
-  padding: 5rem 2rem;
+  padding-top: 100px;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: 'Montserrat', sans-serif;
-  padding-bottom: 0;
+  font-family: 'Montserrat', sans-serif;/* Espace pour compenser la carte qui remonte */
 }
 
 .about-card {
@@ -25,6 +24,17 @@
   position: relative;
   bottom: 80px;
   
+  /* ====> CORRECTION : Mise en page en 2 colonnes <==== */
+  display: flex;
+  gap: 3rem;
+  align-items: center;
+}
+
+.left-column {
+  flex-basis: 50%;
+}
+.right-column {
+  flex-basis: 50%;
 }
 
 /* --- En-tête --- */
@@ -34,91 +44,73 @@
   gap: 2rem;
   margin-bottom: 2.5rem;
 }
-
 .about-logo img {
   width: 90px;
   height: auto;
 }
-
 .title-group {
   text-align: center;
   flex-grow: 1;
 }
-
-/* TYPOGRAPHIE CORRIGÉE */
 .title-group h2 {
   font-size: 2.2rem;
-  font-weight: 650; /* Plus gras */
+  font-weight: 650;
   color: var(--text-dark);
   text-transform: uppercase;
   margin: 0 0 1rem 0;
-  letter-spacing: 2px; /* Espacement des lettres */
+  letter-spacing: 2px;
 }
-
-/* TYPOGRAPHIE CORRIGÉE */
 .subtitle {
   display: flex;
   align-items: center;
   gap: 1.5rem;
   color: var(--text-dark);
-  font-weight: 600; /* Moins gras */
+  font-weight: 600;
   font-size: 1.2rem;
 }
-
 .subtitle .line {
-  height: 3px; /* Ligne plus épaisse */
+  height: 3px;
   background-color: var(--orange);
-  flex-grow: 2;
+  flex-grow: 1;
   border-radius: 20px;
 }
 
-/* --- Contenu Principal --- */
-.card-content {
-  display: flex;
-  gap: 2rem;
-}
-
-/* TYPOGRAPHIE CORRIGÉE */
+/* --- Contenu Texte --- */
 .text-content {
   color: var(--text-dark);
   font-size: 1.1rem;
-  font-weight: 600; /* Police plus épaisse */
+  font-weight: 500; /* Légèrement moins gras pour la lisibilité */
   line-height: 1.8;
 }
-
 .text-content .highlight {
   color: var(--orange);
-  font-weight: 700; /* Nom en gras */
+  font-weight: 700;
 }
 
 /* --- Slider d'image --- */
 .image-slider {
-  flex-basis: 60%; /* Plus d'espace pour l'image */
-  position: relative; /* Pour positionner les flèches */
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-
 .slider-image-container {
   width: 100%;
   border-radius: 15px;
-  overflow: hidden; /* Assure que l'image reste dans les bords arrondis */
+  overflow: hidden;
 }
-
 .slider-image {
   width: 100%;
-  display: block; /* Enlève l'espace en bas de l'image */
-  aspect-ratio: 16 / 9; /* Format plus large */
+  display: block;
+  aspect-ratio: 4 / 3; /* Format plus standard */
   object-fit: cover;
 }
-
 .slider-arrow {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
   background-color: rgba(31, 33, 45, 0.5);
-  color: var(--white);
+  color: white;
   border: none;
   border-radius: 50%;
   width: 40px;
@@ -136,13 +128,11 @@
 }
 .slider-arrow.left { left: -20px; }
 .slider-arrow.right { right: -20px; }
-
 .pagination-dots {
   display: flex;
   gap: 1rem;
-  margin-top: 1.5rem; /* Espace au-dessus des points */
+  margin-top: 1.5rem;
 }
-
 .dot {
   width: 12px; height: 12px; border-radius: 50%;
   background-color: var(--text-dark); cursor: pointer; border: none;
@@ -155,14 +145,13 @@
 
 /* --- Bouton --- */
 .about-button-container {
-  text-align: center;
-  margin-top: 3rem;
+  text-align: left; /* Aligné à gauche sous le texte */
+  margin-top: 2rem;
+  margin-left: 160px;
 }
-
-/* COULEUR DU TEXTE CORRIGÉE */
 .about-button {
   background-color: var(--orange);
-  color: var(--light-beige); /* Texte beige clair */
+  color: var(--light-beige);
   border: none;
   padding: 1rem 2.5rem;
   border-radius: 15px;
@@ -172,7 +161,6 @@
   transition: transform 0.2s, box-shadow 0.2s;
   text-decoration: none;
 }
-
 .about-button:hover {
   transform: scale(1.05);
   box-shadow: 0 4px 20px rgba(254, 153, 0, 0.4);
@@ -180,13 +168,17 @@
 
 /* --- Responsive --- */
 @media (max-width: 992px) {
-  .card-content { flex-direction: column; }
-  .text-content, .image-slider { flex-basis: 100%; }
+  .about-card {
+    flex-direction: column; /* Les 2 colonnes passent l'une sur l'autre */
+  }
 }
 
 @media (max-width: 768px) {
   .about-card { padding: 2rem; }
   .card-header { flex-direction: column; align-items: center; gap: 1rem; }
+  .title-group { text-align: center; }
+  .text-content { text-align: center; }
+  .about-button-container { text-align: center; }
   .title-group h2 { font-size: 1.8rem; }
   .slider-arrow.left { left: 5px; }
   .slider-arrow.right { right: 5px; }

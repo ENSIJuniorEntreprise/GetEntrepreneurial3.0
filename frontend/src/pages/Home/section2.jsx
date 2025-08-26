@@ -30,21 +30,22 @@ const Section2 = () => {
   return (
     <div className="section2-container">
       <div className="about-card">
-        <div className="card-header">
-          <div className="about-logo">
-            <img src={ensiLogo} alt="Ensi Junior Enterprise Logo" />
-          </div>
-          <div className="title-group"> 
-            <h2>QUI SOMMES-NOUS ?</h2>
-            <div className="subtitle">
-              <span className="line"></span>
-              <p>Découvrez Notre Histoire !</p>
-              <span className="line"></span>
+        {/* ====> CORRECTION DE LA STRUCTURE <==== */}
+        <div className="left-column">
+          <div className="card-header">
+            <div className="about-logo">
+              <img src={ensiLogo} alt="Ensi Junior Enterprise Logo" />
+            </div>
+            <div className="title-group"> 
+              <h2>QUI SOMMES-NOUS ?</h2>
+              <div className="subtitle">
+                <span className="line"></span>
+                <p>Découvrez Notre Histoire !</p>
+                <span className="line"></span>
+              </div>
             </div>
           </div>
-        </div>
 
-        <div className="card-content">
           <div className="text-content">
             <p>
               <span className="highlight">Ensi Junior Enterprise</span>, fondée en 2006, est une association étudiante affiliée à l’École Nationale des Sciences de l’Informatique (ENSI).
@@ -53,6 +54,20 @@ const Section2 = () => {
               Notre mission est d'introduire les étudiants tunisiens à la vie professionnelle à travers des activités axées sur trois principaux piliers : la formation, les événements et le développement de projets TIC. De plus, nous assumons activement la responsabilité de promouvoir un esprit entrepreneurial au sein de l'écosystème tunisien, grâce à nos activités, notamment les événements qui renforcent le lien entre les étudiants et les entreprises.
             </p>
           </div>
+          
+          <div className="about-button-container">
+            <a 
+              href="https://ensijuniorentreprise.com/" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="about-button"
+            >
+              À propos de nous
+            </a>
+          </div>
+        </div>
+
+        <div className="right-column">
           <div className="image-slider">
             <button className="slider-arrow left" onClick={goToPrevious} aria-label="Image précédente">
               <FaChevronLeft />
@@ -78,17 +93,6 @@ const Section2 = () => {
               ))}
             </div>
           </div>
-        </div>
-
-        <div className="about-button-container">
-            <a 
-              href="https://ensijuniorentreprise.com/" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="about-button"
-            >
-              À propos de nous
-            </a>
         </div>
       </div>
     </div>

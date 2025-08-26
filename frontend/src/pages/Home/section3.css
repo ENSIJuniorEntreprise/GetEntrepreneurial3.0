@@ -8,15 +8,14 @@
   background-color: var(--dark-blue);
   font-family: 'Montserrat', sans-serif;
   position: relative;
-  padding-bottom: 20px;
+  padding-bottom: 50px;
   overflow-x: hidden; 
 }
 
 
 .articles-header {
   text-align: center;
-  margin-bottom: 4rem;
-  padding: 0 2rem;
+  margin-bottom: 5rem;
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 0.8s ease-out 0.4s, transform 0.8s ease-out 0.4s; /* Délai pour apparaître après les cartes */
