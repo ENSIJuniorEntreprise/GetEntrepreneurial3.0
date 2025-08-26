@@ -19,6 +19,7 @@ body {
   background-size: cover;
   background-position: center;
   background-attachment: fixed; /* L'image reste fixe pendant le scroll */
+  padding-bottom: 70px;
 }
 
 /* ===> NOUVEAU : Superposition sombre sur toute la page <=== */

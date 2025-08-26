@@ -1,39 +1,38 @@
 import React from 'react';
-import './GrandPublicTab.css'; 
+import './GrandPublicTab.css'; // Nouveau CSS
+
+const Speaker = ({ image, name }) => (
+  <div className="speaker">
+    <img src={`/src/assets/images${image}`} alt={name} className="speaker-img"/>
+    <p className="speaker-name">{name}</p>
+  </div>
+);
 
 const GrandPublicTab = ({ data }) => {
   return (
-    <div className="tab-pane">
-      <div className="section-intro">
-        <h3>{data.title}</h3>
-        <p>{data.description}</p>
-      </div>
+    <div className="gp-tab-container">
+      <header className="tab-header">
+        <h2>{data.title}</h2>
+        <p className="tab-description">{data.description}</p>
+      </header>
 
-      {data.panels.map(panel => (
-        <div key={panel.id} className="panel-section">
-          <h4>{panel.title}</h4>
-          <p className="panel-description">{panel.description}</p>
-          <div className="speakers-grid">
-            {panel.speakers.map(speaker => (
-              <div key={speaker.name} className="speaker-card">
-                <img src={`/src/assets/images${speaker.image}`} alt={speaker.name} className="speaker-img"/>
-                <p className="speaker-name">{speaker.name}</p>
-              </div>
-            ))}
+      <div className="panels-grid">
+        {data.panels.map(panel => (
+          <div key={panel.id} className="panel-card">
+            <h3 className="panel-title">{panel.title}</h3>
+            <p className="panel-card-description">{panel.description}</p>
+            <div className="panel-speakers-list">
+              {panel.speakers.map(speaker => (
+                <Speaker key={speaker.name} {...speaker} />
+              ))}
+            </div>
           </div>
-        </div>
-      ))}
-      
-      <div className="webinaire-section">
-          <h5>{data.webinaire.title}</h5>
-          <p>{data.webinaire.description}</p>
+        ))}
       </div>
 
-       <div className="key-points-grid">
-            <div className="key-point">La libéralisation de l'initiative entrepreneuriale</div>
-            <div className="key-point highlighted">L'innovation comme moteur de croissance économique</div>
-            <div className="key-point highlighted">Le capital humain : un atout économique stratégique</div>
-            <div className="key-point">L'amélioration de la compétitivité</div>
+      <div className="webinaire-banner">
+          <h3>{data.webinaire.title}</h3>
+          <p>{data.webinaire.description}</p>
       </div>
     </div>
   );

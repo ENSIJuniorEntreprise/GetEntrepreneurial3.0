@@ -31,15 +31,16 @@ body {
   background-image: linear-gradient(rgba(31, 33, 45, 0.85), rgba(31, 33, 45, 0.85)), url('./arr.png');
   background-size: cover; /* Couvre tout l'espace */
   background-position: center; /* Centre l'image */
-  background-repeat: no-repeat; /* Empêche la répétition */
-  background-attachment: fixed; /* L'image reste fixe au défilement */
+  background-repeat: no-repeat; 
+  background-attachment: fixed; 
   
   width: 100%;
   min-height: 100vh; /* Prend au minimum toute la hauteur de la fenêtre */
   box-sizing: border-box;
+  padding-bottom: 180px;
+  padding-top: 130px;
 
-  /* --- CORRECTIONS POUR L'ESPACEMENT --- */
-  padding: 120px 40px 60px 40px; /* 120px en haut, 60px en bas, 40px sur les côtés */
+  /* --- CORRECTIONS POUR L'ESPACEMENT --- */ /* 120px en haut, 60px en bas, 40px sur les côtés */
 }
 
 /* --- En-tête et Titre --- */

@@ -42,7 +42,7 @@ const Agenda = () => {
   return (
     <div className="agenda-container">
       <div className="agenda-header">
-        <h1>Get Entrepreneurial <br /><span>Agenda</span></h1>
+        <h1>Get Entrepreneurial 3.0 <br /><span>Agenda</span></h1>
         <nav className="agenda-nav">
           <button onClick={() => setActiveTab('friday')} className={activeTab === 'friday' ? 'active' : ''}>
             Friday <br /> 22 October

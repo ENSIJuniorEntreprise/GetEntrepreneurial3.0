@@ -1,7 +1,17 @@
-/* Import de la police */
+/* --- AJOUT : Reset CSS --- */
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap');
 
-/* Couleurs de la charte graphique */
 :root {
   --dark-blue: #1F212D;
   --orange: #FE9900;
@@ -12,13 +22,15 @@
 .apropos-page {
   background-color: var(--dark-blue);
   min-height: 100vh;
-  padding-bottom: 40px; 
+  padding-bottom: 50px;
+  font-family: 'Montserrat', sans-serif;
+  padding-top: 70px;
 }
 
 /* --- Section Bannière --- */
 .apropos-header {
-  background: 
-    linear-gradient(rgba(31, 33, 45, 0.6), rgba(31, 33, 45, 0.6));
+  background:
+    linear-gradient(rgba(31, 33, 45, 0.7), rgba(31, 33, 45, 0.7));
   background-attachment: fixed;
   background-size: cover;
   background-position: center;
@@ -28,30 +40,27 @@
   align-items: center;
   text-align: center;
   color: var(--white);
+  padding-top: 60px;
+  padding-bottom: 140px;
 }
 
 .header-content h1 {
-  font-family: 'Montserrat', sans-serif;
   font-weight: 700;
   font-size: 4rem;
   margin: 0;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-  margin-top: 40px;
+  color: #E0DED2;
+  padding-bottom: 20px;
 }
 
 .header-content p {
-  font-family: 'Montserrat', sans-serif;
   font-size: 1.2rem;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 15px;
   margin-top: 15px;
-  color: #E0DED2; 
-}
-.apropos-header{
-    padding-top: 40px;
-    padding-bottom: 30px;
+  color: #E0DED2;
 }
 
 .header-content p::before,
@@ -67,13 +76,15 @@
 /* --- Conteneur principal du contenu (beige) --- */
 .apropos-main-content {
   max-width: 1200px;
-  width: 100%;
+  width: calc(100% - 40px);
   margin: 0 auto;
   background-color: var(--beige);
   border: 2px solid var(--orange);
-  margin-top: -70px;
+  margin-top: -80px;
   position: relative;
   z-index: 2;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
 }
 
 /* --- Onglets --- */
@@ -89,20 +100,20 @@
 
 .tab-btn {
   padding: 20px 45px;
-  font-family: 'Montserrat', sans-serif;
   font-size: 1.2rem;
   font-weight: 700;
   cursor: pointer;
   transition: all 0.3s ease-out;
-  border-radius: 0;
+  border-radius: 8px;
   background-color: var(--beige);
   color: var(--dark-blue);
   border: 2px solid var(--orange);
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 .tab-btn:hover:not(.active) {
   background-color: #f5f3ed;
-  transform: translateY(-5px); 
+  transform: translateY(-5px);
   box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
 }
 
@@ -110,85 +121,55 @@
   background-color: var(--orange);
   color: var(--dark-blue);
   border-color: var(--orange);
-  transform: translateY(-5px);
-  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.15);
+  transform: translateY(-8px);
+  box-shadow: 0px 12px 25px rgba(0, 0, 0, 0.25);
 }
 
-/* --- Zone de contenu à l'intérieur du bloc beige --- */
+/* --- Zone de contenu --- */
 .tab-content {
-  padding: 60px 30px 30px 30px; 
+  padding: 80px 40px 40px 40px;
 }
 
-/* --- SECTION DES AJOUTS CRÉATIFS & ANIMATIONS --- */
-
+/* --- Animations --- */
 @keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-.header-content h1,
-.header-content p,
-.apropos-main-content {
-  opacity: 0; /* Cacher au début pour que l'animation fonctionne */
-}
-
-.header-content h1 {
-  animation: fadeInUp 0.6s ease-out 0.3s forwards;
-}
-
-.header-content p {
-  animation: fadeInUp 0.6s ease-out 0.5s forwards;
-}
-
-.apropos-main-content {
-  animation: fadeInUp 0.7s ease-out 0.7s forwards;
-}
-
-@keyframes fadeInContent {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-.tab-content-wrapper {
-  animation: fadeInContent 0.4s ease-in-out;
+.header-content h1, .header-content p, .apropos-main-content {
+  animation: fadeInUp 0.7s ease-out 0.3s forwards;
 }
 
 /* --- Responsive --- */
-@media (max-width: 1200px) {
-  .apropos-main-content {
-    margin-left: 20px;
-    margin-right: 20px;
-    width: auto;
+@media (max-width: 992px) {
+  .tabs-container {
+    flex-wrap: wrap;
+    gap: 15px;
+    padding: 0 20px;
+  }
+  .tab-btn {
+    flex-grow: 1;
   }
 }
 
 @media (max-width: 768px) {
-  .header-content h1 {
-    font-size: 2.5rem;
-  }
-  .header-content p::before,
-  .header-content p::after {
-    width: 60px;
-  }
+  .header-content h1 { font-size: 2.5rem; }
+  .header-content p::before, .header-content p::after { width: 60px; }
   .tabs-container {
-    flex-wrap: wrap;
-    gap: 10px;
+    position: static;
+    transform: none;
+    padding: 20px;
+    border-bottom: 2px solid #ccc;
   }
-  .tab-btn {
-    padding: 15px 25px;
-    font-size: 1rem;
+  .apropos-main-content {
+    margin-top: 20px;
+    border-radius: 0;
+    width: 100%;
+    border: none;
   }
   .tab-btn:hover:not(.active), .tab-btn.active {
     transform: none;
     box-shadow: none;
   }
-  .tab-content {
-    padding-top: 80px;
-  }
+  .tab-content { padding: 40px 20px; }
 }
