@@ -1,16 +1,36 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import './Footer.css';
 import logo from '../../assets/images/logogete.png'; 
-
 import { FaFacebookF, FaInstagram, FaLinkedinIn, FaYoutube } from 'react-icons/fa';
 
 const Footer = () => {
   const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
+  const [loading, setLoading] = useState(false);
 
-  const handleSubscribe = (e) => {
-    e.preventDefault();
-    console.log('Subscribing email:', email);
-    setEmail('');
+  const handleSubscribe = async (e) => {
+    // Empêche le comportement par défaut du formulaire (qui est de recharger la page)
+    e.preventDefault(); 
+    setLoading(true);
+    setMessage('');
+
+    try {
+      await axios.post(
+        'http://localhost:5000/api/newsletter',
+        { email: email }
+      );
+      setMessage('Merci, votre inscription a bien été prise en compte !');
+      setEmail('');
+    } catch (error) {
+      if (error.response && error.response.data && error.response.data.message) {
+        setMessage(error.response.data.message);
+      } else {
+        setMessage("Une erreur s'est produite. Veuillez réessayer.");
+      }
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -62,6 +82,9 @@ const Footer = () => {
         <div className="footermiddle">
           <div className="footernewsletter">
             <p>Join our community to receive updates</p>
+            
+            {/* --- BLOC JSX VÉRIFIÉ --- */}
+            {/* L'attribut onSubmit sur la balise <form> appelle notre fonction */}
             <form onSubmit={handleSubscribe} className="newsletterform">
               <input
                 type="email"
@@ -69,9 +92,16 @@ const Footer = () => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
+                disabled={loading}
               />
-              <button type="submit">Subscribe</button>
+              {/* Le type="submit" est crucial pour que le bouton déclenche le onSubmit du formulaire */}
+              <button type="submit" disabled={loading}>
+                {loading ? 'Envoi...' : 'Subscribe'}
+              </button>
             </form>
+
+            {/* Affiche le message de retour (succès ou erreur) */}
+            {message && <p className="footer-message">{message}</p>}
           </div>
           <div className="footersocial">
             <p>Follow us</p>

@@ -2,46 +2,43 @@ import React from 'react';
 import './section6.css';
 
 // Importez les logos de vos sponsors
-import logoTalys from '../../assets/images/stand.jpeg';
-import logoA from '../../assets/images/stand.jpeg';
-import logoDar from '../../assets/images/stand.jpeg';
-// Ajoutez autant de logos que nécessaire
-// import logoAutre from '../../assets/images/sponsors/autre.png';
+import logoSponsor from '../../assets/images/stand.jpeg';
 
+// La liste de base a été allongée pour assurer un défilement continu
 const sponsorsData = [
-  { name: 'Talys', logo: logoTalys },
-  { name: 'Sponsor A', logo: logoA },
-  { name: 'Dar Blockchain', logo: logoDar },
-  // Ajoutez d'autres sponsors ici
-  // { name: 'Autre Sponsor', logo: logoAutre },
+  { name: 'Talys Consulting', logo: logoSponsor },
+  { name: 'Creative Minds', logo: logoSponsor },
+  { name: 'Dar Blockchain', logo: logoSponsor },
+  { name: 'Innovatech', logo: logoSponsor },
+  { name: 'Quantum Leap', logo: logoSponsor },
+  { name: 'Synergy Hub', logo: logoSponsor },
+  { name: 'Apex Solutions', logo: logoSponsor },
+  { name: 'Future Forge', logo: logoSponsor },
+  { name: 'Visionary Co.', logo: logoSponsor },
+  { name: 'NextGen Partners', logo: logoSponsor },
 ];
 
 const Section6 = () => {
-  // On duplique la liste pour créer une boucle fluide et parfaite
+  // On duplique la liste pour l'animation de défilement infinie
   const duplicatedSponsors = [...sponsorsData, ...sponsorsData];
 
   return (
     <section className="sponsors-section">
       <div className="sponsors-header">
+        {/* Le titre que vous avez demandé */}
         <h2>Nos Sponsors</h2>
-        <div className="sponsors-subtitle">
-          <span className="line"></span>
-          <p>Ils nous font confiance</p>
-          <span className="line"></span>
-        </div>
+        {/* Le sous-titre que vous avez demandé */}
       </div>
-
-      <div className="scroller-container">
-        <div className="scroller">
-          <ul className="sponsors-list">
-            {duplicatedSponsors.map((sponsor, index) => (
-              <li className="sponsor-item" key={index}>
-                <img src={sponsor.logo} alt={sponsor.name} />
-                {sponsor.name === 'Dar Blockchain' && <p>{sponsor.name}</p>}
-              </li>
-            ))}
-          </ul>
-        </div>
+      <div className="scroller-container"> 
+        <ul className="sponsors-list">
+          {duplicatedSponsors.map((sponsor, index) => (
+            <li className="sponsor-item" key={index}>
+              {/* Le nom est maintenant un <p> simple sous l'image */}
+              <img src={sponsor.logo} alt={`Logo de ${sponsor.name}`} />
+              <p className="sponsor-name">{sponsor.name}</p>
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
   );

@@ -205,45 +205,63 @@ body {
 .contact-form button:hover {
   background-color: #e68a00;
 }
+.feedback-message {
+  /* Mise en forme */
+  margin-top: 1.5rem;
+  padding: 1rem 1.5rem;
+  border-left: 4px solid; /* Bordure latérale épaisse que nous allons colorer */
+  border-radius: 0 8px 8px 0; /* Coins arrondis, sauf en haut à gauche et en bas à gauche */
 
-/* Responsive Design */
-@media (max-width: 992px) {
-  .contact-main {
-    margin: 0 3% 3%;
-  }
+  /* Style du texte */
+  font-weight: 500;
+  font-size: 0.95rem;
+  line-height: 1.5;
 
-  .contact-info-container {
-    flex-direction: column;
-    margin-top: -80px;
-  }
-
-  .contact-info-box {
-    width: 100%;
-    max-width: 400px;
-    margin: 0 auto 20px;
-  }
-
-  .contact-form-section {
-    flex-direction: column;
-  }
+  /* Animation */
+  animation: gentleFadeIn 0.5s ease-out forwards;
 }
 
-@media (max-width: 768px) {
-    .header-content h1 {
-        font-size: 3rem;
-    }
+/* Style SPÉCIFIQUE pour le message de SUCCÈS */
+.feedback-message.success {
+  background-color: #f0f7f8; /* Un fond très clair, presque blanc, tiré de votre couleur */
+  border-color: #9FC8D4; /* La bordure latérale prend votre couleur */
+  color: #537a85; /* Texte foncé et désaturé pour la lisibilité */
+}
 
-    .subtitle-container::before,
-    .subtitle-container::after {
-        display: none;
-    }
+/* Style SPÉCIFIQUE pour le message d'ERREUR */
+.feedback-message.error {
+  background-color: #fdf3f3; /* Un fond rosé très clair */
+  border-color: #e57373; /* Bordure latérale rouge doux */
+  color: #a44d4d; /* Texte rouge désaturé */
+}
 
-    .subtitle-container p {
-        white-space: normal;
-    }
+/* --- Icônes (Optionnel mais recommandé pour la clarté) --- */
+/* (Assurez-vous que Font Awesome est bien chargé) */
 
-    .form-row {
-        flex-direction: column;
-        gap: 20px;
-    }
+.feedback-message::before {
+  font-family: "Font Awesome 5 Free"; /* ou le nom de votre police d'icônes */
+  font-weight: 900;
+  margin-right: 12px;
+  font-size: 1.1rem;
+  vertical-align: middle; /* Aligne l'icône avec le texte */
+}
+
+.feedback-message.success::before {
+  content: "\f058"; /* Icône "check-circle" solide */
+  color: #9FC8D4; /* L'icône reprend votre couleur */
+}
+
+.feedback-message.error::before {
+  content: "\f071"; /* Icône "exclamation-triangle" solide */
+  color: #e57373; /* L'icône reprend la couleur rouge doux */
+}
+
+/* Animation d'apparition simple et douce */
+@keyframes gentleFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
