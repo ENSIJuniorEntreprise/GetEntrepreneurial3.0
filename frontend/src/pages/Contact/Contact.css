@@ -1,0 +1,249 @@
+/* Import Montserrat font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+
+
+body {
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  background-color: #1F212D;
+}
+
+.contact-page {
+  position: relative; /* Contexte pour la superposition */
+  width: 100%;
+  padding-top: 60px; /* Espace pour la Navbar */
+  
+  /* ===> CORRECTION : L'image de fond est maintenant ici <=== */
+  background-image: url('./ejeeten.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed; /* L'image reste fixe pendant le scroll */
+  padding-bottom: 70px;
+}
+
+/* ===> NOUVEAU : Superposition sombre sur toute la page <=== */
+.background-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color:rgba(31, 33, 45, 0.8); /* Bleu foncé semi-transparent */
+  z-index: 1; /* Se place entre le fond et le contenu */
+}
+
+
+/* Header Section */
+.contact-header {
+  /* On retire l'image de fond d'ici */
+  color: #FFFFFF;
+  text-align: center;
+  padding: 80px 20px;
+  position: relative; /* Pour être au-dessus de la superposition */
+  z-index: 2;
+}
+
+.header-content h1 {
+  font-size: 4rem;
+  font-weight: 700;
+  color: #E0DED2;
+  margin: 0;
+}
+
+.header-content .highlight {
+  color: #FE9900;
+}
+
+.subtitle-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  max-width: 1000px;
+  margin: 20px auto 0;
+}
+
+.subtitle-container p {
+  margin: 0;
+  color: #E0DED2;
+  white-space: nowrap;
+  font-size: 1.2rem;
+}
+
+.subtitle-container::before,
+.subtitle-container::after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 5px;
+  background-color: #FE9900;
+  border-radius: 20px;
+}
+
+/* Main Content Area */
+.contact-main {
+  background-color: #E0DED2;
+  padding: 50px;
+  margin: 0 5% 5% 5%; /* On retire la marge négative */
+  position: relative; /* Pour être au-dessus de la superposition */
+  z-index: 2;
+  border-radius: 10px;
+}
+
+/* Contact Info Boxes */
+.contact-info-container {
+  display: flex;
+  justify-content: space-around;
+  gap: 20px;
+  margin-top: -90px; /* Remonte les boîtes pour qu'elles chevauchent le header */
+  margin-bottom: 40px;
+}
+
+.contact-info-box {
+  background-color: #FFFFFF; /* Blanc pour plus de contraste */
+  padding: 25px;
+  border-radius: 8px;
+  text-align: center;
+  width: 30%;
+  border-top: 4px solid #FE9900; /* Bordure orange en haut */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.contact-info-box h3 {
+  margin-top: 10px;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #1F212D;
+}
+
+.contact-info-box p {
+  margin: 5px 0;
+  color: #555;
+}
+
+.icon-container {
+  color: #FE9900;
+  font-size: 1.5rem;
+}
+
+/* Form Section */
+.contact-form-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 40px;
+  margin-top: 40px;
+}
+
+.form-text-content {
+  flex-basis: 35%;
+}
+
+.form-text-content h2 {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+  font-weight: 700;
+  color: #1F212D;
+}
+
+.form-text-content p {
+  font-size: 1.1rem;
+  color: #1F212D;
+}
+
+.contact-form {
+  flex-basis: 60%;
+}
+
+.form-row {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-family: 'Montserrat', sans-serif;
+  background-color: #FFFFFF;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: #FE9900;
+}
+
+.full-width {
+  width: 100% !important;
+}
+
+.contact-form textarea {
+  height: 150px;
+  resize: vertical;
+}
+
+.contact-form button {
+  width: 100%;
+  padding: 15px;
+  background-color: #FE9900;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  font-family: 'Montserrat', sans-serif;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.contact-form button:hover {
+  background-color: #e68a00;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+  .contact-main {
+    margin: 0 3% 3%;
+  }
+
+  .contact-info-container {
+    flex-direction: column;
+    margin-top: -80px;
+  }
+
+  .contact-info-box {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto 20px;
+  }
+
+  .contact-form-section {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 768px) {
+    .header-content h1 {
+        font-size: 3rem;
+    }
+
+    .subtitle-container::before,
+    .subtitle-container::after {
+        display: none;
+    }
+
+    .subtitle-container p {
+        white-space: normal;
+    }
+
+    .form-row {
+        flex-direction: column;
+        gap: 20px;
+    }
+}

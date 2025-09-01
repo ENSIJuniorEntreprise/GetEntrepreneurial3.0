@@ -1,0 +1,97 @@
+:root {
+  --dark-blue: #1F212D;
+  --orange: #FE9900;
+  --light-beige: #E0DED2;
+  --text-dark: #1F212D;
+}
+
+.sponsors-section {
+  background-color: var(--light-beige);
+  padding: 40px 40px;
+  font-family: 'Montserrat', sans-serif;
+  color: var(--text-dark);
+  overflow: hidden;
+}
+
+.sponsors-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+.sponsors-header h2 {
+  font-size: 2.8rem;
+  font-weight: 800;
+  margin: 0 0 1rem 0;
+  color: #1F212D;
+}
+.sponsors-subtitle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+.sponsors-subtitle .line {
+  height: 4px;
+  width: 150px;
+  background-color: var(--orange);
+  border-radius: 20px;
+}
+.sponsors-subtitle p{
+    font-size: 1.5rem;
+    font-weight: 400;
+    font-family: 'Montserrat';
+}
+.scroller-container {
+  -webkit-mask: linear-gradient(90deg, transparent, white 10%, white 90%, transparent);
+  mask: linear-gradient(90deg, transparent, white 10%, white 90%, transparent);
+}
+
+.scroller {
+  display: flex;
+}
+
+@keyframes scroll {
+  to {
+    transform: translate(calc(-50%));
+  }
+}
+
+.sponsors-list {
+  display: flex;
+  align-items: center;
+  gap: 8rem; 
+  padding: 1rem 0;
+  margin: 0;
+  list-style: none;
+  animation: scroll 40s linear infinite; 
+}
+
+.scroller-container:hover .sponsors-list {
+  animation-play-state: paused;
+}
+
+.sponsor-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+.sponsor-item img {
+  max-height: 90px; 
+  width: auto;
+  filter: grayscale(100%);
+  opacity: 0.7;
+  transition: filter 0.4s ease, opacity 0.4s ease;
+}
+.sponsor-item:hover img {
+  filter: grayscale(0%);
+  opacity: 1;
+}
+
+.sponsor-item p {
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--text-dark);
+  margin: 0;
+}

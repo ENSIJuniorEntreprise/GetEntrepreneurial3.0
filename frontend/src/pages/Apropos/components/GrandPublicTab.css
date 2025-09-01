@@ -1,0 +1,97 @@
+/* --- En-tête de l'onglet --- */
+.tab-header {
+    text-align: center;
+    margin-bottom: 50px;
+  }
+  
+  .tab-header h2 {
+    font-size: 2.2rem;
+    color: var(--dark-blue);
+    margin-bottom: 15px;
+  }
+  
+  .tab-description {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 0 auto;
+    color: #555;
+  }
+  
+  /* Grille des panels */
+  .panels-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+    margin-bottom: 50px;
+  }
+  
+  .panel-card {
+    background-color: #f8f7f5;
+    border-left: 5px solid var(--orange);
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.07);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .panel-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+  }
+  
+  .panel-title {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: var(--dark-blue);
+  }
+  
+  .panel-card-description {
+    margin-bottom: 25px;
+    line-height: 1.5;
+    color: #444;
+  }
+  
+  .panel-speakers-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: flex-start;
+  }
+  
+  /* Composant Speaker */
+  .speaker {
+    text-align: center;
+    width: 120px;
+  }
+  
+  .speaker-img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--dark-blue);
+    margin-bottom: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+  
+  .speaker-name {
+    font-weight: bold;
+    font-size: 0.9rem;
+  }
+  
+  /* Bannière webinaire */
+  .webinaire-banner {
+    background-color: var(--dark-blue);
+    color: var(--white);
+    text-align: center;
+    padding: 30px;
+    margin-top: 30px;
+    border-radius: 8px;
+  }
+  
+  .webinaire-banner h3 {
+    color: var(--orange);
+    font-size: 1.6rem;
+    margin-bottom: 10px;
+  }

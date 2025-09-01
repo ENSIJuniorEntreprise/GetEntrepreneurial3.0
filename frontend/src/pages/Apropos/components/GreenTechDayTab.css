@@ -1,0 +1,116 @@
+/* --- En-tête de l'onglet --- */
+.tab-header.dark-theme {
+    text-align: center;
+    margin-bottom: 50px;
+  }
+  
+  .tab-header.dark-theme h2 {
+    font-size: 2.2rem;
+    color: var(--orange); /* Couleur orange pour le thème sombre */
+    margin-bottom: 15px;
+  }
+  
+  .tab-header.dark-theme .tab-description {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 0 auto;
+    color: var(--beige); /* Couleur beige pour le thème sombre */
+  }
+  
+  /* Liste des workshops */
+  .gt-tab-container {
+      background-color: var(--dark-blue);
+      padding: 30px;
+      margin: -80px -40px -40px -40px; /* Compense le padding du parent pour un effet pleine largeur */
+      border-radius: 8px;
+  }
+  
+  .workshops-list {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+  
+  .workshop-card {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: #2a2d3a;
+    border-radius: 12px;
+    overflow: hidden;
+    color: var(--white);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+    transition: transform 0.3s ease;
+  }
+  
+  .workshop-card:hover {
+      transform: scale(1.02);
+  }
+  
+  .workshop-card:nth-child(even) {
+      flex-direction: row-reverse;
+  }
+  
+  .workshop-details {
+    flex: 3;
+    padding: 30px;
+  }
+  
+  .workshop-number {
+    display: inline-block;
+    background-color: var(--orange);
+    color: var(--dark-blue);
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+  }
+  
+  .workshop-title {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    font-weight: 700;
+  }
+  
+  .speaker-name {
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin: 0;
+  }
+  
+  .speaker-role {
+    font-size: 1rem;
+    color: var(--beige);
+    margin: 5px 0 0 0;
+  }
+  
+  .workshop-image {
+    flex: 2;
+    align-self: stretch; /* Fait en sorte que l'image prenne toute la hauteur */
+  }
+  
+  .workshop-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 0% 100%);
+  }
+  
+  .workshop-card:nth-child(even) .workshop-image img {
+      clip-path: polygon(0% 0%, 100% 0%, 75% 100%, 0% 100%);
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+      .workshop-card, .workshop-card:nth-child(even) {
+          flex-direction: column;
+      }
+      .workshop-image img, .workshop-card:nth-child(even) .workshop-image img {
+          clip-path: none;
+      }
+      .workshop-image {
+          width: 100%;
+      }
+  }

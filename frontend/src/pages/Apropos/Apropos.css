@@ -1,0 +1,175 @@
+/* --- AJOUT : Reset CSS --- */
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap');
+
+:root {
+  --dark-blue: #1F212D;
+  --orange: #FE9900;
+  --beige: #E0DED2;
+  --white: #FFFFFF;
+}
+
+.apropos-page {
+  background-color: var(--dark-blue);
+  min-height: 100vh;
+  padding-bottom: 50px;
+  font-family: 'Montserrat', sans-serif;
+  padding-top: 70px;
+}
+
+/* --- Section Bannière --- */
+.apropos-header {
+  background:
+    linear-gradient(rgba(31, 33, 45, 0.7), rgba(31, 33, 45, 0.7));
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  min-height: 45vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: var(--white);
+  padding-top: 60px;
+  padding-bottom: 140px;
+}
+
+.header-content h1 {
+  font-weight: 700;
+  font-size: 4rem;
+  margin: 0;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  color: #E0DED2;
+  padding-bottom: 20px;
+}
+
+.header-content p {
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 15px;
+  color: #E0DED2;
+}
+
+.header-content p::before,
+.header-content p::after {
+  content: '';
+  display: block;
+  width: 200px;
+  height: 3px;
+  background-color: var(--orange);
+  border-radius: 20px;
+}
+
+/* --- Conteneur principal du contenu (beige) --- */
+.apropos-main-content {
+  max-width: 1200px;
+  width: calc(100% - 40px);
+  margin: 0 auto;
+  background-color: var(--beige);
+  border: 2px solid var(--orange);
+  margin-top: -80px;
+  position: relative;
+  z-index: 2;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+/* --- Onglets --- */
+.tabs-container {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  position: absolute;
+  width: 100%;
+  top: 0;
+  transform: translateY(-50%);
+}
+
+.tab-btn {
+  padding: 20px 45px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease-out;
+  border-radius: 8px;
+  background-color: var(--beige);
+  color: var(--dark-blue);
+  border: 2px solid var(--orange);
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.tab-btn:hover:not(.active) {
+  background-color: #f5f3ed;
+  transform: translateY(-5px);
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.tab-btn.active {
+  background-color: var(--orange);
+  color: var(--dark-blue);
+  border-color: var(--orange);
+  transform: translateY(-8px);
+  box-shadow: 0px 12px 25px rgba(0, 0, 0, 0.25);
+}
+
+/* --- Zone de contenu --- */
+.tab-content {
+  padding: 80px 40px 40px 40px;
+}
+
+/* --- Animations --- */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.header-content h1, .header-content p, .apropos-main-content {
+  animation: fadeInUp 0.7s ease-out 0.3s forwards;
+}
+
+/* --- Responsive --- */
+@media (max-width: 992px) {
+  .tabs-container {
+    flex-wrap: wrap;
+    gap: 15px;
+    padding: 0 20px;
+  }
+  .tab-btn {
+    flex-grow: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .header-content h1 { font-size: 2.5rem; }
+  .header-content p::before, .header-content p::after { width: 60px; }
+  .tabs-container {
+    position: static;
+    transform: none;
+    padding: 20px;
+    border-bottom: 2px solid #ccc;
+  }
+  .apropos-main-content {
+    margin-top: 20px;
+    border-radius: 0;
+    width: 100%;
+    border: none;
+  }
+  .tab-btn:hover:not(.active), .tab-btn.active {
+    transform: none;
+    box-shadow: none;
+  }
+  .tab-content { padding: 40px 20px; }
+}

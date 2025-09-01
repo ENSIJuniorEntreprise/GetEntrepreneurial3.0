@@ -1,0 +1,5 @@
+@font-face {
+  font-family: 'Photograph Signature';
+  /* Le chemin est maintenant simple, car on est dans le même dossier 'public' */
+  src: url('./fonts/PhotographSignature.ttf') format('truetype'); 
+}

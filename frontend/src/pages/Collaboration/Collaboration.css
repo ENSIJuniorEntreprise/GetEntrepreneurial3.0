@@ -1,0 +1,295 @@
+* {
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: 'Photograph Signature';
+    src: url('../../assets/fonts/PhotographSignature.ttf') format('truetype');
+    font-weight: normal;
+    font-style: inherit;
+}
+
+/* --- Réinitialisation --- */
+body,
+html {
+    margin: 0;
+    padding: 0;
+}
+
+section.titre {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 90vh;
+    background-image: url(../../assets//images/colloaboration-title-background.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: #1F212D;
+
+    position: relative;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    color: white;
+}
+
+.titre p {
+    font-family: sans-serif;
+    font-weight: 700;
+    font-size: 25px;
+}
+
+.titre img {
+    width: auto;
+    scale: 0.8;
+}
+
+.titre p {
+    margin: 0;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+
+
+
+
+section.sponsors,
+section.exposants {
+    background-color: #E0DED2;
+    height: 100vh;
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sponsors p,
+.exposants p {
+
+    font-family: sans-serif;
+    font-weight: bold;
+}
+
+p span {
+    font-size: 3rem;
+}
+
+span.orange {
+    color: #FE9900
+}
+
+div.carousel {
+    position: relative;
+    width: 100%;
+}
+
+div.arrows {
+
+    position: relative;
+    display: flex;
+    width: 100px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+div.cards {
+    position: relative;
+    width: 100%;
+    padding: 10%;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: top;
+}
+
+div.card {
+    position: relative;
+    border-radius: 8%;
+    height: 40vh;
+    background-color: #D0D0C6;
+    box-shadow: 0px 5px 0 grey;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.sponsors .card {
+    width: 30%;
+}
+
+.card img {
+    height: 80%;
+    width: 100%;
+    padding: 15px;
+    border-radius: 20px;
+    position: relative;
+    top: 0;
+}
+
+.sponsor-grade {
+    background-color: #929391;
+    color: black;
+    transition: 0.5s;
+    padding: 10px;
+    border-radius: 20px;
+    width: 40%;
+    text-align: center;
+}
+
+.sponsor-grade:hover {
+    background-color: #E3B46AFE;
+    color: white;
+}
+
+
+
+section.partenaires {
+    background-color: #1F212D;
+    height: 100vh;
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.partenaires p {
+    color: white;
+
+    font-family: sans-serif;
+    font-weight: bold;
+}
+
+p span {
+    font-size: 3rem;
+}
+
+span.orange {
+    color: #FE9900
+}
+
+div.carousel {
+    position: relative;
+    width: 100%;
+}
+
+div.arrows {
+
+    position: relative;
+    display: flex;
+    width: 100px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+.partenaires .card {
+    position: relative;
+    width: 30%;
+    border-radius: 8%;
+    height: 40vh;
+    background-color: #32343E;
+    box-shadow: 0px 5px 0px gray;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.card img {
+    height: 80%;
+    width: 100%;
+    padding: 15px;
+    border-radius: 20px;
+    position: relative;
+    top: 0;
+}
+.main {
+    position: relative;
+    width: 100%;
+}
+.partenaires button {
+    all: unset;
+    font-family: sans-serif;
+    text-align: center;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    color: white;
+    background-color: #FE9900;
+
+}
+
+.partenaires .main {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+section {
+    padding-top: 5%;
+}
+
+
+.exposants .cards {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-column-gap: 25px;
+    grid-row-gap: 25px;
+    max-width: 100%;
+    padding: 5%;
+
+}
+section.exposants {
+    height: 152vh;
+}
+.exposants div.card-exposant {
+    position: relative;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    background-color: #D0D0C6;
+    box-shadow: 0px 5px 0 grey;
+    border-radius: 10px;
+}
+
+.exposants .title {
+    background-color: #FE9900;
+    padding:10px 20px;
+    text-align: center;
+    margin: 20px;
+    margin-bottom: 10px;
+    border-radius: 20px;
+    color: white;
+    font-family: sans-serif;
+    width: fit-content;
+
+}
+
+.exposants .name {
+    margin: 0 20px;
+    color: black;
+    font-weight: 600;
+    font-family: sans-serif;
+    font-size: 1.5rem;
+
+}
+.exposants .card-exposant p {
+    color: black;
+    font-family: sans-serif;
+    font-size: 1rem;
+    font-weight: 300;
+    margin:  5%;
+
+}
+.card ,.card-exposant{
+    transition: 0.6s;
+    cursor: pointer;
+}
+.card:hover, .card-exposant:hover{
+    transform: translateY(-10px);
+}
