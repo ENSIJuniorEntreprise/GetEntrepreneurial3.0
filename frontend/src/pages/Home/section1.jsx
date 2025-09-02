@@ -54,12 +54,12 @@ const Section1 = () => {
 
         <div className="hero-content">
           <div className="date-location">
-            <span>22</span> {/* Corrigé pour correspondre à la maquette originale */}
+            <span className="day">22</span>
             <div className="month-year">
               <span className="month">OCT</span>
               <span className="year">2025</span>
             </div>
-            <span>TUNISIA</span>
+            <span className="location">UTICA</span>
           </div>
           <h1>
             <span className="title-get">GET</span>

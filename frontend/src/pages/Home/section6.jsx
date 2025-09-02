@@ -26,7 +26,7 @@ const Section6 = () => {
     <section className="sponsors-section">
       <div className="sponsors-header">
         {/* Le titre que vous avez demandé */}
-        <h2>Nos Sponsors</h2>
+        <h2>Nos Partenaires Précieux</h2>
         {/* Le sous-titre que vous avez demandé */}
       </div>
       <div className="scroller-container"> 

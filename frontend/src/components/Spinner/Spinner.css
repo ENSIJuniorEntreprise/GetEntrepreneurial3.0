@@ -1,15 +1,254 @@
-.spinner-placeholder {
-  width: 50px;
-  height: 50px;
-  border: 5px solid rgba(224, 222, 210, 0.3);
-  border-top-color: #FE9900;
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
-  margin: 100px auto;
+/* Spinner.css */
+.spinner-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    
+  }
+  
+  .circle, .circle2, .circle3 {
+    display: flex;
+    position: relative;
+    opacity: 1;
+
 }
 
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
+.circle {
+    animation: animation1 1s infinite linear; /* Adjust the duration and timing function as needed */
+}
+
+.circle2 {
+    animation: animation2 1s infinite linear; /* Adjust the duration and timing function as needed */
+}
+
+.circle3 {
+    animation: animation3 1s infinite linear; /* Adjust the duration and timing function as needed */
+}
+  .dot {
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background-color: #1F212D; /* Dot color */
+    position: absolute;
+    transform: translate(-50%, -50%);
   }
+  
+
+  .dot1 { transform: rotate(20deg) translate(100px) rotate(-20deg); }
+  .dot2 { transform: rotate(40deg) translate(100px) rotate(-40deg); }
+  .dot3 { transform: rotate(60deg) translate(100px) rotate(-60deg); }
+  .dot4 { transform: rotate(80deg) translate(100px) rotate(-80deg); }
+  .dot5 { transform: rotate(100deg) translate(100px) rotate(-100deg); }
+  .dot6 { transform: rotate(120deg) translate(100px) rotate(-120deg); }
+  .dot7 { transform: rotate(140deg) translate(100px) rotate(-140deg); }
+  .dot8 { transform: rotate(160deg) translate(100px) rotate(-160deg); }
+  .dot9 { transform: rotate(180deg) translate(100px) rotate(-180deg); }
+  .dot10 { transform: rotate(200deg) translate(100px) rotate(-200deg); }
+  .dot11 { transform: rotate(220deg) translate(100px) rotate(-220deg); }
+  .dot12 { transform: rotate(240deg) translate(100px) rotate(-240deg); }
+  .dot13 { transform: rotate(260deg) translate(100px) rotate(-260deg); }
+  .dot14 { transform: rotate(280deg) translate(100px) rotate(-280deg); }
+  .dot15 { transform: rotate(300deg) translate(100px) rotate(-300deg); }
+  .dot16 { transform: rotate(320deg) translate(100px) rotate(-320deg); }
+  .dot17 { transform: rotate(340deg) translate(100px) rotate(-340deg); }
+  .dot18 { transform: rotate(360deg) translate(100px) rotate(-360deg); }
+  
+  .circle2 .dot1 { transform: rotate(20deg) translate(140px) rotate(-20deg); }
+  .circle2 .dot2 { transform: rotate(40deg) translate(140px) rotate(-40deg); }
+  .circle2 .dot3 { transform: rotate(60deg) translate(140px) rotate(-60deg); }
+  .circle2 .dot4 { transform: rotate(80deg) translate(140px) rotate(-80deg); }
+  .circle2 .dot5 { transform: rotate(100deg) translate(140px) rotate(-100deg); }
+  .circle2 .dot6 { transform: rotate(120deg) translate(140px) rotate(-120deg); }
+  .circle2 .dot7 { transform: rotate(140deg) translate(140px) rotate(-140deg); }
+  .circle2 .dot8 { transform: rotate(160deg) translate(140px) rotate(-160deg); }
+  .circle2 .dot9 { transform: rotate(180deg) translate(140px) rotate(-180deg); }
+  .circle2 .dot10 { transform: rotate(200deg) translate(140px) rotate(-200deg); }
+  .circle2 .dot11 { transform: rotate(220deg) translate(140px) rotate(-220deg); }
+  .circle2 .dot12 { transform: rotate(240deg) translate(140px) rotate(-240deg); }
+  .circle2 .dot13 { transform: rotate(260deg) translate(140px) rotate(-260deg); }
+  .circle2 .dot14 { transform: rotate(280deg) translate(140px) rotate(-280deg); }
+  .circle2 .dot15 { transform: rotate(300deg) translate(140px) rotate(-300deg); }
+  .circle2 .dot16 { transform: rotate(320deg) translate(140px) rotate(-320deg); }
+  .circle2 .dot17 { transform: rotate(340deg) translate(140px) rotate(-340deg); }
+  .circle2 .dot18 { transform: rotate(360deg) translate(140px) rotate(-360deg); }
+  
+  .circle3 .dot1 { transform: rotate(20deg) translate(180px) rotate(-20deg); }
+  .circle3 .dot2 { transform: rotate(40deg) translate(180px) rotate(-40deg); }
+  .circle3 .dot3 { transform: rotate(60deg) translate(180px) rotate(-60deg); }
+  .circle3 .dot4 { transform: rotate(80deg) translate(180px) rotate(-80deg); }
+  .circle3 .dot5 { transform: rotate(100deg) translate(180px) rotate(-100deg); }
+  .circle3 .dot6 { transform: rotate(120deg) translate(180px) rotate(-120deg); }
+  .circle3 .dot7 { transform: rotate(140deg) translate(180px) rotate(-140deg); }
+  .circle3 .dot8 { transform: rotate(160deg) translate(180px) rotate(-160deg); }
+  .circle3 .dot9 { transform: rotate(180deg) translate(180px) rotate(-180deg); }
+  .circle3 .dot10 { transform: rotate(200deg) translate(180px) rotate(-200deg); }
+  .circle3 .dot11 { transform: rotate(220deg) translate(180px) rotate(-220deg); }
+  .circle3 .dot12 { transform: rotate(240deg) translate(180px) rotate(-240deg); }
+  .circle3 .dot13 { transform: rotate(260deg) translate(180px) rotate(-260deg); }
+  .circle3 .dot14 { transform: rotate(280deg) translate(180px) rotate(-280deg); }
+  .circle3 .dot15 { transform: rotate(300deg) translate(180px) rotate(-300deg); }
+  .circle3 .dot16 { transform: rotate(320deg) translate(180px) rotate(-320deg); }
+  .circle3 .dot17 { transform: rotate(340deg) translate(180px) rotate(-340deg); }
+  .circle3 .dot18 { transform: rotate(360deg) translate(180px) rotate(-360deg); }
+
+  @keyframes animation1 {
+    0%, 100% {
+        opacity: 0.9;
+    }
+    50% {
+        opacity: 0.9;
+    }
+}
+
+@keyframes animation2 {
+    0%, 25% {
+        opacity: 0;
+    }
+    50%, 100% {
+        opacity: 0.6;
+    }
+}
+
+@keyframes animation3 {
+    0%, 50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 0.3;
+    }
+}
+  
+@media(max-width:600px){
+
+    .dot {
+        width: 10px;
+        height: 10px;
+        
+      }
+
+    .dot1 { transform: rotate(20deg) translate(80px) rotate(-20deg); }
+    .dot2 { transform: rotate(40deg) translate(80px) rotate(-40deg); }
+    .dot3 { transform: rotate(60deg) translate(80px) rotate(-60deg); }
+    .dot4 { transform: rotate(80deg) translate(80px) rotate(-80deg); }
+    .dot5 { transform: rotate(100deg) translate(80px) rotate(-100deg); }
+    .dot6 { transform: rotate(120deg) translate(80px) rotate(-120deg); }
+    .dot7 { transform: rotate(140deg) translate(80px) rotate(-140deg); }
+    .dot8 { transform: rotate(160deg) translate(80px) rotate(-160deg); }
+    .dot9 { transform: rotate(180deg) translate(80px) rotate(-180deg); }
+    .dot10 { transform: rotate(200deg) translate(80px) rotate(-200deg); }
+    .dot11 { transform: rotate(220deg) translate(80px) rotate(-220deg); }
+    .dot12 { transform: rotate(240deg) translate(80px) rotate(-240deg); }
+    .dot13 { transform: rotate(260deg) translate(80px) rotate(-260deg); }
+    .dot14 { transform: rotate(280deg) translate(80px) rotate(-280deg); }
+    .dot15 { transform: rotate(300deg) translate(80px) rotate(-300deg); }
+    .dot16 { transform: rotate(320deg) translate(80px) rotate(-320deg); }
+    .dot17 { transform: rotate(340deg) translate(80px) rotate(-340deg); }
+    .dot18 { transform: rotate(360deg) translate(80px) rotate(-360deg); }
+    
+    .circle2 .dot1 { transform: rotate(20deg) translate(110px) rotate(-20deg); }
+    .circle2 .dot2 { transform: rotate(40deg) translate(110px) rotate(-40deg); }
+    .circle2 .dot3 { transform: rotate(60deg) translate(110px) rotate(-60deg); }
+    .circle2 .dot4 { transform: rotate(80deg) translate(110px) rotate(-80deg); }
+    .circle2 .dot5 { transform: rotate(100deg) translate(110px) rotate(-100deg); }
+    .circle2 .dot6 { transform: rotate(120deg) translate(110px) rotate(-120deg); }
+    .circle2 .dot7 { transform: rotate(140deg) translate(110px) rotate(-140deg); }
+    .circle2 .dot8 { transform: rotate(160deg) translate(110px) rotate(-160deg); }
+    .circle2 .dot9 { transform: rotate(180deg) translate(110px) rotate(-180deg); }
+    .circle2 .dot10 { transform: rotate(200deg) translate(110px) rotate(-200deg); }
+    .circle2 .dot11 { transform: rotate(220deg) translate(110px) rotate(-220deg); }
+    .circle2 .dot12 { transform: rotate(240deg) translate(110px) rotate(-240deg); }
+    .circle2 .dot13 { transform: rotate(260deg) translate(110px) rotate(-260deg); }
+    .circle2 .dot14 { transform: rotate(280deg) translate(110px) rotate(-280deg); }
+    .circle2 .dot15 { transform: rotate(300deg) translate(110px) rotate(-300deg); }
+    .circle2 .dot16 { transform: rotate(320deg) translate(110px) rotate(-320deg); }
+    .circle2 .dot17 { transform: rotate(340deg) translate(110px) rotate(-340deg); }
+    .circle2 .dot18 { transform: rotate(360deg) translate(110px) rotate(-360deg); }
+    
+    .circle3 .dot1 { transform: rotate(20deg) translate(140px) rotate(-20deg); }
+    .circle3 .dot2 { transform: rotate(40deg) translate(140px) rotate(-40deg); }
+    .circle3 .dot3 { transform: rotate(60deg) translate(140px) rotate(-60deg); }
+    .circle3 .dot4 { transform: rotate(80deg) translate(140px) rotate(-80deg); }
+    .circle3 .dot5 { transform: rotate(100deg) translate(140px) rotate(-100deg); }
+    .circle3 .dot6 { transform: rotate(120deg) translate(140px) rotate(-120deg); }
+    .circle3 .dot7 { transform: rotate(140deg) translate(140px) rotate(-140deg); }
+    .circle3 .dot8 { transform: rotate(160deg) translate(140px) rotate(-160deg); }
+    .circle3 .dot9 { transform: rotate(180deg) translate(140px) rotate(-180deg); }
+    .circle3 .dot10 { transform: rotate(200deg) translate(140px) rotate(-200deg); }
+    .circle3 .dot11 { transform: rotate(220deg) translate(140px) rotate(-220deg); }
+    .circle3 .dot12 { transform: rotate(240deg) translate(140px) rotate(-240deg); }
+    .circle3 .dot13 { transform: rotate(260deg) translate(140px) rotate(-260deg); }
+    .circle3 .dot14 { transform: rotate(280deg) translate(140px) rotate(-280deg); }
+    .circle3 .dot15 { transform: rotate(300deg) translate(140px) rotate(-300deg); }
+    .circle3 .dot16 { transform: rotate(320deg) translate(140px) rotate(-320deg); }
+    .circle3 .dot17 { transform: rotate(340deg) translate(140px) rotate(-340deg); }
+    .circle3 .dot18 { transform: rotate(360deg) translate(140px) rotate(-360deg); }
+  
+} 
+
+@media(max-width:340px){
+    .dot {
+        width: 9px;
+        height: 9px;
+        
+      }
+
+      .dot1 { transform: rotate(20deg) translate(60px) rotate(-20deg); }
+      .dot2 { transform: rotate(40deg) translate(60px) rotate(-40deg); }
+      .dot3 { transform: rotate(60deg) translate(60px) rotate(-60deg); }
+      .dot4 { transform: rotate(80deg) translate(60px) rotate(-80deg); }
+      .dot5 { transform: rotate(100deg) translate(60px) rotate(-100deg); }
+      .dot6 { transform: rotate(120deg) translate(60px) rotate(-120deg); }
+      .dot7 { transform: rotate(140deg) translate(60px) rotate(-140deg); }
+      .dot8 { transform: rotate(160deg) translate(60px) rotate(-160deg); }
+      .dot9 { transform: rotate(180deg) translate(60px) rotate(-180deg); }
+      .dot10 { transform: rotate(200deg) translate(60px) rotate(-200deg); }
+      .dot11 { transform: rotate(220deg) translate(60px) rotate(-220deg); }
+      .dot12 { transform: rotate(240deg) translate(60px) rotate(-240deg); }
+      .dot13 { transform: rotate(260deg) translate(60px) rotate(-260deg); }
+      .dot14 { transform: rotate(280deg) translate(60px) rotate(-280deg); }
+      .dot15 { transform: rotate(300deg) translate(60px) rotate(-300deg); }
+      .dot16 { transform: rotate(320deg) translate(60px) rotate(-320deg); }
+      .dot17 { transform: rotate(340deg) translate(60px) rotate(-340deg); }
+      .dot18 { transform: rotate(360deg) translate(60px) rotate(-360deg); }
+      
+      .circle2 .dot1 { transform: rotate(20deg) translate(80px) rotate(-20deg); }
+      .circle2 .dot2 { transform: rotate(40deg) translate(80px) rotate(-40deg); }
+      .circle2 .dot3 { transform: rotate(60deg) translate(80px) rotate(-60deg); }
+      .circle2 .dot4 { transform: rotate(80deg) translate(80px) rotate(-80deg); }
+      .circle2 .dot5 { transform: rotate(100deg) translate(80px) rotate(-100deg); }
+      .circle2 .dot6 { transform: rotate(120deg) translate(80px) rotate(-120deg); }
+      .circle2 .dot7 { transform: rotate(140deg) translate(80px) rotate(-140deg); }
+      .circle2 .dot8 { transform: rotate(160deg) translate(80px) rotate(-160deg); }
+      .circle2 .dot9 { transform: rotate(180deg) translate(80px) rotate(-180deg); }
+      .circle2 .dot10 { transform: rotate(200deg) translate(80px) rotate(-200deg); }
+      .circle2 .dot11 { transform: rotate(220deg) translate(80px) rotate(-220deg); }
+      .circle2 .dot12 { transform: rotate(240deg) translate(80px) rotate(-240deg); }
+      .circle2 .dot13 { transform: rotate(260deg) translate(80px) rotate(-260deg); }
+      .circle2 .dot14 { transform: rotate(280deg) translate(80px) rotate(-280deg); }
+      .circle2 .dot15 { transform: rotate(300deg) translate(80px) rotate(-300deg); }
+      .circle2 .dot16 { transform: rotate(320deg) translate(80px) rotate(-320deg); }
+      .circle2 .dot17 { transform: rotate(340deg) translate(80px) rotate(-340deg); }
+      .circle2 .dot18 { transform: rotate(360deg) translate(80px) rotate(-360deg); }
+      
+      .circle3 .dot1 { transform: rotate(20deg) translate(100px) rotate(-20deg); }
+      .circle3 .dot2 { transform: rotate(40deg) translate(100px) rotate(-40deg); }
+      .circle3 .dot3 { transform: rotate(60deg) translate(100px) rotate(-60deg); }
+      .circle3 .dot4 { transform: rotate(80deg) translate(100px) rotate(-80deg); }
+      .circle3 .dot5 { transform: rotate(100deg) translate(100px) rotate(-100deg); }
+      .circle3 .dot6 { transform: rotate(120deg) translate(100px) rotate(-120deg); }
+      .circle3 .dot7 { transform: rotate(140deg) translate(100px) rotate(-140deg); }
+      .circle3 .dot8 { transform: rotate(160deg) translate(100px) rotate(-160deg); }
+      .circle3 .dot9 { transform: rotate(180deg) translate(100px) rotate(-180deg); }
+      .circle3 .dot10 { transform: rotate(200deg) translate(100px) rotate(-200deg); }
+      .circle3 .dot11 { transform: rotate(220deg) translate(100px) rotate(-220deg); }
+      .circle3 .dot12 { transform: rotate(240deg) translate(100px) rotate(-240deg); }
+      .circle3 .dot13 { transform: rotate(260deg) translate(100px) rotate(-260deg); }
+      .circle3 .dot14 { transform: rotate(280deg) translate(100px) rotate(-280deg); }
+      .circle3 .dot15 { transform: rotate(300deg) translate(100px) rotate(-300deg); }
+      .circle3 .dot16 { transform: rotate(320deg) translate(100px) rotate(-320deg); }
+      .circle3 .dot17 { transform: rotate(340deg) translate(100px) rotate(-340deg); }
+      .circle3 .dot18 { transform: rotate(360deg) translate(100px) rotate(-360deg); }
+    
+  
 }

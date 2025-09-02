@@ -1,0 +1,31 @@
+.loader {
+background-color: #E0DED2;
+z-index: 1000;
+position: fixed;
+width: 100%;
+height: 100%;
+top: 0;
+left: 0;
+}
+.loaderImg {
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+width: 120px;
+height: auto;
+}
+@media(max-width:600px){
+.loaderImg{
+width: 100px;
+left: 51%;
+top:55%;
+}
+}
+@media(max-width:340px){
+.loaderImg{
+width: 90px;
+top: 50.75%;
+left: 51%;
+}
+} 

@@ -1,10 +1,9 @@
-/* --- Réinitialisation --- */
+
 body, html {
   margin: 0;
   padding: 0;
 }
 
-/* --- Variables et Police --- */
 @font-face {
   font-family: 'Photograph Signature';
   src: url('./PhotographSignature.ttf') format('truetype');
@@ -21,13 +20,12 @@ body, html {
   --font-main: 'Montserrat', sans-serif;
 }
 
-/* --- Contenu global --- */
 .hero-container {
   background-color: var(--dark-blue);
   font-family: var(--font-main);
 }
 
-/* --- Section 1 : Plein Écran --- */
+
 .hero-fullscreen {
   position: relative;
   height: 100vh;
@@ -48,23 +46,62 @@ body, html {
   position: relative; width: 100%; height: 100%; z-index: 3;
 }
 
-/* --- Positionnement et Style des Éléments de la Vidéo --- */
 .date-location {
-  position: absolute; bottom: 5%; left: 5%; display: flex;
-  align-items: center; gap: 1rem; font-weight: 700; padding-bottom: 100px;
-}
-.date-location span { color: #E0DED2; }
-.date-location > span:first-child { font-size: 3rem; }
-.date-location > span:last-child { font-size: 1.2rem; border-left: 2px solid var(--white); padding-left: 1rem; }
-.date-location .month-year { display: flex; flex-direction: column; line-height: 1; }
-/* ===> CORRECTION 1 : Augmentation de la taille <=== */
-.date-location .month, .date-location .year {
-  font-size: 1.7rem; /* Taille augmentée */
+  position: absolute;
+  bottom: 5%;
+  left: 5%;
+  display: flex;
+  align-items: center; 
+  gap: 0.8rem; 
   font-weight: 700;
+  padding-bottom: 100px;
+  margin-left: 50px;
 }
-.date-location .month { color: var(--orange); }
-.date-location .year { color: var(--off-white); }
 
+
+.date-location .day {
+  font-size: 5rem; 
+  color: #E0DED2;
+  line-height: 1; 
+  margin-left: 4px;
+  margin-right: 0;
+}
+
+.month-year {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; 
+  line-height: 1;
+  height: 100%; 
+  margin-top: 7px;
+}
+
+.date-location .month {
+  background-color: var(--orange);
+  color: var(--dark-blue); 
+  font-size: 1.5rem;
+  padding-top: 5px;
+  padding-left: 5px;
+  padding-bottom: 5px;
+  padding-right: 5px;
+  font-weight: 715;  
+  margin-bottom: 0.2rem; 
+}
+
+/* L'année "2025" */
+.date-location .year {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--off-white);
+}
+
+.date-location .location {
+  font-size: 2.4rem; 
+  border-left: 2px solid var(--white);
+  padding-left: 1rem;
+  margin-left: 0.5rem; 
+  color: #E0DED2;
+}
 
 h1 {
   position: absolute; top: 35%; left: 50%; transform: translate(-50%, -50%);
@@ -72,7 +109,7 @@ h1 {
   white-space: nowrap; filter: drop-shadow(0px 4px 6px rgba(0, 0, 0, 0.6));
 }
 .title-get { color:#FE9900 ; font-weight: 700; }
-.title-entrepreneurial { color:#E0DED2 ; }
+.title-entrepreneurial { color:#E0DED2 ; font-weight: 700;}
 
 .image{
   position: relative;
@@ -84,18 +121,40 @@ h1 {
   width: auto;
 }
 
-/* ===> CORRECTION 2 : Centrage du texte <=== */
 .tagline {
-  position: absolute; bottom: 5%; right: 5%; 
-  text-align: center; /* Texte centré */
-  font-size: 1.2rem; font-weight: 600; padding-bottom: 90px;
+  width: max-content; /* la largeur s'adapte au texte */
+  position: absolute;
+  bottom: 5%;
+  right: auto;
+  left: 80%; 
+  transform: translateX(-50%);
+  text-align: center;
+  font-size: 1.4rem;
+  font-weight: 600;
+  padding-bottom: 90px;
 }
+
 .tagline p {
-  margin: 0.3rem 0;
+  margin: 0.5rem 0; 
   color: #E0DED2;
+  line-height: 1.4; /* augmente l'espace entre FAIRE... et ÉCONOMIQUE POUR */
+  font-size: ;
 }
-.tagline .highlight-wrapper { display: inline-block; }
-.tagline .highlight { background-color: var(--orange); color: var(--dark-blue); padding: 0.5rem 1rem; }
+
+
+.tagline .highlight-wrapper {
+  display: inline-block;
+}
+
+.tagline .highlight {
+  background-color: var(--orange);
+  color: var(--dark-blue);
+  padding: 0.5rem 1rem;
+  font-weight: 700; 
+  position: relative;
+  bottom: 5px;
+}
+
 
 /* --- Panneau Social Coulissant --- */
 .social-panel {
@@ -135,8 +194,6 @@ h1 {
 }
 
 /* --- Section 2 : Contenu du Scroll --- */
-
-
 .countdown-container {
   display: flex; justify-content: center; align-items: flex-start;
   flex-wrap: wrap;

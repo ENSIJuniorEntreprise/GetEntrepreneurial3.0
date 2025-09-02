@@ -40,7 +40,7 @@ const Footer = () => {
           <div className="footerinfo">
             <img src={logo} alt="Get Entrepreneurial Logo" className="footerlogo" />
             <div className="footerdetails">
-              <p>22-25 October 2026</p>
+              <p>22 October 2025</p>
               <p>UTICA, Tunis</p>
               <p>Centre Urbain Nord, 1003 Tunis</p>
             </div>
@@ -49,9 +49,9 @@ const Footer = () => {
             <div className="footercolumn">
               <h3>Navigation</h3>
               <ul>
-                <li><a href="#apropos">A propos</a></li>
-                <li><a href="#accueil">Accueil</a></li>
-                <li><a href="#programme">Programme</a></li>
+                <li><a href="/apropos">A propos</a></li>
+                <li><a href="/">Accueil</a></li>
+                <li><a href="/programme">Programme</a></li>
               </ul>
             </div>
             <div className="footercolumn">
@@ -65,8 +65,8 @@ const Footer = () => {
             <div className="footercolumn">
               <h3>Legacy</h3>
               <ul>
-                <li><a href="#edition1">1ère édition</a></li>
-                <li><a href="#edition2">2ème édition</a></li>
+                <li><a href="/edition1">1ère édition</a></li>
+                <li><a href="/edition2">2ème édition</a></li>
               </ul>
             </div>
             <div className="footercolumn">
@@ -82,9 +82,6 @@ const Footer = () => {
         <div className="footermiddle">
           <div className="footernewsletter">
             <p>Join our community to receive updates</p>
-            
-            {/* --- BLOC JSX VÉRIFIÉ --- */}
-            {/* L'attribut onSubmit sur la balise <form> appelle notre fonction */}
             <form onSubmit={handleSubscribe} className="newsletterform">
               <input
                 type="email"
@@ -94,7 +91,6 @@ const Footer = () => {
                 required
                 disabled={loading}
               />
-              {/* Le type="submit" est crucial pour que le bouton déclenche le onSubmit du formulaire */}
               <button type="submit" disabled={loading}>
                 {loading ? 'Envoi...' : 'Subscribe'}
               </button>
