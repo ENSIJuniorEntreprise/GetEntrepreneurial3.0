@@ -28,7 +28,7 @@ const Apropos = () => {
       {/* Section Bannière/Header */}
       <header className="apropos-header">
         <div className="header-content">
-          <h1>À propos de l'Événement</h1>
+          <h1>À propos de <span className='big'>BIG DAY</span></h1>
           <p>Carte vers l'Excellence Entrepreneuriale !</p>
         </div>
       </header>
@@ -39,17 +39,17 @@ const Apropos = () => {
           <button 
             className={`tab-btn ${activeTab === 'GRAND PUBLIC' ? 'active' : ''}`}
             onClick={() => setActiveTab('GRAND PUBLIC')}>
-            GRAND PUBLIC
+            Thème
           </button>
           <button 
             className={`tab-btn ${activeTab === 'B2B Deal Day' ? 'active' : ''}`}
             onClick={() => setActiveTab('B2B Deal Day')}>
-            B2B Deal Day
+            Panels
           </button>
           <button 
             className={`tab-btn ${activeTab === 'GREEN&Tech Day' ? 'active' : ''}`}
             onClick={() => setActiveTab('GREEN&Tech Day')}>
-            GREEN&Tech Day
+            Workshops
           </button>
         </div>
 

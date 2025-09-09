@@ -5,10 +5,6 @@ import './Inscription.css';
 import { FaUsers, FaStar } from 'react-icons/fa';
 import { MdStorefront } from 'react-icons/md';
 
-// Importation de vos images de fond
-import participantsBg from '../../assets/images/042.png';
-import exposantsBg from '../../assets/images/042.png';
-
 const Inscription = () => {
   return (
     <div className="inscription-page">
@@ -24,7 +20,9 @@ const Inscription = () => {
       <main className="inscription-content">
         {/* Carte pour les Participants */}
         <div className="choice-card">
-          <div className="card-background" style={{ backgroundImage: `url(${participantsBg})` }}></div>
+          {/* ===> CORRECTION : Le style avec l'image a été retiré <=== */}
+          <div className="card-background"></div>
+          
           <div className="card-overlay"></div>
           <div className="card-content">
             <div className="card-title">
@@ -50,7 +48,9 @@ const Inscription = () => {
 
         {/* Carte pour les Exposants */}
         <div className="choice-card">
-          <div className="card-background" style={{ backgroundImage: `url(${exposantsBg})` }}></div>
+          {/* ===> CORRECTION : Le style avec l'image a été retiré <=== */}
+          <div className="card-background"></div>
+
           <div className="card-overlay"></div>
           <div className="card-content">
             <div className="card-title">

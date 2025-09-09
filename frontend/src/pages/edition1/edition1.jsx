@@ -20,7 +20,7 @@ import galleryImage2 from '../../assets/images/015.png';
 import galleryImage3 from '../../assets/images/296.png';
 import galleryImage4 from '../../assets/images/167.png';
 import galleryImage5 from '../../assets/images/073.png';
-import testimonialImage from '../../assets/images/152.png';
+import testimonialImage from '../../assets/images/aminemezgh.JPG';
 
 // --- DONNÉES ---
 const galleryImages = [
@@ -32,10 +32,9 @@ const galleryImages = [
   { id: 6, src: testimonialImage, alt: 'Temps fort 6' },
 ];
 
+// MODIFICATION : Garder uniquement le témoignage d'Amine MEZGHICH
 const testimonialsData = [
   { id: 1, name: 'Amine MEZGHICH', title: 'CEO Smart IT', headline: "Une édition qui pose les bases", quote: 'Une première édition exceptionnelle qui a posé les bases d’un événement incontournable pour l\'écosystème entrepreneurial tunisien.', image: testimonialImage },
-  { id: 2, name: 'Jane Smith', title: 'Investor, Venture Capital', headline: "Une concentration de talents unique", quote: 'Rarement vu une telle concentration de talents et d\'idées prometteuses en un seul lieu. Un vivier d\'opportunités pour les investisseurs.', image: testimonialImage },
-  { id: 3, name: 'John Doe', title: 'Founder, TechCorp', headline: "L'énergie était incroyable", quote: 'L\'énergie et le niveau des startups présentes étaient tout simplement incroyables. Cet événement est un véritable accélérateur.', image: testimonialImage },
 ];
 
 // --- COMPOSANTS FLÈCHES PERSONNALISÉES ---
@@ -58,14 +57,6 @@ const Edition1 = () => {
     ]
   };
 
-  const testimonialsSettings = {
-    dots: false, infinite: true, speed: 500, slidesToShow: 1,
-    centerMode: true, centerPadding: '20%',
-    nextArrow: <NextArrow customClassName="testimonials-arrow" />,
-    prevArrow: <PrevArrow customClassName="testimonials-arrow" />,
-    responsive: [ { breakpoint: 992, settings: { slidesToShow: 1, centerPadding: '10%' } } ]
-  };
-
   return (
     <div className="edition-page-container">
       {/* --- Section 1: Hero --- */}
@@ -79,7 +70,7 @@ const Edition1 = () => {
           </div>
           <div className="hero-tagline">
             <span className="line"></span>
-            <p>Innovation et Entrepreneuriat pour un Avenir Durable</p>
+            <p>Innovation et Entrepreneuziehat pour un Avenir Durable</p>
             <span className="line"></span>  
           </div>
         </div>
@@ -119,32 +110,28 @@ const Edition1 = () => {
       <section className={`testimonials-edition ${testimonialsInView ? 'is-visible' : ''}`} ref={testimonialsRef}>
         <div className="testimonials-header">
           <h2>Témoignages</h2>
-          {/* ===> AJOUT DE LA PHRASE ET DES LIGNES <=== */}
           <div className="header-subtitle">
             <span className="line"></span>
             <p>Ce qu'ils pensent de nous</p>
             <span className="line"></span>
           </div>
         </div>
-        <div className="slider-container testimonials-slider-container">
-          <Slider {...testimonialsSettings}>
-            {testimonialsData.map(testimonial => (
-              <div key={testimonial.id} className="testimonial-slide">
-                <div className="testimonial-card">
-                  <ImQuotesLeft className="quote-icon" />
-                  <h3 className="quote-headline">"{testimonial.headline}"</h3>
-                  <p className="quote-body">« {testimonial.quote} »</p>
-                  <div className="author-info">
-                    <img src={testimonial.image} alt={testimonial.name} />
-                    <div className="author-details">
-                      <p className="author-name">{testimonial.name}</p>
-                      <p className="author-title">{testimonial.title}</p>
-                    </div>
-                  </div>
+        {/* MODIFICATION : Affichage statique du seul témoignage */}
+        <div className="testimonial-static-container">
+          {testimonialsData.map(testimonial => (
+            <div key={testimonial.id} className="testimonial-card-static">
+              <ImQuotesLeft className="quote-icon" />
+              <h3 className="quote-headline">"{testimonial.headline}"</h3>
+              <p className="quote-body">« {testimonial.quote} »</p>
+              <div className="author-info">
+                <img src={testimonial.image} alt={testimonial.name} />
+                <div className="author-details">
+                  <p className="author-name">{testimonial.name}</p>
+                  <p className="author-title">{testimonial.title}</p>
                 </div>
               </div>
-            ))}
-          </Slider>
+            </div>
+          ))}
         </div>
       </section>
     </div>

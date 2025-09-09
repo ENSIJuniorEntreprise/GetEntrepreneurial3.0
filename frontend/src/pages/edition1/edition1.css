@@ -50,11 +50,49 @@ html, body { width: 100%; overflow-x: hidden; }
 /* === Section 4: Témoignages (CORRIGÉ) === */
 /* ========================================= */
 .testimonials-edition {padding-top: 50px; background-color: var(--light-beige);padding-bottom: 50px; }
-.testimonials-header { text-align: center; margin-bottom: 5rem; }
+.testimonials-header { text-align: center; margin-bottom: 4rem; } /* Marge réduite */
 .testimonials-header h2 {
   font-size: 2.8rem; font-weight: 800; color: var(--text-dark-blue);
   margin: 0;
 }
+.header-subtitle {
+  display: flex; align-items: center; justify-content: center;
+  gap: 1.5rem; margin-top: 1.5rem;
+}
+.header-subtitle .line { width: 250px; height: 5px; background: var(--orange);border-radius: 20px; }
+.header-subtitle p { font-weight: 600; color: #1F212D; font-size: 1.4rem; }
+
+/* MODIFICATION : Nouveau conteneur pour centrer la carte statique */
+.testimonial-static-container {
+  display: flex;
+  justify-content: center;
+  padding: 0 2rem; /* Espace sur les côtés */
+}
+
+/* MODIFICATION : Style de la carte statique */
+.testimonial-card-static {
+  background-color: #E0DED2; /* Fond blanc pour ressortir */
+  border-radius: 24px;
+  border: 2px solid var(--orange);
+  padding: 3rem;
+  text-align: left;
+  max-width: 700px; /* Largeur maximale de la carte */
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1); /* Ajout d'une ombre */
+}
+
+
+.quote-icon { font-size: 3rem; color: var(--orange); opacity: 0.8; margin-bottom: 1rem; }
+.quote-headline { font-size: 1.4rem; font-weight: 700; color: var(--dark-blue); margin-bottom: 1rem; }
+.quote-body { font-size: 1rem; color: #555; line-height: 1.7; margin-bottom: 2rem; flex-grow: 1; }
+.author-info { margin-top: auto; display: flex; align-items: center; gap: 1rem; padding-top: 1.5rem; border-top: 1px solid #eee; }
+.author-info img { width: 60px; height: 60px; border-radius: 50%; object-fit: cover; }
+.author-details { text-align: left; }
+.author-name { font-weight: 800; font-size: 1rem; color: var(--dark-blue); }
+.author-title { font-size: 0.9rem; color: #666; }
 /* ===> AJOUT DU STYLE POUR LE SOUS-TITRE <=== */
 .header-subtitle {
   display: flex; align-items: center; justify-content: center;

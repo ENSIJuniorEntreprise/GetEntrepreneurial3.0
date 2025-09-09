@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
+
 :root {
   --background-color: #1F212D;
   --card-color: #E0DED2;
@@ -8,26 +9,148 @@
   --timeline-line-color: rgba(254, 153, 0, 0.4);
 }
 
-body { margin: 0; font-family: 'Montserrat', sans-serif; background-color: var(--background-color); color: var(--light-text-color); box-sizing: border-box; overflow-x: hidden; }
-.agenda-container { background-image: linear-gradient(rgba(31, 33, 45, 0.9), rgba(31, 33, 45, 0.9)), url('./arr.png'); background-size: cover; background-position: center; background-repeat: no-repeat; background-attachment: fixed; width: 100%; min-height: 100vh; box-sizing: border-box; padding: 100px 40px; }
-.agenda-header { text-align: center; max-width: 1200px; margin: 0 auto 40px auto; }
-.agenda-header h1 { font-size: 3rem; font-weight: 800; margin: 0 0 30px 0; line-height: 1.2; color: var(--card-color); }
-.agenda-header h1 span { color: var(--highlight-color); }
-.agenda-nav { display: flex; justify-content: center; gap: 4rem; position: relative; padding-bottom: 15px; }
-.agenda-nav::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 1px; background-color: rgba(255, 255, 255, 0.2); }
-.agenda-nav button { background: none; border: none; font-family: 'Montserrat', sans-serif; cursor: pointer; padding: 10px 0; color: rgba(255, 255, 255, 0.6); font-size: 1.3rem; font-weight: 700; line-height: 1.4; position: relative; transition: color 0.3s ease; }
-.agenda-nav button span { display: block; font-size: 1rem; font-weight: 400; color: rgba(255, 255, 255, 0.6); transition: color 0.3s ease; }
-.agenda-nav button:hover, .agenda-nav button:hover span { color: #FFFFFF; }
-.agenda-nav button.active { color: var(--card-color); }
-.agenda-nav button.active span { color: var(--card-color); }
-.agenda-nav button::before { content: ''; position: absolute; bottom: -16px; left: 0; width: 100%; height: 4px; background-color: var(--highlight-color); border-radius: 2px; transform: scaleX(0); transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1); }
-.agenda-nav button.active::before { transform: scaleX(1); }
-.agenda-content { margin-top: 80px; }
+body { 
+  margin: 0; 
+  font-family: 'Montserrat', sans-serif; 
+  background-color: var(--background-color); 
+  color: var(--light-text-color); 
+  box-sizing: border-box; 
+  overflow-x: hidden; 
+}
 
-.timeline-container { max-width: 900px; margin: 0 auto; }
-.timeline { list-style: none; padding: 0; position: relative; }
-.timeline::before { content: ''; position: absolute; left: 150px; width: 2px; background: var(--timeline-line-color); top: 30px; bottom: 30px; }
-.timeline-item { position: relative; margin-bottom: 40px; padding-left: 180px; opacity: 0; transform: translateY(30px); animation: slideUp 0.6s ease-out forwards; }
+.agenda-container { 
+  background-image: linear-gradient(rgba(31, 33, 45, 0.9), rgba(31, 33, 45, 0.9)), url('./arr.png'); 
+  background-size: cover; 
+  background-position: center; 
+  background-repeat: no-repeat; 
+  background-attachment: fixed; 
+  width: 100%; 
+  min-height: 100vh; 
+  box-sizing: border-box; 
+  padding: 100px 40px; 
+}
+
+.agenda-header { 
+  text-align: center; 
+  max-width: 1200px; 
+  margin: 0 auto 40px auto; 
+}
+
+.agenda-header h1 { 
+  font-size: 3rem; 
+  font-weight: 800; 
+  margin: 0 0 30px 0; 
+  line-height: 1.2; 
+  color: var(--card-color); 
+}
+
+.agenda-header h1 span { 
+  color: var(--highlight-color); 
+}
+
+.agenda-nav { 
+  display: flex; 
+  justify-content: center; 
+  gap: 4rem; 
+  position: relative; 
+  padding-bottom: 15px; 
+}
+
+.agenda-nav::after { 
+  content: ''; 
+  position: absolute; 
+  bottom: 0; 
+  left: 0; 
+  width: 100%; 
+  height: 1px; 
+  background-color: rgba(255, 255, 255, 0.2); 
+}
+
+.agenda-nav button { 
+  background: none; 
+  border: none; 
+  font-family: 'Montserrat', sans-serif; 
+  cursor: pointer; 
+  padding: 10px 0; 
+  color: rgba(255, 255, 255, 0.6); 
+  font-size: 1.3rem; 
+  font-weight: 700; 
+  line-height: 1.4; 
+  position: relative; 
+  transition: color 0.3s ease; 
+}
+
+.agenda-nav button span { 
+  display: block; 
+  font-size: 1rem; 
+  font-weight: 400; 
+  color: rgba(255, 255, 255, 0.6); 
+  transition: color 0.3s ease; 
+}
+
+.agenda-nav button:hover, .agenda-nav button:hover span { 
+  color: #FFFFFF; 
+}
+
+.agenda-nav button.active { 
+  color: var(--card-color); 
+}
+
+.agenda-nav button.active span { 
+  color: var(--card-color); 
+}
+
+.agenda-nav button::before { 
+  content: ''; 
+  position: absolute; 
+  bottom: -16px; 
+  left: 0; 
+  width: 100%; 
+  height: 4px; 
+  background-color: var(--highlight-color); 
+  border-radius: 2px; 
+  transform: scaleX(0); 
+  transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1); 
+}
+
+.agenda-nav button.active::before { 
+  transform: scaleX(1); 
+}
+
+.agenda-content { 
+  margin-top: 80px; 
+}
+
+.timeline-container { 
+  max-width: 900px; 
+  margin: 0 auto; 
+}
+
+.timeline { 
+  list-style: none; 
+  padding: 0; 
+  position: relative; 
+}
+
+.timeline::before { 
+  content: ''; 
+  position: absolute; 
+  left: 150px; 
+  width: 2px; 
+  background: var(--timeline-line-color); 
+  top: 30px; 
+  bottom: 30px; 
+}
+
+.timeline-item { 
+  position: relative; 
+  margin-bottom: 40px; 
+  padding-left: 180px; 
+  opacity: 0; 
+  transform: translateY(30px); 
+  animation: slideUp 0.6s ease-out forwards; 
+}
+
 .timeline-item:nth-child(1) { animation-delay: 0.1s; }
 .timeline-item:nth-child(2) { animation-delay: 0.2s; }
 .timeline-item:nth-child(3) { animation-delay: 0.3s; }
@@ -35,14 +158,74 @@ body { margin: 0; font-family: 'Montserrat', sans-serif; background-color: var(-
 .timeline-item:nth-child(5) { animation-delay: 0.5s; }
 .timeline-item:nth-child(6) { animation-delay: 0.6s; }
 .timeline-item:nth-child(7) { animation-delay: 0.7s; }
-@keyframes slideUp { to { opacity: 1; transform: translateY(0); } }
-.timeline-item::before { content: ''; position: absolute; left: 144px; top: 50%; transform: translateY(-50%); width: 15px; height: 15px; border-radius: 50%; background-color: var(--highlight-color); border: 3px solid var(--background-color); z-index: 10; }
-.timeline-time { position: absolute; left: 0; top: 50%; transform: translateY(-50%); width: 120px; text-align: right; font-weight: 700; font-size: 1.1rem; color: var(--light-text-color); white-space: nowrap; }
-.timeline-content { background: transparent; border: 1px solid var(--timeline-line-color); border-radius: 12px; padding: 25px 30px; transition: background-color 0.3s ease, border-color 0.3s ease; }
-.timeline-item:hover .timeline-content { background: rgba(42, 45, 60, 0.4); border-color: var(--highlight-color); }
-.timeline-title { margin: 0 0 0.5rem 0; font-size: 1.4rem; font-weight: 800; color: var(--highlight-color); }
-.timeline-speaker { margin: 0 0 1rem 0; font-size: 1.1rem; font-weight: 600; color: var(--card-color); opacity: 1; }
-.timeline-description { margin: 0; font-size: 1rem; line-height: 1.6; color: var(--card-color); opacity: 0.8; }
+
+@keyframes slideUp { 
+  to { opacity: 1; transform: translateY(0); } 
+}
+
+.timeline-item::before { 
+  content: ''; 
+  position: absolute; 
+  left: 144px; 
+  top: 50%; 
+  transform: translateY(-50%); 
+  width: 15px; 
+  height: 15px; 
+  border-radius: 50%; 
+  background-color: var(--highlight-color); 
+  border: 3px solid var(--background-color); 
+  z-index: 10; 
+}
+
+.timeline-time { 
+  position: absolute; 
+  left: 0; 
+  top: 50%; 
+  transform: translateY(-50%); 
+  width: 120px; 
+  text-align: right; 
+  font-weight: 700; 
+  font-size: 1.1rem; 
+  color: var(--light-text-color); 
+  white-space: nowrap; 
+}
+
+.timeline-content { 
+  background: transparent; 
+  border: 1px solid var(--timeline-line-color); 
+  border-radius: 12px; 
+  padding: 25px 30px; 
+  transition: background-color 0.3s ease, border-color 0.3s ease; 
+}
+
+.timeline-item:hover .timeline-content { 
+  background: rgba(42, 45, 60, 0.4); 
+  border-color: var(--highlight-color); 
+}
+
+.timeline-title { 
+  margin: 0 0 0.5rem 0; 
+  font-size: 1.4rem; 
+  font-weight: 800; 
+  color: var(--highlight-color); 
+}
+
+.timeline-speaker { 
+  margin: 0 0 1rem 0; 
+  font-size: 1.1rem; 
+  font-weight: 600; 
+  color: var(--card-color); 
+  opacity: 1; 
+}
+
+/* --- MODIFICATION CI-DESSOUS --- */
+.timeline-description { 
+  margin: 0;
+  font-size: 1.05rem;   /* Police légèrement agrandie */
+  line-height: 1.7;     /* Interligne augmenté pour l'aération */
+  color: var(--card-color); 
+  opacity: 0.95;        /* Opacité augmentée pour un texte plus lumineux */
+}
 
 /* ======================================================= */
 /* === STYLE FINAL POUR "COMING SOON" (sobre et épuré) === */
@@ -51,7 +234,7 @@ body { margin: 0; font-family: 'Montserrat', sans-serif; background-color: var(-
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 80px; /* Espace au-dessus */
+  margin-top: 80px; 
   animation: fadeIn 1s ease-out;
 }
 
@@ -59,8 +242,8 @@ body { margin: 0; font-family: 'Montserrat', sans-serif; background-color: var(-
 
 .cs-card {
   width: 100%;
-  max-width: 700px; /* Un peu plus large */
-  padding: 60px 40px; /* Plus d'espace interne */
+  max-width: 700px;
+  padding: 60px 40px;
   text-align: center;
   border: 1px solid var(--timeline-line-color);
   border-radius: 15px;
@@ -78,11 +261,10 @@ body { margin: 0; font-family: 'Montserrat', sans-serif; background-color: var(-
 
 .cs-status {
   font-size: 1.5rem;
-  font-weight: 800; /* Plus gras pour l'impact */
-  letter-spacing: 4px; /* Espacement des lettres */
+  font-weight: 800;
+  letter-spacing: 4px;
   text-transform: uppercase;
   color: var(--highlight-color);
-  /* Pas d'animation de lueur */
 }
 
 /* --- RESPONSIVITÉ (inchangé) --- */

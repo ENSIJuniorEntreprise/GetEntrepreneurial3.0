@@ -62,8 +62,8 @@ const Section1 = () => {
             <span className="location">UTICA</span>
           </div>
           <h1>
-            <span className="title-get">GET</span>
-            <span className="title-entrepreneurial"> ENTREPRENEURIAL</span>
+            <span className="title-get">GET E</span>
+            <span className="title-entrepreneurial">NTREPRENEURIAL</span>
           </h1>
           <div className='image'><img src={edition} alt="3ème édition" /></div>
           <div className="tagline">

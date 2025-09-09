@@ -1,27 +1,42 @@
 import React from 'react';
-import './GreenTechDayTab.css'; // CSS modifié
+import './GreenTechDayTab.css'; // Le CSS sera aussi mis à jour
 
 const GreenTechDayTab = ({ data }) => {
   return (
     <div className="gt-tab-container">
-       <header className="tab-header dark-theme">
-        <h2>GREEN & Tech Day</h2>
-        <p className="tab-description">Une journée dédiée à l'intersection de la technologie durable et de l'innovation entrepreneuriale.</p>
+      <header className="gt-tab-header">
+        <h2>Workshops</h2>
+        <p>Des sessions pratiques et interactives animées par des experts de l'écosystème.</p>
       </header>
       
       <div className="workshops-list">
-        {data.workshops.map((workshop, index) => (
+        {data.workshops.map((workshop) => (
           <div key={workshop.id} className="workshop-card">
-            <div className="workshop-details">
-              <span className="workshop-number">Workshop {index + 1}</span>
-              <h3 className="workshop-title">{workshop.subtitle}</h3>
-              <div className="workshop-speaker">
-                <p className="speaker-name">{workshop.speaker.name}</p>
-                <p className="speaker-role">{workshop.speaker.role}</p>
+            
+            <div className="workshop-info">
+              <div className="workshop-titles">
+                <span className="workshop-number">{workshop.title}</span>
+                <h3 className="workshop-subtitle">{workshop.subtitle}</h3>
               </div>
-            </div>
-            <div className="workshop-image">
-              <img src={`/src/assets/images${workshop.speaker.image}`} alt={workshop.speaker.name} />
+
+              {/* --- NOUVELLE SECTION POUR LES DÉTAILS --- */}
+              <div className="workshop-details-content">
+                <div className="details-meta">
+                  <div className="detail-item">
+                    <strong>Public Cible :</strong> {workshop.details.target}
+                  </div>
+                  <div className="detail-item">
+                    
+                  </div>
+                </div>
+                
+                <ul className="topics-list">
+                  {workshop.details.topics.map((topic, index) => (
+                    <li key={index} className="topic-item">{topic}</li>
+                  ))}
+                </ul>
+              </div>
+
             </div>
           </div>
         ))}

@@ -3,81 +3,102 @@ import './section5.css';
 import { useInView } from 'react-intersection-observer';
 import { FaLinkedin, FaTimes } from 'react-icons/fa';
 
-// Importez les images
-import speakerImg1 from '../../assets/images/espace.JPG';
-import speakerImgPlaceholder from '../../assets/images/espace.JPG';
+// --- ÉTAPE 1 : Importer toutes les images des conférenciers ---
+import raziMilaniImg from '../../assets/images/RaziMilani.JPG';
+import taoufikRajhiImg from '../../assets/images/TaoufikRajhi.JPG';
+import walidBelHajAmorImg from '../../assets/images/walidbelhajamor.JPG';
+import ridhaGouiaImg from '../../assets/images/RidhaGouiaa.JPG';
+import imenLouatiImg from '../../assets/images/imenlouati.JPG';
+import karimBenSaidImg from '../../assets/images/KarimBenSaid.JPG';
+import tarekGassaImg from '../../assets/images/tarekgassa.JPG';
+import amineMezghichImg from '../../assets/images/aminemezgh.JPG';
+import hamedBenidaImg from '../../assets/images/HamedBenida.JPG';
+import sawssenBelhajAmorImg from '../../assets/images/SawssenBelhaj Amor.JPG';
+// Vous pouvez en ajouter d'autres ici si nécessaire
 
+// --- ÉTAPE 2 : Remplacer les données avec les vraies informations ---
 const speakersData = [
   { 
-    name: 'Gbite Oduneye', 
-    title: 'Managing Partner @ ODBA | Investor | VC & Private Equity - UK | NIGERIA', 
-    image: speakerImg1, 
-    linkedin: 'https://www.linkedin.com/in/gbite-oduneye-9844983/', 
-    description: 'Accélérer l\'avenir de l\'IA en Afrique : la convergence des incubateurs, accélérateurs et investisseurs.',
-    countryCode: 'ng'
+    name: 'Razi Milani', 
+    title: 'CEO of COGEPHA', 
+    image: raziMilaniImg, 
+    linkedin: '#', // Remplacez par le vrai lien LinkedIn
+    description: 'Une vision stratégique pour l\'industrie pharmaceutique et la croissance durable en Afrique du Nord.'
   },
   { 
-    name: 'Jane Doe', 
-    title: 'Lead Designer, TechCorp', 
-    image: speakerImgPlaceholder, 
-    linkedin: '#', 
-    description: 'Le design thinking comme moteur de l\'innovation durable dans les startups africaines.',
-    countryCode: 'tn'
+    name: 'Taoufik Rajhi', 
+    title: 'Économiste et Ancien Ministre', 
+    image: taoufikRajhiImg, 
+    linkedin: '#',
+    description: 'Analyse des réformes économiques et des perspectives de développement pour la Tunisie post-transition.'
   },
-  // ... (les autres speakers restent les mêmes)
   { 
-    name: 'John Smith', 
-    title: 'AI Specialist, Innovate Inc.', 
-    image: speakerImgPlaceholder, 
-    linkedin: '#', 
-    description: 'Les défis et opportunités de l\'intelligence artificielle générative pour le marché local.',
-    countryCode: 'fr'
+    name: 'Walid Bel Haj Amor', 
+    title: 'Expert International en Gestion des Contrats', 
+    image: walidBelHajAmorImg, 
+    linkedin: '#',
+    description: 'Les clés de la négociation et de la gestion de contrats complexes dans un contexte international.'
+  },
+  { 
+    name: 'Ridha Gouia', 
+    title: 'Économiste et Professeur à la FSEG', 
+    image: ridhaGouiaImg, 
+    linkedin: '#',
+    description: 'Les modèles économiques émergents et leur applicabilité dans l\'écosystème tunisien.'
+  },
+  { 
+    name: 'Imen Louati', 
+    title: 'Conseillère en ODD et Transition Durable', 
+    image: imenLouatiImg, 
+    linkedin: '#',
+    description: 'Comment intégrer les Objectifs de Développement Durable au cœur de la stratégie des entreprises.'
+  },
+  { 
+    name: 'Karim Ben Said', 
+    title: 'Auteur et Chroniqueur Économique', 
+    image: karimBenSaidImg, 
+    linkedin: '#',
+    description: 'Décryptage des tendances économiques et des enjeux pour l\'entrepreneuriat en Tunisie.'
+  },
+  { 
+    name: 'Tarek Gassa', 
+    title: 'Consultant en Ressources Humaines', 
+    image: tarekGassaImg, 
+    linkedin: '#',
+    description: 'Le capital humain comme levier de performance : attirer, développer et retenir les talents.'
   },
   { 
     name: 'Amine Mezghich', 
-    title: 'CEO Smart IT', 
-    image: speakerImgPlaceholder, 
-    linkedin: '#', 
-    description: 'De la startup à la scale-up : les clés du financement et de la croissance en Afrique du Nord.',
-    countryCode: 'tn'
+    title: 'CEO de Smart IT', 
+    image: amineMezghichImg, 
+    linkedin: '#',
+    description: 'La transformation digitale des entreprises : défis, opportunités et retours d\'expérience.'
   },
   { 
-    name: 'Michael Brown', 
-    title: 'Founder, Future Ventures', 
-    image: speakerImgPlaceholder, 
-    linkedin: '#', 
-    description: 'Investir dans la prochaine génération : comment identifier les startups à fort potentiel.',
-    countryCode: 'us'
+    name: 'Hamed Benida', 
+    title: 'Modérateur et Expert en Communication', 
+    image: hamedBenidaImg, 
+    linkedin: '#',
+    description: 'Facilitateur des échanges, il guide les discussions pour en extraire des insights pertinents et concrets.'
   },
   { 
-    name: 'Sarah Green', 
-    title: 'CTO, Dev Solutions', 
-    image: speakerImgPlaceholder, 
-    linkedin: '#', 
-    description: 'Les architectures techniques scalables pour les produits à forte croissance.',
-    countryCode: 'de'
-  },
-  { 
-    name: 'David Black', 
-    title: 'CEO, Creative Minds', 
-    image: speakerImgPlaceholder, 
-    linkedin: '#', 
-    description: 'La créativité et la culture d\'entreprise comme avantages compétitifs.',
-    countryCode: 'ca'
-  },
-  { 
-    name: 'Fatima Al-Fihri', 
-    title: 'EdTech Innovator', 
-    image: speakerImgPlaceholder, 
-    linkedin: '#', 
-    description: 'Révolutionner l\'éducation en Afrique grâce à la technologie.',
-    countryCode: 'ma'
+    name: 'Sawssen Belhaj Amor', 
+    title: 'Modératrice et Spécialiste de l\'Écosystème Startup', 
+    image: sawssenBelhajAmorImg, 
+    linkedin: '#',
+    description: 'Animatrice des débats, elle apporte son expertise pour connecter les idées et stimuler l\'innovation.'
   },
 ];
 
 const Section5 = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { ref } = useInView({ triggerOnce: true, threshold: 0.1 });
+
+  // Bloque/débloque le scroll de la page quand la modale s'ouvre/se ferme
+  const toggleModal = () => {
+    setIsModalOpen(!isModalOpen);
+    document.body.style.overflow = isModalOpen ? 'auto' : 'hidden';
+  };
 
   return (
     <section className="speakers-section" ref={ref}>
@@ -92,21 +113,18 @@ const Section5 = () => {
               <div className="gallery-speaker-info">
                 <h3>{speaker.name}</h3>
                 <p>{speaker.title}</p>
-                <a href={speaker.linkedin} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()}>
-                  <FaLinkedin />
-                </a>
               </div>
             </span>
           ))}
         </div>
       </div>
       <div className="see-all-container">
-        <button className="see-all-button" onClick={() => setIsModalOpen(true)}>
-          See all Speakers
+        <button className="see-all-button" onClick={toggleModal}>
+          Voir tous les conférenciers
         </button>
       </div>
       <div className={`speakers-modal ${isModalOpen ? 'open' : ''}`}>
-        <button className="modal-close-button" onClick={() => setIsModalOpen(false)}><FaTimes /></button>
+        <button className="modal-close-button" onClick={toggleModal}><FaTimes /></button>
         <div className="modal-content">
           <h2>Nos Conférenciers</h2>
           <div className="speakers-grid">
@@ -114,7 +132,6 @@ const Section5 = () => {
               <div className="grid-speaker-card" key={index}>
                 <div className="card-image-container">
                   <img src={speaker.image} alt={speaker.name} className="card-speaker-image" />
-                  {/* ===> LE DRAPEAU A ÉTÉ SUPPRIMÉ D'ICI <=== */}
                 </div>
                 <div className="card-static-info">
                   <h3 className="card-speaker-name">{speaker.name}</h3>
@@ -122,7 +139,6 @@ const Section5 = () => {
                 </div>
                 <div className="card-overlay">
                   <div className="overlay-text-content">
-                    {/* On affiche à nouveau le nom et le titre dans l'overlay */}
                     <h3 className="overlay-speaker-name">{speaker.name}</h3>
                     <p className="overlay-speaker-title">{speaker.title}</p>
                     <p className="overlay-speaker-description">{speaker.description}</p>

@@ -1,110 +1,163 @@
-// Importez vos images ici. Assurez-vous que les chemins sont corrects.
-// Exemple : import hamdiBaraki from '../../../assets/images/speakers/hamdi-baraki.jpg';
-// Pour l'instant, nous utiliserons des chaînes de caractères comme placeholders.
+// --- ÉTAPE 1 : Importer l'image ---
+// Le chemin remonte de deux dossiers (depuis 'data' vers 'Apropos', puis vers 'pages')
+// pour ensuite descendre dans 'assets/images'.
+import speakerImage from '../../../assets/images/speakers.JPG';
+
 
 export const aproposData = {
+  // --- Contenu pour l'onglet "Thème" ---
   grandPublic: {
-    title: 'Façonner l’avenir en élargissant les horizons des startups grâce à la vision des jeunes',
-    description: 'Plongeons dans un espace où l’innovation et la créativité des nouvelles générations rencontrent les solutions de demain. Ensemble, transformons les défis en opportunités et dessinons un futur ambitieux et durable.',
+    title: "Repenser le Développement Économique à l'Ère de l'Innovation",
+    problem: {
+      title: "Le Contexte Tunisien : Un Potentiel Freiné",
+      points: [
+        "Les réformes fiscales sont en retard.",
+        "L'accès au financement reste limité pour les startups.",
+        "La transition vers l’industrie 4.0 est encore balbutiante.",
+        "Le marché de l’emploi ne répond pas aux besoins des jeunes diplômés."
+      ]
+    },
+    theme: {
+      title: "Notre Vision : Vers une Économie Agile et Inclusive",
+      description: "Malgré ces défis, la Tunisie présente des signaux forts de transformation : une jeunesse dynamique et un écosystème startup en pleine croissance. GET 3.0 se positionne comme un tournant stratégique. En mobilisant startups, institutions, investisseurs et talents autour d’un projet ambitieux, nous pouvons réinventer ensemble une économie plus résiliente et construire un avenir durable."
+    },
+    stats: [
+      { value: '55%', label: 'Plus de la moitié des Tunisiens ont moins de 25 ans.' },
+      { value: '+20.5%', label: 'Croissance de l’écosystème startup (2021-2023).' },
+      { value: '65%', label: 'Les services génèrent les deux tiers du PIB.' }
+    ],
+    strategicAxes: [
+      'La libéralisation de l’<span class="highlight">initiative</span> <span class="highlight">entrepreneuriale</span>.',
+      'Le <span class="highlight">capital</span> <span class="highlight">humain</span>: un atout économique stratégique.',
+      'L’<span class="highlight">innovation</span> comme <span class="highlight">moteur</span> de croissance économique.',
+      'L’amélioration de la <span class="highlight">compétitivité</span>.'
+    ]
+  },
+  
+  // --- Contenu pour l'onglet "Panels" ---
+  b2bDealDay: {
     panels: [
       {
         id: 1,
-        title: 'Panel 1 : Valoriser le Capital Humain : Bâtir les Compétences de Demain pour une Tunisie Inclusive',
-        description: 'Ce panel a mis en avant l’importance du développement des compétences pour préparer la Tunisie à l’économie de demain.',
+        title: 'Conférence Plénière',
+        items: [
+          'Rétrospective du Startup Act 1.0',
+          'Analyse critique du Startup Act 1.0 et état des lieux',
+          'Proposition de valeur : Vers un Innovation Act'
+        ],
         speakers: [
-          { name: 'Hamdi Baraki', image: '/speakers/hamdi-baraki.png' },
-          { name: 'Ghizlen El Abdi', image: '/speakers/ghizlen-el-abdi.png' },
-          { name: 'Tarek Ben Jazia', image: '/speakers/tarek-ben-jazia.png' },
-          { name: 'Faten Ben Aissa', image: '/speakers/faten-ben-aissa.png' },
-          { name: 'Amine Msolgha', image: '/speakers/amine-msolgha.png' },
+          // --- ÉTAPE 2 : Utiliser la variable importée ---
+          { name: 'Nom Speaker 1', image: speakerImage },
+          { name: 'Nom Speaker 2', image: speakerImage },
+          { name: 'Nom Speaker 3', image: speakerImage }
         ]
       },
       {
         id: 2,
-        title: 'Panel 2 : Libérer le Génie Entrepreneuriale : Booster l’Innovation et les Startups Tunisiennes',
-        description: 'Ce panel explore les opportunités et défis de l’entrepreneuriat en Tunisie afin d’identifier les soutiens nécessaires et les actions concrètes pour libérer son potentiel.',
+        title: 'Panel Tunisie 2035 : Où miser pour faire la différence ?',
+        items: [
+          'Arbitrage stratégique : financer moins mais mieux',
+          'Identification des secteurs prioritaires (3 à 5)',
+          'Cadre sélectif et comité multi-acteurs'
+        ],
         speakers: [
-          { name: 'Sawssen Bejaoui Aouej', image: '/speakers/sawssen-bejaoui.png' },
-          { name: 'Rolf Milla', image: '/speakers/rolf-milla.png' },
-          { name: 'Karim Mejbari', image: '/speakers/karim-mejbari.png' },
-          { name: 'Doria Bengaelle', image: '/speakers/doria-bengaelle.png' },
+          { name: 'Nom Speaker 4', image: speakerImage },
+          { name: 'Nom Speaker 5', image: speakerImage },
+          { name: 'Nom Speaker 6', image: speakerImage }
         ]
       },
       {
         id: 3,
-        title: 'Panel 3 : La Tunisie à la Conquête de Nouveaux Horizons Économiques',
-        description: 'Ce panel examine des stratégies essentielles pour renforcer la compétitivité économique de la Tunisie, allant de l’amélioration du climat des affaires à la diversification des marchés internationaux.',
+        title: 'Accès aux Marchés Publics & Internationaux',
+        items: [
+          'État acheteur innovant & achats publics',
+          'Sandbox élargi au-delà du financier',
+          'Diaspora comme accélérateur global',
+          'Programmes soft landing & partenariats internationaux'
+        ],
         speakers: [
-          { name: 'Sawssen Bejaoui Aouej', image: '/speakers/sawssen-bejaoui.png' },
-          { name: 'Ridha Guesmi', image: '/speakers/ridha-guesmi.png' },
-          { name: 'Walid Bel Hadj Amor', image: '/speakers/walid-bel-hadj.png' },
-          { name: 'Taoufik Rajhi', image: '/speakers/taoufik-rajhi.png' },
+          { name: 'Nom Speaker 7', image: speakerImage },
+          { name: 'Nom Speaker 8', image: speakerImage },
+          { name: 'Nom Speaker 9', image: speakerImage }
+        ]
+      },
+      {
+        id: 4,
+        title: 'Financement et Investissement',
+        items: [
+          'Gaps structurels (pré-amorçage, scale-up)',
+          'Diaspora et levées de fonds cross-border',
+          'Introduction des SAFE Notes & assouplissements réglementaires',
+          'Bonnes pratiques internationales'
+        ],
+        speakers: [
+          { name: 'Nom Speaker 10', image: speakerImage },
+          { name: 'Nom Speaker 11', image: speakerImage },
+          { name: 'Nom Speaker 12', image: speakerImage }
         ]
       }
-    ],
-    webinaire: {
-        title: 'WEBINAIRE (pré-Évent)',
-        description: 'Accélérer l’impact des SSO : professionnaliser l’accompagnement, structurer les réseaux, démultiplier les résultats'
-    }
+    ]
   },
-  b2bDealDay: {
-    title: 'Repenser le Développement Économique à l’Ère de l’Innovation',
-    description: 'Depuis plus d’une décennie, les diagnostics et les solutions proposées pour revoir le modèle de développement en Tunisie ont abondé à tire-larigot. Économistes tunisiens et internationaux se sont accordés à dire que l’ancien modèle économique a atteint ses limites.',
-    stats: [
-        { value: '-1572,8 MD', label: 'BALANCE COMMERCIALE' },
-        { value: '1%', label: 'CROISSANCE' }
-    ],
-    projectInfo: 'Un projet qui doit assurer la transformation structurelle de l’économie en une économie productive, créatrice de richesse et d’emplois de qualité. Ce processus de transformation implique :',
-    keyPoints: [
-        'La libéralisation de l’initiative entrepreneuriale',
-        'L’innovation comme moteur de croissance économique',
-        'Le capital humain : un atout économique stratégique',
-        'L’amélioration de la compétitivité'
-    ],
-    conclusion: 'Sa réalisation requiert, ainsi, la mobilisation de l’ensemble des acteurs nationaux autour d’un projet rénové et participatif de construction du pays.'
-  },
+
+  // --- Contenu pour l'onglet "Workshops" ---
   greenTechDay: {
-      workshops: [
-          {
-              id: 1,
-              title: 'Workshop 1',
-              subtitle: 'Profiling des entrepreneurs',
-              speaker: {
-                  name: 'Hella BEN ABDALLAH',
-                  role: 'Directrice Exécutive de la fondation BIAT',
-                  image: '/speakers/hella-ben-abdallah.png'
-              }
-          },
-          {
-              id: 2,
-              title: 'Workshop 2',
-              subtitle: 'From Idea to Impact : Designing a Sustainable Startup',
-              speaker: {
-                  name: 'Nour BEN LAZRAK',
-                  role: 'CEO & Founder Digibaytoh & Chrysoprase',
-                  image: '/speakers/nour-ben-lazrak.png'
-              }
-          },
-          {
-              id: 3,
-              title: 'Workshop 3',
-              subtitle: 'Introduction to Hedera',
-              speaker: {
-                  name: 'Talel BEN GHORBEL',
-                  role: 'Ecosystem Lead at the HBAR foundation',
-                  image: '/speakers/talel-ben-ghorbel.png'
-              }
-          },
-          {
-              id: 4,
-              title: 'Workshop 4',
-              subtitle: 'La Transformation SI à l’Ère du Digital',
-              speaker: {
-                  name: 'Mouna DAMMAK',
-                  role: 'Consultante SI chez Talan Consulting',
-                  image: '/speakers/mouna-dammak.png'
-              }
-          }
-      ]
+    workshops: [
+      {
+        id: 1,
+        title: 'Workshop 1',
+        subtitle: 'Build Your Startup from Scratch',
+        details: {
+          target: 'Étudiants et jeunes entrepreneurs en phase d’idéation.',
+          duration: '2h',
+          topics: [
+            'Validation de l’idée qui répond à un vrai problème',
+            'Construction d’un Business Model simple (Canvas)',
+            'Création d’un prototype rapide et test d’hypothèses'
+          ]
+        }
+      },
+      {
+        id: 2,
+        title: 'Workshop 2',
+        subtitle: 'Étudiant et Startups – Développez les compétences pour réussir demain',
+        details: {
+          target: 'Étudiants ingénieurs et futurs professionnels de l’écosystème.',
+          duration: '2h',
+          topics: [
+            'Compétences techniques clés (IA, Data, Cybersécurité)',
+            'Maîtrise des Soft Skills stratégiques (Pensée systémique, agilité)',
+            'Ateliers pratiques et simulations de pitch'
+          ]
+        }
+      },
+      {
+        id: 3,
+        title: 'Workshop 3',
+        subtitle: 'AI ERA : Nouvelle Cartographie des Métiers',
+        details: {
+          target: 'Étudiants en fin de cycle et jeunes diplômés.',
+          duration: '2h',
+          topics: [
+            'Comprendre l’impact de l’IA sur les métiers actuels et futurs',
+            'Découvrir les métiers émergents liés à l’IA',
+            'Identifier les compétences clés à développer pour l’avenir'
+          ]
+        }
+      },
+      {
+        id: 4,
+        title: 'Workshop 4',
+        subtitle: 'Freelance et Opportunités : Trouvez vos premiers clients',
+        details: {
+          target: 'Étudiants et jeunes diplômés visant le freelance.',
+          duration: '2h',
+          topics: [
+            'Définir son positionnement et construire une offre claire',
+            'Cibler les startups et comprendre leurs attentes',
+            'Maîtriser les techniques d’approche commerciale et de networking'
+          ]
+        }
+      }
+    ]
   }
 };

@@ -8,7 +8,7 @@
 /* --- Section principale --- */
 .sponsors-section {
   background-color: var(--light-beige); 
-  padding: 80px 0; /* Plus d'espace vertical pour aérer */
+  padding: 80px 0;
   font-family: 'Montserrat', sans-serif;
   color: var(--text-dark);
   overflow: hidden;
@@ -17,11 +17,11 @@
 /* --- Titre --- */
 .sponsors-header {
   text-align: center;
-  margin-bottom: 60px; /* Espace généreux sous le titre */
+  margin-bottom: 60px;
 }
 
 .sponsors-header h2 {
-  font-size: 3rem; /* Titre impactant */
+  font-size: 3rem;
   font-weight: 800;
   color: var(--text-dark);
   margin: 0;
@@ -30,18 +30,19 @@
 
 /* --- Bandeau défilant --- */
 .scroller-container {
-  -webkit-mask: linear-gradient(90deg, transparent, white 10%, white 90%, transparent);
-  mask: linear-gradient(90deg, transparent, white 10%, white 90%, transparent);
+  -webkit-mask: linear-gradient(90deg, transparent, white 5%, white 95%, transparent);
+  mask: linear-gradient(90deg, transparent, white 5%, white 95%, transparent);
 }
 
 .sponsors-list {
   display: flex;
   align-items: center;
-  gap: 120px; /* Grand espace entre les logos */
+  gap: 100px; 
   margin: 0;
-  padding: 10px 0;
+  padding: 20px 0;
   list-style: none;
-  animation: scroll 20s linear infinite;
+  /* MODIFICATION : Durée de l'animation réduite pour un défilement plus rapide */
+  animation: scroll 30s linear infinite;
 }
 
 .scroller-container:hover .sponsors-list {
@@ -53,34 +54,22 @@
   to { transform: translateX(-50%); }
 }
 
-/* --- Item Sponsor (Logo + Nom) --- */
+/* --- Item Sponsor (Logo uniquement) --- */
 .sponsor-item {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: 15px; /* Espace réduit entre le logo et le nom */
+  justify-content: center;
 }
 
 .sponsor-item img {
-  /* Logos encore plus grands et en couleur */
-  height: 180px; 
+  height: 220px; 
+  max-width: 350px;
   width: auto;
   object-fit: contain;
-  /* Plus de filtre grayscale, les logos sont en couleur par défaut */
-  opacity: 0.9; /* Légère transparence pour l'effet de survol */
-  transition: all 0.3s ease-out; /* Transition rapide et douce */
+  transition: transform 0.4s ease-out;
 }
 
-.sponsor-item .sponsor-name {
-  font-weight: 700; /* Texte plus gras */
-  font-size: 1.2rem;
-  color: var(--text-dark);
-  margin: 0;
-  text-align: center;
-}
-
-/* --- Effet au survol (simple et efficace) --- */
+/* --- Effet au survol simple --- */
 .sponsor-item:hover img {
-  opacity: 1; /* Le logo devient 100% opaque */
-  transform: translateY(-8px); /* Le logo se soulève légèrement */
+  transform: scale(1.1);
 }

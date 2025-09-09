@@ -1,116 +1,131 @@
-/* --- En-tête de l'onglet --- */
-.tab-header.dark-theme {
-    text-align: center;
-    margin-bottom: 50px;
-  }
-  
-  .tab-header.dark-theme h2 {
-    font-size: 2.2rem;
-    color: var(--orange); /* Couleur orange pour le thème sombre */
-    margin-bottom: 15px;
-  }
-  
-  .tab-header.dark-theme .tab-description {
-    font-size: 1.1rem;
-    line-height: 1.6;
-    max-width: 800px;
-    margin: 0 auto;
-    color: var(--beige); /* Couleur beige pour le thème sombre */
-  }
-  
-  /* Liste des workshops */
-  .gt-tab-container {
-      background-color: var(--dark-blue);
-      padding: 30px;
-      margin: -80px -40px -40px -40px; /* Compense le padding du parent pour un effet pleine largeur */
-      border-radius: 8px;
-  }
-  
-  .workshops-list {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-  }
-  
-  .workshop-card {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    background-color: #2a2d3a;
-    border-radius: 12px;
-    overflow: hidden;
-    color: var(--white);
-    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
-    transition: transform 0.3s ease;
-  }
-  
-  .workshop-card:hover {
-      transform: scale(1.02);
-  }
-  
-  .workshop-card:nth-child(even) {
-      flex-direction: row-reverse;
-  }
-  
-  .workshop-details {
-    flex: 3;
-    padding: 30px;
-  }
-  
-  .workshop-number {
-    display: inline-block;
-    background-color: var(--orange);
-    color: var(--dark-blue);
-    padding: 5px 15px;
-    border-radius: 20px;
-    font-weight: bold;
-    font-size: 0.9rem;
-    margin-bottom: 20px;
-  }
-  
-  .workshop-title {
-    font-size: 1.8rem;
-    margin-bottom: 20px;
-    font-weight: 700;
-  }
-  
-  .speaker-name {
-    font-weight: bold;
-    font-size: 1.2rem;
-    margin: 0;
-  }
-  
-  .speaker-role {
-    font-size: 1rem;
-    color: var(--beige);
-    margin: 5px 0 0 0;
-  }
-  
-  .workshop-image {
-    flex: 2;
-    align-self: stretch; /* Fait en sorte que l'image prenne toute la hauteur */
-  }
-  
-  .workshop-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 0% 100%);
-  }
-  
-  .workshop-card:nth-child(even) .workshop-image img {
-      clip-path: polygon(0% 0%, 100% 0%, 75% 100%, 0% 100%);
-  }
-  
-  /* Responsive */
-  @media (max-width: 768px) {
-      .workshop-card, .workshop-card:nth-child(even) {
-          flex-direction: column;
-      }
-      .workshop-image img, .workshop-card:nth-child(even) .workshop-image img {
-          clip-path: none;
-      }
-      .workshop-image {
-          width: 100%;
-      }
-  }
+/* --- Conteneur et en-tête de l'onglet --- */
+.gt-tab-container {
+  padding-top: 20px;
+}
+
+.gt-tab-header {
+  text-align: center;
+  margin-bottom: 70px;
+}
+
+.gt-tab-header h2 {
+  font-size: 2.8rem;
+  color: var(--dark-blue);
+  margin-bottom: 25px;
+}
+
+.gt-tab-header p {
+  font-size: 1.5rem;
+  max-width: 900px;
+  margin: 0 auto;
+  color: var(--dark-blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  font-weight: 400;
+}
+
+.gt-tab-header p::before,
+.gt-tab-header p::after {
+  content: '';
+  display: block;
+  width: 250px;
+  height: 5px;
+  background-color: var(--orange);
+  border-radius: 20px;
+}
+
+/* --- Liste des workshops --- */
+.workshops-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+}
+
+/* --- Carte de workshop (mise à jour) --- */
+.workshop-card {
+  /* MODIFICATION : Fond beige et texte sombre */
+  background-color: var(--light-beige);
+  color: var(--dark-blue); 
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.workshop-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+}
+
+/* --- Section des informations --- */
+.workshop-info {
+  padding: 50px;
+  text-align: left;
+}
+
+.workshop-number {
+  display: block;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--orange);
+  margin-bottom: 15px;
+}
+
+.workshop-subtitle {
+  font-size: 2.1rem; 
+  font-weight:700;
+  color: var(--dark-blue); /* MODIFICATION : Couleur de texte sombre */
+  line-height: 1.4;
+  margin: 0;
+  padding-bottom: 25px;
+  border-bottom: 1px solid rgba(31, 33, 45, 0.1); /* Ligne de séparation plus claire */
+}
+
+/* --- NOUVEAUX STYLES POUR LES DÉTAILS --- */
+.workshop-details-content {
+  margin-top: 25px;
+  font-weight: 500;
+}
+.details-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 25px;
+  font-size: 1.1rem;
+}
+.detail-item strong {
+  color: var(--orange);
+  margin-right: 8px;
+}
+.topics-list {
+  list-style: none;
+  padding-left: 20px;
+  margin: 0;
+}
+.topic-item {
+  position: relative;
+  margin-bottom: 10px;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+.topic-item::before {
+  content: '✓';
+  position: absolute;
+  left: -20px;
+  color: var(--orange);
+  font-weight: bold;
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+    .gt-tab-header p::before,
+    .gt-tab-header p::after {
+        width: 50px;
+    }
+    .workshop-info {
+        padding: 40px 25px;
+    }
+    .workshop-subtitle {
+        font-size: 1.8rem;
+    }
+}

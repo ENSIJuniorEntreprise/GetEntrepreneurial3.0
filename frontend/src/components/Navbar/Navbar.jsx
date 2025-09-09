@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { useLocation } from 'react-router-dom'; // <-- AJOUT : Pour détecter l'URL
+import { useLocation } from 'react-router-dom';
 import './Navbar.css';
 import logo from '../../assets/images/logogete.png';
 
@@ -8,9 +8,8 @@ const Navbar = () => {
   const [lineStyle, setLineStyle] = useState({});
   const navLinksRef = useRef(null);
   const [isScrolled, setIsScrolled] = useState(false);
-  const location = useLocation(); // <-- AJOUT : Récupère l'URL actuelle
+  const location = useLocation();
 
-  // Ce useEffect est inchangé, il déplace la ligne quand activeLink change
   useEffect(() => {
     if (navLinksRef.current) {
       const activeElement = navLinksRef.current.querySelector(`[data-link-name="${activeLink}"]`);
@@ -23,7 +22,6 @@ const Navbar = () => {
     }
   }, [activeLink]);
 
-  // ====> AJOUT : Ce nouveau useEffect synchronise l'URL avec votre état <====
   useEffect(() => {
     const pathToLinkName = {
       '/': 'Accueil',
@@ -32,14 +30,15 @@ const Navbar = () => {
       '/programme': 'Programme',
       '/legacy': 'Legacy',
       '/contact': 'Contact',
+      // AJOUT : Assurer que les sous-pages de legacy activent le bon lien
+      '/edition1': 'Legacy',
+      '/edition2': 'Legacy',
     };
-    // Met à jour l'état en fonction du chemin de l'URL
     const currentLinkName = pathToLinkName[location.pathname] || '';
     setActiveLink(currentLinkName);
-  }, [location]); // Se déclenche à chaque changement d'URL
+  }, [location]); 
 
 
-  // Cet useEffect pour le scroll est inchangé
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 10) {
@@ -66,13 +65,9 @@ const Navbar = () => {
             <a href="/" onClick={() => setActiveLink('Accueil')} className={activeLink === 'Accueil' ? 'active' : ''}>Accueil</a>
           </li>
           
-          <li className="dropdown" data-link-name="A propos">
+          {/* MODIFICATION 1 : Suppression de la classe 'dropdown' et du sous-menu pour 'A propos' */}
+          <li data-link-name="A propos">
             <a href="/apropos" onClick={() => setActiveLink('A propos')} className={activeLink === 'A propos' ? 'active' : ''}>A propos</a>
-            <ul className="dropdown-menu">
-              <li><a href="/apropos">Journée 1</a></li>
-              <li><a href="/apropos">Journée 2</a></li>
-              <li><a href="/apropos">Journée 3</a></li>
-            </ul>
           </li>
 
           <li data-link-name="Collaboration">
@@ -86,8 +81,9 @@ const Navbar = () => {
           <li className="dropdown" data-link-name="Legacy">
             <a href="/legacy" onClick={() => setActiveLink('Legacy')} className={activeLink === 'Legacy' ? 'active' : ''}>Legacy</a>
             <ul className="dropdown-menu">
-              <li><a href="/edition1">1ère édition</a></li>
-              <li><a href="/edition2">2ème édition</a></li>
+              {/* MODIFICATION 2 : Ajout du onClick pour mettre à jour l'état */}
+              <li><a href="/edition1" onClick={() => setActiveLink('Legacy')}>1ère édition</a></li>
+              <li><a href="/edition2" onClick={() => setActiveLink('Legacy')}>2ème édition</a></li>
             </ul>
           </li>
 

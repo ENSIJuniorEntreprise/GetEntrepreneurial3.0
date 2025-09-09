@@ -1,38 +1,31 @@
 import React from 'react';
-import './B2BDealDayTab.css'; // CSS modifié
+import './B2BDealDayTab.css';
 
 const B2BDealDayTab = ({ data }) => {
   return (
     <div className="b2b-tab-container">
-      <header className="tab-header">
-        <h2>{data.title}</h2>
-        <p className="tab-description">{data.description}</p>
+      <header className="b2b-tab-header">
+        <h2>Programme des Panels</h2>
+        <p>Explorez les discussions stratégiques qui façonneront l'avenir de l'écosystème entrepreneurial.</p>
       </header>
 
-      <div className="stats-grid">
-        {data.stats.map(stat => (
-          <div key={stat.label} className="stat-card">
-            <p className="stat-value">{stat.value}</p>
-            <p className="stat-label">{stat.label}</p>
+      <div className="b2b-panels-grid">
+        {data.panels.map((panel, index) => (
+          <div key={panel.id} className="b2b-panel-card">
+            
+            {/* --- MODIFICATION CI-DESSOUS --- */}
+            <h3 className="b2b-panel-title">
+              <span className="panel-number">Panel {index + 1} :</span> {panel.title}
+            </h3>
+            
+            <ul className="b2b-panel-items-list">
+              {panel.items.map((item, index) => (
+                <li key={index}>{item}</li>
+              ))}
+            </ul>
+
           </div>
         ))}
-      </div>
-
-      <div className="info-section">
-        <p>{data.projectInfo}</p>
-      </div>
-
-      <div className="key-points-grid">
-        {data.keyPoints.map((point, index) => (
-          <div key={index} className="key-point-card">
-            <span className="key-point-icon">✓</span>
-            <p>{point}</p>
-          </div>
-        ))}
-      </div>
-
-      <div className="conclusion-section">
-        <p>{data.conclusion}</p>
       </div>
     </div>
   );

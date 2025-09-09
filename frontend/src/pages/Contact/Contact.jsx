@@ -68,63 +68,61 @@ const Contact = () => {
     <div className="contact-page">
       <div className="background-overlay"></div>
       <header className="contact-header">
-        {/* ... (votre code existant, pas de changement ici) ... */}
         <div className="header-content">
-          <h1><span className="highlight">Contact</span> Us</h1>
+          <h1><span className="highlight">Contactez</span> Nous</h1>
           <div className="subtitle-container">
-            <p>Get in touch with us we're here to help and answer your questions</p>
+            <p>Contactez-nous, nous sommes là pour vous aider et répondre à vos questions.</p>
           </div>
         </div>
       </header>
 
       <main className="contact-main">
-        {/* ... (votre code existant, pas de changement ici) ... */}
         <div className="contact-info-container">
           <div className="contact-info-box">
             <div className="icon-container"><i className="fas fa-phone-alt"></i></div>
             <h3>Phone</h3>
-            <p>Mobile: +(84) 546-6789</p>
-            <p>Hotline: +(84) 456-6789</p>
+            <p>Mobile: +(216) 25 540 762 </p>
+            <p>Mobile: +(216) 94 305 094</p>
+            <p>Mobile: +(216) 93 071 049 </p>
           </div>
           <div className="contact-info-box">
             <div className="icon-container"><i className="fas fa-envelope"></i></div>
             <h3>Email</h3>
-            <p>Mobile: +(84) 546-6789</p>
-            <p>Hotline: +(84) 456-6789</p>
+            <p>contact.junior.ensi@gmail.com</p>
+            <p>commercial.ensi.junior@gmail.com</p>
           </div>
           <div className="contact-info-box">
             <div className="icon-container"><i className="fas fa-map-marker-alt"></i></div>
             <h3>Address</h3>
-            <p>236 5th SE Avenue, New York</p>
-            <p>NY90000, United States</p>
+            <p>Campus Universitaire، ENSI, Manouba 2010</p>
           </div>
         </div>
 
         <div className="contact-form-section">
           <div className="form-text-content">
-            <h2>Get In Touch With Us</h2>
-            <p>We encourage you to share your requests or concerns by completing the form for further information.</p>
+            <h2>Prenez contact avec nous</h2>
+            <p>Nous vous encourageons à partager vos demandes ou préoccupations en remplissant le formulaire afin d’obtenir de plus amples informations.</p>
           </div>
           
           {/* --- FORMULAIRE CONNECTÉ --- */}
           <form className="contact-form" onSubmit={handleSubmit}>
             <div className="form-row">
-              <input type="text" name="prenom" placeholder="First Name" value={formData.prenom} onChange={handleChange} required disabled={loading} />
-              <input type="text" name="nom" placeholder="Last Name" value={formData.nom} onChange={handleChange} required disabled={loading} />
+              <input type="text" name="prenom" placeholder="Prénom" value={formData.prenom} onChange={handleChange} required disabled={loading} />
+              <input type="text" name="nom" placeholder="Nom" value={formData.nom} onChange={handleChange} required disabled={loading} />
             </div>
             <div className="form-row">
-              <input type="email" name="email" placeholder="Email address" className="full-width" value={formData.email} onChange={handleChange} required disabled={loading} />
+              <input type="email" name="email" placeholder="Adresse e-mail" className="full-width" value={formData.email} onChange={handleChange} required disabled={loading} />
             </div>
             <div className="form-row">
               {/* J'ai supprimé le deuxième champ "Subject" qui semblait être une erreur */}
-              <input type="text" name="sujet" placeholder="Subject" className="full-width" value={formData.sujet} onChange={handleChange} required disabled={loading} />
+              <input type="text" name="sujet" placeholder="Sujet" className="full-width" value={formData.sujet} onChange={handleChange} required disabled={loading} />
             </div>
             <div className="form-row">
               <textarea name="message" placeholder="Message..." className="full-width" value={formData.message} onChange={handleChange} required disabled={loading}></textarea>
             </div>
             <div className="form-row">
               <button type="submit" disabled={loading}>
-                {loading ? 'Sending...' : 'Submit'}
+                {loading ? 'Sending...' : 'Envoyer'}
               </button>
             </div>
           </form>
