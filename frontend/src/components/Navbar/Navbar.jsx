@@ -1,4 +1,3 @@
-
 import logo from '../../assets/images/logogete.png';
 import React, { useState, useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
@@ -101,22 +100,33 @@ const Navbar = () => {
             <a href="/programme" onClick={() => {setActiveLink('Programme'); setIsMobile(false);}} className={activeLink === 'Programme' ? 'active' : ''}>Programme</a>
           </li>
 
-          <li className="dropdown" data-link-name="Legacy">
-            <a href="/legacy" onClick={() => {setActiveLink('Legacy'); setIsMobile(false);}} className={activeLink === 'Legacy' ? 'active' : ''}>Legacy</a>
-            {!isMobile && (
+          {/* Version desktop avec dropdown */}
+          {!isMobile && (
+            <li className="dropdown" data-link-name="Legacy">
+              <a href="/legacy" onClick={() => {setActiveLink('Legacy'); setIsMobile(false);}} className={activeLink === 'Legacy' ? 'active' : ''}>Legacy</a>
               <ul className="dropdown-menu">
                 <li><a href="/edition1" onClick={() => setActiveLink('Legacy')}>1ère édition</a></li>
                 <li><a href="/edition2" onClick={() => setActiveLink('Legacy')}>2ème édition</a></li>
               </ul>
-            )}
-            {/* Sous-menu mobile pour Legacy */}
-            {isMobile && (
-              <div className="dropdown-submenu">
-                <a href="/edition1" onClick={() => {setActiveLink('Legacy'); setIsMobile(false);}}>1ère édition</a>
-                <a href="/edition2" onClick={() => {setActiveLink('Legacy'); setIsMobile(false);}}>2ème édition</a>
-              </div>
-            )}
-          </li>
+            </li>
+          )}
+
+          {/* Version mobile avec pages séparées */}
+          {isMobile && (
+            <>
+              <li data-link-name="Legacy">
+                <a href="/legacy" onClick={() => {setActiveLink('Legacy'); setIsMobile(false);}} className={activeLink === 'Legacy' ? 'active' : ''}>Legacy</a>
+              </li>
+              
+              <li data-link-name="Edition1">
+                <a href="/edition1" onClick={() => {setActiveLink('Legacy'); setIsMobile(false);}} className={location.pathname === '/edition1' ? 'active' : ''}>1ère édition</a>
+              </li>
+              
+              <li data-link-name="Edition2">
+                <a href="/edition2" onClick={() => {setActiveLink('Legacy'); setIsMobile(false);}} className={location.pathname === '/edition2' ? 'active' : ''}>2ème édition</a>
+              </li>
+            </>
+          )}
 
           <li data-link-name="Contact">
             <a href="/contact" onClick={() => {setActiveLink('Contact'); setIsMobile(false);}} className={activeLink === 'Contact' ? 'active' : ''}>Contact</a>

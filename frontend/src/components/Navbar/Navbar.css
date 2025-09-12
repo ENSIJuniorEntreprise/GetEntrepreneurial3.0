@@ -110,7 +110,6 @@ html, body {
   position: relative;
 }
 
-
 .dropdown-menu {
   position: absolute;
   top: 65px;
@@ -202,18 +201,19 @@ html, body {
   list-style: none;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start; /* Changé de center à flex-start */
   align-items: center;
   margin: 0;
-  padding: 0;
+  padding: 120px 0 40px 0; /* Padding-top augmenté pour éloigner du haut */
   gap: 0;
+  overflow-y: auto; /* Permet le scroll si nécessaire */
 }
 
 .navbar-links-mobile li {
   width: 100%;
   max-width: 400px;
   text-align: center;
-  padding: 25px 20px;
+  padding: 20px 20px; /* Padding réduit pour plus de cohérence */
   border-bottom: 1px solid rgba(183, 179, 179, 0.2);
   display: flex;
   flex-direction: column;
@@ -267,28 +267,9 @@ html, body {
   background-color: rgba(159, 200, 212, 0.1);
 }
 
-/* Sous-menu mobile */
+/* Sous-menu mobile - SUPPRIMÉ pour traiter comme des pages normales */
 .navbar-links-mobile .dropdown-submenu {
-  margin-top: 20px;
-  padding-top: 20px;
-  border-top: 1px solid rgba(183, 179, 179, 0.15);
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  width: 100%;
-}
-
-.navbar-links-mobile .dropdown-submenu a {
-  font-size: 1.1rem;
-  color: rgba(224, 222, 210, 0.7);
-  padding: 8px 0;
-  transition: color 0.3s ease;
-  font-weight: 300;
-  text-align: center;
-}
-
-.navbar-links-mobile .dropdown-submenu a:hover {
-  color: #9FC8D4;
+  display: none; /* On cache le sous-menu imbriqué */
 }
 
 /* ==================== RESPONSIVE ==================== */
@@ -365,11 +346,13 @@ html, body {
   .navbar-links-mobile > li > a {
     font-size: 1.2rem;
   }
-  .navbar-links-mobile .dropdown-submenu a {
-    font-size: 1rem;
-  }
   .mobile-close-btn button {
     font-size: 1.6rem;
+  }
+  
+  /* Ajustement du padding-top sur petits écrans */
+  .navbar-links-mobile {
+    padding-top: 100px;
   }
 }
 
@@ -384,10 +367,12 @@ html, body {
   .navbar-links-mobile > li > a {
     font-size: 1.1rem;
   }
-  .navbar-links-mobile .dropdown-submenu a {
-    font-size: 0.95rem;
-  }
   .mobile-close-btn button {
     font-size: 1.4rem;
+  }
+  
+  /* Ajustement du padding-top sur très petits écrans */
+  .navbar-links-mobile {
+    padding-top: 80px;
   }
 }
