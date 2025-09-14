@@ -11,7 +11,6 @@ import Footer from '../../components/Footer/Footer';
 const Home = () => {
   return (
     <>
-      <Navbar />
       <Section1 />
       <Section2 />
       <Section3 />

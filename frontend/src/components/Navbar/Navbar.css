@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
 
+/* === STYLES DE BASE === */
 .navbar-container {
   position: fixed;
   top: 0;
@@ -27,131 +28,37 @@
   font-family: 'Poppins', sans-serif;
 }
 
-/* ====> CORRECTION : Nouveaux styles pour le logo image <==== */
-.navbar-logo a {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+.navbar-logo a { display: flex; align-items: center; }
+.navbar-logo img { height: 45px; width: auto; }
 
-.navbar-logo img {
-  height: 45px; /* Ajustez la hauteur de votre logo ici */
-  width: auto; /* La largeur s'adaptera automatiquement */
-}
-/* Les anciennes règles pour le "G" et le ::before ont été supprimées */
-
-
-/* --- Liens de navigation --- */
+/* === LIENS DE NAVIGATION (DESKTOP) === */
 .navbar-links {
   position: relative;
   list-style: none;
   display: flex;
   align-items: center;
   gap: 60px;
-  margin: 0;
-  padding: 0;
-  font-weight: 400;
-  height: 100%;
+  margin: 0; padding: 0; font-weight: 400; height: 100%;
 }
-
-.navbar-links li {
+.navbar-links li { display: flex; align-items: center; height: 100%; font-weight: 400; }
+.navbar-links a { text-decoration: none; color: #E0DED2; font-size: 1rem; font-weight: 300; position: relative; transition: color 0.3s ease; }
+.navbar-links a.active, .navbar-links a:hover { color: #9FC8D4; }
+.magic-line { position: absolute; top: 0; height: 4px; background-color: #9FC8D4; border-radius: 20px; box-shadow: 0 0 7px #9FC8D4; transition: left 0.4s cubic-bezier(0.23, 1, 0.32, 1), width 0.4s cubic-bezier(0.23, 1, 0.32, 1); }
+.dropdown { position: relative; }
+.dropdown > a::after { content: '▼'; font-size: 0.7em; margin-left: 8px; color: #9FC8D4; transition: transform 0.3s ease; }
+.dropdown:hover > a::after { transform: rotate(180deg); }
+.dropdown-menu { position: absolute; top: 65px; left: 50%; transform: translateX(-50%); background-color: #1F212D; list-style: none; padding: 0; margin: 0; border-radius: 4px; min-width: 140px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); opacity: 0; visibility: hidden; transition: opacity 0.3s ease, top 0.3s ease; overflow: hidden; }
+.dropdown:hover .dropdown-menu { opacity: 1; visibility: visible; }
+.dropdown-menu li { margin: 0; padding: 0; transition: background-color 0.3s ease; }
+.dropdown-menu li:hover { background-color: #9FC8D4; }
+.dropdown-menu a { display: block; padding: 10px 15px; white-space: nowrap; color: #E0DED2; transition: color 0.3s ease; }
+.dropdown-menu li:hover a { color: #1F212D; }
+/* Bouton inscription */
+.navbar-action {
   display: flex;
   align-items: center;
-  height: 100%;
-  font-weight: 400;
 }
 
-.navbar-links a {
-  text-decoration: none;
-  color: #E0DED2;
-  font-size: 1rem;
-  font-weight: 300;
-  position: relative;
-  transition: color 0.3s ease;
-}
-
-.navbar-links a.active {
-  color: #9FC8D4;
-}
-
-.navbar-links a:hover {
-  color: #9FC8D4;
-}
-
-/* --- La barre lumineuse (Magic Line) --- */
-.magic-line {
-  position: absolute;
-  top: 0;
-  height: 4px;
-  background-color: #9FC8D4;
-  border-radius: 20px;
-  box-shadow: 0 0 7px #9FC8D4;
-  transition: left 0.4s cubic-bezier(0.23, 1, 0.32, 1), width 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-}
-
-/* --- Menus déroulants --- */
-.dropdown {
-  position: relative;
-}
-
-.dropdown > a::after {
-  content: '▼';
-  font-size: 0.7em;
-  margin-left: 8px;
-  color: #9FC8D4;
-  transition: transform 0.3s ease;
-}
-
-.dropdown:hover > a::after {
-  transform: rotate(180deg);
-}
-
-.dropdown-menu {
-  position: absolute;
-  top: 65px; 
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: #1F212D;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  border-radius: 4px; 
-  min-width: 140px; 
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.3s ease, top 0.3s ease;
-  overflow: hidden; 
-}
-
-.dropdown:hover .dropdown-menu {
-  opacity: 1;
-  visibility: visible;
-}
-
-.dropdown-menu li {
-  margin: 0;
-  padding: 0;
-  transition: background-color 0.3s ease; 
-}
-
-.dropdown-menu li:hover {
-  background-color: #9FC8D4;
-}
-
-.dropdown-menu a {
-  display: block;
-  padding: 10px 15px; 
-  white-space: nowrap;
-  color: #E0DED2;
-  transition: color 0.3s ease;
-}
-
-.dropdown-menu li:hover a {
-  color: #1F212D;
-}
-
-/* --- Bouton d'action --- */
 .inscription-button {
   background-color: #FE9900;
   color: #E0DED2;
@@ -159,10 +66,209 @@
   border-radius: 25px;
   text-decoration: none;
   font-weight: 500;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  transition: all 0.3s ease;
+  border: 2px solid #FE9900;
 }
 
 .inscription-button:hover {
   background-color: #FE9900;
   transform: scale(1.05);
+}
+
+.inscription-button.active {
+  background-color: transparent;
+  color: #FE9900;
+  border: 2px solid #FE9900;
+}
+
+/* Mobile button - masqué par défaut */
+.Nav-btn {
+  display: none;
+}
+
+/* Navigation mobile */
+.navbar-links-mobile {
+  z-index: 99;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(31, 33, 45, 0.95);
+  backdrop-filter: blur(10px);
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Changé de center à flex-start */
+  align-items: center;
+  margin: 0;
+  padding: 120px 0 40px 0; /* Padding-top augmenté pour éloigner du haut */
+  gap: 0;
+  overflow-y: auto; /* Permet le scroll si nécessaire */
+}
+
+.navbar-links-mobile li {
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+  padding: 20px 20px; /* Padding réduit pour plus de cohérence */
+  border-bottom: 1px solid rgba(183, 179, 179, 0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.navbar-links-mobile li:last-child {
+  border-bottom: none;
+}
+
+.navbar-links-mobile > li > a {
+  color: #E0DED2;
+  font-size: 1.4rem;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  display: block;
+  padding: 10px;
+  font-weight: 400;
+  width: 100%;
+}
+
+.navbar-links-mobile > li > a:hover,
+.navbar-links-mobile > li > a.active {
+  color: #9FC8D4;
+}
+
+/* Bouton de fermeture mobile */
+.mobile-close-btn {
+  position: absolute !important;
+  top: 20px;
+  right: 20px;
+  width: auto !important;
+  border: none !important;
+  padding: 0 !important;
+}
+
+.mobile-close-btn button {
+  background: none;
+  border: none;
+  color: #E0DED2;
+  font-size: 1.8rem;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.mobile-close-btn button:hover {
+  color: #9FC8D4;
+  background-color: rgba(159, 200, 212, 0.1);
+}
+
+/* Sous-menu mobile - SUPPRIMÉ pour traiter comme des pages normales */
+.navbar-links-mobile .dropdown-submenu {
+  display: none; /* On cache le sous-menu imbriqué */
+}
+@media screen and (max-width: 780px) {
+  .navbar {
+    height: 70px;
+    padding: 0 4%;   /* ↓ Réduction du padding */
+    gap: 20px;       /* ↓ Réduction du gap pour éviter débordement */
+  }
+
+  .navbar-container {
+    height: 70px;
+    background-color: rgba(31, 33, 45, 0.9);
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+  }
+
+  .navbar-links,
+  .navbar-action {
+    display: none;
+  }
+
+  .navbar-logo img {
+    height: 35px;
+  }
+
+  .Nav-btn {
+    display: block;
+    background: none;
+    border: none;
+    color: #E0DED2;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 4px;
+    transition: color 0.3s ease;
+    font-size: 1.5rem;
+  }
+
+  .Nav-btn:hover {
+    color: #9FC8D4;
+  }
+
+  .dropdown > a::after,
+  .dropdown-menu {
+    display: none;
+  }
+}
+
+/* Tablet */
+@media(max-width: 1024px) and (min-width: 781px) {
+  .navbar {
+    padding: 0 4%;
+  }
+  .navbar-links {
+    gap: 40px;
+  }
+  .navbar-links a {
+    font-size: 0.9rem;
+  }
+}
+
+/* Large mobile */
+@media(max-width: 480px) {
+  .navbar {
+    padding: 0 3%;
+    height: 60px;
+  }
+  .navbar-container {
+    height: 60px;
+  }
+  .navbar-logo img {
+    height: 30px;
+  }
+  .navbar-links-mobile > li > a {
+    font-size: 1.2rem;
+  }
+  .mobile-close-btn button {
+    font-size: 1.6rem;
+  }
+  
+  /* Ajustement du padding-top sur petits écrans */
+  .navbar-links-mobile {
+    padding-top: 100px;
+  }
+}
+
+/* Small mobile */
+@media(max-width: 320px) {
+  .navbar {
+    padding: 0 2%;
+  }
+  .navbar-logo img {
+    height: 25px;
+  }
+  .navbar-links-mobile > li > a {
+    font-size: 1.1rem;
+  }
+  .mobile-close-btn button {
+    font-size: 1.4rem;
+  }
+  
+  /* Ajustement du padding-top sur très petits écrans */
+  .navbar-links-mobile {
+    padding-top: 80px;
+  }
 }

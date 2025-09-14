@@ -79,9 +79,10 @@ const Section1 = () => {
             <FaArrowRight className="toggle-arrow" />
           </div>
           <div className="social-links-container">
-            <a href="https://www.instagram.com/ensijunior/" className="social-link instagram" aria-label="Instagram"><FaInstagram /></a>
-            <a href="https://www.facebook.com/ENSI.Junior.Entreprise" className="social-link facebook" aria-label="Facebook"><FaFacebookF /></a>
-            <a href="https://www.linkedin.com/company/ensi-junior-entreprise/posts/?feedView=all" className="social-link linkedin" aria-label="LinkedIn"><FaLinkedinIn /></a>
+            {/* --- MODIFICATION ICI --- */}
+            <a href="https://www.instagram.com/ensijunior/" target="_blank" rel="noopener noreferrer" className="social-link instagram" aria-label="Instagram"><FaInstagram /></a>
+            <a href="https://www.facebook.com/ENSI.Junior.Entreprise" target="_blank" rel="noopener noreferrer" className="social-link facebook" aria-label="Facebook"><FaFacebookF /></a>
+            <a href="https://www.linkedin.com/company/ensi-junior-entreprise/posts/?feedView=all" target="_blank" rel="noopener noreferrer" className="social-link linkedin" aria-label="LinkedIn"><FaLinkedinIn /></a>
           </div>
         </div>
       </section>
@@ -153,7 +154,7 @@ const Section1 = () => {
                 catalyseur stratégique au cœur de l’économie tunisienne. Il
                 connecte startups, investisseurs, institutions et grandes
                 entreprises autour d’une vision commune :
-                -stimuler l’innovation, créer des ponts durables entre les
+                stimuler l’innovation, créer des ponts durables entre les
                 acteurs clés, et faire rayonner la Tunisie à l’international.
               </p>
             </div>
@@ -163,7 +164,7 @@ const Section1 = () => {
           </div>
           <div className="stats" ref={statsRef}>
             <div className="stat-item">
-              <span className="stat-number">+{statsInView ? <CountUp end={700} duration={2.5} /> : '0'}</span>
+              <span className="stat-number">+{statsInView ? <CountUp end={800} duration={2.5} /> : '0'}</span>
               <span className="stat-label">Visiteurs</span>
             </div>
             <div className="stat-item">

@@ -41,7 +41,7 @@ const Collaboration = () => {
       <section className="collab-section partners">
         <div className="section-header">
           <h2>Nos <span className="highlight">Partenaires</span> Stratégiques</h2>
-          <p>Une synergie d’expertises et de ressources. Ensemble, nous créons un écosystème où l’innovation prospère.</p>
+          <p> Ensemble, nous créons un écosystème où l’innovation prospère.</p>
         </div>
         <div className="partners-grid">
           {partnersData.map((partner, index) => (

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import './Footer.css';
-import logo from '../../assets/images/logogete.png'; 
+import logo from '../../assets/images/log.png';
 import { FaFacebookF, FaInstagram, FaLinkedinIn, FaYoutube } from 'react-icons/fa';
 
 const Footer = () => {
@@ -11,7 +11,7 @@ const Footer = () => {
 
   const handleSubscribe = async (e) => {
     // Empêche le comportement par défaut du formulaire (qui est de recharger la page)
-    e.preventDefault(); 
+    e.preventDefault();
     setLoading(true);
     setMessage('');
 
@@ -52,14 +52,7 @@ const Footer = () => {
                 <li><a href="/apropos">A propos</a></li>
                 <li><a href="/">Accueil</a></li>
                 <li><a href="/programme">Programme</a></li>
-              </ul>
-            </div>
-            <div className="footercolumn">
-              <h3>Collaboration</h3>
-              <ul>
-                <li><a href="#exposants">Exposants</a></li>
-                <li><a href="#sponsors">Sponsors</a></li>
-                <li><a href="#partners">Partners</a></li>
+                <li><a href="/collaboration">Collaboration</a></li>
               </ul>
             </div>
             <div className="footercolumn">
@@ -81,7 +74,7 @@ const Footer = () => {
 
         <div className="footermiddle">
           <div className="footernewsletter">
-            <p>Join our community to receive updates</p>
+            <p>Rejoignez notre communauté pour recevoir des mises à jour</p>
             <form onSubmit={handleSubscribe} className="newsletterform">
               <input
                 type="email"
@@ -100,12 +93,13 @@ const Footer = () => {
             {message && <p className="footer-message">{message}</p>}
           </div>
           <div className="footersocial">
-            <p>Follow us</p>
+            <p>Suivez-nous</p>
             <div className="socialicons">
-              <a href="https://www.facebook.com/ENSI.Junior.Entreprise" aria-label="Facebook"><FaFacebookF /></a>
-              <a href="https://www.instagram.com/ensijunior" aria-label="Instagram"><FaInstagram /></a>
-              <a href="https://www.linkedin.com/company/ensi-junior-entreprise/posts/?feedView=all" aria-label="LinkedIn"><FaLinkedinIn /></a>
-              <a href="https://www.youtube.com/@ENSIJuniorEntreprise" aria-label="YouTube"><FaYoutube /></a>
+              {/* --- MODIFICATIONS ICI --- */}
+              <a href="https://www.facebook.com/ENSI.Junior.Entreprise" target="_blank" rel="noopener noreferrer" aria-label="Facebook" ><FaFacebookF /></a>
+              <a href="https://www.instagram.com/ensijunior" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><FaInstagram /></a>
+              <a href="https://www.linkedin.com/company/ensi-junior-entreprise/posts/?feedView=all" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><FaLinkedinIn /></a>
+              <a href="https://www.youtube.com/@ENSIJuniorEntreprise" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><FaYoutube /></a>
             </div>
           </div>
         </div>

@@ -73,3 +73,48 @@
 .sponsor-item:hover img {
   transform: scale(1.1);
 }
+/* === RESPONSIVE === */
+
+@media (max-width: 992px) {
+  .sponsors-section {
+    padding: 60px 0;
+  }
+  .sponsors-header h2 {
+    font-size: 2.5rem;
+  }
+  .sponsor-item img {
+    height: 180px; /* On réduit la hauteur des logos */
+  }
+  .sponsors-list {
+    gap: 80px; /* On réduit l'espace */
+  }
+}
+
+@media (max-width: 768px) {
+  .sponsors-header h2 {
+    font-size: 2rem;
+  }
+  .sponsor-item img {
+    height: 120px; /* Logos plus petits */
+  }
+  .sponsors-list {
+    gap: 60px;
+    animation-duration: 25s; /* On peut accélérer un peu */
+  }
+}
+
+@media (max-width: 480px) {
+  .sponsors-section {
+    padding: 40px 0;
+  }
+  .sponsors-header h2 {
+    font-size: 1.8rem;
+  }
+  .sponsor-item img {
+    height: 80px; /* Logos bien plus petits pour petits écrans */
+    max-width: 150px;
+  }
+  .sponsors-list {
+    gap: 40px;
+  }
+}

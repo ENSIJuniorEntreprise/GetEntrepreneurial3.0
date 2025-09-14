@@ -107,10 +107,6 @@
   padding-bottom: 20px;
 }
 
-/* =========================================== */
-/* === MODIFICATIONS POUR LA VUE DÉTAILLÉE === */
-/* =========================================== */
-
 .article-detail-view {
   position: fixed; top: 0; left: 0; width: 100%; height: 100%;
   z-index: 2000;
@@ -186,15 +182,60 @@
 .detail-text { 
   font-size: 1.2rem;
   line-height: 1.9;
-  text-align: justify;
 }
 
-/* === RESPONSIVE === */
-@media (max-width: 992px) {
-  .articles-grid { grid-template-columns: 1fr; gap: 2rem; }
-  .article-card { height: 400px; }
+/* === RESPONSIVE SUPPLÉMENTAIRE === */
+@media (max-width: 1200px) {
+  .articles-grid {
+    grid-template-columns: repeat(2, 1fr); /* Passe à 2 colonnes sur tablettes */
+  }
 }
+
 @media (max-width: 768px) {
-  .articles-header h2 { font-size: 2rem; }
-  .detail-title { font-size: 2.2rem; }
+  .articles-section {
+    padding: 60px 20px;
+  }
+  .articles-header{
+    margin-bottom: 70px;
+  }
+  .articles-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+  .article-card {
+    height: 450px;
+  }
+  .article-title {
+    font-size: 1.5rem;
+  }
+  
+  /* Responsive pour la vue détaillée */
+  .detail-content-overlay {
+    padding: 3rem 1.5rem;
+  }
+  .detail-title {
+    font-size: 1.8rem;
+  }
+  .detail-text {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .articles-header h2 {
+    font-size: 1.8rem;
+  }
+  .article-card {
+    height: 400px;
+  }
+  .article-title {
+    font-size: 1.3rem;
+  }
+  .detail-title {
+    font-size: 1.5rem;
+  }
+  .close-button {
+    margin-bottom: 1rem;
+    font-size: 1rem;
+  }
 }

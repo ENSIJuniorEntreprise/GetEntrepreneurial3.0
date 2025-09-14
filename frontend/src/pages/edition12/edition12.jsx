@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import './edition12.css';
 
 // --- Importations d'images ---
@@ -62,7 +62,6 @@ const AnimatedStat = ({ endValue }) => {
     const suffix = endValue.endsWith('%') ? '%' : '';
 
     useEffect(() => {
-        let start = 0;
         const startTime = Date.now();
         const animateCount = () => {
             const now = Date.now();
@@ -83,6 +82,7 @@ const AnimatedStat = ({ endValue }) => {
 
 
 const Edition12 = () => {
+    // --- Carrousel Images ---
     const [currentCarousel, setCurrentCarousel] = useState(0);
     const carouselImages = [galleryImage1, galleryImage2, galleryImage3, galleryImage4, galleryImage5];
     const totalImages = carouselImages.length;
@@ -110,19 +110,39 @@ const Edition12 = () => {
         return () => clearInterval(interval);
     }, []);
 
+    // --- Carrousel Témoignages ---
+    const [currentTestimonial, setCurrentTestimonial] = useState(0);
+    const totalTestimonials = testimonialsData.length;
+
+    const handleNextTestimonial = () => {
+        setCurrentTestimonial((prev) => (prev + 1) % totalTestimonials);
+    };
+
+    const handlePrevTestimonial = () => {
+        setCurrentTestimonial((prev) => (prev - 1 + totalTestimonials) % totalTestimonials);
+    };
+
     return (
         <div className="legacy-page">
 
+            {/* --- Section Hero --- */}
             <header className="legacy-hero" style={{ backgroundImage: `url(${heroBackground})` }}>
                 <div className="hero-overlay"></div>
                 <div className="hero-content">
-                    <h1><span className="highlight">Découvrez </span> Get Entrepreneurial</h1>
+                    <h1><span className="highlight">Découvrez </span> <span className="highlight">GET E</span>NTREPRENEURIAL
+</h1>
+                    <div className="hero-tagline">
+            <span className="line"></span>
+            <p>Innovation et Entrepreneuriat pour un Avenir Durable</p>
+            <span className="line"></span>  
+          </div>
                 </div>
             </header>
 
+            {/* --- Section Intro --- */}
             <section className="legacy-section intro-section">
                 <div className="section-header">
-                    <h2>Get Entrepreneurial</h2>
+                    <h2>GET Entrepreneurial</h2>
                     <p>Plongez au Cœur de l'Événement</p>
                 </div>
                 <div className="intro-grid">
@@ -144,6 +164,7 @@ const Edition12 = () => {
                 </div>
             </section>
 
+            {/* --- Section Carrousel Images --- */}
             <section className="carousel-section">
                 <div className="carousel-container">
                     <button className="carousel-btn left" onClick={handlePrev}><ArrowLeft /></button>
@@ -158,6 +179,7 @@ const Edition12 = () => {
                 </div>
             </section>
             
+            {/* --- Section Témoignages --- */}
             <section className="testimonials-section">
                 <div className="testimonials-header">
                     <h2 className="testimonials-title">Témoignages</h2>
@@ -167,17 +189,30 @@ const Edition12 = () => {
                         <span className="line"></span>
                     </div>
                 </div>
-                <div className="testimonials-list">
-                    {testimonialsData.map((testimonial, index) => (
-                        <div key={index} className="testimonial-item">
+
+                <div className="testimonials-carousel">
+                    <button className="testimonial-btn left" onClick={handlePrevTestimonial}>
+                        <ArrowLeft />
+                    </button>
+
+                    <div className="testimonial-slide">
+                        <div className="testimonial-item">
                             <ImQuotesLeft className="testimonial-quote-icon" />
-                            <p className="testimonial-quote">« {testimonial.quote} »</p>
+                            <p className="testimonial-quote">« {testimonialsData[currentTestimonial].quote} »</p>
                             <div className="author-info">
-                                <img src={testimonial.image} alt={testimonial.name} className="testimonial-author-image" />
-                                <p className="testimonial-author">{testimonial.name}</p>
+                                <img 
+                                    src={testimonialsData[currentTestimonial].image} 
+                                    alt={testimonialsData[currentTestimonial].name} 
+                                    className="testimonial-author-image" 
+                                />
+                                <p className="testimonial-author">{testimonialsData[currentTestimonial].name}</p>
                             </div>
                         </div>
-                    ))}
+                    </div>
+
+                    <button className="testimonial-btn right" onClick={handleNextTestimonial}>
+                        <ArrowRight />
+                    </button>
                 </div>
             </section>
         </div>

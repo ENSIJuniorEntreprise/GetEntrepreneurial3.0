@@ -1,9 +1,9 @@
 import React, { useState, useEffect, Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
-import Navbar from './components/Navbar/Navbar';
-import Footer from './components/Footer/Footer';
-import Loader from './components/Loader/Loader'; // Votre loader principal
+import Navbar from './components/Navbar/Navbar'; 
+import Footer from './components/Footer/Footer'; 
+import Loader from './components/Loader/Loader'; 
 
 const Home = React.lazy(() => import('./pages/Home/Home'));
 const Apropos = React.lazy(() => import('./pages/Apropos/Apropos'));
@@ -44,7 +44,7 @@ function App() {
             path="/"
             element={
               <>
-                <Navbar />
+                <Navbar/>
                 <Home />
                 <Footer />
               </>

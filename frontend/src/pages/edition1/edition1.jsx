@@ -48,7 +48,11 @@ const Edition1 = () => {
   const { ref: testimonialsRef, inView: testimonialsInView } = useInView({ triggerOnce: true, threshold: 0.2 });
 
   const gallerySettings = {
-    dots: true, infinite: true, speed: 500, slidesToShow: 3, slidesToScroll: 1,
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 1,
     nextArrow: <NextArrow customClassName="gallery-arrow" />,
     prevArrow: <PrevArrow customClassName="gallery-arrow" />,
     responsive: [
@@ -70,7 +74,7 @@ const Edition1 = () => {
           </div>
           <div className="hero-tagline">
             <span className="line"></span>
-            <p>Innovation et Entrepreneuziehat pour un Avenir Durable</p>
+            <p>Innovation et Entrepreneuriat pour un Avenir Durable</p>
             <span className="line"></span>  
           </div>
         </div>
@@ -91,7 +95,7 @@ const Edition1 = () => {
       </section>
 
       {/* --- Section 3: Galerie "Temps Forts" --- */}
-      <section className={`highlights-edition ${highlightsInView ? 'is-visible' : ''}`} ref={highlightsRef}>
+       <section className={`highlights-edition ${highlightsInView ? 'is-visible' : ''}`} ref={highlightsRef}>
         <div className="highlights-header">
           <h2><span className="text-orange">Les Temps Forts </span>de Notre Dernière Rencontre</h2>
         </div>
@@ -106,7 +110,7 @@ const Edition1 = () => {
         </div>
       </section>
 
-      {/* --- Section 4: Témoignages (MISE À JOUR) --- */}
+      {/* --- Section 4: Témoignages --- */}
       <section className={`testimonials-edition ${testimonialsInView ? 'is-visible' : ''}`} ref={testimonialsRef}>
         <div className="testimonials-header">
           <h2>Témoignages</h2>
@@ -116,7 +120,6 @@ const Edition1 = () => {
             <span className="line"></span>
           </div>
         </div>
-        {/* MODIFICATION : Affichage statique du seul témoignage */}
         <div className="testimonial-static-container">
           {testimonialsData.map(testimonial => (
             <div key={testimonial.id} className="testimonial-card-static">

@@ -9,12 +9,18 @@
   --timeline-line-color: rgba(254, 153, 0, 0.4);
 }
 
+/* Reset global */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 body { 
   margin: 0; 
   font-family: 'Montserrat', sans-serif; 
   background-color: var(--background-color); 
   color: var(--light-text-color); 
-  box-sizing: border-box; 
   overflow-x: hidden; 
 }
 
@@ -26,8 +32,8 @@ body {
   background-attachment: fixed; 
   width: 100%; 
   min-height: 100vh; 
-  box-sizing: border-box; 
   padding: 100px 40px; 
+  position: relative;
 }
 
 .agenda-header { 
@@ -80,23 +86,11 @@ body {
   transition: color 0.3s ease; 
 }
 
-.agenda-nav button span { 
-  display: block; 
-  font-size: 1rem; 
-  font-weight: 400; 
-  color: rgba(255, 255, 255, 0.6); 
-  transition: color 0.3s ease; 
-}
-
-.agenda-nav button:hover, .agenda-nav button:hover span { 
+.agenda-nav button:hover { 
   color: #FFFFFF; 
 }
 
 .agenda-nav button.active { 
-  color: var(--card-color); 
-}
-
-.agenda-nav button.active span { 
   color: var(--card-color); 
 }
 
@@ -218,18 +212,15 @@ body {
   opacity: 1; 
 }
 
-/* --- MODIFICATION CI-DESSOUS --- */
 .timeline-description { 
   margin: 0;
-  font-size: 1.05rem;   /* Police légèrement agrandie */
-  line-height: 1.7;     /* Interligne augmenté pour l'aération */
+  font-size: 1.05rem;
+  line-height: 1.7;
   color: var(--card-color); 
-  opacity: 0.95;        /* Opacité augmentée pour un texte plus lumineux */
+  opacity: 0.95;
 }
 
-/* ======================================================= */
-/* === STYLE FINAL POUR "COMING SOON" (sobre et épuré) === */
-/* ======================================================= */
+/* Coming Soon Section */
 .coming-soon-wrapper {
   display: flex;
   justify-content: center;
@@ -267,14 +258,256 @@ body {
   color: var(--highlight-color);
 }
 
-/* --- RESPONSIVITÉ (inchangé) --- */
-@media (max-width: 768px) {
-  .agenda-container { padding: 80px 20px; }
-  .agenda-header h1 { font-size: 2.2rem; }
-  .agenda-nav { flex-wrap: wrap; gap: 2rem; }
-  .agenda-nav button { padding: 10px; font-size: 1rem; }
-  .timeline::before, .timeline-item::before { display: none; }
-  .timeline-item { padding-left: 0; }
-  .timeline-time { position: static; width: auto; text-align: left; margin-bottom: 10px; color: var(--highlight-color); }
-  .timeline-content { padding: 20px; }
+/* === RESPONSIVENESS SIMPLIFIÉE ET CORRIGÉE === */
+
+/* Tablets (768px - 1199px) */
+@media (max-width: 1199px) and (min-width: 768px) {
+  .agenda-container {
+    padding: 90px 30px;
+  }
+  
+  .agenda-header h1 {
+    font-size: 2.5rem;
+  }
+  
+  .agenda-nav {
+    gap: 3rem;
+  }
+  
+  .agenda-nav button {
+    font-size: 1.1rem;
+  }
+  
+  .timeline::before {
+    left: 120px;
+  }
+  
+  .timeline-item {
+    padding-left: 150px;
+  }
+  
+  .timeline-item::before {
+    left: 114px;
+  }
+  
+  .timeline-time {
+    width: 100px;
+    font-size: 1rem;
+  }
+  
+  .timeline-content {
+    padding: 20px 25px;
+  }
+  
+  .timeline-title {
+    font-size: 1.2rem;
+  }
+  
+  .timeline-description {
+    font-size: 1rem;
+  }
+}
+
+/* Mobile (moins de 768px) */
+@media (max-width: 767px) {
+  .agenda-container {
+    padding: 140px 20px 80px 20px;
+    background-attachment: scroll;
+  }
+  
+  .agenda-header h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+  
+  .agenda-nav {
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+  }
+  
+  .agenda-nav button {
+    font-size: 0.9rem;
+    padding: 10px 16px;
+    min-width: 110px;
+    background: rgba(42, 45, 60, 0.6);
+    border: 1.5px solid rgba(255, 255, 255, 0.15);
+    border-radius: 10px;
+
+  }
+  
+  .agenda-nav button:hover {
+    transform: none; /* Désactiver sur mobile */
+  }
+  
+  .agenda-nav button.active {
+    background: var(--highlight-color);
+    color: var(--background-color);
+    border-color: var(--highlight-color);
+    box-shadow: 0 3px 10px rgba(254, 153, 0, 0.4);
+    border-radius: 10px;
+  }
+  
+  .agenda-nav::after {
+    display: none;
+  }
+  
+  .agenda-content {
+    margin-top: 50px;
+  }
+  
+  /* Timeline devient verticale simple */
+  .timeline::before {
+    display: none;
+  }
+  
+  .timeline-item {
+    padding-left: 0;
+    margin-bottom: 25px;
+    border: 1px solid var(--timeline-line-color);
+    border-radius: 12px;
+    background: rgba(42, 45, 60, 0.3);
+    padding: 20px;
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+  
+  .timeline-item::before {
+    display: none;
+  }
+  
+  .timeline-time {
+    position: static;
+    width: auto;
+    text-align: left;
+    transform: none;
+    margin-bottom: 10px;
+    color: var(--highlight-color);
+    font-size: 0.9rem;
+    background: rgba(254, 153, 0, 0.1);
+    padding: 6px 10px;
+    border-radius: 6px;
+    display: inline-block;
+  }
+  
+  .timeline-content {
+    padding: 10px 0 0 0;
+    background: transparent;
+    border: none;
+  }
+  
+  .timeline-title {
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+  }
+  
+  .timeline-speaker {
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+  }
+  
+  .timeline-description {
+    font-size: 0.85rem;
+    line-height: 1.5;
+  }
+  
+  .timeline-item:hover .timeline-content {
+    background: transparent;
+  }
+  
+  .cs-card {
+    padding: 30px 20px;
+    margin: 0 10px;
+  }
+  
+  .cs-title {
+    font-size: 1.8rem;
+  }
+  
+  .cs-status {
+    font-size: 1.1rem;
+    letter-spacing: 2px;
+  }
+}
+
+/* Small Mobile (moins de 480px) */
+@media (max-width: 479px) {
+  .agenda-container {
+    padding: 120px 15px 60px 15px;
+  }
+  
+  .agenda-header h1 {
+    font-size: 1.7rem;
+    line-height: 1.1;
+  }
+  
+  .agenda-nav {
+    gap: 1rem;
+  }
+  
+  .agenda-nav button {
+    font-size: 0.85rem;
+    padding: 8px 12px;
+    min-width: 90px;
+  }
+  
+  .timeline-item {
+    padding: 15px;
+    margin-bottom: 20px;
+  }
+  
+  .timeline-time {
+    font-size: 0.8rem;
+    padding: 5px 8px;
+  }
+  
+  .timeline-title {
+    font-size: 1rem;
+  }
+  
+  .timeline-speaker {
+    font-size: 0.8rem;
+  }
+  
+  .timeline-description {
+    font-size: 0.8rem;
+    line-height: 1.4;
+  }
+  
+  .cs-card {
+    padding: 25px 15px;
+  }
+  
+  .cs-title {
+    font-size: 1.5rem;
+  }
+  
+  .cs-status {
+    font-size: 1rem;
+  }
+}
+
+/* Mode paysage mobile */
+@media (max-height: 500px) and (orientation: landscape) {
+  .agenda-container {
+    padding: 80px 20px 40px 20px;
+  }
+  
+  .agenda-header h1 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+  }
+  
+  .agenda-content {
+    margin-top: 30px;
+  }
+}
+
+/* Désactiver les effets hover sur tactile */
+@media (pointer: coarse) {
+  .timeline-item:hover .timeline-content {
+    background: transparent;
+    border-color: var(--timeline-line-color);
+  }
 }

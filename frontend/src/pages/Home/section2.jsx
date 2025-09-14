@@ -1,8 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react'; // Ajout de useEffect
 import './section2.css';
-
-// Importez les icônes pour les flèches
-import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 
 // IMPORTANT : Assurez-vous que les chemins d'accès à vos images sont corrects
 import ensiLogo from '../../assets/images/logo.png'; 
@@ -15,22 +12,21 @@ const Section2 = () => {
   const sliderImages = [groupPhoto1, groupPhoto2, groupPhoto3, groupPhoto4];
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
-  const goToPrevious = () => {
-    const isFirstSlide = currentImageIndex === 0;
-    const newIndex = isFirstSlide ? sliderImages.length - 1 : currentImageIndex - 1;
-    setCurrentImageIndex(newIndex);
-  };
+  // MODIFICATION : Logique pour le slide automatique
+  useEffect(() => {
+    const timer = setInterval(() => {
+      const isLastSlide = currentImageIndex === sliderImages.length - 1;
+      const newIndex = isLastSlide ? 0 : currentImageIndex + 1;
+      setCurrentImageIndex(newIndex);
+    }, 4000); // Change d'image toutes les 4 secondes
 
-  const goToNext = () => {
-    const isLastSlide = currentImageIndex === sliderImages.length - 1;
-    const newIndex = isLastSlide ? 0 : currentImageIndex + 1;
-    setCurrentImageIndex(newIndex);
-  };
+    return () => clearInterval(timer); // Nettoie le timer quand le composant est démonté
+  }, [currentImageIndex, sliderImages.length]);
+
 
   return (
     <div className="section2-container">
       <div className="about-card">
-        {/* ====> CORRECTION DE LA STRUCTURE <==== */}
         <div className="left-column">
           <div className="card-header">
             <div className="about-logo">
@@ -69,9 +65,7 @@ const Section2 = () => {
 
         <div className="right-column">
           <div className="image-slider">
-            <button className="slider-arrow left" onClick={goToPrevious} aria-label="Image précédente">
-              <FaChevronLeft />
-            </button>
+            {/* MODIFICATION : Flèches supprimées */}
             <div className="slider-image-container">
               <img 
                 src={sliderImages[currentImageIndex]} 
@@ -79,9 +73,6 @@ const Section2 = () => {
                 className="slider-image"
               />
             </div>
-            <button className="slider-arrow right" onClick={goToNext} aria-label="Image suivante">
-              <FaChevronRight />
-            </button>
             <div className="pagination-dots">
               {sliderImages.map((_, index) => (
                 <button

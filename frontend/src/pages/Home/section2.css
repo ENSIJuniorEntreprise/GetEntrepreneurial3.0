@@ -11,7 +11,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: 'Montserrat', sans-serif;/* Espace pour compenser la carte qui remonte */
+  font-family: 'Montserrat', sans-serif;
 }
 
 .about-card {
@@ -23,18 +23,18 @@
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
   position: relative;
   bottom: 80px;
-  
-  /* ====> CORRECTION : Mise en page en 2 colonnes <==== */
   display: flex;
   gap: 3rem;
   align-items: center;
 }
 
+/* MODIFICATION : La colonne de gauche prend un peu moins de place */
 .left-column {
-  flex-basis: 50%;
+  flex-basis: 45%;
 }
+/* MODIFICATION : La colonne de droite prend plus de place pour une image plus grande */
 .right-column {
-  flex-basis: 50%;
+  flex-basis: 55%;
 }
 
 /* --- En-tête --- */
@@ -79,7 +79,7 @@
 .text-content {
   color: var(--text-dark);
   font-size: 1.1rem;
-  font-weight: 500; /* Légèrement moins gras pour la lisibilité */
+  font-weight: 500;
   line-height: 1.8;
 }
 .text-content .highlight {
@@ -93,50 +93,41 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-top: 40px;
 }
 .slider-image-container {
   width: 100%;
   border-radius: 15px;
   overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2); /* Ajout d'une ombre pour plus de profondeur */
 }
 .slider-image {
   width: 100%;
   display: block;
-  aspect-ratio: 4 / 3; /* Format plus standard */
+  aspect-ratio: 4 / 3;
   object-fit: cover;
+  /* Ajout d'une transition pour le fondu */
+  transition: opacity 0.5s ease-in-out;
 }
-.slider-arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background-color: rgba(31, 33, 45, 0.5);
-  color: white;
-  border: none;
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  z-index: 10;
-  transition: background-color 0.3s, transform 0.3s;
-}
-.slider-arrow:hover {
-  background-color: var(--orange);
-  transform: translateY(-50%) scale(1.1);
-}
-.slider-arrow.left { left: -20px; }
-.slider-arrow.right { right: -20px; }
+/* MODIFICATION : Style des flèches supprimé */
+
 .pagination-dots {
+  position: absolute; /* Positionné par-dessus l'image */
+  bottom: 20px; /* En bas de l'image */
+  left: 50%;
+  transform: translateX(-50%);
   display: flex;
   gap: 1rem;
-  margin-top: 1.5rem;
+  background-color: rgba(31, 33, 45, 0.5); /* Fond semi-transparent pour la lisibilité */
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
 }
 .dot {
   width: 12px; height: 12px; border-radius: 50%;
-  background-color: var(--text-dark); cursor: pointer; border: none;
-  opacity: 0.3; transition: opacity 0.3s, background-color 0.3s;
+  background-color: var(--light-beige);
+  cursor: pointer; border: none;
+  opacity: 0.4;
+  transition: opacity 0.3s, background-color 0.3s;
 }
 .dot.active {
   background-color: var(--orange);
@@ -145,7 +136,7 @@
 
 /* --- Bouton --- */
 .about-button-container {
-  text-align: left; /* Aligné à gauche sous le texte */
+  text-align: left;
   margin-top: 2rem;
   margin-left: 160px;
 }
@@ -166,20 +157,114 @@
   box-shadow: 0 4px 20px rgba(254, 153, 0, 0.4);
 }
 
-/* --- Responsive --- */
+/* ======================================= */
+/* ======   SECTION RESPONSIVE   ========= */
+/* ======================================= */
+
 @media (max-width: 992px) {
   .about-card {
-    flex-direction: column; /* Les 2 colonnes passent l'une sur l'autre */
+    flex-direction: column;
+    bottom: 60px;
+    padding: 2.5rem 3rem;
+  }
+  .left-column, .right-column {
+    flex-basis: 100%;
   }
 }
 
 @media (max-width: 768px) {
-  .about-card { padding: 2rem; }
-  .card-header { flex-direction: column; align-items: center; gap: 1rem; }
-  .title-group { text-align: center; }
-  .text-content { text-align: center; }
-  .about-button-container { text-align: center; }
-  .title-group h2 { font-size: 1.8rem; }
-  .slider-arrow.left { left: 5px; }
-  .slider-arrow.right { right: 5px; }
+  .section2-container {
+    padding-top: 60px;
+  }
+  .about-button-container{
+    margin-top: 20px;
+  }
+  .image-slider{
+    padding-top: 0%;
+  }
+  .about-card {
+    bottom: 40px;
+    padding: 2.5rem 2rem; /* Augmente légèrement le padding pour l'aération */
+  }
+  .text-content{
+    padding-bottom: 20px;
+
+  }
+  .about-button-container{
+    position: relative;
+    top: 10px;
+  }
+  .subtitle .line {
+    height: 3px;
+    background-color: var(--orange);
+    border-radius: 20px;
+  }
+  .axe
+
+  /* --- CORRECTION : Utilisation de flexbox pour gérer l'espacement --- */
+  .left-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centre tous les enfants horizontalement */
+    gap: 1.5rem; /* Définit un espacement uniforme de 24px entre chaque bloc */
+  }
+
+  .card-header {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 0; 
+  }
+  .title-group {
+    text-align: center;
+  }
+  .title-group h2 {
+    font-size: 1.8rem; 
+  }
+  .subtitle {
+    font-size: 1.1rem; 
+  }
+  .text-content {
+    font-size: 1.05rem; 
+    line-height: 1.7;
+    padding-bottom: 0; 
+  }
+  .about-button-container {
+    text-align: center;
+    width: 100%;
+    margin: 0;
+  }
+  .about-button {
+    padding: 0.9rem 2.2rem;
+    font-size: 1rem;
+    margin-top: 0; 
+  }
+}
+@media (max-width: 400px) {
+  .about-card {
+    padding: 2rem 1.5rem;
+    margin: 0 15px;
+    width: auto;
+    bottom: 20px;
+  }
+  .about-logo img {
+    width: 80px;
+  }
+  .title-group h2 {
+    font-size: 1.6rem;
+  }
+  
+  /* --- CORRECTION : Ajustement de l'espacement pour les petits mobiles --- */
+  .left-column {
+    gap: 1.25rem; /* On réduit légèrement l'espacement (20px) */
+  }
+
+  .pagination-dots {
+    bottom: 15px; 
+    padding: 0.4rem 0.8rem;
+  }
+  .dot {
+    width: 10px;
+    height: 10px;
+  }
 }
