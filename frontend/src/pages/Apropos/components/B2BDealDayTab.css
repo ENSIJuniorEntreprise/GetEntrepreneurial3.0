@@ -19,15 +19,7 @@
   justify-content: center;
   gap: 20px;
 }
-.b2b-tab-header p::before,
-.b2b-tab-header p::after {
-  content: '';
-  display: block;
-  width: 200px;
-  height: 4px;
-  background-color: var(--orange);
-  border-radius: 20px;
-}
+
 
 .b2b-panels-grid {
   display: grid;

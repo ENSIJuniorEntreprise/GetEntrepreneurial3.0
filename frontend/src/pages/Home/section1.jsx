@@ -104,7 +104,7 @@ const Section1 = () => {
                   <div className="countdown-circle-container">
                     <div className="countdown-value-static">{days}</div>
                   </div>
-                  <div className="countdown-label">Days</div>
+                  <div className="countdown-label">Jours</div>
                 </div>
                 <div className="countdown-item">
                   <div className="countdown-circle-container">
@@ -115,7 +115,7 @@ const Section1 = () => {
                     </svg>
                     <div className="countdown-value">{timeLeft.hours}</div>
                   </div>
-                  <div className="countdown-label">Hours</div>
+                  <div className="countdown-label">Heures</div>
                 </div>
                 <div className="countdown-item">
                   <div className="countdown-circle-container">
@@ -137,7 +137,7 @@ const Section1 = () => {
                     </svg>
                     <div className="countdown-value">{timeLeft.seconds}</div>
                   </div>
-                  <div className="countdown-label">Seconds</div>
+                  <div className="countdown-label">Secondes</div>
                 </div>
               </>
             );

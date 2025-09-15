@@ -4,6 +4,7 @@ import './App.css';
 import Navbar from './components/Navbar/Navbar'; 
 import Footer from './components/Footer/Footer'; 
 import Loader from './components/Loader/Loader'; 
+import DashboardPage from './pages/dashboard/dashboard';
 
 const Home = React.lazy(() => import('./pages/Home/Home'));
 const Apropos = React.lazy(() => import('./pages/Apropos/Apropos'));
@@ -26,7 +27,7 @@ function App() {
       const timer = setTimeout(() => {
         setIsLoadedOnce(true);
         sessionStorage.setItem('isLoadedOnce', 'true');
-      }, 3500);
+      }, 2000);
 
       return () => clearTimeout(timer);
     }
@@ -137,6 +138,7 @@ function App() {
            <Exposant />
            } 
            />
+           <Route path="/dashboard" element={<DashboardPage />} />
         </Routes>
       </Suspense>
     </Router>

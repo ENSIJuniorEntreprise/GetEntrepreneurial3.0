@@ -7,19 +7,19 @@ import speakerImage from '../../../assets/images/speakers.JPG';
 export const aproposData = {
   // --- Contenu pour l'onglet "Thème" ---
   grandPublic: {
-    title: "Repenser le Développement Économique à l'Ère de l'Innovation",
+    title: "Repenser l’Avenir des Startups en Tunisie",
     problem: {
-      title: "Le Contexte Tunisien : Un Potentiel Freiné",
+      title: "Le Contexte : Opportunités et Défis",
       points: [
-        "Les réformes fiscales sont en retard.",
-        "L'accès au financement reste limité pour les startups.",
-        "La transition vers l’industrie 4.0 est encore balbutiante.",
-        "Le marché de l’emploi ne répond pas aux besoins des jeunes diplômés."
+        "La Tunisie dispose d’un fort potentiel dans plusieurs secteurs stratégiques.",
+        "L’accès aux marchés reste difficile à cause des obstacles à l’internationalisation et à la commande publique.",
+        "Les structures d’accompagnement (SSO) manquent encore de moyens pour répondre aux besoins des jeunes entrepreneurs.",
+        "Le financement des startups est limité et insuffisamment diversifié entre leviers privés, publics et internationaux."
       ]
     },
     theme: {
-      title: "Notre Vision : Vers une Économie Agile et Inclusive",
-      description: "Malgré ces défis, la Tunisie présente des signaux forts de transformation : une jeunesse dynamique et un écosystème startup en pleine croissance. GET 3.0 se positionne comme un tournant stratégique. En mobilisant startups, institutions, investisseurs et talents autour d’un projet ambitieux, nous pouvons réinventer ensemble une économie plus résiliente et construire un avenir durable."
+      title: "Notre Vision : Vers un Écosystème Startup Dynamique et Inclusif",
+      description: "Malgré ces défis, la Tunisie présente des signaux forts de transformation : une jeunesse dynamique et un écosystème startup en pleine croissance. GET 3.0 se positionne comme un tournant stratégique. En mobilisant startups, institutions, investisseurs et talents autour d’un projet ambitieux, nous pouvons réinventer ensemble "
     },
     stats: [
       { value: '55%', label: 'Plus de la moitié des Tunisiens ont moins de 25 ans.' },
@@ -27,10 +27,11 @@ export const aproposData = {
       { value: '65%', label: 'Les services génèrent les deux tiers du PIB.' }
     ],
     strategicAxes: [
-      'La libéralisation de l’<span class="highlight">initiative</span> <span class="highlight">entrepreneuriale</span>.',
-      'Le <span class="highlight">capital</span> <span class="highlight">humain</span>: un atout économique stratégique.',
-      'L’<span class="highlight">innovation</span> comme <span class="highlight">moteur</span> de croissance économique.',
-      'L’amélioration de la <span class="highlight">compétitivité</span>.'
+      'Les <span class="highlight">secteurs</span> dans lesquels la <span class="highlight">Tunisie</span> peut être déterminante.',  
+'Faciliter l’<span class="highlight">accès</span> aux <span class="highlight">marchés</span> en levant les obstacles à l’internationalisation ',  
+'Renforcer les <span class="highlight">structures</span> d’<span class="highlight">accompagnement</span> (SSO).',  
+'Repenser le <span class="highlight">financement</span> des <span class="highlight">startups</span> à travers les leviers privés, publics et internationaux.'  
+
     ]
   },
   

@@ -78,14 +78,14 @@ const Footer = () => {
             <form onSubmit={handleSubscribe} className="newsletterform">
               <input
                 type="email"
-                placeholder="Enter your email"
+                placeholder="Entrez votre email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
                 disabled={loading}
               />
               <button type="submit" disabled={loading}>
-                {loading ? 'Envoi...' : 'Subscribe'}
+                {loading ? 'Envoi...' : 'Abonner'}
               </button>
             </form>
 

@@ -26,15 +26,7 @@
   font-weight: 400;
 }
 
-.gt-tab-header p::before,
-.gt-tab-header p::after {
-  content: '';
-  display: block;
-  width: 250px;
-  height: 5px;
-  background-color: var(--orange);
-  border-radius: 20px;
-}
+
 
 /* --- Liste des workshops --- */
 .workshops-list {

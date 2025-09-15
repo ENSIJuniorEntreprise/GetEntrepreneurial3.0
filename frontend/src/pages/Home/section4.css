@@ -52,7 +52,7 @@
 .axes-cards-container {
   display: flex;
   justify-content: center;
-  gap: 5rem;
+  gap: 4rem;
   flex-wrap: wrap;
   padding-bottom: 40px;
 }
