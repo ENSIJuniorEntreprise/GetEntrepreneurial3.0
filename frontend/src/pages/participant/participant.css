@@ -5,16 +5,29 @@ body, html {
   box-sizing: border-box;
 }
 
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
 :root {
   --dark-blue: #1F212D;
   --orange: #FE9900;
   --light-beige: #E0DED2;
+  
+  /* Variables responsives */
+  --container-padding: 4rem 2rem;
+  --form-padding: 3rem 4rem;
+  --form-max-width: 900px;
+  --grid-gap: 1.5rem 2rem;
+  --font-size-title: 2.5rem;
+  --font-size-base: 1rem;
+  --font-size-button: 1.2rem;
 }
 
 .form-page-container {
   font-family: 'Montserrat', sans-serif;
   min-height: 100vh;
-  padding: 4rem 2rem;
+  padding: var(--container-padding);
   box-sizing: border-box;
   display: flex;
   justify-content: center;
@@ -31,11 +44,13 @@ body, html {
 
 .form-wrapper {
   background-color: var(--light-beige);
-  padding: 3rem 4rem;
+  padding: var(--form-padding);
   border-radius: 20px;
-  max-width: 900px;
+  max-width: var(--form-max-width);
   width: 100%;
   box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+  position: relative;
+  z-index: 1;
 }
 
 .back-button {
@@ -51,8 +66,11 @@ body, html {
   border-radius: 50px;
   text-decoration: none;
   font-weight: 600;
-  transition: background-color 0.3s, transform 0.2s;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  z-index: 2;
 }
+
 .back-button:hover {
   background-color: var(--orange);
   color: var(--dark-blue);
@@ -61,10 +79,11 @@ body, html {
 
 .form-title {
   text-align: center;
-  font-size: 2.5rem;
+  font-size: var(--font-size-title);
   font-weight: 800;
   color: var(--dark-blue);
   margin: 0 0 0.5rem 0;
+  line-height: 1.2;
 }
 
 .form-subtitle {
@@ -74,32 +93,40 @@ body, html {
   font-style: italic;
   margin: 0 0 3rem 0;
   opacity: 1;
+  font-size: var(--font-size-base);
+  line-height: 1.4;
 }
 
 .form-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 1.5rem 2rem;
+  gap: var(--grid-gap);
 }
+
 .form-group {
   display: flex;
   flex-direction: column;
 }
+
 .form-group.full-width {
   grid-column: span 2;
 }
+
 .form-group label {
   display: flex;
   align-items: center;
   gap: 0.8rem;
-  font-size: 1rem;
+  font-size: var(--font-size-base);
   font-weight: 700;
   color: var(--dark-blue);
   margin-bottom: 0.8rem;
+  line-height: 1.4;
 }
+
 .form-icon {
   color: var(--orange);
   font-size: 1.2rem;
+  flex-shrink: 0;
 }
 
 .form-body input[type="text"],
@@ -113,26 +140,78 @@ body, html {
   border: 1px solid #ccc;
   border-radius: 10px;
   padding: 1rem;
-  font-size: 1rem;
+  font-size: var(--font-size-base);
   font-family: 'Montserrat', sans-serif;
   color: var(--dark-blue);
-  transition: border-color 0.3s, box-shadow 0.3s;
+  transition: all 0.3s ease;
+  width: 100%;
+  min-height: 48px; /* Accessibilité tactile */
 }
-.form-body input::placeholder, .form-body textarea::placeholder { color: #888; }
-.form-body input:focus, .form-body select:focus, .form-body textarea:focus {
+
+.form-body input::placeholder, 
+.form-body textarea::placeholder { 
+  color: #888; 
+}
+
+.form-body input:focus, 
+.form-body select:focus, 
+.form-body textarea:focus {
   outline: none;
   border-color: var(--orange);
   box-shadow: 0 0 0 3px rgba(254, 153, 0, 0.2);
+  transform: translateY(-1px);
+}
+
+.form-body input:disabled,
+.form-body select:disabled,
+.form-body textarea:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }
 
 .checkbox-group {
   grid-column: span 2;
   flex-direction: row;
-  align-items: center;
+  align-items: flex-start;
   margin-top: 1rem;
+  gap: 1rem;
 }
-.checkbox-group input[type="checkbox"] { width: 20px; height: 20px; margin-right: 1rem; }
-.checkbox-group label { margin-bottom: 0; font-weight: 500; color: var(--dark-blue); }
+
+.checkbox-group input[type="checkbox"] { 
+  width: 20px; 
+  height: 20px; 
+  margin: 0;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.checkbox-group label { 
+  margin-bottom: 0; 
+  font-weight: 500; 
+  color: var(--dark-blue);
+  cursor: pointer;
+  line-height: 1.5;
+}
+
+.feedback-message {
+  padding: 1rem;
+  border-radius: 8px;
+  margin: 1rem 0;
+  font-weight: 600;
+  text-align: center;
+}
+
+.feedback-message.success {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.feedback-message.error {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
 
 .envoyer-button {
   background: linear-gradient(90deg, #fdac41, #ff8900);
@@ -141,21 +220,377 @@ body, html {
   padding: 1rem;
   border-radius: 12px;
   font-weight: 700;
-  font-size: 1.2rem;
+  font-size: var(--font-size-button);
   cursor: pointer;
   margin-top: 2rem;
   width: 100%;
+  min-height: 56px; /* Accessibilité tactile */
   box-shadow: 0 4px 15px rgba(254, 153, 0, 0.3);
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition: all 0.2s ease;
 }
-.envoyer-button:hover {
+
+.envoyer-button:hover:not(:disabled) {
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(254, 153, 0, 0.5);
 }
 
-@media (max-width: 768px) {
-  .form-grid { grid-template-columns: 1fr; }
-  .form-group.full-width { grid-column: span 1; }
-  .form-wrapper { padding: 2rem; }
-  .back-button { top: 20px; left: 20px; }
+.envoyer-button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* ================== MEDIA QUERIES RESPONSIVES ================== */
+
+/* Extra Large screens (1400px et plus) */
+@media screen and (min-width: 1400px) {
+  :root {
+    --font-size-title: 3rem;
+    --font-size-base: 1.1rem;
+    --form-max-width: 1000px;
+    --form-padding: 4rem 5rem;
+  }
+}
+
+/* Large screens (1200px à 1399px) */
+@media screen and (max-width: 1399px) and (min-width: 1200px) {
+  :root {
+    --font-size-title: 2.8rem;
+    --form-max-width: 950px;
+  }
+}
+
+/* Medium-Large screens (992px à 1199px) */
+@media screen and (max-width: 1199px) and (min-width: 992px) {
+  :root {
+    --font-size-title: 2.4rem;
+    --form-max-width: 850px;
+    --form-padding: 2.5rem 3rem;
+  }
+  
+  .back-button {
+    top: 30px;
+    left: 30px;
+    padding: 0.7rem 1rem;
+  }
+}
+
+/* Medium screens (768px à 991px) - Tablettes */
+@media screen and (max-width: 991px) and (min-width: 768px) {
+  :root {
+    --container-padding: 2rem 1.5rem;
+    --form-padding: 2rem 2.5rem;
+    --font-size-title: 2.2rem;
+    --grid-gap: 1.2rem;
+  }
+  
+  .back-button {
+    top: 25px;
+    left: 25px;
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
+  }
+  
+  .form-subtitle {
+    margin-bottom: 2rem;
+  }
+}
+
+/* Small-Medium screens (576px à 767px) - Tablettes portrait */
+@media screen and (max-width: 767px) and (min-width: 576px) {
+  :root {
+    --container-padding: 1.5rem 1rem;
+    --form-padding: 1.5rem 2rem;
+    --font-size-title: 2rem;
+    --font-size-base: 0.95rem;
+    --font-size-button: 1.1rem;
+    --grid-gap: 1rem;
+  }
+  
+  .form-page-container {
+    align-items: flex-start;
+    padding-top: 5rem;
+  }
+  
+  .participant-bg {
+    background-attachment: scroll; /* Évite les problèmes sur mobile */
+  }
+  
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .form-group.full-width {
+    grid-column: span 1;
+  }
+  
+  .checkbox-group {
+    grid-column: span 1;
+    align-items: flex-start;
+    gap: 0.8rem;
+  }
+  
+  .back-button {
+    top: 20px;
+    left: 20px;
+    padding: 0.5rem 0.8rem;
+    font-size: 0.85rem;
+  }
+  
+  .form-title {
+    font-size: 1.8rem;
+    margin-bottom: 0.3rem;
+  }
+  
+  .form-subtitle {
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+  }
+}
+
+/* Small screens (480px à 575px) - Mobiles paysage */
+@media screen and (max-width: 575px) and (min-width: 480px) {
+  :root {
+    --container-padding: 1rem 0.8rem;
+    --form-padding: 1.2rem 1.5rem;
+    --font-size-title: 1.7rem;
+    --font-size-base: 0.9rem;
+    --font-size-button: 1rem;
+  }
+  
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .form-group.full-width {
+    grid-column: span 1;
+  }
+  
+  .checkbox-group {
+    grid-column: span 1;
+  }
+  
+  .form-wrapper {
+    border-radius: 15px;
+  }
+  
+  .back-button {
+    top: 15px;
+    left: 15px;
+    padding: 0.4rem 0.7rem;
+    font-size: 0.8rem;
+    border-radius: 25px;
+  }
+  
+  .form-body input[type="text"],
+  .form-body input[type="email"],
+  .form-body input[type="tel"],
+  .form-body input[type="date"],
+  .form-body select {
+    padding: 0.8rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* Extra Small screens (moins de 480px) - Mobiles portrait */
+@media screen and (max-width: 479px) {
+  :root {
+    --container-padding: 0.8rem 0.5rem;
+    --form-padding: 1rem;
+    --font-size-title: 1.5rem;
+    --font-size-base: 0.85rem;
+    --font-size-button: 0.95rem;
+  }
+  
+  .form-page-container {
+    padding-top: 4rem;
+    min-height: 100vh;
+  }
+  
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .form-group.full-width {
+    grid-column: span 1;
+  }
+  
+  .checkbox-group {
+    grid-column: span 1;
+    margin-top: 0.8rem;
+    gap: 0.6rem;
+  }
+  
+  .form-wrapper {
+    border-radius: 12px;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.15);
+  }
+  
+  .back-button {
+    top: 10px;
+    left: 10px;
+    padding: 0.4rem 0.6rem;
+    font-size: 0.75rem;
+    border-radius: 20px;
+    gap: 0.3rem;
+  }
+  
+  .form-title {
+    font-size: 1.4rem;
+    line-height: 1.1;
+    margin-bottom: 0.2rem;
+  }
+  
+  .form-subtitle {
+    font-size: 0.8rem;
+    margin-bottom: 1.2rem;
+  }
+  
+  .form-group label {
+    font-size: 0.85rem;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .form-icon {
+    font-size: 1rem;
+  }
+  
+  .form-body input[type="text"],
+  .form-body input[type="email"],
+  .form-body input[type="tel"],
+  .form-body input[type="date"],
+  .form-body select {
+    padding: 0.7rem;
+    font-size: 0.85rem;
+    border-radius: 8px;
+  }
+  
+  .checkbox-group input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+  }
+  
+  .checkbox-group label {
+    font-size: 0.8rem;
+  }
+  
+  .envoyer-button {
+    padding: 0.8rem;
+    font-size: 0.9rem;
+    margin-top: 1.5rem;
+    border-radius: 10px;
+  }
+  
+  .feedback-message {
+    padding: 0.8rem;
+    font-size: 0.85rem;
+    margin: 0.8rem 0;
+  }
+}
+
+/* Très petits écrans (moins de 360px) */
+@media screen and (max-width: 359px) {
+  :root {
+    --container-padding: 0.5rem;
+    --form-padding: 0.8rem;
+    --font-size-title: 1.3rem;
+    --font-size-base: 0.8rem;
+  }
+  
+  .form-title {
+    font-size: 1.2rem;
+  }
+  
+  .form-subtitle {
+    font-size: 0.75rem;
+  }
+  
+  .back-button {
+    top: 8px;
+    left: 8px;
+    padding: 0.3rem 0.5rem;
+    font-size: 0.7rem;
+  }
+}
+
+/* ================== MEDIA QUERIES POUR HAUTEUR D'ÉCRAN ================== */
+
+/* Écrans très bas (moins de 600px de hauteur) */
+@media screen and (max-height: 599px) and (min-width: 768px) {
+  .form-page-container {
+    align-items: flex-start;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+  
+  :root {
+    --form-padding: 1.5rem 3rem;
+  }
+  
+  .form-subtitle {
+    margin-bottom: 1.5rem;
+  }
+}
+
+/* ================== PRÉFÉRENCES UTILISATEUR ================== */
+
+/* Mode sombre du système */
+@media (prefers-color-scheme: dark) {
+  .form-wrapper {
+    box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+  }
+}
+
+/* Réduction des animations pour les utilisateurs qui le préfèrent */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  .back-button:hover,
+  .envoyer-button:hover {
+    transform: none;
+  }
+  
+  .participant-bg {
+    background-attachment: scroll;
+  }
+}
+
+/* Amélioration du contraste pour les utilisateurs qui le préfèrent */
+@media (prefers-contrast: high) {
+  .form-body input[type="text"],
+  .form-body input[type="email"],
+  .form-body input[type="tel"],
+  .form-body input[type="date"],
+  .form-body select {
+    border: 2px solid #000;
+  }
+  
+  .form-body input:focus,
+  .form-body select:focus {
+    border-color: var(--orange);
+    box-shadow: 0 0 0 3px rgba(254, 153, 0, 0.5);
+  }
+}
+
+/* ================== PRINT STYLES ================== */
+@media print {
+  .back-button,
+  .envoyer-button {
+    display: none;
+  }
+  
+  .form-page-container {
+    background: white;
+    padding: 1rem;
+  }
+  
+  .form-wrapper {
+    box-shadow: none;
+    border: 1px solid #ccc;
+  }
 }
