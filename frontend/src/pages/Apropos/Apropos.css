@@ -327,6 +327,7 @@ html, body {
   .apropos-header {
     padding: 15px 10px 50px 10px;
     min-height: 25vh;
+    padding-top: 70px;
   }
   
   .header-content h1 {
