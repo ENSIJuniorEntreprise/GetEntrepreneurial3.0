@@ -145,7 +145,6 @@
     margin: 0 auto;
     overflow: hidden;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    padding-right: 110px;
   }
   
   .cta-image { 
@@ -770,5 +769,4 @@
     .cta-content {
       padding: 20px;
     }
-    .cta-btn.primary{padding-bottom: 10px;}
   }

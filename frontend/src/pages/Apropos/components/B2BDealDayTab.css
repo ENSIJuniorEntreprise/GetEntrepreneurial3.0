@@ -1,15 +1,18 @@
-/* --- Conteneur et en-tête de l'onglet B2B --- */
+/* --- CONTENEUR ET EN-TÊTE B2B --- */
 .b2b-tab-header {
   text-align: center;
-  margin-bottom: 50px;
+  margin-bottom: clamp(40px, 8vw, 50px);
 }
+
 .b2b-tab-header h2 {
-  font-size: 2.6rem; 
+  font-size: clamp(2.2rem, 4.5vw, 2.6rem);
   color: var(--dark-blue);
-  margin-bottom: 25px;
+  margin-bottom: clamp(20px, 4vw, 25px);
+  line-height: 1.3;
 }
+
 .b2b-tab-header p {
-  font-size: 1.4rem;
+  font-size: clamp(1.2rem, 2.8vw, 1.4rem);
   line-height: 1.6;
   max-width: 900px;
   margin: 0 auto;
@@ -17,73 +20,314 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 20px;
+  gap: clamp(15px, 4vw, 20px);
+  flex-wrap: wrap;
+  padding: 0 clamp(10px, 3vw, 20px);
 }
 
-
+/* --- GRILLE DES PANELS --- */
 .b2b-panels-grid {
   display: grid;
-  grid-template-columns: 1fr; 
-  gap: 40px; 
+  grid-template-columns: 1fr;
+  gap: clamp(30px, 6vw, 40px);
+  padding: 0 clamp(10px, 3vw, 20px);
 }
 
+/* --- CARTE DE PANEL --- */
 .b2b-panel-card {
   background-color: var(--light-beige);
-  color: var(--dark-blue); 
-  padding: 30px;
+  color: var(--dark-blue);
+  padding: clamp(25px, 5vw, 30px);
   border-radius: 12px;
   display: flex;
   flex-direction: column;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* --- MODIFICATIONS CI-DESSOUS --- */
+.b2b-panel-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+}
 
-/* Le titre (partie bleue) */
+/* --- TITRE DU PANEL --- */
 .b2b-panel-title {
-  font-size: 1.6rem;
-  color: var(--dark-blue); /* La couleur par défaut est maintenant le bleu foncé */
+  font-size: clamp(1.4rem, 3vw, 1.6rem);
+  color: var(--dark-blue);
   margin-top: 0;
-  margin-bottom: 20px;
-  border-bottom: 2px solid rgba(31, 33, 45, 0.1); /* Ligne de séparation plus douce */
-  padding-bottom: 15px;
+  margin-bottom: clamp(15px, 3vw, 20px);
+  border-bottom: 2px solid rgba(31, 33, 45, 0.1);
+  padding-bottom: clamp(12px, 2.5vw, 15px);
+  line-height: 1.4;
 }
 
-/* Le numéro du panel (partie orange) */
+/* --- NUMÉRO DU PANEL --- */
 .panel-number {
-  color: var(--orange); /* On applique la couleur orange ici */
-  margin-right: 10px; /* Ajoute un petit espace entre le numéro et le titre */
+  color: var(--orange);
+  margin-right: 10px;
+  font-weight: 700;
 }
 
-
+/* --- LISTE DES ITEMS --- */
 .b2b-panel-items-list {
   list-style: none;
-  padding-left: 25px;
+  padding-left: clamp(20px, 4vw, 25px);
   margin-bottom: 0;
   padding-bottom: 10px;
-  flex-grow: 1; 
+  flex-grow: 1;
 }
 
 .b2b-panel-items-list li {
   position: relative;
-  margin-bottom: 12px;
-  font-size: 1.2rem;
+  margin-bottom: clamp(10px, 2vw, 12px);
+  font-size: clamp(1.1rem, 2.5vw, 1.2rem);
   font-weight: 400;
   color: var(--dark-blue);
+  line-height: 1.6;
+  padding-right: 10px;
 }
 
 .b2b-panel-items-list li::before {
   content: '✓';
   position: absolute;
-  left: -25px;
+  left: clamp(-20px, -4vw, -25px);
   color: var(--orange);
   font-weight: bold;
+  font-size: 1.1em;
 }
 
-/* --- Responsive --- */
-@media (max-width: 768px) {
+/* --- RESPONSIVE BREAKPOINTS --- */
+
+/* Large Desktop - 1200px+ */
+@media (min-width: 1200px) {
+  .b2b-panels-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 50px;
+    padding: 0;
+  }
+  
+  .b2b-panel-card {
+    padding: 35px;
+  }
+}
+
+/* Desktop - 992px to 1199px */
+@media (max-width: 1199px) and (min-width: 992px) {
+  .b2b-panels-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+  }
+}
+
+/* Tablet Large - 768px to 991px */
+@media (max-width: 991px) and (min-width: 768px) {
+  .b2b-panels-grid {
+    grid-template-columns: 1fr;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  
+  .b2b-tab-header p {
+    flex-direction: column;
+    gap: 15px;
+  }
+  
   .b2b-tab-header p::before,
   .b2b-tab-header p::after {
-    width: 50px; 
+    width: 120px;
+  }
+}
+
+/* Tablet Portrait - 576px to 767px */
+@media (max-width: 767px) and (min-width: 576px) {
+  .b2b-tab-header {
+    margin-bottom: 40px;
+  }
+  
+  .b2b-tab-header h2 {
+    font-size: 2.2rem;
+  }
+  
+  .b2b-tab-header p {
+    font-size: 1.3rem;
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .b2b-tab-header p::before,
+  .b2b-tab-header p::after {
+    width: 100px;
+    height: 3px;
+  }
+  
+  .b2b-panels-grid {
+    gap: 30px;
+    padding: 0 10px;
+  }
+  
+  .b2b-panel-card {
+    padding: 25px 20px;
+  }
+  
+  .b2b-panel-title {
+    font-size: 1.5rem;
+  }
+  
+  .b2b-panel-items-list {
+    padding-left: 22px;
+  }
+  
+  .b2b-panel-items-list li {
+    font-size: 1.15rem;
+    margin-bottom: 10px;
+  }
+}
+
+/* Mobile Large - 480px to 575px */
+@media (max-width: 575px) and (min-width: 480px) {
+  .b2b-tab-header {
+    margin-bottom: 35px;
+  }
+  
+  .b2b-tab-header h2 {
+    font-size: 2rem;
+  }
+  
+  .b2b-tab-header p {
+    font-size: 1.2rem;
+    flex-direction: column;
+    gap: 10px;
+    padding: 0 15px;
+  }
+  
+  .b2b-tab-header p::before,
+  .b2b-tab-header p::after {
+    width: 80px;
+    height: 3px;
+  }
+  
+  .b2b-panels-grid {
+    gap: 25px;
+    padding: 0 5px;
+  }
+  
+  .b2b-panel-card {
+    padding: 22px 18px;
+    border-radius: 10px;
+  }
+  
+  .b2b-panel-title {
+    font-size: 1.4rem;
+    margin-bottom: 18px;
+    padding-bottom: 12px;
+  }
+  
+  .b2b-panel-items-list {
+    padding-left: 20px;
+  }
+  
+  .b2b-panel-items-list li {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+  }
+  
+  .b2b-panel-items-list li::before {
+    left: -20px;
+  }
+}
+
+/* Mobile Small - under 480px */
+@media (max-width: 479px) {
+  .b2b-tab-header {
+    margin-bottom: 30px;
+  }
+  
+  .b2b-tab-header h2 {
+    font-size: 1.8rem;
+    line-height: 1.2;
+  }
+  
+  .b2b-tab-header p {
+    font-size: 1.1rem;
+    flex-direction: column;
+    gap: 8px;
+    padding: 0 10px;
+  }
+  
+  .b2b-tab-header p::before,
+  .b2b-tab-header p::after {
+    width: 60px;
+    height: 2px;
+  }
+  
+  .b2b-panels-grid {
+    gap: 20px;
+    padding: 0;
+  }
+  
+  .b2b-panel-card {
+    padding: 20px 15px;
+    border-radius: 8px;
+    margin: 0 5px;
+  }
+  
+  .b2b-panel-title {
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    line-height: 1.3;
+  }
+  
+  .panel-number {
+    display: block;
+    margin-bottom: 5px;
+    margin-right: 0;
+  }
+  
+  .b2b-panel-items-list {
+    padding-left: 18px;
+  }
+  
+  .b2b-panel-items-list li {
+    font-size: 1rem;
+    margin-bottom: 8px;
+    line-height: 1.5;
+  }
+  
+  .b2b-panel-items-list li::before {
+    left: -18px;
+    font-size: 1em;
+  }
+}
+
+/* --- CORRECTIONS POUR LES TRÈS PETITS ÉCRANS --- */
+@media (max-width: 320px) {
+  .b2b-tab-header h2 {
+    font-size: 1.6rem;
+  }
+  
+  .b2b-tab-header p {
+    font-size: 1rem;
+  }
+  
+  .b2b-panel-card {
+    padding: 18px 12px;
+    margin: 0 2px;
+  }
+  
+  .b2b-panel-title {
+    font-size: 1.2rem;
+  }
+  
+  .b2b-panel-items-list {
+    padding-left: 15px;
+  }
+  
+  .b2b-panel-items-list li {
+    font-size: 0.95rem;
+  }
+  
+  .b2b-panel-items-list li::before {
+    left: -15px;
   }
 }

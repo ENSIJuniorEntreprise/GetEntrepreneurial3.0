@@ -1,19 +1,30 @@
-/* --- Réinitialisation --- */
-body, html {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-/* --- Variables --- */
+/* --- Variables CSS --- */
 :root {
   --dark-blue: #1F212D;
   --orange: #FE9900;
   --light-beige: #E0DED2;
   --white: #FFFFFF;
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 3rem;
+  --border-radius: 20px;
+  --border-radius-sm: 12px;
+  --transition: all 0.3s ease;
 }
 
-/* --- Conteneur de la page --- */
+/* --- Reset global --- */
+* {
+  box-sizing: border-box;
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+}
+
+/* --- Page principale --- */
 .inscription-page {
   background-image: 
     linear-gradient(rgba(31, 33, 45, 0.9), rgba(31, 33, 45, 0.9)),
@@ -21,149 +32,427 @@ body, html {
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: var(--light-beige);
-  padding: 120px 5% 6rem 5%;
   min-height: 100vh;
-  box-sizing: border-box;
+  padding: var(--spacing-xl) var(--spacing-md) var(--spacing-xl);
 }
 
-/* --- Titre de la page --- */
+/* --- Header --- */
 .inscription-header {
   text-align: center;
-  margin-bottom: 4rem;
-}
-.inscription-header h1 {
-  font-size: 3rem;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  margin: 0;
-}
-.inscription-header .text-orange {
-  color: var(--orange);
-}
-.inscription-header .subtitle {
-  font-size: 1.1rem;
-  font-weight: 500;
-  opacity: 0.9;
-  max-width: 600px;
-  margin: 1rem auto 0 auto;
+  margin-bottom: var(--spacing-xl);
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 3rem;
 }
 
-/* --- Contenu Principal --- */
+.inscription-header h1 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin: 0;
+  line-height: 1.1;
+}
+
+.text-orange {
+  color: var(--orange);
+}
+
+.subtitle {
+  font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+  font-weight: 500;
+  opacity: 0.9;
+  margin: var(--spacing-md) auto 0;
+  line-height: 1.5;
+  max-width: 90%;
+}
+
+/* --- Contenu principal --- */
 .inscription-content {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 3rem;
+  gap: var(--spacing-lg);
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
-/* --- Style des Cartes de Choix --- */
+/* --- Cartes --- */
 .choice-card {
   position: relative;
   width: 100%;
-  max-width: 900px;
   border: 2px solid var(--orange);
-  border-radius: 20px;
-  padding: 3rem;
+  border-radius: var(--border-radius);
   overflow: hidden;
-  box-sizing: border-box;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: var(--transition);
+  background: rgba(31, 33, 45, 0.8);
+  backdrop-filter: blur(10px);
 }
+
 .choice-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 30px rgba(254, 153, 0, 0.2);
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(254, 153, 0, 0.3);
+  border-color: rgba(254, 153, 0, 0.8);
 }
 
 .card-background {
   position: absolute;
-  top: 0; left: 0; width: 100%; height: 100%;
-  background-size: cover; background-position: center;
-  z-index: 1;
-  /* ===> CORRECTION : On définit une couleur de fond ici <=== */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   background-color: var(--dark-blue);
+  z-index: 1;
 }
 
 .card-overlay {
   position: absolute;
-  top: 0; left: 0; width: 100%; height: 100%;
-  /* On rend l'overlay plus subtil pour que le fond bleu soit visible */
-  background-color: rgba(31, 33, 45, 0.5); 
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(31, 33, 45, 0.6), rgba(31, 33, 45, 0.4));
   z-index: 2;
 }
 
 .card-content {
   position: relative;
   z-index: 3;
+  padding: var(--spacing-xl);
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  text-align: left;
+  height: 100%;
 }
+
+.card-header {
+  flex-grow: 1;
+}
+
 .card-title {
   display: flex;
   align-items: center;
-  gap: 1rem;
-  margin-bottom: 1.5rem;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
 }
+
 .title-icon {
-  font-size: 2rem;
+  font-size: clamp(1.5rem, 3vw, 2rem);
   color: var(--orange);
+  flex-shrink: 0;
 }
+
 .card-title h2 {
-  font-size: 2.2rem;
+  font-size: clamp(1.5rem, 3.5vw, 2.2rem);
   font-weight: 700;
   margin: 0;
+  line-height: 1.2;
 }
+
 .card-description {
-  font-size: 1rem;
+  font-size: clamp(0.9rem, 2vw, 1rem);
   line-height: 1.7;
-  max-width: 80%;
-  margin-bottom: 2rem;
+  margin-bottom: var(--spacing-lg);
+  opacity: 0.95;
 }
+
+.card-footer {
+  margin-top: auto;
+}
+
 .card-benefits {
   list-style: none;
   padding: 0;
-  margin: 0 0 2.5rem 0;
+  margin: 0 0 var(--spacing-lg) 0;
   display: flex;
   flex-wrap: wrap;
-  gap: 1.5rem;
+  gap: var(--spacing-md);
 }
+
 .card-benefits li {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: var(--spacing-xs);
   font-weight: 600;
+  font-size: clamp(0.85rem, 2vw, 0.95rem);
+  background: rgba(254, 153, 0, 0.1);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: 25px;
+  border: 1px solid rgba(254, 153, 0, 0.2);
 }
+
 .star-icon {
   color: var(--orange);
+  font-size: 0.8em;
 }
+
 .inscription-button-card {
-  background-color: var(--orange);
+  background: linear-gradient(135deg, var(--orange) 0%, #ff8800 100%);
   color: var(--dark-blue);
-  padding: 1rem 2.5rem;
+  padding: var(--spacing-md) var(--spacing-lg);
   border-radius: 50px;
   text-decoration: none;
   font-weight: 700;
-  font-size: 1.1rem;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  display: inline-block;
-}
-.inscription-button-card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 4px 20px rgba(254, 153, 0, 0.4);
+  font-size: clamp(0.9rem, 2.2vw, 1.1rem);
+  transition: var(--transition);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  box-shadow: 0 4px 15px rgba(254, 153, 0, 0.3);
+  align-self: flex-start;
 }
 
-/* --- Responsive --- */
+.inscription-button-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 25px rgba(254, 153, 0, 0.5);
+  background: linear-gradient(135deg, #ff8800 0%, var(--orange) 100%);
+}
+
+.button-text {
+  white-space: nowrap;
+}
+
+.button-arrow {
+  transition: transform 0.2s ease;
+  font-size: 1.2em;
+}
+
+.inscription-button-card:hover .button-arrow {
+  transform: translateX(3px);
+}
+
+/* --- Responsive Design --- */
+
+/* Tablettes portrait */
 @media (max-width: 768px) {
-  .inscription-header h1 {
-    font-size: 2.3rem;
+  .inscription-page {
+    padding: var(--spacing-lg) var(--spacing-sm) var(--spacing-lg);
+    background-attachment: scroll;
   }
-  .card-description {
+
+  .inscription-header {
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .card-content {
+    padding: var(--spacing-lg);
+  }
+
+  .card-benefits {
+    justify-content: center;
+  }
+
+  .card-benefits li {
+    flex: 1 1 auto;
+    min-width: fit-content;
+    justify-content: center;
+  }
+}
+
+/* Mobiles en mode paysage */
+@media (max-width: 640px) {
+  .inscription-page {
+    padding: var(--spacing-md) var(--spacing-sm) var(--spacing-md);
+  }
+
+  .card-content {
+    padding: var(--spacing-lg) var(--spacing-md);
+  }
+
+  .card-title {
+    flex-direction: column;
+    text-align: center;
+    gap: var(--spacing-sm);
+  }
+
+  .title-icon {
+    font-size: 2.5rem;
+  }
+
+  .card-benefits {
+    flex-direction: column;
+    gap: var(--spacing-sm);
+  }
+
+  .card-benefits li {
+    justify-content: flex-start;
+    text-align: left;
+  }
+
+  .inscription-button-card {
+    width: 100%;
+    justify-content: center;
+    padding: var(--spacing-md);
+  }
+}
+
+/* Très petits écrans */
+@media (max-width: 480px) {
+  .inscription-page {
+    padding: var(--spacing-sm);
+  }
+
+  .inscription-header {
+    margin-bottom: var(--spacing-md);
+  }
+
+  .card-content {
+    padding: var(--spacing-md);
+  }
+
+  .subtitle {
     max-width: 100%;
   }
+
   .choice-card {
-    padding: 2rem;
+    border-radius: var(--border-radius-sm);
   }
+
+  .card-benefits li {
+    padding: var(--spacing-xs) var(--spacing-sm);
+    font-size: 0.85rem;
+  }
+
+  .card-title {
+    gap: var(--spacing-xs);
+  }
+
+  .card-description {
+    margin-bottom: var(--spacing-md);
+  }
+}
+
+/* Très grands écrans */
+@media (min-width: 1200px) {
+  .inscription-content {
+    gap: var(--spacing-xl);
+  }
+
+  .card-content {
+    padding: var(--spacing-xl) calc(var(--spacing-xl) * 1.5);
+  }
+}
+
+/* Mode paysage mobile */
+@media (max-height: 500px) and (orientation: landscape) {
+  .inscription-page {
+    padding: var(--spacing-sm);
+  }
+
+  .inscription-header h1 {
+    font-size: 1.6rem;
+  }
+
+  .subtitle {
+    font-size: 0.8rem;
+  }
+
+  .card-content {
+    padding: var(--spacing-md);
+  }
+
+  .inscription-content {
+    gap: var(--spacing-md);
+  }
+
+  .inscription-header {
+    margin-bottom: var(--spacing-sm);
+  }
+}
+
+/* Amélioration de l'accessibilité */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .choice-card:hover {
+    transform: none;
+  }
+
+  .inscription-button-card:hover {
+    transform: none;
+  }
+
+  .inscription-button-card:hover .button-arrow {
+    transform: none;
+  }
+}
+
+/* Mode sombre forcé */
+@media (prefers-color-scheme: dark) {
+  .inscription-page {
+    background-image: 
+      linear-gradient(rgba(15, 17, 25, 0.95), rgba(15, 17, 25, 0.95)),
+      url('./utica.jpeg');
+  }
+
+  .card-background {
+    background-color: #0f1119;
+  }
+}
+
+/* Support pour les écrans haute résolution */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .choice-card {
+    border-width: 1px;
+  }
+}
+
+/* Optimisation pour l'impression */
+@media print {
+  .inscription-page {
+    background: white;
+    color: black;
+    padding: 1rem;
+  }
+
+  .choice-card {
+    border: 2px solid #333;
+    background: white;
+    box-shadow: none;
+    page-break-inside: avoid;
+    margin-bottom: 2rem;
+  }
+
+  .card-overlay,
+  .card-background {
+    display: none;
+  }
+
+  .text-orange,
+  .title-icon,
+  .star-icon {
+    color: #333 !important;
+  }
+
+  .inscription-button-card {
+    background: #f0f0f0;
+    color: #333;
+  }
+}
+@media (max-width:300px) {
+  .inscription-header {
+  text-align: center;
+  margin-bottom: var(--spacing-xl);
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 4rem;
+}
+
+.inscription-header h1 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 800;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin: 0;
+  line-height: 1.1;
+}
+  
 }

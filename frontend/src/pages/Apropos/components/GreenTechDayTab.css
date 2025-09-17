@@ -1,123 +1,417 @@
-/* --- Conteneur et en-tête de l'onglet --- */
+/* --- CONTENEUR ET EN-TÊTE --- */
 .gt-tab-container {
   padding-top: 20px;
 }
 
 .gt-tab-header {
   text-align: center;
-  margin-bottom: 70px;
+  margin-bottom: clamp(50px, 10vw, 70px);
 }
 
 .gt-tab-header h2 {
-  font-size: 2.8rem;
+  font-size: clamp(2.4rem, 5vw, 2.8rem);
   color: var(--dark-blue);
-  margin-bottom: 25px;
+  margin-bottom: clamp(20px, 4vw, 25px);
+  line-height: 1.3;
 }
 
 .gt-tab-header p {
-  font-size: 1.5rem;
+  font-size: clamp(1.3rem, 3vw, 1.5rem);
   max-width: 900px;
   margin: 0 auto;
   color: var(--dark-blue);
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 20px;
+  gap: clamp(15px, 4vw, 20px);
   font-weight: 400;
+  flex-wrap: wrap;
+  padding: 0 clamp(10px, 3vw, 20px);
 }
 
 
-
-/* --- Liste des workshops --- */
+/* --- LISTE DES WORKSHOPS --- */
 .workshops-list {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 40px;
+  gap: clamp(30px, 6vw, 40px);
+  padding: 0 clamp(10px, 3vw, 20px);
 }
 
-/* --- Carte de workshop (mise à jour) --- */
+/* --- CARTE DE WORKSHOP --- */
 .workshop-card {
-  /* MODIFICATION : Fond beige et texte sombre */
   background-color: var(--light-beige);
-  color: var(--dark-blue); 
-  border-radius: 20px;
+  color: var(--dark-blue);
+  border-radius: clamp(16px, 3vw, 20px);
   box-shadow: 0 10px 30px rgba(0,0,0,0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
 }
+
 .workshop-card:hover {
   transform: translateY(-8px);
   box-shadow: 0 15px 35px rgba(0,0,0,0.2);
 }
 
-/* --- Section des informations --- */
+/* --- SECTION INFORMATIONS --- */
 .workshop-info {
-  padding: 50px;
+  padding: clamp(35px, 7vw, 50px);
   text-align: left;
 }
 
 .workshop-number {
   display: block;
-  font-size: 2.5rem;
+  font-size: clamp(2rem, 4.5vw, 2.5rem);
   font-weight: 700;
   color: var(--orange);
-  margin-bottom: 15px;
+  margin-bottom: clamp(12px, 3vw, 15px);
+  line-height: 1.2;
 }
 
 .workshop-subtitle {
-  font-size: 2.1rem; 
-  font-weight:700;
-  color: var(--dark-blue); /* MODIFICATION : Couleur de texte sombre */
+  font-size: clamp(1.8rem, 3.5vw, 2.1rem);
+  font-weight: 700;
+  color: var(--dark-blue);
   line-height: 1.4;
   margin: 0;
-  padding-bottom: 25px;
-  border-bottom: 1px solid rgba(31, 33, 45, 0.1); /* Ligne de séparation plus claire */
+  padding-bottom: clamp(20px, 4vw, 25px);
+  border-bottom: 1px solid rgba(31, 33, 45, 0.1);
 }
 
-/* --- NOUVEAUX STYLES POUR LES DÉTAILS --- */
+/* --- CONTENU DES DÉTAILS --- */
 .workshop-details-content {
-  margin-top: 25px;
+  margin-top: clamp(20px, 4vw, 25px);
   font-weight: 500;
 }
+
 .details-meta {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  margin-bottom: 25px;
-  font-size: 1.1rem;
+  gap: clamp(8px, 2vw, 10px);
+  margin-bottom: clamp(20px, 4vw, 25px);
+  font-size: clamp(1rem, 2.2vw, 1.1rem);
 }
+
+.detail-item {
+  line-height: 1.5;
+}
+
 .detail-item strong {
   color: var(--orange);
   margin-right: 8px;
 }
+
+/* --- LISTE DES SUJETS --- */
 .topics-list {
   list-style: none;
-  padding-left: 20px;
+  padding-left: clamp(18px, 4vw, 20px);
   margin: 0;
 }
+
 .topic-item {
   position: relative;
-  margin-bottom: 10px;
-  font-size: 1.1rem;
+  margin-bottom: clamp(8px, 2vw, 10px);
+  font-size: clamp(1rem, 2.2vw, 1.1rem);
   line-height: 1.6;
+  padding-right: 10px;
 }
+
 .topic-item::before {
   content: '✓';
   position: absolute;
-  left: -20px;
+  left: clamp(-18px, -4vw, -20px);
   color: var(--orange);
   font-weight: bold;
+  font-size: 1.1em;
 }
 
-/* --- Responsive --- */
-@media (max-width: 768px) {
-    .gt-tab-header p::before,
-    .gt-tab-header p::after {
-        width: 50px;
-    }
-    .workshop-info {
-        padding: 40px 25px;
-    }
-    .workshop-subtitle {
-        font-size: 1.8rem;
-    }
+/* --- RESPONSIVE BREAKPOINTS --- */
+
+/* Large Desktop - 1200px+ */
+@media (min-width: 1200px) {
+  .workshops-list {
+    grid-template-columns: 1fr;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  
+  .workshop-info {
+    padding: 55px;
+  }
+}
+
+/* Desktop - 992px to 1199px */
+@media (max-width: 1199px) and (min-width: 992px) {
+  .gt-tab-header p::before,
+  .gt-tab-header p::after {
+    width: 200px;
+  }
+  
+  .workshop-info {
+    padding: 45px;
+  }
+}
+
+/* Tablet Large - 768px to 991px */
+@media (max-width: 991px) and (min-width: 768px) {
+  .gt-tab-header {
+    margin-bottom: 60px;
+  }
+  
+  .gt-tab-header p {
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .gt-tab-header p::before,
+  .gt-tab-header p::after {
+    width: 150px;
+    height: 4px;
+  }
+  
+  .workshop-info {
+    padding: 40px;
+  }
+  
+  .workshop-subtitle {
+    font-size: 1.9rem;
+  }
+}
+
+/* Tablet Portrait - 576px to 767px */
+@media (max-width: 767px) and (min-width: 576px) {
+  .gt-tab-header {
+    margin-bottom: 50px;
+  }
+  
+  .gt-tab-header h2 {
+    font-size: 2.4rem;
+  }
+  
+  .gt-tab-header p {
+    font-size: 1.3rem;
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .gt-tab-header p::before,
+  .gt-tab-header p::after {
+    width: 120px;
+    height: 4px;
+  }
+  
+  .workshops-list {
+    gap: 35px;
+    padding: 0 15px;
+  }
+  
+  .workshop-card {
+    border-radius: 16px;
+  }
+  
+  .workshop-info {
+    padding: 35px 30px;
+  }
+  
+  .workshop-number {
+    font-size: 2.2rem;
+  }
+  
+  .workshop-subtitle {
+    font-size: 1.8rem;
+  }
+  
+  .topics-list {
+    padding-left: 18px;
+  }
+  
+  .topic-item::before {
+    left: -18px;
+  }
+}
+
+/* Mobile Large - 480px to 575px */
+@media (max-width: 575px) and (min-width: 480px) {
+  .gt-tab-header {
+    margin-bottom: 40px;
+  }
+  
+  .gt-tab-header h2 {
+    font-size: 2.2rem;
+  }
+  
+  .gt-tab-header p {
+    font-size: 1.2rem;
+    flex-direction: column;
+    gap: 10px;
+    padding: 0 20px;
+  }
+  
+  .gt-tab-header p::before,
+  .gt-tab-header p::after {
+    width: 100px;
+    height: 3px;
+  }
+  
+  .workshops-list {
+    gap: 30px;
+    padding: 0 10px;
+  }
+  
+  .workshop-card {
+    border-radius: 14px;
+  }
+  
+  .workshop-info {
+    padding: 30px 25px;
+  }
+  
+  .workshop-number {
+    font-size: 2rem;
+    margin-bottom: 12px;
+  }
+  
+  .workshop-subtitle {
+    font-size: 1.7rem;
+    padding-bottom: 20px;
+  }
+  
+  .details-meta {
+    font-size: 1.05rem;
+    margin-bottom: 20px;
+  }
+  
+  .topics-list {
+    padding-left: 16px;
+  }
+  
+  .topic-item {
+    font-size: 1.05rem;
+  }
+  
+  .topic-item::before {
+    left: -16px;
+  }
+}
+
+/* Mobile Small - under 480px */
+@media (max-width: 479px) {
+  .gt-tab-container {
+    padding-top: 15px;
+  }
+  
+  .gt-tab-header {
+    margin-bottom: 35px;
+  }
+  
+  .gt-tab-header h2 {
+    font-size: 2rem;
+    line-height: 1.2;
+  }
+  
+  .gt-tab-header p {
+    font-size: 1.1rem;
+    flex-direction: column;
+    gap: 8px;
+    padding: 0 15px;
+  }
+  
+  .gt-tab-header p::before,
+  .gt-tab-header p::after {
+    width: 80px;
+    height: 3px;
+  }
+  
+  .workshops-list {
+    gap: 25px;
+    padding: 0 5px;
+  }
+  
+  .workshop-card {
+    border-radius: 12px;
+    margin: 0 5px;
+  }
+  
+  .workshop-info {
+    padding: 25px 20px;
+  }
+  
+  .workshop-number {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+  }
+  
+  .workshop-subtitle {
+    font-size: 1.5rem;
+    padding-bottom: 18px;
+    line-height: 1.3;
+  }
+  
+  .workshop-details-content {
+    margin-top: 18px;
+  }
+  
+  .details-meta {
+    font-size: 1rem;
+    margin-bottom: 18px;
+    gap: 8px;
+  }
+  
+  .topics-list {
+    padding-left: 15px;
+  }
+  
+  .topic-item {
+    font-size: 1rem;
+    margin-bottom: 8px;
+    line-height: 1.5;
+  }
+  
+  .topic-item::before {
+    left: -15px;
+    font-size: 1em;
+  }
+}
+
+/* --- CORRECTIONS POUR LES TRÈS PETITS ÉCRANS --- */
+@media (max-width: 320px) {
+  .gt-tab-header h2 {
+    font-size: 1.8rem;
+  }
+  
+  .gt-tab-header p {
+    font-size: 1rem;
+  }
+  
+  .workshop-card {
+    margin: 0 2px;
+  }
+  
+  .workshop-info {
+    padding: 20px 15px;
+  }
+  
+  .workshop-number {
+    font-size: 1.6rem;
+  }
+  
+  .workshop-subtitle {
+    font-size: 1.4rem;
+  }
+  
+  .details-meta {
+    font-size: 0.95rem;
+  }
+  
+  .topics-list {
+    padding-left: 12px;
+  }
+  
+  .topic-item {
+    font-size: 0.95rem;
+  }
+  
+  .topic-item::before {
+    left: -12px;
+  }
 }

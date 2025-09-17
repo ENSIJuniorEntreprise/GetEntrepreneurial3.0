@@ -353,7 +353,6 @@ body {
   .form-row {
     flex-direction: column;
     gap: 15px;
-    margin-right: 20px;
   }
   
   .contact-form input,

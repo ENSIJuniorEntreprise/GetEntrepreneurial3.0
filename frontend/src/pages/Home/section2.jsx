@@ -73,16 +73,6 @@ const Section2 = () => {
                 className="slider-image"
               />
             </div>
-            <div className="pagination-dots">
-              {sliderImages.map((_, index) => (
-                <button
-                  key={index}
-                  className={`dot ${index === currentImageIndex ? 'active' : ''}`}
-                  onClick={() => setCurrentImageIndex(index)}
-                  aria-label={`Aller à l'image ${index + 1}`}
-                ></button>
-              ))}
-            </div>
           </div>
         </div>
       </div>
