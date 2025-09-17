@@ -1,22 +1,51 @@
-
+/* === PALETTE DE COULEURS ET VARIABLES === */
 :root {
-  --sidebar-bg: #1f2937;      
-  --sidebar-text: #e5e7eb;    
-  --sidebar-active-bg: #374151; 
-  --accent-color: #3b82f6;    
-  --content-bg: #f9fafb;      
-  --card-bg: #ffffff;        
-  --text-primary: #111827;    
-  --text-secondary: #6b7280; 
-  --border-color: #e5e7eb;    
+  --sidebar-bg: #111827;      /* Bleu nuit très foncé */
+  --sidebar-text: #a8b2c0;    /* Gris clair pour le texte normal */
+  --sidebar-text-hover: #ffffff;
+  --sidebar-active-bg: #0052cc; /* Bleu vif pour l'accentuation */
+  
+  --content-bg: #f8f9fc;      /* Fond principal très légèrement gris */
+  --card-bg: #ffffff;         
+  
+  --text-primary: #1f2937;    /* Texte principal foncé */
+  --text-secondary: #6b7280;  /* Texte secondaire plus clair */
+  --border-color: #eef0f4;     /* Couleur de bordure douce */
+
+  --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.03), 0 2px 4px -2px rgba(0, 0, 0, 0.03);
+  --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -4px rgba(0, 0, 0, 0.05);
+  --global-radius: 12px;
+  --global-transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* === STYLE DE BASE ET BARRE DE DÉFILEMENT === */
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--content-bg);
+}
+::-webkit-scrollbar-thumb {
+  background-color: #c9d0db;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: #a8b2c0;
+}
+
+
+/* === STRUCTURE PRINCIPALE DU DASHBOARD === */
 .dashboard-layout {
   display: flex;
   min-height: 100vh;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background-color: var(--content-bg);
 }
+
 .dashboard-sidebar {
   width: 260px;
   background-color: var(--sidebar-bg);
@@ -24,15 +53,24 @@
   display: flex;
   flex-direction: column;
   padding: 1.5rem 0;
-  transition: width 0.3s ease;
+  border-right: 1px solid var(--border-color);
 }
 
+.dashboard-main-content {
+  flex-grow: 1;
+  padding: 2.5rem 3rem;
+  overflow-y: auto;
+}
+
+
+/* === BARRE LATÉRALE DE NAVIGATION (SIDEBAR) === */
 .sidebar-header {
   padding: 0 1.5rem;
-  margin-bottom: 2rem;
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: var(--card-bg);
+  margin-bottom: 2.5rem;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: white;
+  letter-spacing: -0.5px;
 }
 
 .sidebar-nav {
@@ -46,101 +84,127 @@
   display: flex;
   align-items: center;
   gap: 1rem;
-  padding: 0.85rem 1.5rem;
+  padding: 0.9rem 1.75rem;
   margin: 0.25rem 1rem;
   color: var(--sidebar-text);
   text-decoration: none;
   border-radius: 8px;
   font-weight: 500;
-  transition: background-color 0.2s ease, color 0.2s ease;
+  transition: var(--global-transition);
+  position: relative; /* Pour le pseudo-élément de l'état actif */
 }
 
 .sidebar-nav li a:hover {
-  background-color: var(--sidebar-active-bg);
+  background-color: rgba(255, 255, 255, 0.05);
+  color: var(--sidebar-text-hover);
 }
 
 .sidebar-nav li a.active {
-  background-color: var(--accent-color);
+  background-color: var(--sidebar-active-bg);
   color: white;
+  box-shadow: 0 4px 10px -2px rgba(0, 82, 204, 0.4);
 }
 
 .sidebar-nav li a svg {
   width: 24px;
   height: 24px;
-}
-.dashboard-main-content {
-  flex-grow: 1;
-  padding: 2.5rem;
-  overflow-y: auto;
+  opacity: 0.8;
+  transition: opacity 0.2s ease;
 }
 
+.sidebar-nav li a:hover svg,
+.sidebar-nav li a.active svg {
+  opacity: 1;
+}
+
+/* === CONTENU PRINCIPAL ET EN-TÊTE === */
 .content-header h1 {
   font-size: 2.25rem;
   font-weight: 700;
   color: var(--text-primary);
-  margin: 0 0 2rem 0;
+  margin: 0 0 2.5rem 0;
 }
 
+
+/* === CARTES DE STATISTIQUES AMÉLIORÉES === */
 .stats-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 1.5rem;
+  gap: 1.75rem;
 }
 
 .stat-card {
   background-color: var(--card-bg);
   padding: 1.5rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.04);
+  border-radius: var(--global-radius);
+  box-shadow: var(--shadow-sm);
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 1.25rem;
+  border: 1px solid var(--border-color);
+  transition: var(--global-transition);
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-md);
 }
 
 .stat-card-icon {
   flex-shrink: 0;
-  padding: 0.75rem;
+  padding: 1rem;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
 }
+
 .stat-card-icon svg {
   width: 32px;
   height: 32px;
 }
+
 .stat-card-info h3 {
   margin: 0;
-  font-size: 1rem;
+  font-size: 0.95rem;
   color: var(--text-secondary);
-  font-weight: 500;
+  font-weight: 600;
 }
+
 .stat-card-info p {
   margin: 0.25rem 0 0;
-  font-size: 2rem;
+  font-size: 2.25rem;
   font-weight: 700;
   color: var(--text-primary);
+  letter-spacing: -1px;
 }
-.icon-participants { background-color: #dbeafe; color: #2563eb; }
-.icon-exposants { background-color: #dcfce7; color: #16a34a; }
-.icon-messages { background-color: #fee2e2; color: #dc2626; }
-.icon-newsletter { background-color: #fef3c7; color: #d97706; }
+
+/* Couleurs des icônes avec dégradés subtils */
+.icon-participants { background-image: linear-gradient(to top, #dbeafe, #eff6ff); color: #2563eb; }
+.icon-exposants { background-image: linear-gradient(to top, #dcfce7, #f0fdf4); color: #16a34a; }
+.icon-messages { background-image: linear-gradient(to top, #fee2e2, #fef2f2); color: #dc2626; }
+.icon-newsletter { background-image: linear-gradient(to top, #fef3c7, #fffbeb); color: #d97706; }
+
+
+/* === TABLEAUX DE DONNÉES MODERNISÉS === */
 .table-container {
-  margin-top: 2.5rem;
+  margin-top: 3rem;
   background-color: var(--card-bg);
-  border-radius: 12px;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.04);
-  padding: 0.5rem 0;
+  border-radius: var(--global-radius);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border-color);
+  overflow: hidden; /* Pour que le radius s'applique au tableau */
 }
 
 .table-header {
-    padding: 1rem 2rem;
-    border-bottom: 1px solid var(--border-color);
+  padding: 1.25rem 2rem;
+  border-bottom: 1px solid var(--border-color);
 }
+
 .table-header h2 {
-    margin: 0;
-    font-size: 1.25rem;
-    font-weight: 600;
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 600;
 }
 
 .data-table {
@@ -148,11 +212,10 @@
   border-collapse: collapse;
 }
 
-.data-table th,
-.data-table td {
+.data-table th, .data-table td {
   padding: 1rem 2rem;
   text-align: left;
-  border-bottom: 1px solid var(--border-color);
+  white-space: nowrap;
 }
 
 .data-table th {
@@ -161,21 +224,48 @@
   color: var(--text-secondary);
   text-transform: uppercase;
   letter-spacing: 0.05em;
+  border-bottom: 1px solid var(--border-color);
+  background-color: #fcfdfe;
+}
+
+.data-table tbody tr {
+  transition: background-color 0.15s ease-in-out;
+}
+
+/* Lignes alternées pour la lisibilité (Zebra-striping) */
+.data-table tbody tr:nth-of-type(even) {
+  background-color: #fcfdff; 
+}
+
+.data-table tbody tr:hover {
+  background-color: #f4f6fa;
+}
+
+.data-table tbody tr td {
+  border-bottom: 1px solid var(--border-color);
+  color: var(--text-primary);
+  font-weight: 500;
 }
 
 .data-table tbody tr:last-child td {
   border-bottom: none;
 }
 
-.data-table tbody tr:hover {
-  background-color: var(--content-bg);
-}
+
+/* === ÉTAT DE CHARGEMENT ET ERREURS === */
 .loading, .error {
   text-align: center;
   padding: 4rem;
   font-size: 1.1rem;
   color: var(--text-secondary);
+  font-weight: 500;
 }
+.error {
+  color: #c81e1e;
+}
+
+
+/* === RESPONSIVE DESIGN === */
 @media (max-width: 768px) {
   .dashboard-layout {
     flex-direction: column;
@@ -187,22 +277,13 @@
     align-items: center;
     padding: 0.5rem;
     overflow-x: auto;
+    border-right: none;
+    border-bottom: 1px solid var(--border-color);
   }
-  .sidebar-header {
-    display: none; 
-  }
-  .sidebar-nav {
-    display: flex;
-    flex-direction: row;
-  }
-  .sidebar-nav li a {
-    padding: 0.75rem;
-    margin: 0.25rem;
-  }
-  .sidebar-nav li a span {
-      display: none; 
-  }
-  .dashboard-main-content {
-    padding: 1.5rem;
-  }
+  .sidebar-header { display: none; }
+  .sidebar-nav { display: flex; flex-direction: row; }
+  .sidebar-nav li a { padding: 0.75rem; margin: 0.25rem; }
+  .sidebar-nav li a span { display: none; }
+  .dashboard-main-content { padding: 1.5rem; }
+  .content-header h1 { font-size: 1.8rem; }
 }
