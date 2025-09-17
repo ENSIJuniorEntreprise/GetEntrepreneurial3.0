@@ -23,7 +23,7 @@ body, html {
   }
   .hero-fullscreen {
   position: relative;
-  height: 100vh;
+  height: 100vh; /* <-- Hauteur initiale de 100% de la vue */
   width: 100%;
   color: var(--white);
   overflow: hidden;
@@ -50,10 +50,9 @@ body, html {
   padding-bottom: 100px;
   margin-left: 50px;
   }
-  .date-location .day {
-  font-size: 5rem;
+ .day {
+  font-size: 6rem;
   color: #E0DED2;
-  line-height: 1;
   margin-left: 4px;
   margin-right: 0;
   }
@@ -214,7 +213,7 @@ body, html {
   .about-text { flex: 1; }
   .about-text h2 { font-size: 2.8rem; font-weight: 700; margin-bottom: 0.5rem; }
   .about-text h3 { font-size: 2.8rem; color: var(--orange); margin-top: 0; margin-bottom: 2rem; }
-  .about-text p { color: var(--off-white); font-size: 1.1rem; line-height: 1.7; }
+  .about-text p { color: var(--off-white); font-size: 1.1rem; line-height: 1.7; text-align: justify;}
   .about-image { flex: 1; }
   .about-image img { width: 100%; border-radius: 10px; }
   .stats {
@@ -259,7 +258,8 @@ body, html {
   }
   .stat-item .stat-number{ font-size: 2.5rem; }
   h1 { font-size: 10vw; }
-  .date-location .day { font-size: 2.6rem; }
+  .date-location .day { font-size: 2.9rem; 
+  padding-top: 6px;}
   .date-location .month, .date-location .year { font-size: 0.8rem; }
   .date-location .location { font-size: 1.5rem; }
   .tagline { font-size: 1.1rem; padding: 0 1rem; width: auto; }
@@ -268,75 +268,86 @@ body, html {
   .hero-content h1{ font-size: 2.7rem; padding-right: 0; }
 }
 
-@media (max-width: 450px) {
+@media (max-width:  486px) {
+  /* === PREMIÈRE RÉDUCTION DE LA HAUTEUR ICI === */
   .hero-fullscreen {
-      height: 90vh;
+      height: 100vh;
   }
-  .hero-content h1{ font-size: 2.3rem; }
+  .hero-content h1{ font-size: 2.7rem; }
   .date-location { padding-right: 0; }
-  .date-location .day { font-size: 2.1rem;}
   .tagline { font-size: 1rem; }
   .countdown-container { gap: 0.5rem; }
   .countdown-item { transform: scale(0.7); margin: -15px 0; }
 }
-
-@media (max-width: 396px) {
-  .hero-fullscreen { height: 88vh; }
-  .hero-content h1{ font-size: 1.9rem; }
+@media (max-width: 480px) {
+  .hero-content h1{ font-size: 2.5rem; }}
+@media (max-width: 450px) {
+  .hero-content h1{ font-size: 2.3rem; }}
+  .date-location .day { font-size: 2.7rem;}
+@media (max-width: 420px) {
+  .hero-content h1{ font-size: 2.1rem; }}
+@media (max-width: 385px) {
+  /* === DEUXIÈME RÉDUCTION DE LA HAUTEUR ICI === */
+  .hero-fullscreen { height: 80vh; }
+  .hero-content h1{ font-size: 2rem; }
   .date-location .day { font-size: 2.8rem;}
   .date-location .month{ font-size: 0.7rem; }
   .date-location .year {font-size: 0.8rem;}
   .date-location .location { font-size: 1.3rem; }
 }
+@media (max-width: 363px) {
+  .hero-content h1{ font-size: 1.9rem; }}
 
 @media (max-width: 350px) {
   .background-video {
     display: none;
   }
+  /* === ICI, LA PHOTO REMPLACE LA VIDÉO ET LA HAUTEUR EST ENCORE RÉDUITE === */
   .hero-fullscreen {
     background-image: url('../../assets/images/family.JPG');
     background-size: cover;
     background-position: center;
-    height: 85vh;
+    height: 80vh;
   }
 
-  /* === NOUVEAU : Ajout de l'effet de flou sur l'overlay === */
   .video-overlay {
-    /* Applique un effet de flou sur l'élément derrière (l'image de fond) */
-    -webkit-backdrop-filter: blur(5px); /* Pour la compatibilité avec Safari */
+    -webkit-backdrop-filter: blur(5px); 
     backdrop-filter: blur(5px);
-
-    /* On renforce la couleur pour que l'effet soit plus joli et le texte lisible */
     background-color: rgba(31, 33, 45, 0.7);
   }
 
   .hero-content { gap: 0.5rem; }
-  .hero-content h1{ font-size: 1.7rem;
+  .hero-content h1{ font-size: 1.9rem;
    }
   .date-location { flex-wrap: wrap; justify-content: center; gap: 0.5rem; }
-  .date-location .day { font-size: 2.1rem; }
+  .date-location .day { font-size: 2.5rem; }
   .date-location .location { border-left: none; padding-left: 0; font-size: 1.1rem; }
-  .tagline p { line-height: 1.3; font-size: 0.8rem; }
+  .tagline p { line-height: 1.3; font-size: 0.8rem; }}
+
+@media (max-width: 349px){
+.hero-content h1{ font-size: 1.7rem; } 
+.date-location .day { font-size: 2.4rem; } 
 }
-@media (max-width: 290px){
+@media (max-width: 312px){
   .hero-content h1{ font-size: 1.5rem; }
+  .date-location .day { font-size: 2.2rem; }
+    /* === AUTRE RÉDUCTION DE LA HAUTEUR === */
     .hero-fullscreen {
-    /* On applique l'image en fond */
     background-image: url('../../assets/images/family.JPG');
     background-size: cover;
     background-position: center;
-    height: 75vh; /* On continue de réduire la hauteur */
+    height: 50vh;
   }
 
 }
 
 @media (max-width: 280px) {
+    /* === DERNIÈRE RÉDUCTION DE LA HAUTEUR POUR LES PLUS PETITS ÉCRANS === */
     .hero-fullscreen {
-    /* On applique l'image en fond */
     background-image: url('../../assets/images/family.JPG');
     background-size: cover;
     background-position: center;
-    height: 65vh; /* On continue de réduire la hauteur */
+    height: 50vh; 
   }
   .hero-content { padding-top: 1rem; padding-bottom: 1rem; gap: 0.8rem; }
   .hero-content h1 { font-size: 1.3rem; line-height: 1.2; }

@@ -11,10 +11,7 @@
   background-color: var(--footer-bg);
   color: var(--footer-text);
   font-family: 'Montserrat', sans-serif;
-  padding-top: 40px;
-  padding-bottom: 40px;
-  padding-left: 40px;
-  padding-right: 30px;
+  padding: 40px 40px 40px 40px;
 }
 
 .footercontent {
@@ -26,10 +23,12 @@
   display: flex;
   justify-content: space-between;
   gap: 3rem;
+  flex-wrap: wrap; /* Permet aux éléments de passer à la ligne si nécessaire */
 }
 
 .footerinfo {
   flex-basis: 25%;
+  min-width: 250px; /* Empêche le bloc de devenir trop étroit */
 }
 
 .footerlogo {
@@ -52,10 +51,12 @@
   justify-content: space-between;
   flex-grow: 1;
   flex-basis: 70%;
+  flex-wrap: wrap; /* Permet aux colonnes de se réorganiser */
 }
 
 .footercolumn {
-  padding: 0 5rem;
+  padding: 0 2rem; /* Padding ajusté pour être plus flexible */
+  min-width: 150px; /* Largeur minimale pour chaque colonne */
 }
 
 .footercolumn h3 {
@@ -95,10 +96,11 @@
   align-items: center;
   gap: 1.5rem;
   flex-wrap: wrap;
+  flex-grow: 1; /* Permet de prendre plus de place */
 }
 .footernewsletter p { margin: 0; font-weight: 500; }
 
-.newsletterform { display: flex; gap: 1rem; }
+.newsletterform { display: flex; gap: 1rem; flex-wrap: wrap; }
 .newsletterform input {
   background-color: var(--footer-text);
   border: 1px solid transparent;
@@ -129,8 +131,7 @@
   flex-direction: column;
   align-items: flex-start;
   gap: 1rem;
-  padding-bottom: 40px;
-  padding-right: 80px;
+  padding-right: 20px; /* Léger padding pour l'alignement */
 }
 .footersocial p { margin: 0; font-weight: 500; }
 
@@ -160,6 +161,8 @@
   align-items: center;
   padding: 2rem 0;
   border-top: 1px solid rgba(159, 200, 212, 0.2); 
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 
 .footerhashtag {
@@ -174,60 +177,95 @@
 
 /* --- Responsive Design --- */
 @media (max-width: 1024px) {
-  .footertop, .footermiddle {
+  .footertop {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
+    text-align: center;
+    gap: 2.5rem;
   }
   .footerlinks {
-    width: 100%;
-    flex-direction: column;
+    justify-content: center;
     gap: 2rem;
+  }
+  .footermiddle {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .footersocial {
+    align-items: center;
+    padding-right: 0;
   }
 }
 
 @media (max-width: 768px) {
+  .footercontainer {
+    padding: 30px 25px;
+  }
   .footerbottom {
     flex-direction: column-reverse;
-    gap: 1rem;
-    text-align: center;
+    gap: 1.5rem;
   }
-  .footerdetails{
-    padding-left: 30px;
-    
-  }
-  .footercolumn {
-    padding-left: 35px;
-    font-size: 1rem;
-  }
-  .footercolumn ul li{
-    font-size: 1rem;
-  }
-  .newsletterform{
-    display: flex;
+  .newsletterform {
     flex-direction: column;
+    width: 100%;
+    align-items: center;
+  }
+  .newsletterform input {
+    width: 90%;
+    max-width: 350px;
+    box-sizing: border-box;
   }
 }
-@media (max-width: 480px){
-  .footerlogo {
-    height: 80px;
-    width: auto;
-    margin-bottom: 1.5rem;
-  }
 
-}
-@media (max-width: 417px){
+@media (max-width: 480px) {
+  .footercontainer {
+    padding: 30px 20px;
+  }
   .footerlogo {
     height: 70px;
-    width: auto;
-    margin-bottom: 1.5rem;
   }
-
+  .footerlinks {
+    flex-direction: column;
+    align-items: center;
+  }
+  .footercolumn {
+    padding: 0;
+  }
+  .footerhashtag {
+    font-size: 1.2rem;
+  }
+  .footercopyright, .footercolumn a, .footercolumn p {
+    font-size: 0.85rem;
+  }
+  .footerdetails p {
+    font-size: 0.9rem;
+  }
 }
-@media (max-width: 359px){
+
+@media (max-width: 360px) {
   .footerlogo {
     height: 60px;
-    width: auto;
-    margin-bottom: 1.5rem;
   }
+  .socialicons a {
+    width: 34px;
+    height: 34px;
+    font-size: 0.9rem;
+  }
+}
 
+/* === AJUSTEMENTS FINALS POUR LES PLUS PETITS ÉCRANS === */
+@media (max-width: 320px) {
+  .footercontainer {
+    padding: 25px 15px;
+  }
+  .footerhashtag {
+    font-size: 1.1rem;
+  }
+  .footercopyright {
+    font-size: 0.8rem;
+  }
+  .footerdetails p, .footercolumn a, .footercolumn p {
+    font-size: 0.8rem;
+  }
 }

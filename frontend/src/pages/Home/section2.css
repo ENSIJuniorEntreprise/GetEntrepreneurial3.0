@@ -28,11 +28,9 @@
   align-items: center;
 }
 
-/* MODIFICATION : La colonne de gauche prend un peu moins de place */
 .left-column {
   flex-basis: 45%;
 }
-/* MODIFICATION : La colonne de droite prend plus de place pour une image plus grande */
 .right-column {
   flex-basis: 55%;
 }
@@ -54,7 +52,7 @@
   padding-left: 5px;
 }
 .title-group h2 {
-  font-size: 1.9rem;
+  font-size: 1.6rem;
   font-weight: 650;
   color: var(--text-dark);
   text-transform: uppercase;
@@ -70,7 +68,8 @@
   font-size: 1.2rem;
 }
 .subtitle .line {
-  height: 3px;
+  height: 4px;
+  width: 10px;
   background-color: var(--orange);
   flex-grow: 1;
   border-radius: 20px;
@@ -82,7 +81,9 @@
   font-size: 1.1rem;
   font-weight: 500;
   line-height: 1.8;
+
 }
+
 .text-content .highlight {
   color: var(--orange);
   font-weight: 700;
@@ -94,32 +95,29 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 40px;
+  padding-top: 80px;
 }
 .slider-image-container {
   width: 100%;
   border-radius: 15px;
   overflow: hidden;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.2); /* Ajout d'une ombre pour plus de profondeur */
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
 }
 .slider-image {
   width: 100%;
   display: block;
   aspect-ratio: 4 / 3;
   object-fit: cover;
-  /* Ajout d'une transition pour le fondu */
   transition: opacity 0.5s ease-in-out;
 }
-/* MODIFICATION : Style des flèches supprimé */
-
 .pagination-dots {
-  position: absolute; /* Positionné par-dessus l'image */
-  bottom: 20px; /* En bas de l'image */
+  position: absolute;
+  bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
   gap: 1rem;
-  background-color: rgba(31, 33, 45, 0.5); /* Fond semi-transparent pour la lisibilité */
+  background-color: rgba(31, 33, 45, 0.5);
   padding: 0.5rem 1rem;
   border-radius: 20px;
 }
@@ -150,7 +148,7 @@
   font-weight: bold;
   font-size: 1.1rem;
   cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition: transform 0.2s, box-shadow 0.2s, padding 0.2s, font-size 0.2s; /* Ajout transition */
   text-decoration: none;
 }
 .about-button:hover {
@@ -174,6 +172,9 @@
 }
 
 @media (max-width: 768px) {
+  .text-content p{
+    font-size: 0.9rem;
+  }
   .section2-container {
     padding-top: 60px;
   }
@@ -185,50 +186,49 @@
   }
   .about-card {
     bottom: 40px;
-    padding: 2.5rem 2rem; /* Augmente légèrement le padding pour l'aération */
+    padding: 2.5rem 2rem;
   }
   .text-content{
     padding-bottom: 20px;
 
   }
-  .about-button-container{
+  .about-button-container  {
     position: relative;
     top: 10px;
+    /* Styles de taille supprimés d'ici pour être placés dans .about-button */
   }
   .subtitle .line {
     height: 3px;
     background-color: var(--orange);
     border-radius: 20px;
   }
-  .axe
 
-  /* --- CORRECTION : Utilisation de flexbox pour gérer l'espacement --- */
   .left-column {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Centre tous les enfants horizontalement */
-    gap: 1.5rem; /* Définit un espacement uniforme de 24px entre chaque bloc */
+    align-items: center;
+    gap: 1.5rem;
   }
 
   .card-header {
     flex-direction: column;
     align-items: center;
     width: 100%;
-    margin-bottom: 0; 
+    margin-bottom: 0;
   }
   .title-group {
     text-align: center;
   }
   .title-group h2 {
-    font-size: 1.8rem; 
+    font-size: 1.8rem;
   }
   .subtitle {
-    font-size: 1.1rem; 
+    font-size: 1.1rem;
   }
   .text-content {
-    font-size: 1.05rem; 
+    font-size: 1.05rem;
     line-height: 1.7;
-    padding-bottom: 0; 
+    padding-bottom: 0;
   }
   .about-button-container {
     text-align: center;
@@ -238,34 +238,88 @@
   .about-button {
     padding: 0.9rem 2.2rem;
     font-size: 1rem;
-    margin-top: 0; 
+    margin-top: 0;
   }
 }
-@media (max-width: 400px) {
+@media (max-width: 435px) {
+  .text-content p{
+    font-size: 0.85rem;
+  }
   .about-card {
     padding: 2rem 1.5rem;
     margin: 0 15px;
     width: auto;
     bottom: 20px;
   }
+
   .about-logo img {
     width: 80px;
   }
   .title-group h2 {
-    font-size: 1.6rem;
+    font-size: 1.5rem;
   }
   
-  /* --- CORRECTION : Ajustement de l'espacement pour les petits mobiles --- */
   .left-column {
-    gap: 1.25rem; /* On réduit légèrement l'espacement (20px) */
+    gap: 1.25rem;
   }
 
   .pagination-dots {
-    bottom: 15px; 
+    bottom: 15px;
     padding: 0.4rem 0.8rem;
   }
   .dot {
     width: 10px;
     height: 10px;
+  }
+
+  /* AJOUT : Réduction du bouton */
+  .about-button {
+    font-size: 0.9rem;
+    padding: 0.8rem 2rem;
+  }
+}
+
+@media (max-width: 388px) {
+  .text-content p{
+    font-size: 0.8rem;
+  }
+.title-group h2 {
+    font-size: 1.3rem;
+  }
+.title-group p {
+    font-size: 1rem;
+  }
+
+  /* AJOUT : Réduction du bouton */
+  .about-button {
+    font-size: 0.85rem;
+    padding: 0.7rem 1.8rem;
+  }
+}
+
+@media (max-width: 369px) {
+  .text-content p{
+    font-size: 0.75rem;
+  }
+.title-group h2 {
+    font-size: 1.2rem;
+  }
+.title-group p {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 334px) {
+  .title-group h2 {
+    font-size: 1rem;
+  }
+.title-group p {
+    font-size: 0.8rem;
+  }
+
+  /* AJOUT : Réduction finale du bouton */
+  .about-button {
+    font-size: 0.8rem;
+    padding: 0.7rem 1.5rem;
   }
 }
