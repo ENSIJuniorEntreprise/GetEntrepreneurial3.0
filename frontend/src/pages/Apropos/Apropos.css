@@ -356,7 +356,8 @@ html, body {
     flex-direction: column;
   }
   
-  .tab-btn, .tab-btn3 {
+  
+  .tab-btn {
     font-size: 1rem;
     padding: 12px 15px;
     width: 100%;

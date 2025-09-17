@@ -36,7 +36,7 @@ body, html {
 }
 
 .participant-bg {
-  background-image: linear-gradient(rgba(31, 33, 45, 0.8), rgba(31, 33, 45, 0.8)), url('../../assets/images/042.png');
+  background-image: linear-gradient(rgba(31, 33, 45, 0.8), rgba(31, 33, 45, 0.8)), url('../../assets/images/0.png');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -69,6 +69,7 @@ body, html {
   transition: all 0.3s ease;
   backdrop-filter: blur(10px);
   z-index: 2;
+  margin-top: 19px;
 }
 
 .back-button:hover {
