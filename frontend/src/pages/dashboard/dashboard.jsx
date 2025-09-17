@@ -1,7 +1,9 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 import './dashboard.css'; 
-const API_URL = 'http://localhost:5000/api/dashboard';
+
+// --- DÉFINITIONS DES CONSTANTES ET ICÔNES (INCHANGÉ) ---
+const API_URL = 'http://localhost:5000/api';
 const StatsIcon = () => (<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z" /></svg>);
 const UsersIcon = () => (<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-4.663M12 12a3 3 0 100-6 3 3 0 000 6z" /></svg>);
 const ExposantIcon = () => (<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M13.5 21v-7.5A2.25 2.25 0 0011.25 11.25H4.5A2.25 2.25 0 002.25 13.5V21M3 3h18M5.25 3v18m13.5-18v18M9 6.75h6.375a.625.625 0 01.625.625v3.75a.625.625 0 01-.625.625H9v-5z" /></svg>);
@@ -16,17 +18,42 @@ const Dashboard = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
 
+  // MODIFIÉ : La fonction fetchData est maintenant plus intelligente
   const fetchData = useCallback(async (view) => {
     setLoading(true);
     setError('');
-    let endpoint = `/${view}`;
+    
+    // On définit le bon chemin d'API pour chaque vue
+    let endpoint = '';
+    switch (view) {
+      case 'stats':
+        endpoint = '/stats';
+        break;
+      case 'participants':
+        endpoint = '/inscriptions/participants';
+        break;
+      case 'exposants':
+        endpoint = '/inscriptions/exposants';
+        break;
+      case 'contacts':
+        endpoint = '/contact'; // La route pour les messages est /api/contact
+        break;
+      case 'newsletters':
+        endpoint = '/newsletter'; // La route pour la newsletter est /api/newsletter
+        break;
+      default:
+        setError('Vue non valide');
+        setLoading(false);
+        return;
+    }
     
     try {
       const response = await axios.get(`${API_URL}${endpoint}`);
       if (view === 'stats') {
         setStats(response.data);
       } else {
-        setData(response.data);
+        // Vos routes renvoient un objet { success, count, data }, on prend juste data
+        setData(response.data.data); 
       }
     } catch (err) {
       setError(`Erreur lors de la récupération des données : ${err.message}`);
@@ -39,6 +66,8 @@ const Dashboard = () => {
   useEffect(() => {
     fetchData(currentView);
   }, [currentView, fetchData]);
+
+  // --- LE RESTE DU FICHIER EST INCHANGÉ ---
 
   const renderStats = () => (
     <div className="stats-grid">
@@ -80,6 +109,7 @@ const Dashboard = () => {
       contacts: { title: 'Messages de Contact', cols: ['Nom Complet', 'Email', 'Sujet', 'Reçu le'], rows: data.map(i => [`${i.prenom} ${i.nom}`, i.email, i.sujet, new Date(i.createdAt).toLocaleDateString()]) },
       newsletters: { title: 'Inscrits à la Newsletter', cols: ["Email de l'abonné", "Date d'inscription"], rows: data.map(i => [i.email, new Date(i.createdAt).toLocaleDateString()]) },
     };
+    if (!config[currentView]) return <p>Vue non reconnue.</p>;
     const { title, cols, rows } = config[currentView];
 
     return (

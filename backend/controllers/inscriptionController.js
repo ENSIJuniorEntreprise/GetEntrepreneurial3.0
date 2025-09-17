@@ -1,15 +1,10 @@
 const Participant = require('../models/Participant');
-const Exposant = require('../models/Exposant'); // NOUVELLE LIGNE : On importe le modèle Exposant
+const Exposant = require('../models/Exposant');
 
-// --- Fonctions pour les Participants (déjà existantes) ---
-
-/**
- * @desc    Inscrire un nouveau participant
- * @route   POST /api/inscriptions/participants
- * @access  Public
- */
+// --- Fonctions pour les Participants ---
+// @desc    Inscrire un nouveau participant
+// @route   POST /api/inscriptions/participants
 exports.createParticipant = async (req, res) => {
-  // ... (le code pour créer un participant que nous avons déjà écrit reste ici)
   try {
     const { prenom, nom, email, telephone, dateDeNaissance, sexe, region, statut, expertise, experience, partageInfos } = req.body;
     if (!prenom || !nom || !email || !telephone) {
@@ -25,13 +20,9 @@ exports.createParticipant = async (req, res) => {
   }
 };
 
-/**
- * @desc    Récupérer tous les participants inscrits
- * @route   GET /api/inscriptions/participants
- * @access  Private/Admin
- */
+// @desc    Récupérer tous les participants
+// @route   GET /api/inscriptions/participants
 exports.getAllParticipants = async (req, res) => {
-  // ... (le code pour lister les participants que nous avons déjà écrit reste ici)
   try {
     const participants = await Participant.find({});
     res.status(200).json({ success: true, count: participants.length, data: participants });
@@ -40,31 +31,17 @@ exports.getAllParticipants = async (req, res) => {
   }
 };
 
-
-// --- NOUVELLES Fonctions pour les Exposants ---
-
-/**
- * @desc    Inscrire un nouvel exposant
- * @route   POST /api/inscriptions/exposants
- * @access  Public
- */
+// --- Fonctions pour les Exposants ---
+// @desc    Inscrire un nouvel exposant
+// @route   POST /api/inscriptions/exposants
 exports.createExposant = async (req, res) => {
   try {
     const { nomEntreprise, secteurActivite, typeOrganisation, nomContact, emailContact, telephone, siteWeb, description, accepteTermes } = req.body;
-
     if (!nomEntreprise || !nomContact || !emailContact || !telephone) {
       return res.status(400).json({ message: 'Veuillez remplir les champs obligatoires (nom entreprise, nom contact, email, téléphone).' });
     }
-
-    const newExposant = await Exposant.create({
-      nomEntreprise, secteurActivite, typeOrganisation, nomContact, emailContact, telephone, siteWeb, description, accepteTermes
-    });
-
-    res.status(201).json({
-      success: true,
-      message: 'Demande de participation comme exposant reçue !',
-      data: newExposant,
-    });
+    const newExposant = await Exposant.create({ nomEntreprise, secteurActivite, typeOrganisation, nomContact, emailContact, telephone, siteWeb, description, accepteTermes });
+    res.status(201).json({ success: true, message: 'Demande de participation reçue !', data: newExposant });
   } catch (error) {
     if (error.code === 11000) {
       return res.status(409).json({ message: 'Un exposant avec cet email de contact est déjà inscrit.' });
@@ -73,21 +50,12 @@ exports.createExposant = async (req, res) => {
   }
 };
 
-
-/**
- * @desc    Récupérer tous les exposants inscrits
- * @route   GET /api/inscriptions/exposants
- * @access  Private/Admin
- */
+// @desc    Récupérer tous les exposants
+// @route   GET /api/inscriptions/exposants
 exports.getAllExposants = async (req, res) => {
   try {
     const exposants = await Exposant.find({});
-
-    res.status(200).json({
-      success: true,
-      count: exposants.length,
-      data: exposants,
-    });
+    res.status(200).json({ success: true, count: exposants.length, data: exposants });
   } catch (error) {
     res.status(500).json({ message: 'Erreur du serveur.', error: error.message });
   }
