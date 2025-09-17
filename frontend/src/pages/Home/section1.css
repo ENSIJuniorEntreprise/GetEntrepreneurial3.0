@@ -76,7 +76,6 @@ body, html {
   font-weight: 715;
   margin-bottom: 0.2rem;
   }
-  /* L'année "2025" */
   .date-location .year {
   font-size: 1.5rem;
   font-weight: 700;
@@ -106,7 +105,7 @@ body, html {
   width: auto;
   }
   .tagline {
-  width: max-content; /* la largeur s'adapte au texte */
+  width: max-content;
   position: absolute;
   bottom: 5%;
   right: auto;
@@ -120,8 +119,7 @@ body, html {
   .tagline p {
   margin: 0.5rem 0;
   color: #E0DED2;
-  line-height: 1.4; /* augmente l'espace entre FAIRE... et ÉCONOMIQUE POUR */
-  font-size: ;
+  line-height: 1.4;
   }
   .tagline .highlight-wrapper {
   display: inline-block;
@@ -134,7 +132,6 @@ body, html {
   position: relative;
   bottom: 5px;
   }
-  /* --- Panneau Social Coulissant --- */
   .social-panel {
   position: fixed; top: 50%; right: 0; transform: translateY(-50%);
   z-index: 1000; display: flex; align-items: center;
@@ -170,12 +167,13 @@ body, html {
   .social-link.instagram {
   background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
   }
-  /* --- Section 2 : Contenu du Scroll*/
+  .scroll-content {
+    background-color: var(--dark-blue);
+  }
   .countdown-container {
   display: flex; justify-content: center; align-items: flex-start;
   flex-wrap: wrap;
-  gap: 2rem; background-color: #1F212D;
-  backdrop-filter: blur(5px);
+  gap: 2rem;
   padding-top: 2rem; border-radius: 20px;
   }
   .countdown-item {
@@ -205,7 +203,7 @@ body, html {
   text-transform: uppercase; letter-spacing: 1px;
   }
   .about-section {
-  padding: 80px 10% 40px 10%; /* Espacement interne propre */
+  padding: 80px 10% 40px 10%;
   color: var(--white);
   }
   .about-content {
@@ -226,154 +224,133 @@ body, html {
   .stat-item { margin: 1rem; }
   .stat-item .stat-number { font-size: 3rem; font-weight: 700; color: var(--orange); }
   .stat-item .stat-label { display: block; color: var(--off-white); font-size: 1.1rem; margin-top: 0.5rem; }
-  /* === RESPONSIVE SUPPLÉMENTAIRE === */
+
+/* === RESPONSIVE === */
 @media (max-width: 1200px) {
-  /* Cache l'image de la 3ème édition qui est difficile à placer */
-  .image {
-      display: none;
-  }
-  h1 {
-      white-space: normal; /* Permet au titre de passer sur plusieurs lignes */
-      text-align: center;
-      line-height: 1.2;
-  }
+  .image { display: none; }
+  h1 { white-space: normal; text-align: center; line-height: 1.2; }
 }
 
 @media (max-width: 992px) {
   .date-location, .tagline {
-      position: static;
-      transform: none;
-      width: 100%;
-      justify-content: center;
-      margin: 1rem auto;
-      padding: 0 1rem;
-      box-sizing: border-box;
+      position: static; transform: none; width: 100%;
+      justify-content: center; margin: 1rem auto;
+      padding: 0 1rem; box-sizing: border-box; text-align: center;
   }
-
   .hero-content {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      gap: 1rem;
-      padding: 1rem;
+      display: flex; flex-direction: column; justify-content: center;
+      align-items: center; gap: 1rem; padding: 1rem;
   }
-  
-  .date-location {
-      order: 2; /* Change l'ordre pour une meilleure lecture */
-  }
-  h1 {
-      position: static;
-      transform: none;
-      order: 1;
-  }
-  .tagline {
-      order: 3;
-  }
-  .social-panel {
-      display: none; /* Le panneau social est souvent gênant sur mobile, on peut le cacher */
-  }
-  .about-section {
-      padding: 60px 5% 30px 5%;
-  }
+  .date-location { order: 2; }
+  h1 { position: static; transform: none; order: 1; }
+  .tagline { order: 3; }
+  .social-panel { display: none; }
+  .about-section { padding: 60px 5% 30px 5%; }
 }
 
 @media (max-width: 768px) {
+  .hero-content { padding-top: 4rem; padding-bottom: 2rem; }
   .about-content{
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+    display: flex; flex-direction: column; gap: 20px;
     margin-bottom: 20px;
   }
   .stats{
-    gap: 20px;
-    display: flex;
-    flex-direction: column;
-    padding-top: 0%;
+    gap: 20px; display: flex; flex-direction: column; padding-top: 0%;
   }
-  .stat-number{
-    font-size: 1.5rem;
-  }
-  h1 { font-size: 10vw; } /* Utilise les unités de viewport pour une taille fluide */
-  .date-location .day { font-size: 3.7rem;
-  padding-top: 5px; }
-  .date-location .month, .date-location .year { font-size: 1rem; }
+  .stat-item .stat-number{ font-size: 2.5rem; }
+  h1 { font-size: 10vw; }
+  .date-location .day { font-size: 2.6rem; }
+  .date-location .month, .date-location .year { font-size: 0.8rem; }
   .date-location .location { font-size: 1.5rem; }
-  .tagline { font-size: 1rem;
-  padding-right: 45px; }
-
-  .about-text h2, .about-text h3 {
-      font-size: 2rem;
-      text-align: center;
-  }
-  .about-text{
-    margin: auto;
-  }
-  .hero-content h1{
-    font-size: 2.7rem;
-    padding-right: 30px;
-  }
+  .tagline { font-size: 1.1rem; padding: 0 1rem; width: auto; }
+  .about-text h2, .about-text h3 { font-size: 2rem; text-align: center; }
+  .about-text{ margin: auto; }
+  .hero-content h1{ font-size: 2.7rem; padding-right: 0; }
 }
 
-@media (max-width: 480px) {
-  .background-video {
-    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-    object-fit: cover; z-index: 1;
-    }
-  .date-location{
-    padding-right: 50px;
-
-  }
-  .date-location .day { font-size: 3.5rem;}
-    .date-location .month, .date-location .year { font-size: 1rem; }
-    .date-location .location { font-size: 1.3rem; }
-
+@media (max-width: 450px) {
   .hero-fullscreen {
-      height: 90vh; /* Réduit la hauteur pour voir plus de contenu */
+      height: 90vh;
   }
- 
-  .tagline .highlight {
-      padding: 0.4rem 0.8rem;
-    
-  }
-  .hero-content h1{
-    font-size: 2.3rem;
-    padding-right: 30px;
-  }
-
-  .countdown-item {
-    /* On utilise scale pour réduire proportionnellement SANS déformer le SVG */
-    transform: scale(0.7);
-    margin: -15px 0; /* On compense l'espace créé par le scale */
-  }
-  /* On annule les changements de taille précédents car 'scale' s'en charge */
-  .countdown-circle-container, .progress-ring {
-    width: 120px; /* Retour à la taille originale */
-    height: 120px; /* Retour à la taille originale */
-  }
-  .progress-ring circle {
-    stroke-width: 8; /* Retour à l'épaisseur originale */
-  }
-  .countdown-value, .countdown-value-static {
-    font-size: 2.5rem; /* Retour à la taille originale */
-  }
-  .countdown-label {
-    font-size: 0.9rem; /* Retour à la taille originale */
-  }
+  .hero-content h1{ font-size: 2.3rem; }
+  .date-location { padding-right: 0; }
+  .date-location .day { font-size: 2.1rem;}
+  .tagline { font-size: 1rem; }
+  .countdown-container { gap: 0.5rem; }
+  .countdown-item { transform: scale(0.7); margin: -15px 0; }
 }
 
 @media (max-width: 396px) {
-  .hero-content h1{
-    font-size: 1.9rem;
-    padding-right: 30px;
-  }
+  .hero-fullscreen { height: 88vh; }
+  .hero-content h1{ font-size: 1.9rem; }
   .date-location .day { font-size: 2.8rem;}
   .date-location .month{ font-size: 0.7rem; }
   .date-location .year {font-size: 0.8rem;}
   .date-location .location { font-size: 1.3rem; }
 }
-@media (max-width: 336px) {
-  .hero-content h1{
-    font-size: 1.6rem;
-    padding-right: 30px;
-  }}
+
+@media (max-width: 350px) {
+  .background-video {
+    display: none;
+  }
+  .hero-fullscreen {
+    background-image: url('../../assets/images/family.JPG');
+    background-size: cover;
+    background-position: center;
+    height: 85vh;
+  }
+
+  /* === NOUVEAU : Ajout de l'effet de flou sur l'overlay === */
+  .video-overlay {
+    /* Applique un effet de flou sur l'élément derrière (l'image de fond) */
+    -webkit-backdrop-filter: blur(5px); /* Pour la compatibilité avec Safari */
+    backdrop-filter: blur(5px);
+
+    /* On renforce la couleur pour que l'effet soit plus joli et le texte lisible */
+    background-color: rgba(31, 33, 45, 0.7);
+  }
+
+  .hero-content { gap: 0.5rem; }
+  .hero-content h1{ font-size: 1.7rem;
+   }
+  .date-location { flex-wrap: wrap; justify-content: center; gap: 0.5rem; }
+  .date-location .day { font-size: 2.1rem; }
+  .date-location .location { border-left: none; padding-left: 0; font-size: 1.1rem; }
+  .tagline p { line-height: 1.3; font-size: 0.8rem; }
+}
+@media (max-width: 290px){
+  .hero-content h1{ font-size: 1.5rem; }
+    .hero-fullscreen {
+    /* On applique l'image en fond */
+    background-image: url('../../assets/images/family.JPG');
+    background-size: cover;
+    background-position: center;
+    height: 75vh; /* On continue de réduire la hauteur */
+  }
+
+}
+
+@media (max-width: 280px) {
+    .hero-fullscreen {
+    /* On applique l'image en fond */
+    background-image: url('../../assets/images/family.JPG');
+    background-size: cover;
+    background-position: center;
+    height: 65vh; /* On continue de réduire la hauteur */
+  }
+  .hero-content { padding-top: 1rem; padding-bottom: 1rem; gap: 0.8rem; }
+  .hero-content h1 { font-size: 1.3rem; line-height: 1.2; }
+  .date-location { gap: 0.4rem; line-height: 1; }
+  .date-location .day { font-size: 2.2rem; }
+  .date-location .month, .date-location .year { font-size: 0.7rem; }
+  .date-location .location { font-size: 1rem; }
+  .tagline { font-size: 0.6rem; }
+  .tagline .highlight { padding: 0.3rem 0.6rem; }
+  .countdown-container { padding-top: 1rem; }
+  .countdown-item { transform: scale(0.6); margin: -20px -10px; }
+  .about-section { padding: 40px 5% 20px 5%; }
+  .about-text h2, .about-text h3 { font-size: 1.5rem; }
+  .about-text p { font-size: 0.9rem; }
+  .stat-item .stat-number { font-size: 2rem; }
+  .stat-item .stat-label { font-size: 1rem; }
+}
