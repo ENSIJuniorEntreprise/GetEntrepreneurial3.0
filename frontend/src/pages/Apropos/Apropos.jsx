@@ -47,7 +47,7 @@ const Apropos = () => {
             Panels
           </button>
           <button 
-            className={`tab-btn3 ${activeTab === 'GREEN&Tech Day' ? 'active' : ''}`}
+            className={`tab-btn ${activeTab === 'GREEN&Tech Day' ? 'active' : ''}`}
             onClick={() => setActiveTab('GREEN&Tech Day')}>
             Workshops
           </button>

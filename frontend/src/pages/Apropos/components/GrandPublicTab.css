@@ -178,7 +178,9 @@
   }
   
   .stats-grid {
-    grid-template-columns: repeat(4, 1fr);
+    /* --- CORRECTION ICI --- */
+    /* Changé de 'repeat(4, 1fr)' à 'repeat(3, 1fr)' pour correspondre à l'image */
+    grid-template-columns: repeat(3, 1fr);
     max-width: 1000px;
     margin: 0 auto;
   }
