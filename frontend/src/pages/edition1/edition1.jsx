@@ -94,22 +94,6 @@ const Edition1 = () => {
         </div>
       </section>
 
-      {/* --- Section 3: Galerie "Temps Forts" --- */}
-       <section className={`highlights-edition ${highlightsInView ? 'is-visible' : ''}`} ref={highlightsRef}>
-        <div className="highlights-header">
-          <h2><span className="text-orange">Les Temps Forts </span>de Notre Dernière Rencontre</h2>
-        </div>
-        <div className="slider-container">
-          <Slider {...gallerySettings}>
-            {galleryImages.map(image => (
-              <div key={image.id} className="gallery-slide">
-                <img src={image.src} alt={image.alt} />
-              </div>
-            ))}
-          </Slider>
-        </div>
-      </section>
-
       {/* --- Section 4: Témoignages --- */}
       <section className={`testimonials-edition ${testimonialsInView ? 'is-visible' : ''}`} ref={testimonialsRef}>
         <div className="testimonials-header">
