@@ -111,11 +111,6 @@ const Edition1 = () => {
               <h3 className="quote-headline">"{testimonial.headline}"</h3>
               <p className="quote-body">« {testimonial.quote} »</p>
               <div className="author-info">
-                <img src={testimonial.image} alt={testimonial.name} />
-                <div className="author-details">
-                  <p className="author-name">{testimonial.name}</p>
-                  <p className="author-title">{testimonial.title}</p>
-                </div>
               </div>
             </div>
           ))}
