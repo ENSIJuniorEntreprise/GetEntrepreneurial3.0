@@ -138,7 +138,7 @@ function App() {
            <Exposant />
            } 
            />
-           <Route path="/dashboard" element={<DashboardPage />} />
+           <Route path="/dashboard1" element={<DashboardPage />} />
         </Routes>
       </Suspense>
     </Router>
