@@ -40,6 +40,7 @@
   gap: 1.5rem;
   font-weight: 500;
   font-size: 1.2rem;
+  flex-wrap: wrap; /* Permet au sous-titre de passer à la ligne */
 }
 
 .axes-subtitle .line {
@@ -59,9 +60,9 @@
 
 .flip-card {
   background-color: transparent;
-  width: 370px;     /* un peu plus large */
-  height: 620px;    /* plus haut pour afficher tout le contenu */
-  perspective: 2500px; 
+  width: 370px;
+  height: 620px;
+  perspective: 2500px;
   opacity: 0;
   transform: scale(0.9);
   transition: opacity 0.6s ease-out, transform 0.6s ease-out;
@@ -101,8 +102,8 @@
   backface-visibility: hidden;
   border-radius: 20px;
   overflow: hidden;
-  box-sizing: border-box;   /* ✅ Correction anti-décalage */
-  padding: 2.5rem;          /* ✅ Même padding des deux côtés */
+  box-sizing: border-box;
+  padding: 2.5rem;
 }
 
 .flip-card-front {
@@ -179,6 +180,7 @@
   text-decoration: none;
   transition: background-color 0.3s, color 0.3s;
   border-radius: 20px;
+  text-align: center;
 }
 
 .subscribe-button:hover {
@@ -186,8 +188,107 @@
   color: var(--dark-blue);
 }
 
+/* --- Media Queries pour la responsivité --- */
+
+/* Pour les écrans de taille moyenne (ex: tablettes) */
+@media (max-width: 1024px) {
+  .axes-cards-container {
+    gap: 2rem;
+    padding-bottom: 2rem;
+  }
+}
+
+/* Pour les petits écrans (ex: smartphones) */
 @media (max-width: 768px) {
-  .axes-section h2 {
+  .axes-section {
+    padding: 4rem 5%;
+  }
+  .axes-title-group h2 {
+    font-size: 2.5rem;
+  }
+  .axes-subtitle .line {
+    width: 100px;
+  }
+  .flip-card {
+    width: 80%; /* Occupe une plus grande largeur pour être plus visible */
+    max-width: 350px; /* Empêche les cartes de devenir trop grandes */
+    height: 550px; /* Ajuste la hauteur */
+  }
+  .card-title-content h4 {
     font-size: 2rem;
+  }
+}
+
+/* Pour les très petits écrans (jusqu'à 280px) */
+@media (max-width: 480px) {
+  .axes-section {
+    padding: 3rem 2%;
+  }
+  .axes-title-group h2 {
+    font-size: 2rem; /* Taille de police plus petite pour le titre principal */
+  }
+  .axes-subtitle h3 {
+    font-size: 1rem; /* Taille de police plus petite pour le sous-titre */
+  }
+  .axes-subtitle .line {
+    width: 50px; /* Lignes plus courtes pour s'adapter à la petite taille */
+  }
+  .axes-cards-container {
+    gap: 2rem;
+  }
+  .flip-card {
+    width: 90%; /* Occupe presque toute la largeur disponible */
+    height: 500px; /* Réduit encore la hauteur */
+  }
+  .flip-card-front, .flip-card-back {
+    padding: 1.5rem; /* Réduit le padding pour plus d'espace */
+  }
+  .card-title-content h4 {
+    font-size: 1.5rem; /* Taille de police plus petite pour le titre de la carte */
+  }
+  .card-back-content p {
+    font-size: 0.9rem; /* Taille de police du texte plus petite */
+  }
+  .axes-subtitle .line {
+    width: 40px; /* Lignes plus courtes pour s'adapter à la petite taille */
+  }
+}
+@media (max-width: 400px) {.axes-subtitle .line {
+    width: 40px;
+  }}
+  @media (max-width: 381px){.axes-subtitle h3 {
+    font-size: 0.8rem;}
+    .axes-title-group h2 {
+    font-size: 1.8rem;
+  }
+  }
+   @media (max-width: 336px){.axes-subtitle h3 {
+    font-size: 0.9rem;}
+    .axes-title-group h2 {
+    font-size: 1.8rem;}
+    .axes-subtitle .line {
+    width: 0px;
+  }
+  }
+
+/* Le plus petit des écrans */
+@media (max-width: 320px) {
+  .axes-section {
+    padding: 2rem 1%;
+  }
+  .axes-title-group h2 {
+    font-size: 1.8rem;
+  }
+  .axes-subtitle h3 {
+    font-size: 0.9rem;
+  }
+  .flip-card {
+    height: 450px;
+  }
+  .card-title-content h4 {
+    font-size: 1.3rem;
+  }
+  .card-back-content p {
+    font-size: 0.8rem;
   }
 }

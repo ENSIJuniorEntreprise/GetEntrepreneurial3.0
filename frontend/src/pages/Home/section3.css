@@ -9,10 +9,10 @@
   font-family: 'Montserrat', sans-serif;
   position: relative;
   padding: 80px 40px;
-  overflow-x: hidden; 
+  overflow-x: hidden;
+  box-sizing: border-box; 
 }
 
-/* ... (Les styles pour .articles-container, .articles-header, .articles-grid, .article-card restent les mêmes) ... */
 .articles-container {
   transition: transform 0.6s ease, opacity 0.6s ease, filter 0.6s ease;
 }
@@ -32,6 +32,8 @@
   opacity: 1;
   transform: translateY(0);
 }
+
+/* Taille de police par défaut pour les grands écrans */
 .articles-header h2 {
   font-size: 2.5rem;
   font-weight: 700;
@@ -40,7 +42,9 @@
   margin: 0 auto;
   line-height: 1.4;
 }
-.articles-header .text-orange { color: var(--orange); }
+.articles-header .text-orange {
+  color: var(--orange);
+}
 .articles-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -55,9 +59,15 @@
   transform: translateY(30px);
   transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
-.articles-section.visible .article-card:nth-child(1) { transition-delay: 0.2s; }
-.articles-section.visible .article-card:nth-child(2) { transition-delay: 0.4s; }
-.articles-section.visible .article-card:nth-child(3) { transition-delay: 0.6s; }
+.articles-section.visible .article-card:nth-child(1) {
+  transition-delay: 0.2s;
+}
+.articles-section.visible .article-card:nth-child(2) {
+  transition-delay: 0.4s;
+}
+.articles-section.visible .article-card:nth-child(3) {
+  transition-delay: 0.6s;
+}
 .articles-section.visible .article-card {
   opacity: 1;
   transform: translateY(0);
@@ -68,96 +78,129 @@
   height: 100%;
   border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
   transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 .article-card:hover .article-card-inner {
   transform: translateY(-10px);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
 }
 .card-background {
-  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-  background-size: cover; background-position: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
   transition: transform 0.6s ease;
 }
-.article-card:hover .card-background { transform: scale(1.05); }
-.card-overlay {
-  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-  background: linear-gradient(to top, rgba(0,0,0,0.95) 25%, rgba(0,0,0,0.1) 60%);
-  opacity: 0.8; transition: opacity 0.4s ease;
+.article-card:hover .card-background {
+  transform: scale(1.05);
 }
-.article-card:hover .card-overlay { opacity: 1; }
+.card-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.95) 25%, rgba(0, 0, 0, 0.1) 60%);
+  opacity: 0.8;
+  transition: opacity 0.4s ease;
+}
+.article-card:hover .card-overlay {
+  opacity: 1;
+}
 .card-content {
-  position: relative; z-index: 2; height: 100%; padding: 2rem;
-  display: flex; flex-direction: column; justify-content: space-between;
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 .category-tag {
-  background-color: var(--orange); color: var(--dark-blue); padding: 0.4rem 0.8rem;
-  border-radius: 8px; font-weight: 700; font-size: 0.8rem; align-self: flex-start;
+  background-color: var(--orange);
+  color: var(--dark-blue);
+  padding: 0.4rem 0.8rem;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 0.8rem;
+  align-self: flex-start;
 }
-.card-footer { text-align: left; }
+.card-footer {
+  text-align: left;
+}
 .article-date {
-  font-size: 1.3rem; color: #E0DED2; margin: 0 0 0.5rem 0;font-weight: 600;
+  font-size: 1.3rem;
+  color: #E0DED2;
+  margin: 0 0 0.5rem 0;
+  font-weight: 600;
 }
 .article-title {
   font-size: 1.8rem;
-  font-weight: 600; 
+  font-weight: 600;
   line-height: 1.2;
   color: #fff;
   padding-bottom: 20px;
 }
 
 .article-detail-view {
-  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   z-index: 2000;
   pointer-events: none;
   opacity: 0;
   transition: opacity 0.5s ease-out;
-  overflow-y: auto; 
+  overflow-y: auto;
 }
 .article-detail-view.open {
   pointer-events: all;
   opacity: 1;
 }
-
-/* MODIFICATION 1 : Création de la superposition bleue fixe */
 .article-detail-view::before {
   content: '';
-  position: fixed; /* Reste fixe, ne défile pas */
-  top: 0; left: 0;
-  width: 100%; height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   background-color: rgba(31, 33, 45, 0.95);
-  z-index: 1; /* Se place entre l'image de fond et le texte */
+  z-index: 1;
 }
-
 .detail-image-background {
   position: fixed;
-  top: 0; left: 0; width: 100%; height: 100%;
-  background-size: cover; background-position: center;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
   transform: scale(1.1);
   opacity: 0;
   transition: transform 1.2s cubic-bezier(0.7, 0, 0.2, 1), opacity 0.8s ease-out;
-  /* z-index est 0 par défaut, donc il est derrière la superposition bleue */
 }
 .article-detail-view.open .detail-image-background {
   transform: scale(1);
   opacity: 1;
 }
-
-/* L'overlay de contenu est maintenant transparent, car le ::before gère le fond */
 .detail-content-overlay {
-  position: relative; /* Important pour que le z-index fonctionne */
-  z-index: 2; /* Se place au-dessus de la superposition bleue */
+  position: relative;
+  z-index: 2;
   width: 100%;
   min-height: 100%;
-  background: transparent; /* N'a plus besoin de fond */
+  background: transparent;
   display: flex;
-  justify-content: center; /* Centre le contenu horizontalement */
+  justify-content: center;
   padding: 4rem 2rem;
 }
 .detail-content {
   color: var(--light-beige);
-  max-width: 900px; /* MODIFICATION 2 : Largeur augmentée pour le texte */
+  max-width: 900px;
   opacity: 0;
   transform: translateY(30px);
   transition: opacity 0.8s ease-out 0.4s, transform 0.8s ease-out 0.4s;
@@ -168,48 +211,76 @@
   transform: translateY(0);
 }
 .close-button {
-  background: none; border: none; color: white;
-  font-size: 1.2rem; cursor: pointer; opacity: 0.7;
-  display: flex; align-items: center; gap: 0.5rem;
-  padding: 0; margin-bottom: 2rem;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.2rem;
+  cursor: pointer;
+  opacity: 0.7;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0;
+  margin-bottom: 2rem;
   transition: opacity 0.3s, gap 0.3s;
 }
-.close-button:hover { opacity: 1; gap: 1rem; }
-.detail-category { display: inline-block; margin-bottom: 1.5rem; }
-.detail-title { font-size: 3rem; font-weight: 700; margin: 0 0 0.5rem 0; line-height: 1.2; }
-.detail-date { font-size: 1rem; opacity: 0.7; margin-bottom: 2rem; }
+.close-button:hover {
+  opacity: 1;
+  gap: 1rem;
+}
+.detail-category {
+  display: inline-block;
+  margin-bottom: 1.5rem;
+}
+
+/* Taille de police par défaut pour le titre de la vue détaillée */
+.detail-title {
+  font-size: 3rem;
+  font-weight: 700;
+  margin: 0 0 0.5rem 0;
+  line-height: 1.2;
+}
+.detail-date {
+  font-size: 1rem;
+  opacity: 0.7;
+  margin-bottom: 2rem;
+}
 .detail-text-wrapper {}
-.detail-text { 
+.detail-text {
   font-size: 1.2rem;
   line-height: 1.9;
 }
 
-/* === RESPONSIVE SUPPLÉMENTAIRE === */
+/* === RESPONSIVE === */
 @media (max-width: 1200px) {
   .articles-grid {
-    grid-template-columns: repeat(2, 1fr); /* Passe à 2 colonnes sur tablettes */
+    grid-template-columns: repeat(2, 1fr);
   }
 }
-
 @media (max-width: 768px) {
   .articles-section {
     padding: 60px 20px;
   }
-  .articles-header{
+  .articles-header {
     margin-bottom: 70px;
   }
   .articles-grid {
     grid-template-columns: 1fr;
-    gap: 2.5rem;
+    gap: 2rem;
   }
   .article-card {
     height: 450px;
+  }
+
+  /* Réduction progressive du titre principal et des cartes */
+  .articles-header h2 {
+    font-size: 2.2rem;
   }
   .article-title {
     font-size: 1.5rem;
   }
   
-  /* Responsive pour la vue détaillée */
+  /* Réduction du titre dans la vue détaillée */
   .detail-content-overlay {
     padding: 3rem 1.5rem;
   }
@@ -222,6 +293,7 @@
 }
 
 @media (max-width: 480px) {
+  /* Nouvelle réduction du titre principal et des cartes */
   .articles-header h2 {
     font-size: 1.8rem;
   }
@@ -231,11 +303,56 @@
   .article-title {
     font-size: 1.3rem;
   }
+
+  /* Nouvelle réduction du titre dans la vue détaillée */
   .detail-title {
     font-size: 1.5rem;
+  }
+  .detail-date {
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
   }
   .close-button {
     margin-bottom: 1rem;
     font-size: 1rem;
+  }
+}
+
+@media (max-width: 320px) {
+  .articles-section {
+    padding: 40px 10px;
+  }
+  
+  /* Dernière réduction des titres */
+  .articles-header h2 {
+    font-size: 1.5rem;
+  }
+  .article-card {
+    height: 350px;
+  }
+  .article-title {
+    font-size: 1.1rem;
+    padding-bottom: 10px;
+  }
+  .article-date {
+    font-size: 0.8rem;
+  }
+  .detail-content-overlay {
+    padding: 2rem 1rem;
+  }
+  .detail-title {
+    font-size: 1.3rem;
+  }
+  .detail-text {
+    font-size: 0.9rem;
+    line-height: 1.7;
+  }
+  .close-button {
+    font-size: 0.9rem;
+  }
+}
+@media (max-width: 300px) {
+  .articles-grid {
+    justify-content: center;
   }
 }

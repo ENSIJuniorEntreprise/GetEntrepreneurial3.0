@@ -279,7 +279,7 @@
   }
 }
 
-@media (max-width: 388px) {
+@media (max-width: 391px) {
   .text-content p{
     font-size: 0.8rem;
   }
@@ -308,18 +308,25 @@
     font-size: 0.9rem;
   }
 }
+@media (max-width: 352px) {
+  .text-content p{font-size: 0.7rem;}}
 
 @media (max-width: 334px) {
   .title-group h2 {
     font-size: 1rem;
   }
 .title-group p {
-    font-size: 0.8rem;
+    font-size: 0.7rem;
   }
 
   /* AJOUT : Réduction finale du bouton */
   .about-button {
     font-size: 0.8rem;
     padding: 0.7rem 1.5rem;
-  }
-}
+  }}
+
+@media (max-width: 312px) {
+  .title-group p {
+    font-size: 0.65rem;
+
+}}

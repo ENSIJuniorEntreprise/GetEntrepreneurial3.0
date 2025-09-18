@@ -4,154 +4,473 @@
   --light-beige: #E0DED2;
 }
 
-/* ... tout le code jusqu'à .speakers-grid reste le même ... */
-.speakers-section { background-color: var(--dark-blue); padding: 6rem 0; font-family: 'Montserrat', sans-serif; color: var(--light-beige); overflow: hidden; }
-.speakers-header { text-align: center; margin-bottom: 3rem;padding-bottom: 30px; }
-.speakers-header h2 { font-size: 2.5rem; font-weight: 700; }
-.speakers-header .text-orange { color: var(--orange); }
-.gallery-container { display: flex; justify-content: center; align-items: center; height: 350px; margin-bottom: 2rem; }
-.gallery { position: relative; width: 250px; height: 250px; transform-style: preserve-3d; animation: rotateGallery 25s linear infinite; }
-@keyframes rotateGallery { from { transform: perspective(1200px) rotateY(0deg); } to { transform: perspective(1200px) rotateY(360deg); } }
-.gallery span { position: absolute; top: 0; left: 0; width: 100%; height: 100%; transform-origin: center; transform-style: preserve-3d; transform: rotateY(calc(var(--i) * 45deg)) translateZ(400px); }
-.gallery span img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 15px; object-fit: cover; transition: transform 0.5s; -webkit-box-reflect: below 1px linear-gradient(transparent, transparent, #0004); }
-.gallery span:hover img { transform: translateY(-20px) scale(1.1); cursor: pointer; }
-.gallery-container:hover .gallery { animation-play-state: paused; }
-.gallery-speaker-info { position: absolute; bottom: 0; left: 0; width: 100%; padding: 1.5rem 1rem; background: linear-gradient(to top, rgba(0,0,0,0.95) 20%, transparent); color: white; text-align: center; opacity: 0; transform: translateY(20px); transition: opacity 0.5s, transform 0.5s; pointer-events: none; border-radius: 0 0 15px 15px; }
-.gallery span:hover .gallery-speaker-info { opacity: 1; transform: translateY(0); pointer-events: all; }
-.gallery-speaker-info h3 { font-size: 1.2rem; margin: 0 0 0.2rem 0; }
-.gallery-speaker-info p { font-size: 0.9rem; opacity: 0.8; margin: 0 0 0.8rem 0; }
-.gallery-speaker-info a { color: white; font-size: 1.2rem; transition: color 0.3s; }
-.gallery-speaker-info a:hover { color: var(--orange); }
-.see-all-container { text-align: center; position: relative; z-index: 10; }
-.see-all-button { background-color: var(--orange); color: var(--light-beige); border: none; padding: 1rem 2.5rem; margin-top: 20px; border-radius: 50px; font-weight: bold; font-size: 1.1rem; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; }
-.see-all-button:hover { transform: scale(1.05); box-shadow: 0 4px 20px rgba(254, 153, 0, 0.4); }
-.speakers-modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(31, 33, 45, 0.95); backdrop-filter: blur(10px); z-index: 3000; opacity: 0; pointer-events: none; transition: opacity 0.5s ease; overflow-y: auto; }
-.speakers-modal.open { opacity: 1; pointer-events: all; }
-.modal-close-button { position: fixed; top: 2rem; right: 2rem; background: none; border: none; color: white; font-size: 2rem; cursor: pointer; opacity: 0.7; transition: opacity 0.3s, transform 0.3s; }
-.modal-close-button:hover { opacity: 1; transform: rotate(90deg); }
-.modal-content { width: 90%; max-width: 1200px; margin: 6rem auto; text-align: center; transform: scale(0.95); transition: transform 0.5s ease 0.2s; }
-.speakers-modal.open .modal-content { transform: scale(1); }
-.modal-content h2 { font-size: 2.5rem; color: var(--orange); margin-bottom: 3rem; }
+/* Styles globaux */
+.speakers-section {
+  background-color: var(--dark-blue);
+  padding: 6rem 0;
+  font-family: 'Montserrat', sans-serif;
+  color: var(--light-beige);
+  overflow: hidden;
+  box-sizing: border-box;
+}
 
-/* --- Grille et Cartes dans la Modale --- */
+/* En-tête */
+.speakers-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  padding-bottom: 30px;
+}
+.speakers-header h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+.speakers-header .text-orange {
+  color: var(--orange);
+}
+
+/* Galerie 3D */
+.gallery-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 350px;
+  margin-bottom: 2rem;
+}
+.gallery {
+  position: relative;
+  width: 250px;
+  height: 250px;
+  transform-style: preserve-3d;
+  animation: rotateGallery 25s linear infinite;
+}
+@keyframes rotateGallery {
+  from { transform: perspective(1200px) rotateY(0deg); }
+  to { transform: perspective(1200px) rotateY(360deg); }
+}
+.gallery span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform-origin: center;
+  transform-style: preserve-3d;
+  transform: rotateY(calc(var(--i) * 45deg)) translateZ(400px);
+}
+.gallery span img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 15px;
+  object-fit: cover;
+  transition: transform 0.5s;
+  -webkit-box-reflect: below 1px linear-gradient(transparent, transparent, #0004);
+}
+.gallery span:hover img {
+  transform: translateY(-20px) scale(1.1);
+  cursor: pointer;
+}
+.gallery-container:hover .gallery {
+  animation-play-state: paused;
+}
+.gallery-speaker-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 1.5rem 1rem;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.95) 20%, transparent);
+  color: white;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s, transform 0.5s;
+  pointer-events: none;
+  border-radius: 0 0 15px 15px;
+}
+.gallery span:hover .gallery-speaker-info {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: all;
+}
+.gallery-speaker-info h3 {
+  font-size: 1.2rem;
+  margin: 0 0 0.2rem 0;
+}
+.gallery-speaker-info p {
+  font-size: 0.9rem;
+  opacity: 0.8;
+  margin: 0 0 0.8rem 0;
+}
+.gallery-speaker-info a {
+  color: white;
+  font-size: 1.2rem;
+  transition: color 0.3s;
+}
+.gallery-speaker-info a:hover {
+  color: var(--orange);
+}
+
+/* Bouton "Voir tous" */
+.see-all-container {
+  text-align: center;
+  position: relative;
+  z-index: 10;
+}
+.see-all-button {
+  background-color: var(--orange);
+  color: var(--light-beige);
+  border: none;
+  padding: 1rem 2.5rem;
+  margin-top: 20px;
+  border-radius: 50px;
+  font-weight: bold;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.see-all-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 20px rgba(254, 153, 0, 0.4);
+}
+
+/* Modale */
+.speakers-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(31, 33, 45, 0.95);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  z-index: 3000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+  overflow-y: auto;
+}
+.speakers-modal.open {
+  opacity: 1;
+  pointer-events: all;
+}
+.modal-close-button {
+  position: fixed;
+  top: 2rem;
+  right: 2rem;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 2rem;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.3s, transform 0.3s;
+}
+.modal-close-button:hover {
+  opacity: 1;
+  transform: rotate(90deg);
+}
+.modal-content {
+  width: 90%;
+  max-width: 1200px;
+  margin: 6rem auto;
+  text-align: center;
+  transform: scale(0.95);
+  transition: transform 0.5s ease 0.2s;
+}
+.speakers-modal.open .modal-content {
+  transform: scale(1);
+}
+.modal-content h2 {
+  font-size: 2.5rem;
+  color: var(--orange);
+  margin-bottom: 3rem;
+}
+
+/* Grille et Cartes dans la Modale */
 .speakers-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 2.5rem;
 }
-
 .grid-speaker-card {
   border-radius: 16px;
   overflow: hidden;
   position: relative;
   transition: transform 0.4s ease, box-shadow 0.4s ease;
-  /* ===> CORRECTION 1 : On rend les cartes PLUS RECTANGULAIRES <=== */
-  height: 450px; /* Augmenté de 400px à 450px */
+  height: 450px;
 }
-
 .grid-speaker-card:hover {
   transform: translateY(-10px);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
-
 .card-image-container, .card-speaker-image {
-  position: absolute; top: 0; left: 0;
-  width: 100%; height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   object-position: center top;
 }
-
 .card-static-info {
-  position: absolute; bottom: 0; left: 0;
-  width: 100%; padding: 1.2rem 1.5rem;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 1.2rem 1.5rem;
   text-align: left;
   background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 30%, transparent);
   transition: opacity 0.4s ease;
 }
-.card-speaker-name { font-size: 1.3rem; font-weight: 700; color: #FFFFFF; margin: 0 0 0.3rem 0; }
-.card-speaker-title { font-size: 0.8rem; color: var(--light-beige); opacity: 0.9; margin: 0; line-height: 1.4; min-height: 3.5em; }
-
+.card-speaker-name {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin: 0 0 0.3rem 0;
+}
+.card-speaker-title {
+  font-size: 0.8rem;
+  color: var(--light-beige);
+  opacity: 0.9;
+  margin: 0;
+  line-height: 1.4;
+  min-height: 3.5em;
+}
 .card-overlay {
-  position: absolute; top: 0; left: 0;
-  width: 100%; height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   background: rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(12px) saturate(150%);
   -webkit-backdrop-filter: blur(12px) saturate(150%);
-  display: flex; flex-direction: column;
-  align-items: center; text-align: center;
-  padding: 2rem; opacity: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
+  opacity: 0;
   transition: opacity 0.4s ease;
 }
-
-.grid-speaker-card:hover .card-overlay { opacity: 1; }
-.grid-speaker-card:hover .card-static-info { opacity: 0; }
-
-/* ===> CORRECTION 2 : On ORGANISE le texte dans l'overlay <=== */
+.grid-speaker-card:hover .card-overlay {
+  opacity: 1;
+}
+.grid-speaker-card:hover .card-static-info {
+  opacity: 0;
+}
 .overlay-text-content {
   display: flex;
   flex-direction: column;
-  justify-content: center; /* Centre le bloc de texte verticalement */
+  justify-content: center;
   position: relative;
   right: 30px;
 }
-
 .overlay-speaker-name,
 .overlay-speaker-title,
 .overlay-speaker-description {
   color: var(--dark-blue);
 }
-
 .overlay-speaker-name {
-  font-size: 1.5rem; /* Nom plus grand */
+  font-size: 1.5rem;
   font-weight: 800;
-  margin-bottom: 0.5rem; /* Espace après le nom */
+  margin-bottom: 0.5rem;
 }
-
 .overlay-speaker-title {
-  font-size: 0.85rem; /* Titre plus petit et fin */
+  font-size: 0.85rem;
   font-weight: 500;
-  margin-bottom: 2rem; /* Espace IMPORTANT après le titre */
+  margin-bottom: 2rem;
   opacity: 0.8;
   max-width: 90%;
   margin-left: auto;
   margin-right: auto;
 }
-
 .overlay-speaker-description {
-  font-size: 1rem; /* Description claire et lisible */
+  font-size: 1rem;
   font-weight: 600;
   line-height: 1.5;
 }
-
 .card-linkedin-link {
   color: var(--dark-blue);
   font-size: 2.2rem;
-  flex-shrink: 0; /* Empêche l'icône de rétrécir */
+  flex-shrink: 0;
   padding-top: 1rem;
   transition: color 0.3s ease, transform 0.3s ease;
 }
-
 .card-linkedin-link:hover {
   color: var(--orange);
   transform: scale(1.1);
 }
 
+/* === Media Queries pour la responsivité === */
 
-@media (max-width: 480px) {
+/* Pour les tablettes et petits desktops */
+@media (max-width: 1024px) {
+  .speakers-grid {
+    gap: 2rem;
+  }
+}
+
+/* Pour les téléphones */
+@media (max-width: 768px) {
   .speakers-section {
-    padding: 4rem 0;
+    padding: 4rem 1rem;
   }
   .speakers-header h2 {
     font-size: 2rem;
+    padding: 0 1rem;
   }
+  
+  /* Retrait du "display: none;" et ajustements pour la galerie */
   .gallery-container {
-    height: 250px;
+    height: 250px; /* Taille plus petite pour la galerie */
+  }
+  .gallery {
+    width: 160px;
+    height: 160px;
+    animation: rotateGallery 15s linear infinite; /* Vitesse de rotation plus rapide */
+  }
+  .gallery span {
+    transform: rotateY(calc(var(--i) * 45deg)) translateZ(250px); /* Rayon de rotation réduit */
+  }
+  
+  .see-all-container {
+    margin-top: 0;
+  }
+  .modal-close-button {
+    top: 1rem;
+    right: 1rem;
+    font-size: 1.5rem;
   }
   .modal-content {
     margin: 4rem auto;
     width: 95%;
   }
+  .modal-content h2 {
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+  }
+  .speakers-grid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+  }
+  .grid-speaker-card {
+    height: 400px;
+  }
+  .card-static-info {
+    padding: 1rem;
+  }
+  .card-speaker-name {
+    font-size: 1.2rem;
+  }
+  .card-speaker-title {
+    font-size: 0.75rem;
+    min-height: auto;
+  }
+  .card-overlay {
+    padding: 1rem;
+  }
+  .overlay-speaker-name {
+    font-size: 1.3rem;
+  }
+  .overlay-speaker-title {
+    font-size: 0.75rem;
+    margin-bottom: 1rem;
+  }
+  .overlay-speaker-description {
+    font-size: 0.9rem;
+  }
+}
+
+/* Pour les très petits écrans (jusqu'à 480px) */
+@media (max-width: 480px) {
+  .speakers-header h2 {
+    font-size: 1.6rem;
+  }
+  /* La galerie est maintenant encore plus petite */
+  .gallery-container {
+    height: 200px;
+  }
   .gallery {
-    width: 160px;
+    width: 130px;
+    height: 130px;
+  }
+  .gallery span {
+    transform: rotateY(calc(var(--i) * 45deg)) translateZ(150px); /* Rayon encore plus petit */
+  }
+  .speakers-grid {
+    grid-template-columns: 1fr;
+  }
+  .grid-speaker-card {
+    height: 350px;
+  }
+  .modal-content h2 {
+    font-size: 1.5rem;
+  }
+  .see-all-button {
+    padding: 0.8rem 2rem;
+    font-size: 1rem;
+  }
+  .modal-close-button {
+    font-size: 1.2rem;
+  }
+}
+
+/* Pour les plus petits écrans (jusqu'à 320px) */
+@media (max-width: 320px) {
+  .speakers-header h2 {
+    font-size: 1.4rem;
+  }
+  .gallery-container {
+    height: 180px;
+  }
+  .gallery {
+    width: 110px;
+    height: 110px;
+    animation: rotateGallery 12s linear infinite; /* Vitesse encore plus rapide */
+  }
+  .gallery span {
+    transform: rotateY(calc(var(--i) * 45deg)) translateZ(120px);
+  }
+  .card-speaker-name {
+    font-size: 1.1rem;
+  }
+  .card-speaker-title {
+    font-size: 0.7rem;
+  }
+  .overlay-speaker-name {
+    font-size: 1.2rem;
+  }
+  .overlay-speaker-title {
+    font-size: 0.7rem;
+  }
+  .overlay-speaker-description {
+    font-size: 0.8rem;
+    line-height: 1.4;
+  }
+}
+
+/* Ajustement pour les très très petits écrans */
+@media (max-width: 280px) {
+  .speakers-header h2 {
+    font-size: 1.3rem;
+  }
+  .gallery-container {
     height: 160px;
-  }}
+  }
+  .gallery {
+    width: 90px;
+    height: 90px;
+    animation: rotateGallery 10s linear infinite;
+  }
+  .gallery span {
+    transform: rotateY(calc(var(--i) * 45deg)) translateZ(100px);
+  }
+  .see-all-button {
+    font-size: 0.9rem;
+    padding: 0.6rem 1.5rem;
+  }
+}
