@@ -153,9 +153,7 @@ const About = () => {
     }, []);
 
     const getTransformValue = () => {
-        const itemWidthAndGap = 72; 
-        const offset = (100 - 70) / 2;
-        return `translateX(calc(${offset}% - ${currentIndex * itemWidthAndGap}%))`;
+        return `translateX(-${currentIndex * 100}%)`;
     };
 
     return (
@@ -171,23 +169,23 @@ const About = () => {
                 <div className="about-carousel-container">
                     <div className="about-carousel-track" style={{ transform: getTransformValue() }}>
                         {aboutImages.map((src, index) => (
-                            <div key={index} className={`about-carousel-slide ${index === currentIndex ? 'active' : ''}`}>
+                            <div key={index} className="about-carousel-slide">
                                 <img src={src} alt={`Event slide ${index + 1}`} className="about-image" />
                             </div>
                         ))}
                     </div>
                      <button onClick={nextSlide} className="about-nav-button">
-                         <svg className="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path></svg>
-                    </button>
-                     <div className="about-dots-container">
-                        {aboutImages.map((_, index) => (
-                            <button
-                                key={index}
-                                onClick={() => setCurrentIndex(index)}
-                                className={`about-dot ${index === currentIndex ? 'active' : ''}`}
-                            ></button>
-                        ))}
-                    </div>
+                          <svg className="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path></svg>
+                      </button>
+                      <div className="about-dots-container">
+                          {aboutImages.map((_, index) => (
+                              <button
+                                  key={index}
+                                  onClick={() => setCurrentIndex(index)}
+                                  className={`about-dot ${index === currentIndex ? 'active' : ''}`}
+                              ></button>
+                          ))}
+                      </div>
                 </div>
             </div>
         </section>
@@ -224,10 +222,10 @@ const AlliesAndNav = () => {
             <div className="allies-container">
                 <h2 className="allies-title">Nos Précieux Alliés</h2>
                  <div className="allies-divider">
-                    <div className="allies-divider-line"></div>
-                    <p className="allies-divider-text">Ensemble, nous bâtissons l’avenir entrepreneurial</p>
-                    <div className="allies-divider-line"></div>
-                </div>
+                     <div className="allies-divider-line"></div>
+                     <p className="allies-divider-text">Ensemble, nous bâtissons l’avenir entrepreneurial</p>
+                     <div className="allies-divider-line"></div>
+                 </div>
                 <div className="allies-logo-carousel">
                     <div
                         className="allies-logo-track"
@@ -245,22 +243,22 @@ const AlliesAndNav = () => {
                     </div>
                 </div>
                 <div className="allies-dots-container">
-                     {Array.from({ length: totalPages }).map((_, index) => (
-                        <button
-                            key={index}
-                            onClick={() => setCurrentPage(index)}
-                            className={`allies-dot ${currentPage === index ? 'active' : ''}`}
-                            aria-label={`Go to slide ${index + 1}`}
-                        ></button>
-                    ))}
+                      {Array.from({ length: totalPages }).map((_, index) => (
+                          <button
+                              key={index}
+                              onClick={() => setCurrentPage(index)}
+                              className={`allies-dot ${currentPage === index ? 'active' : ''}`}
+                              aria-label={`Go to slide ${index + 1}`}
+                          ></button>
+                      ))}
                 </div>
             </div>
              <div className="edition-nav-container">
-                <a href="/edition1" className="edition-nav-button">
-                    Retour à la 1ère édition
-                </a>
-                {/* MODIFICATION : Bouton "Prochaine édition" supprimé */}
-            </div>
+                 <a href="/edition1" className="edition-nav-button">
+                     Retour à la 1ère édition
+                 </a>
+                 {/* MODIFICATION : Bouton "Prochaine édition" supprimé */}
+             </div>
         </section>
     );
 };
@@ -268,14 +266,14 @@ const AlliesAndNav = () => {
 
 // --- Composant Principal de la Page ---
 const Edition2 = () => {
-  return (
-    <div>
-      <Hero />
-      <Stats />
-      <About />
-      <AlliesAndNav />
-    </div>
-  );
+    return (
+        <div>
+            <Hero />
+            <Stats />
+            <About />
+            <AlliesAndNav />
+        </div>
+    );
 };
 
 export default Edition2;

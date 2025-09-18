@@ -15,85 +15,86 @@ body {
 
 .edition-page-container { font-family: 'Montserrat', sans-serif; background-color: var(--beige); }
 .hero-edition {
-position: relative;
-height: 100vh;
-color: var(--beige);
-display: flex;
-justify-content: center;
-align-items: center;
-text-align: center;
-overflow: hidden;
+    position: relative;
+    height: 100vh;
+    color: var(--beige);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
 }
 .hero-background-image {
-position: absolute;
-top: 0;
-left: 0;
-width: 100%;
-height: 100%;
-object-fit: cover;
-filter: blur(8px);
-z-index: 1;
-transform: scale(1.1);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: blur(8px);
+    z-index: 1;
+    transform: scale(1.1);
 }
 .hero-color-overlay {
-position: absolute;
-top: 0;
-left: 0;
-width: 100%;
-height: 100%;
-background-color: rgba(31, 33, 45, 0.6);
-z-index: 2;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(31, 33, 45, 0.6);
+    z-index: 2;
 }
 .hero-overlay-content {
-position: relative;
-z-index: 3;
-display: flex;
-flex-direction: column;
-align-items: center;
-width: 100%;
+    position: relative;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
 }
 .main-title-container {
-position: relative;
-display: flex;
-justify-content: center;
-align-items: center;
-margin-bottom: 2rem;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2rem;
 }
 .main-title-container h1 {
-font-size: 6rem;
-font-weight: 800;
-margin: 0;
-line-height: 1;
-color: var(--beige);
+    font-size: 6rem;
+    font-weight: 800;
+    margin: 0;
+    line-height: 1;
+    color: var(--beige);
 }
 .text-orange {
-color: var(--orange);
+    color: var(--orange);
 }
 
 .edition-image {
-position: absolute;
-width: 600px;
-height: auto;
-top: -320px;      
-right: -40px;  }
+    position: absolute;
+    width: 600px;
+    height: auto;
+    top: -320px;
+    right: -40px;
+}
 .hero-tagline {
-display: flex;
-align-items: center;
-justify-content: center;
-gap: 1.5rem;
-color: var(--beige);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    color: var(--beige);
 }
 .hero-tagline .line {
-width: 200px;
-height: 5px;
-border-radius: 20px;
-background: var(--orange);
+    width: 200px;
+    height: 5px;
+    border-radius: 20px;
+    background: var(--orange);
 }
 .hero-tagline p {
-font-weight: 500;
-font-size: 1.5rem;
-margin: 0;
-color: var(--beige);
+    font-weight: 500;
+    font-size: 1.5rem;
+    margin: 0;
+    color: var(--beige);
 }
 
 /* --- Section 2: Stats (Style Corrigé) --- */
@@ -160,59 +161,55 @@ color: var(--beige);
     font-weight: 600;
 }
 
-/* --- Section 3: About (Style Corrigé) --- */
+/* --- Section 3: About (Style Corrigé pour un slide standard) --- */
 .about-section {
     background-color: var(--dark-blue);
     color: var(--white);
-    padding: 4rem 0;
+    padding: 4rem 1rem; /* Ajustement du padding */
     overflow: hidden;
 }
 .about-grid {
     display: flex;
     flex-direction: row;
+    max-width: 80rem;
+    margin: 0 auto;
 }
 .about-text-content {
-    padding: 2rem 2rem 2rem 4rem;
+    flex: 1;
+    padding: 2rem;
 }
 .about-title {
-    font-size: 3rem;
+    font-size: clamp(2rem, 5vw, 3rem);
     font-weight: 700;
     margin: 0;
     white-space: nowrap;
 }
 .about-subtitle {
-    font-size: 3rem;
+    font-size: clamp(2rem, 5vw, 3rem);
     font-weight: 700;
     color: var(--orange);
     margin-top: 0.25rem;
 }
 .about-description {
     margin-top: 2rem;
-    font-size: 1.1rem;
+    font-size: clamp(1rem, 2vw, 1.1rem);
     color: rgba(224, 222, 210, 0.8);
     line-height: 1.8;
     max-width: 600px;
 }
 .about-carousel-container {
+    flex: 1;
     position: relative;
-    width: 100%;
-    min-height: 500px;
     padding: 2rem 0;
+    overflow: hidden;
 }
 .about-carousel-track {
     display: flex;
-    gap: 2%;
     transition: transform 0.7s cubic-bezier(0.25, 1, 0.5, 1);
 }
 .about-carousel-slide {
-    flex: 0 0 70%;
-    opacity: 0.4;
-    transform: scale(0.9);
-    transition: opacity 0.6s ease, transform 0.6s ease;
-}
-.about-carousel-slide.active {
-    opacity: 1;
-    transform: scale(1);
+    flex-shrink: 0;
+    width: 100%;
 }
 .about-image {
     width: 100%;
@@ -248,7 +245,7 @@ color: var(--beige);
 .about-dots-container {
     position: absolute;
     bottom: 2rem;
-    left: 70%;
+    left: 50%;
     transform: translateX(-50%);
     display: flex;
     gap: 0.75rem;
@@ -302,10 +299,9 @@ color: var(--beige);
     margin: 0 1.5rem;
     font-size: 1.5rem;
 }
-/* MODIFICATION : Augmentation significative de la hauteur */
 .allies-logo-carousel {
     margin-top: 4rem;
-    height: 12rem; 
+    height: 12rem;
     overflow: hidden;
 }
 .allies-logo-track {
@@ -330,11 +326,9 @@ color: var(--beige);
     max-width: 100%;
     object-fit: contain;
 }
-/* MODIFICATION : Augmentation significative de la taille des logos */
 .allies-logo-img.h-12 { height: 16.5rem; }
 .allies-logo-img.h-14 { height: 17rem; }
 .allies-logo-img.h-16 { height: 19rem; }
-
 .allies-dots-container {
     display: flex;
     justify-content: center;
@@ -410,6 +404,9 @@ color: var(--beige);
 
 /* Tablettes paysage ≤ 992px */
 @media (max-width: 992px) {
+    .edition-image {
+        display: none;
+    }
     .main-title-container h1 {
         font-size: 4rem;
     }
@@ -423,7 +420,7 @@ color: var(--beige);
         gap: 1.5rem;
     }
     .about-grid {
-        grid-template-columns: 1fr;
+        flex-direction: column;
         gap: 3rem;
     }
     .about-text-content {
@@ -444,6 +441,9 @@ color: var(--beige);
 
 /* Tablettes portrait ≤ 768px */
 @media (max-width: 768px) {
+    .edition-image {
+        display: none;
+    }
     .main-title-container h1 {
         font-size: 3rem;
     }
@@ -488,29 +488,34 @@ color: var(--beige);
 
 /* Petits mobiles ≤ 480px */
 @media (max-width: 480px) {
-    .hero-edition{height: 50%;}
-    .hero-overlay-content h1 {
-      font-size: 2rem;
+    .hero-edition {
+        height: 50vh;
+        justify-content: center;
     }
-    .main-title-container h1{
-      padding-left: 270px;
+    .hero-overlay-content {
+        justify-content: center;
+    }
+    .main-title-container {
+        margin-bottom: 1rem;
+    }
+    .main-title-container h1 {
+        font-size: clamp(2rem, 10vw, 3rem);
+        padding-left: 0;
     }
     .edition-image {
-      height: 270px;
-      width: 270px;
-      position: relative;
-      right: 200px;
-      top: 65px;
+        display: none;
     }
-    .hero-overlay-content{padding-bottom: 0;}
-    .hero-tagline{display: flex;flex-direction: row; position: relative; bottom: 80px;}
+    .hero-tagline {
+        flex-direction: row;
+        position: relative;
+        bottom: 0;
+        margin-top: 1rem;
+    }
     .hero-tagline .line {
-      width: 100px;
-      height: 4px;
+        width: 50px;
     }
     .hero-tagline p {
-      font-size: 1.2rem;
-      text-align: center;
+        font-size: clamp(0.9rem, 3vw, 1rem);
     }
     .stats-section {
         padding: 3rem 1rem;
@@ -519,9 +524,7 @@ color: var(--beige);
         font-size: 1.8rem;
     }
     .stat-item {
-        padding-top: 50px;
-        padding-left: 0;
-        padding-right: 0;
+        padding: 1rem;
     }
     .about-title, .about-subtitle {
         font-size: 1.8rem;
@@ -551,10 +554,27 @@ color: var(--beige);
     .edition-nav-container{
         margin-top: 40px;
     }
-    .edition-nav-button{padding: 0;
-    padding-top: 15px;
-padding-bottom: 15px;}
-.allies-logo-img.h-12 { height: 12rem; }
-.allies-logo-img.h-14 { height: 13rem; }
-.allies-logo-img.h-16 { height: 15rem; }
+    .edition-nav-button{
+        padding: 0;
+        padding-top: 15px;
+        padding-bottom: 15px;
     }
+    .allies-logo-img.h-12 { height: 12rem; }
+    .allies-logo-img.h-14 { height: 13rem; }
+    .allies-logo-img.h-16 { height: 15rem; }
+}
+
+/* --- Responsive Styles Optimisés pour la nouvelle structure --- */
+@media (max-width: 992px) {
+    .about-grid {
+        flex-direction: column;
+    }
+    .about-text-content {
+        text-align: center;
+        padding: 1.5rem;
+    }
+    .about-nav-button {
+        right: 0.5rem;
+        top: 60%;
+    }
+}

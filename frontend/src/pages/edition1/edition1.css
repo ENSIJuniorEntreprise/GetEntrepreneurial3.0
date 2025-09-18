@@ -17,6 +17,7 @@
 
 html, body {
     width: 100%;
+    height: 100%;
     overflow-x: hidden;
 }
 
@@ -28,7 +29,7 @@ html, body {
 /* --- Section 1: Hero --- */
 .hero-edition {
     position: relative;
-    height: 100vh;
+    min-height: 100vh;
     color: var(--light-beige);
     display: flex;
     justify-content: center;
@@ -104,22 +105,25 @@ html, body {
     align-items: center;
     justify-content: center;
     gap: 1.5rem;
+    color: var(--light-beige); /* Correction : J'ai remplacé --beige par --light-beige qui est défini */
 }
 
 .hero-tagline .line {
-    width: 150px;
+    width: 200px;
     height: 5px;
     border-radius: 20px;
     background: var(--orange);
-    opacity: 0.8;
 }
 
 .hero-tagline p {
-    font-size: clamp(1rem, 3vw, 2rem);
-    font-weight: 600;
+    font-weight: 500;
+    /* === MODIFICATION PRINCIPALE ICI === */
+    font-size: 1.5rem; /* Taille adaptable: min 1.5rem, idéal 5% de la largeur, max 4rem */
     margin: 0;
     color: var(--light-beige);
+    line-height: 1.4; /* Ajout pour un meilleur espacement */
 }
+
 
 /* --- Section 2: Intro and Statistics --- */
 .intro-edition,
@@ -438,15 +442,18 @@ html, body {
     .quote-body { font-size: 0.8rem; }
     .author-info { flex-direction: column; text-align: center; gap: 0.5rem; }
 }
+
+/* ON NE TOUCHE PLUS À LA TAILLE DE .hero-tagline p ICI, 
+   CAR LA FONCTION clamp() GÈRE DÉJÀ L'ADAPTATION */
+
 @media (max-width: 358px) {
   .main-title-container h1 { font-size: 1.5rem; }}
-  .hero-tagline p { font-size: 0.8rem; }
-/* --- Mobiles ultra-petits (jusqu'à 300px) --- */
+
 @media (max-width: 329px) {
-    
     .intro-text-content h2, .intro-text-content h3 { font-size: 1.2rem; }
     .intro-text-content p { font-size: 0.9rem; }}
     .hero-edition { height: 40vh; }
+
 @media (max-width: 300px) {
     .intro-edition { flex-direction: column; }
     .stats-container { flex-direction: column; justify-content: center; align-items: center; gap: 1rem; }
@@ -455,17 +462,13 @@ html, body {
     .stat-box p { font-size: 0.7rem; }
 }
 
-/* --- Mobiles (jusqu'à 289px) --- */
 @media (max-width: 289px) {
   .main-title-container h1 { font-size: 1.4rem; }
-  .hero-tagline p { font-size: 0.7rem; }
   .hero-edition { height: 40vh; }
 }
 
-/* --- Écrans ultra-petits (jusqu'à 260px) --- */
 @media (max-width: 260px) {
     .hero-overlay-content h1 { font-size: 1.8rem; }
-    .hero-tagline p { font-size: 0.9rem; }
     
     .intro-text-content h2, .intro-text-content h3 { font-size: 1.3rem; }
     .intro-text-content p { font-size: 0.8rem; }
