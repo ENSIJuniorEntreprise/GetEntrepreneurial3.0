@@ -104,7 +104,7 @@ html, body {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 1.5rem;
+    gap: 1.51rem;
     color: var(--light-beige); /* Correction : J'ai remplacé --beige par --light-beige qui est défini */
 }
 
