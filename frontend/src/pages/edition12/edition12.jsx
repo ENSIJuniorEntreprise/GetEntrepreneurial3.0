@@ -3,11 +3,11 @@ import './edition12.css';
 
 // --- Importations d'images ---
 import heroBackground from "../../assets/images/espace.JPG";
-import galleryImage1 from "../../assets/images/055.png";
-import galleryImage2 from "../../assets/images/260.png";
-import galleryImage3 from "../../assets/images/250.png";
-import galleryImage4 from "../../assets/images/073.png";
-import galleryImage5 from "../../assets/images/042.png";
+import galleryImage1 from '../../assets/images/003.png';
+import galleryImage2 from '../../assets/images/015.png';
+import galleryImage3 from '../../assets/images/296.png';
+import galleryImage4 from '../../assets/images/167.png';
+import galleryImage5 from '../../assets/images/073.png';
 
 // --- Importez les images pour les témoignages ---
 import testimonialImage1 from '../../assets/images/imenlouati.JPG'; 
