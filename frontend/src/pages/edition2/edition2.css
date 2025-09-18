@@ -493,7 +493,7 @@ body {
         bottom: 30px;
     }
     .hero-edition {
-        min-height: 70vh;
+        min-height: 70.5vh;
     }
     .hero-tagline {
         flex-direction: row;
