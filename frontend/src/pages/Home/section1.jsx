@@ -47,7 +47,7 @@ const Section1 = () => {
     <div className="hero-container">
       <section className="hero-fullscreen">
         <video autoPlay loop muted className="background-video">
-          <source src="/gete.mp4" type="video/mp4" />
+          <source src="/getecomp.mp4" type="video/mp4" />
           Votre navigateur ne supporte pas la vidéo.
         </video>
         <div className="video-overlay"></div>

@@ -1,10 +1,14 @@
 import React, { useState, useEffect, Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
-import Navbar from './components/Navbar/Navbar'; 
-import Footer from './components/Footer/Footer'; 
-import Loader from './components/Loader/Loader'; 
+import Navbar from './components/Navbar/Navbar';
+import Footer from './components/Footer/Footer';
+import Loader from './components/Loader/Loader';
 import DashboardPage from './pages/dashboard/dashboard';
+import LoginForm from './LoginForm';
+// L'import est déjà là, c'est parfait
+import { AuthProvider } from './AuthContext';
+import PrivateRoute from './PrivateRoute';
 
 const Home = React.lazy(() => import('./pages/Home/Home'));
 const Apropos = React.lazy(() => import('./pages/Apropos/Apropos'));
@@ -38,110 +42,129 @@ function App() {
   }
   
   return (
-    <Router>
-      <Suspense fallback={<div></div>}>
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <>
-                <Navbar/>
-                <Home />
-                <Footer />
-              </>
-            }
-          />
-          <Route 
-          path="/apropos" 
-          element={
-          <>
-          <Navbar />
-          <Apropos />
-          <Footer />
-          </>}
-           />
-          <Route
-           path="/collaboration"
-            element={
-            <>
-            <Navbar />
-            <Collaboration />
-            <Footer />
-            </>}
-             />
-          <Route
-           path="/programme"
-            element={
-            <><Navbar />
-            <Agenda />
-            <Footer />
-            </>}
-             />
-          <Route
-           path="/contact"
-            element={
-            <>
-            <Navbar />
-            <Contact />
-            <Footer />
-            </>} 
+    // ON AJOUTE LE PROVIDER ICI POUR ENGLOBER TOUTE L'APPLICATION
+    <AuthProvider>
+      <Router>
+        <Suspense fallback={<div></div>}>
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <>
+                  <Navbar/>
+                  <Home />
+                  <Footer />
+                </>
+              }
             />
-          <Route 
-          path="/inscription"
-           element={
-           <>
-           <Navbar />
-           <Inscription />
-           <Footer />
-           </>
-          } 
-          />
-          <Route 
-          path="/edition1"
-           element={
-           <>
-           <Navbar />
-           <Edition1 />
-           <Footer />
-           </>
-          } 
-          />
-          <Route
-           path="/edition2" 
-           element={
-           <>
-           <Navbar />
-           <Edition2 />
-           <Footer />
-           </>
-          }
-           />
-          <Route
-           path="/legacy" 
-           element={
-           <>
-           <Navbar />
-           <Edition12 />
-           <Footer />
-           </>
-          }
-           />
-          <Route
-           path="/participant" 
-           element={
-           <Participant />
-           } 
-           />
-          <Route
-           path="/exposant" 
-           element={
-           <Exposant />
-           } 
-           />
-           <Route path="/dashboard1" element={<DashboardPage />} />
-        </Routes>
-      </Suspense>
-    </Router>
+            <Route 
+            path="/apropos" 
+            element={
+            <>
+            <Navbar />
+            <Apropos />
+            <Footer />
+            </>}
+            />
+            <Route
+            path="/collaboration"
+              element={
+              <>
+              <Navbar />
+              <Collaboration />
+              <Footer />
+              </>}
+              />
+            <Route
+            path="/programme"
+              element={
+              <><Navbar />
+              <Agenda />
+              <Footer />
+              </>}
+              />
+            <Route
+            path="/contact"
+              element={
+              <>
+              <Navbar />
+              <Contact />
+              <Footer />
+              </>} 
+              />
+            <Route 
+            path="/inscription"
+            element={
+            <>
+            <Navbar />
+            <Inscription />
+            <Footer />
+            </>
+            } 
+            />
+            <Route 
+            path="/edition1"
+            element={
+            <>
+            <Navbar />
+            <Edition1 />
+            <Footer />
+            </>
+            } 
+            />
+            <Route
+            path="/edition2" 
+            element={
+            <>
+            <Navbar />
+            <Edition2 />
+            <Footer />
+            </>
+            }
+            />
+            <Route
+            path="/legacy" 
+            element={
+            <>
+            <Navbar />
+            <Edition12 />
+            <Footer />
+            </>
+            }
+            />
+            <Route
+              path="/login"
+              element={
+                <>
+                  <Navbar />
+                  <LoginForm />
+                  <Footer />
+                </>
+              }
+            />
+            <Route
+            path="/participant" 
+            element={
+            <Participant />
+            } 
+            />
+              {/* Le PrivateRoute a maintenant accès au contexte d'authentification */}
+              <Route
+              element={<PrivateRoute />}
+            >
+              <Route path="/dashboard" element={<DashboardPage />} />
+            </Route>
+            <Route
+            path="/exposant" 
+            element={
+            <Exposant />
+            } 
+            />
+            
+          </Routes>
+        </Suspense>
+      </Router>
+    </AuthProvider> // ON FERME LE PROVIDER ICI
   );
 }
 
