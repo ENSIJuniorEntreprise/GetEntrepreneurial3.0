@@ -1,9 +1,7 @@
 const Participant = require('../models/Participant');
 const Exposant = require('../models/Exposant');
 
-// --- Fonctions pour les Participants ---
-// @desc    Inscrire un nouveau participant
-// @route   POST /api/inscriptions/participants
+
 exports.createParticipant = async (req, res) => {
   try {
     const { prenom, nom, email, telephone, dateDeNaissance, sexe, region, statut, expertise, experience, partageInfos } = req.body;
@@ -20,8 +18,7 @@ exports.createParticipant = async (req, res) => {
   }
 };
 
-// @desc    Récupérer tous les participants
-// @route   GET /api/inscriptions/participants
+
 exports.getAllParticipants = async (req, res) => {
   try {
     const participants = await Participant.find({});
@@ -31,9 +28,6 @@ exports.getAllParticipants = async (req, res) => {
   }
 };
 
-// --- Fonctions pour les Exposants ---
-// @desc    Inscrire un nouvel exposant
-// @route   POST /api/inscriptions/exposants
 exports.createExposant = async (req, res) => {
   try {
     const { nomEntreprise, secteurActivite, typeOrganisation, nomContact, emailContact, telephone, siteWeb, description, accepteTermes } = req.body;
@@ -50,8 +44,7 @@ exports.createExposant = async (req, res) => {
   }
 };
 
-// @desc    Récupérer tous les exposants
-// @route   GET /api/inscriptions/exposants
+
 exports.getAllExposants = async (req, res) => {
   try {
     const exposants = await Exposant.find({});
