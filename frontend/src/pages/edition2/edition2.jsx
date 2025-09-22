@@ -10,7 +10,7 @@ import editionTextImage from './2emeedition.png';
 
 // Pour la section About (Carrousel)
 import aboutImage1 from '../../assets/images/lahisl.jpeg';
-import aboutImage2 from '../../assets/images/poledc.JPG';
+import aboutImage2 from '../../assets/images/poledccom.jpg';
 import aboutImage3 from '../../assets/images/amenistand.jpeg';
 import aboutImage4 from '../../assets/images/lahiani.JPG';
 import aboutImage5 from '../../assets/images/stand.jpeg';

@@ -258,6 +258,36 @@ body {
   color: var(--highlight-color);
 }
 
+/* === STYLES POUR LES BLOCS DE SESSION (PANEL/WORKSHOP) --- */
+.session-block {
+  margin-top: 1.2rem;
+  padding-top: 1.2rem;
+  border-top: 1px solid var(--timeline-line-color);
+}
+
+.timeline-description > .session-block:first-child {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: none;
+}
+
+.session-title {
+  font-weight: 700;
+  margin-bottom: 0.7rem;
+}
+
+/* --- MODIFICATION ICI : Style du titre du workshop --- */
+.workshop-title-main {
+  color: var(--highlight-color);
+  font-size: 1.4rem; /* Match avec .timeline-title */
+  font-weight: 800;   /* Match avec .timeline-title */
+}
+
+.session-content {
+  color: var(--card-color);
+}
+
+
 /* === RESPONSIVENESS SIMPLIFIÉE ET CORRIGÉE === */
 
 /* Tablets (768px - 1199px) */
@@ -399,7 +429,6 @@ body {
   
   .timeline-title {
     font-size: 1.1rem;
-    margin-bottom: 8px;
   }
   
   .timeline-speaker {
@@ -428,6 +457,11 @@ body {
   .cs-status {
     font-size: 1.1rem;
     letter-spacing: 2px;
+  }
+  
+  /* --- MODIFICATION ICI : ajustement pour mobile --- */
+  .workshop-title-main {
+    font-size: 1.1rem; /* Adapte la taille pour les écrans plus petits */
   }
 }
 
@@ -485,6 +519,10 @@ body {
   
   .cs-status {
     font-size: 1rem;
+  }
+
+  .workshop-title-main {
+    font-size: 1rem; /* Adapte la taille pour les écrans très petits */
   }
 }
 

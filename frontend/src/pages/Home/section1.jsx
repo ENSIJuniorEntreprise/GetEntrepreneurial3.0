@@ -54,7 +54,7 @@ const Section1 = () => {
 
         <div className="hero-content">
           <div className="date-location">
-            <span className="day">22</span>
+            <span className="day1">22</span>
             <div className="month-year">
               <span className="month">OCT</span>
               <span className="year">2025</span>

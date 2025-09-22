@@ -8,7 +8,7 @@ const Inscription = () => {
     <div className="inscription-page">
       <header className="inscription-header">
         <h1>
-          GET <span className="text-orange">ENTREPRENEURIAL</span>
+          <span className="text-orange">GET E</span>NTREPRENEURIAL
         </h1>
         <p className="subtitle">
           Le rendez-vous incontournable de l'entrepreneuriat et de l'innovation technologique
