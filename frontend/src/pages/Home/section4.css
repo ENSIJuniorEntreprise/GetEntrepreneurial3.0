@@ -211,47 +211,47 @@
     width: 100px;
   }
   .flip-card {
-    width: 80%; /* Occupe une plus grande largeur pour être plus visible */
-    max-width: 350px; /* Empêche les cartes de devenir trop grandes */
-    height: 550px; /* Ajuste la hauteur */
+    width: 80%;
+    max-width: 350px;
+    height: 600px; /* MODIFICATION : Hauteur augmentée de 550px à 600px */
   }
   .card-title-content h4 {
     font-size: 2rem;
   }
 }
 
-/* Pour les très petits écrans (jusqu'à 280px) */
+/* Pour les très petits écrans (jusqu'à 480px) */
 @media (max-width: 480px) {
   .axes-section {
     padding: 3rem 2%;
   }
   .axes-title-group h2 {
-    font-size: 2rem; /* Taille de police plus petite pour le titre principal */
+    font-size: 2rem;
   }
   .axes-subtitle h3 {
-    font-size: 1rem; /* Taille de police plus petite pour le sous-titre */
+    font-size: 1rem;
   }
   .axes-subtitle .line {
-    width: 50px; /* Lignes plus courtes pour s'adapter à la petite taille */
+    width: 50px;
   }
   .axes-cards-container {
     gap: 2rem;
   }
   .flip-card {
-    width: 90%; /* Occupe presque toute la largeur disponible */
-    height: 500px; /* Réduit encore la hauteur */
+    width: 90%;
+    height: 550px; /* MODIFICATION : Hauteur augmentée de 500px à 550px */
   }
   .flip-card-front, .flip-card-back {
-    padding: 1.5rem; /* Réduit le padding pour plus d'espace */
+    padding: 1.5rem;
   }
   .card-title-content h4 {
-    font-size: 1.5rem; /* Taille de police plus petite pour le titre de la carte */
+    font-size: 1.5rem;
   }
   .card-back-content p {
-    font-size: 0.9rem; /* Taille de police du texte plus petite */
+    font-size: 0.9rem;
   }
   .axes-subtitle .line {
-    width: 40px; /* Lignes plus courtes pour s'adapter à la petite taille */
+    width: 40px;
   }
 }
 @media (max-width: 400px) {.axes-subtitle .line {
@@ -284,7 +284,7 @@
     font-size: 0.9rem;
   }
   .flip-card {
-    height: 450px;
+    height: 500px; /* MODIFICATION : Hauteur augmentée de 450px à 500px */
   }
   .card-title-content h4 {
     font-size: 1.3rem;
