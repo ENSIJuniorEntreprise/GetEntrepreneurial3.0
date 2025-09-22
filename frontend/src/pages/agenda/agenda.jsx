@@ -41,7 +41,7 @@ const agendaData = {
     {
       id: 5,
       type: 'PANEL 2 – ACCÈS AUX MARCHÉS PUBLICS & INTERNATIONAUX',
-      time: '12h30 – 13h45',
+      time: '12h30 – 13h15',
       speaker: '', // <- Supprimé
       description: `<div class="session-block">
                       <div class="session-content">• Marchés publics : vers un État acheteur innovant<br />• Accélérer l'accès aux marchés globaux : Rôle de la Diaspora<br />• Vision internationale dès la création</div>
@@ -54,7 +54,7 @@ const agendaData = {
     {
       id: 6,
       type: 'PANEL 3 – FINANCEMENT ET INVESTISSEMENT',
-      time: '14h00 – 14h45',
+      time: '13h30 – 14h15',
       speaker: '', // <- Supprimé
       description: `<div class="session-block">
                       <div class="session-content">• Cartographie actuelle du financement<br />• Rôle de la diaspora dans le financement international<br />• Modernisation des mécanismes d'investissement</div>
@@ -67,7 +67,7 @@ const agendaData = {
     {
       id: 7,
       type: 'CLÔTURE',
-      time: '14h45 – 15h00',
+      time: '14h30 – 14h45',
       speaker: '', // <- Supprimé
       description: `Mot de clôture et proposition de valeur vers un "Innovation Act".`
     },

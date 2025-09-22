@@ -2,6 +2,31 @@ import React from 'react';
 import './B2BDealDayTab.css';
 
 const B2BDealDayTab = ({ data }) => {
+  // --- DÉBUT DE LA MODIFICATION ---
+  // Fonction pour mettre en surbrillance un texte spécifique dans un titre
+  const renderTitle = (title) => {
+    const textToHighlight = 'Conférence Plénière';
+    // On divise le titre en parties, en gardant le texte à surligner
+    const parts = title.split(new RegExp(`(${textToHighlight})`, 'gi'));
+
+    return (
+      <>
+        {parts.map((part, index) =>
+          // Si la partie correspond au texte (insensible à la casse), on lui donne la classe CSS
+          part.toLowerCase() === textToHighlight.toLowerCase() ? (
+            <span key={index} className="highlight-orange">
+              {part}
+            </span>
+          ) : (
+            // Sinon, on affiche le texte normalement
+            part
+          )
+        )}
+      </>
+    );
+  };
+  // --- FIN DE LA MODIFICATION ---
+
   return (
     <div className="b2b-tab-container">
       <header className="b2b-tab-header">
@@ -13,17 +38,15 @@ const B2BDealDayTab = ({ data }) => {
         {data.panels.map((panel, index) => (
           <div key={panel.id} className="b2b-panel-card">
             
-            {/* --- MODIFICATION CI-DESSOUS --- */}
             <h3 className="b2b-panel-title">
               {index === 0
-                // Si c'est le premier élément (index 0), on affiche seulement le titre
-                ? panel.title
-                // Pour tous les autres, on ajoute le préfixe "Panel X :"
-                // Le numéro du panel est l'index, car on commence à compter à partir de Panel 1 pour le 2ème élément.
+                // On utilise la fonction renderTitle pour le premier élément
+                ? renderTitle(panel.title)
+                // Et aussi pour tous les autres
                 : (
                   <>
                     <span className="panel-number">Panel {index} :</span>
-                    {panel.title}
+                    {renderTitle(panel.title)}
                   </>
                 )
               }

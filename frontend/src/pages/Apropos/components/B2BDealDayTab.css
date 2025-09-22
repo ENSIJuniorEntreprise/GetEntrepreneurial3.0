@@ -68,6 +68,11 @@
   font-weight: 700;
 }
 
+/* --- NOUVELLE CLASSE AJOUTÉE --- */
+.highlight-orange {
+  color: var(--orange);
+}
+
 /* --- LISTE DES ITEMS --- */
 .b2b-panel-items-list {
   list-style: none;

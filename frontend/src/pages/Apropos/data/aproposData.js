@@ -13,9 +13,9 @@ export const aproposData = {
       title: "LES GRANDES AXES",
       points: [
         'Les <span class="highlight">secteurs</span> dans lesquels la <span class="highlight">Tunisie</span> peut être déterminante.',  
-        'Faciliter l’<span class="highlight">accès</span> aux <span class="highlight">marchés</span> en levant les obstacles à l’internationalisation ',  
-        'Renforcer les <span class="highlight">structures</span> d’<span class="highlight">accompagnement</span> (SSO).',  
-        'Repenser le <span class="highlight">financement</span> des <span class="highlight">startups</span> à travers les leviers privés, publics et internationaux.'
+        'Faciliter <span class="highlight">l’accès</span>  <span class="highlight">aux marchés</span> en levant les obstacles à l’internationalisation ',  
+        'Renforcer les <span class="highlight">structures</span> <span class="highlight">d’accompagnement</span> (SSO).',  
+        'Repenser le <span class="highlight">financement des</span>  <span class="highlight">startups</span> à travers les leviers privés, publics et internationaux.'
       ]
     }
   },
