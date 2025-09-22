@@ -11,116 +11,67 @@
 /* --- EN-TÊTE --- */
 .gp-tab-header {
   text-align: center;
-  margin-bottom: clamp(30px, 5vw, 40px);
+  margin-bottom: clamp(20px, 4vw, 30px);
 }
 
 .gp-tab-header h2 {
-  font-size: clamp(2rem, 4vw, 2.4rem);
+  font-size: clamp(1.8rem, 4vw, 2.2rem);
   color: var(--dark-blue);
   line-height: 1.3;
   margin-bottom: 0;
 }
 
-/* --- SECTION PROBLÉMATIQUE --- */
-.problem-section {
-  background-color: var(--beige);
-  padding: clamp(20px, 5vw, 30px);
-  margin-bottom: clamp(40px, 8vw, 50px);
-  border-radius: clamp(16px, 3vw, 24px);
-}
-
-.problem-section h3 {
-  text-align: center;
-  font-size: clamp(1.3rem, 3vw, 1.6rem);
-  margin-top: 0;
-  margin-bottom: clamp(20px, 4vw, 25px);
-  color: var(--dark-blue);
-  line-height: 1.4;
-}
-
-.problem-list {
-  list-style: none;
-  padding: 0;
-  margin: 0 auto;
-  max-width: 800px;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: clamp(20px, 4vw, 25px);
-}
-
-.problem-list li {
-  padding-left: 25px;
-  border-left: 3px solid var(--orange);
-  font-size: clamp(1.1rem, 2.5vw, 1.2rem);
-  line-height: 1.7;
-  color: var(--dark-blue);
-}
-
-/* --- SECTION THÈME DÉTAILLÉ --- */
-.theme-details-section {
-  text-align: center;
-  margin: 0 auto clamp(50px, 8vw, 60px) auto;
+/* --- SECTION DESCRIPTION --- */
+.description-section {
+  text-align: left;
+  margin: 0 auto clamp(40px, 8vw, 50px) auto;
   max-width: 900px;
   padding: 0 clamp(10px, 3vw, 20px);
 }
 
-.theme-details-section h3 {
-  font-size: clamp(1.3rem, 3vw, 1.6rem);
-  margin-bottom: 15px;
-  color: var(--dark-blue);
-  line-height: 1.4;
-}
-
-.theme-details-section p {
-  font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+.description-section p {
+  font-size: clamp(1.2rem, 2.5vw, 1.4rem);
   line-height: 1.7;
   color: #333;
-}
-
-/* --- SECTION STATISTIQUES --- */
-.stats-section {
-  margin-bottom: clamp(50px, 8vw, 60px);
-}
-
-.stats-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: clamp(20px, 5vw, 30px);
-  padding: 0 clamp(10px, 3vw, 20px);
-}
-
-.stat-card {
-  background-color: var(--dark-blue);
-  color: var(--white);
-  padding: clamp(20px, 4vw, 25px) clamp(15px, 3vw, 20px);
-  border-radius: 12px;
-  text-align: center;
-  transition: transform 0.3s ease;
-}
-
-.stat-card:hover {
-  transform: translateY(-5px);
-}
-
-.stat-value {
-  font-size: clamp(2.2rem, 5vw, 3rem);
-  font-weight: 700;
-  color: var(--orange);
-  display: block;
-  line-height: 1.2;
-}
-
-.stat-label {
-  font-size: clamp(0.8rem, 2vw, 0.9rem);
-  margin-top: 5px;
-  color: var(--beige);
-  line-height: 1.3;
 }
 
 /* --- SECTION AXES STRATÉGIQUES --- */
 .strategic-axes-section {
   padding-top: 20px;
 }
+
+.axes-title {
+  /* --- MODIFICATION ICI : Ajout de flexbox pour positionner les lignes --- */
+  display: flex;
+  align-items: center;
+  text-align: center;
+  font-size: clamp(1.6rem, 4vw, 2rem);
+  margin-top: 0;
+  margin-bottom: clamp(30px, 5vw, 40px);
+  color: var(--dark-blue);
+  line-height: 1.4;
+}
+
+/* --- AJOUT ICI : Création des lignes autour du titre --- */
+.axes-title::before,
+.axes-title::after {
+  content: ''; /* Nécessaire pour que les pseudo-éléments s'affichent */
+  flex: 1; /* Permet aux lignes de remplir l'espace disponible */
+  height: 3px; /* Épaisseur de la ligne */
+  width: 10px;
+  background-color: var(--orange); /* Couleur des lignes */
+  border-radius: 20px; /* Bords arrondis comme demandé */
+}
+
+/* Ajoute un espacement entre le texte et les lignes */
+.axes-title::before {
+  margin-right: 1.5rem;
+}
+
+.axes-title::after {
+  margin-left: 1.5rem;
+}
+
 
 .axes-grid {
   display: grid;
@@ -140,6 +91,10 @@
   text-align: center;
   min-height: clamp(100px, 15vw, 120px);
   transition: transform 0.3s ease;
+  
+  background-color: transparent;
+  color: var(--dark-blue);
+  border: 2px solid var(--dark-blue);
 }
 
 .axis-card:hover {
@@ -153,60 +108,13 @@
   line-height: 1.4;
 }
 
-.axis-card.dark {
-  background-color: var(--dark-blue);
-  color: var(--white);
-}
-
-.axis-card.light {
-  background-color: transparent;
-  color: var(--dark-blue);
-  border: 2px solid var(--dark-blue);
-}
-
 .axis-card .highlight {
   color: var(--orange);
 }
 
 /* --- RESPONSIVE BREAKPOINTS --- */
 
-/* Large Desktop - 1200px+ */
-@media (min-width: 1200px) {
-  .problem-list {
-    grid-template-columns: repeat(2, 1fr);
-    max-width: 1000px;
-  }
-  
-  .stats-grid {
-    /* --- CORRECTION ICI --- */
-    /* Changé de 'repeat(4, 1fr)' à 'repeat(3, 1fr)' pour correspondre à l'image */
-    grid-template-columns: repeat(3, 1fr);
-    max-width: 1000px;
-    margin: 0 auto;
-  }
-}
-
-/* Desktop - 768px to 1199px */
-@media (max-width: 1199px) and (min-width: 768px) {
-  .stats-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-  
-  .axes-grid {
-    max-width: 800px;
-  }
-}
-
-/* Tablet Portrait - 576px to 767px */
-@media (max-width: 767px) and (min-width: 576px) {
-  .problem-list {
-    grid-template-columns: 1fr;
-  }
-  
-  .stats-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  
+@media (max-width: 767px) {
   .axes-grid {
     grid-template-columns: 1fr;
     max-width: 500px;
@@ -217,71 +125,13 @@
   }
 }
 
-/* Mobile Large - 480px to 575px */
-@media (max-width: 575px) and (min-width: 480px) {
-  .problem-section {
-    padding: 20px 15px;
-  }
-  
-  .problem-list {
-    grid-template-columns: 1fr;
-  }
-  
-  .problem-list li {
-    padding-left: 20px;
-  }
-  
-  .stats-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
-  }
-  
-  .axes-grid {
-    grid-template-columns: 1fr;
-    gap: 15px;
-  }
-  
-  .axis-card {
-    min-height: 70px;
-    padding: 20px 15px;
-  }
-}
-
-/* Mobile Small - under 480px */
 @media (max-width: 479px) {
-  .problem-section {
-    padding: 15px 10px;
-    margin-bottom: 30px;
-  }
-  
-  .problem-list {
-    grid-template-columns: 1fr;
-    gap: 15px;
-  }
-  
-  .problem-list li {
-    padding-left: 15px;
-    border-left-width: 2px;
-    font-size: 1rem;
-  }
-  
-  .theme-details-section {
+  .description-section {
     margin-bottom: 40px;
     padding: 0 5px;
   }
   
-  .stats-grid {
-    grid-template-columns: 1fr;
-    gap: 15px;
-    padding: 0 5px;
-  }
-  
-  .stat-card {
-    padding: 20px 15px;
-  }
-  
   .axes-grid {
-    grid-template-columns: 1fr;
     gap: 15px;
     padding: 0 5px;
   }
@@ -294,25 +144,24 @@
   .axis-card p {
     font-size: 1.1rem;
   }
+  
+  /* --- AJOUT ICI : Raccourcir l'espacement sur mobile --- */
+  .axes-title::before {
+    margin-right: 1rem;
+  }
+
+  .axes-title::after {
+    margin-left: 1rem;
+  }
 }
 
-/* --- CORRECTIONS POUR LES TRÈS PETITS ÉCRANS --- */
 @media (max-width: 320px) {
   .gp-tab-header h2 {
     font-size: 1.8rem;
   }
   
-  .problem-section h3 {
+  .axes-title {
     font-size: 1.2rem;
-  }
-  
-  .theme-details-section h3 {
-    font-size: 1.2rem;
-  }
-  
-  .problem-list li {
-    font-size: 0.95rem;
-    padding-left: 12px;
   }
   
   .axis-card p {

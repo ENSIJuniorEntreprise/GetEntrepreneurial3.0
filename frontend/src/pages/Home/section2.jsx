@@ -44,7 +44,7 @@ const Section2 = () => {
 
           <div className="text-content">
             <p>
-              <span className="highlight">Ensi Junior Enterprise</span>, fondée en 2006, est une association étudiante affiliée à l’École Nationale des Sciences de l’Informatique (ENSI).
+              <span className="highlight">ENSI Junior Enterprise</span>, fondée en 2006, est une association étudiante affiliée à l’École Nationale des Sciences de l’Informatique (ENSI).
             </p>
             <p>
               Notre mission est d'introduire les étudiants tunisiens à la vie professionnelle à travers des activités axées sur trois principaux piliers : la formation, les événements et le développement de projets TIC. De plus, nous assumons activement la responsabilité de promouvoir un esprit entrepreneurial au sein de l'écosystème tunisien, grâce à nos activités, notamment les événements qui renforcent le lien entre les étudiants et les entreprises.

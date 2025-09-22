@@ -4,16 +4,16 @@ import { useInView } from 'react-intersection-observer';
 import { FaLinkedin, FaTimes } from 'react-icons/fa';
 
 // --- ÉTAPE 1 : Importer toutes les images des conférenciers ---
-import raziMilaniImg from '../../assets/images/RaziMilani.JPG';
-import taoufikRajhiImg from '../../assets/images/TaoufikRajhi.JPG';
-import walidBelHajAmorImg from '../../assets/images/walidbelhajamor.JPG';
-import ridhaGouiaImg from '../../assets/images/RidhaGouiaa.JPG';
-import imenLouatiImg from '../../assets/images/imenlouati.JPG';
-import karimBenSaidImg from '../../assets/images/KarimBenSaid.JPG';
-import tarekGassaImg from '../../assets/images/tarekgassa.JPG';
-import amineMezghichImg from '../../assets/images/aminemezgh.JPG';
-import hamedBenidaImg from '../../assets/images/HamedBenida.JPG';
-import sawssenBelhajAmorImg from '../../assets/images/SawssenBelhaj Amor.JPG';
+import raziMilaniImg from '../../assets/images/razi.png';
+import taoufikRajhiImg from '../../assets/images/tawfik.png';
+import walidBelHajAmorImg from '../../assets/images/walid.png';
+import ridhaGouiaImg from '../../assets/images/ridha.png';
+import imenLouatiImg from '../../assets/images/imen.png';
+import karimBenSaidImg from '../../assets/images/karim.jpg';
+import tarekGassaImg from '../../assets/images/tarek.png';
+import amineMezghichImg from '../../assets/images/amin.png';
+import hamedBenidaImg from '../../assets/images/Hamed.jpg';
+import sawssenBelhajAmorImg from '../../assets/images/saws.png';
 // Vous pouvez en ajouter d'autres ici si nécessaire
 
 // --- ÉTAPE 2 : Remplacer les données avec les vraies informations ---

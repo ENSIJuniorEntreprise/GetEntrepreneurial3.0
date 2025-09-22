@@ -28,7 +28,7 @@ const Apropos = () => {
       {/* Section Bannière/Header */}
       <header className="apropos-header">
         <div className="header-content">
-          <h1>À propos de <span className='big'>BIG DAY</span></h1>
+          <h1>À propos le <span className='big'>BIG DAY</span></h1>
           <p>Carte vers l'Excellence Entrepreneuriale !</p>
         </div>
       </header>
@@ -47,7 +47,7 @@ const Apropos = () => {
             Panels
           </button>
           <button 
-            className={`tab-btn ${activeTab === 'GREEN&Tech Day' ? 'active' : ''}`}
+            className={`tab-btn1 ${activeTab === 'GREEN&Tech Day' ? 'active' : ''}`}
             onClick={() => setActiveTab('GREEN&Tech Day')}>
             Workshops
           </button>

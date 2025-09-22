@@ -1,7 +1,6 @@
 import React from 'react';
 import './section6.css';
 
-// --- Importer tous les logos des partenaires ---
 import managersLogo from '../../assets/images/managers.png';
 import uibLogo from '../../assets/images/uib.png';
 import lapresseLogo from '../../assets/images/lapresse.png';
@@ -15,7 +14,6 @@ import darblockchainLogo from '../../assets/images/darblockchain.png';
 import digicomLogo from '../../assets/images/digicom.png';
 import monetiqueLogo from '../../assets/images/monétique.png';
 
-// --- MODIFICATION : La liste ne contient plus que les logos ---
 const sponsorsData = [
   { logo: managersLogo },
   { logo: uibLogo },

@@ -2,68 +2,68 @@ import React, { useState } from 'react';
 import './agenda.css';
 
 const agendaData = {
+  // --- MODIFICATION ICI : Le contenu correspond maintenant à l'image ---
   friday: [
-    { id: 1, type: 'Conférence Plénière', time: '09h00 – 11h00', speaker: 'Ouverture Officielle', description: 'Rétrospective et analyse du Startup Act 1.0, et proposition de valeur vers un "Innovation Act". (Session commune)' },
-    
-    // --- DÉBUT DES SESSIONS EN PARALLÈLE ---
+    { 
+      id: 1, 
+      type: 'PLÉNIÈRE – INNOVATION ACT: COMMENT CONCRÉTISER ?', 
+      time: '09h00 – 10h15', 
+      speaker: 'Détails de la session', 
+      description: `• 09h00 – 09h15 | Ouverture officielle
+• 09h15 – 09h45 | Rétrospective du Startup Act 1.0 et analyse critique
+• 09h45 – 10h15 | État de lieux`
+    },
     { 
       id: 2, 
-      type: 'Success Stories / Workshop', 
-      time: '11h00 – 12h00', 
-      speaker: 'Sessions en parallèle', 
-      description: `
---- SESSION PRINCIPALE ---
-Présentation de 3 à 4 parcours inspirants d'entrepreneurs locaux et de la diaspora.
-
---- WORKSHOP (en parallèle) ---
-Workshop 1 : Build Your Startup from Scratch
-Pour étudiants et jeunes entrepreneurs en phase d’idéation.
-      ` 
+      type: 'KEYNOTES', 
+      time: '10h30 – 11h00', 
+      speaker: 'Parcours Inspirants', 
+      description: `Des diasporants et des locaux présentent leurs trajectoires.
+Objectif : Illustrer concrètement les leviers et freins rencontrés.`
     },
     { 
       id: 3, 
-      type: 'Panel Stratégique / Workshop', 
-      time: '12h00 – 12h45', 
-      speaker: 'Sessions en parallèle', 
-      description: `
---- PANEL ---
-Tunisie 2035 : Où miser pour faire la différence ? Identification des secteurs prioritaires.
-
---- WORKSHOP (en parallèle) ---
-Workshop 2 : Étudiant & Startups – Développez les compétences pour réussir demain.
-      ` 
+      type: 'PAUSE CAFÉ', 
+      time: '11h00 – 11h30', 
+      speaker: 'Networking', 
+      description: 'Favoriser les rencontres et les échanges informels entre les participants.' 
     },
-    { id: 4, type: 'Pause Café & Networking', time: '12h45 – 13h15', speaker: 'Échanges & Connexions', description: 'Un moment pour connecter avec les participants, speakers et animateurs.' },
+    { 
+      id: 4, 
+      type: 'PANEL 1 – TUNISIE 2035 : OÙ MISER POUR FAIRE LA DIFFÉRENCE ?', 
+      time: '11h30 – 12h15', 
+      speaker: 'Discussion Stratégique', 
+      description: `• L'arbitrage : financer moins mais mieux
+• Un cadre sélectif et itératif pour le financement
+• Les filières où la Tunisie peut être compétitive dans 10 ans`
+    },
     { 
       id: 5, 
-      type: 'Panel Opérationnel / Workshop', 
-      time: '13h15 – 14h00', 
-      speaker: 'Sessions en parallèle', 
-      description: `
---- PANEL ---
-Accès aux marchés publics & internationaux : état acheteur innovant et rôle de la diaspora.
-
---- WORKSHOP (en parallèle) ---
-Workshop 3 : AI ERA : Nouvelle Cartographie des Métiers.
-      ` 
+      type: 'PANEL 2 – ACCÈS AUX MARCHÉS PUBLICS & INTERNATIONAUX', 
+      time: '12h30 – 13h45', 
+      speaker: 'Stratégies de Marché', 
+      description: `• Marchés publics : vers un État acheteur innovant
+• Accélérer l'accès aux marchés globaux : Rôle de la Diaspora
+• Vision internationale dès la création`
     },
     { 
       id: 6, 
-      type: 'Panel Opérationnel / Workshop', 
+      type: 'PANEL 3 – FINANCEMENT ET INVESTISSEMENT', 
       time: '14h00 – 14h45', 
-      speaker: 'Sessions en parallèle', 
-      description: `
---- PANEL ---
-Financement et Investissement : Gaps structurels et introduction des SAFE Notes.
-
---- WORKSHOP (en parallèle) ---
-Workshop 4 : Freelance & Opportunités : Trouvez vos premiers clients.
-      ` 
+      speaker: 'Experts en Financement', 
+      description: `• Cartographie actuelle du financement
+• Rôle de la diaspora dans le financement international
+• Modernisation des mécanismes d'investissement`
     },
-    
-    { id: 7, type: 'Clôture', time: '14h45 – 15h00', speaker: 'Synthèse & Recommandations', description: 'Résumé des points clés et présentation des recommandations finales pour l\'écosystème.' },
+    { 
+      id: 7, 
+      type: 'CLÔTURE', 
+      time: '14h45 – 15h00', 
+      speaker: 'Synthèse & Recommandations Finales', 
+      description: `Mot de clôture et proposition de valeur vers un "Innovation Act".`
+    },
   ],
-  tuesday: [],
+  tuesday: [], // Le contenu pour les autres jours reste vide pour le moment
   wednesday: []
 };
 

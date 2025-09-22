@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './section1.css';
-import family from '../../assets/images/family.JPG';
+import family from '../../assets/images/familycompressé.jpg';
 import edition from '../../assets/images/3éme.png';
 
 // Importez toutes les icônes nécessaires
@@ -147,15 +147,10 @@ const Section1 = () => {
         <div className="about-section" ref={aboutRef}>
           <div className="about-content">
             <div className={`about-text ${aboutInView ? 'visible' : ''}`}>
-              <h2>Get Entrepreneurial</h2>
+              <h2>GET ENTREPRENEURIAL</h2>
               <h3>Plus qu'un évènement.</h3>
               <p>
-                Pour sa 3ᵉ édition, Get Entrepreneurial affirme son rôle de
-                catalyseur stratégique au cœur de l’économie tunisienne. Il
-                connecte startups, investisseurs, institutions et grandes
-                entreprises autour d’une vision commune :
-                stimuler l’innovation, créer des ponts durables entre les
-                acteurs clés, et faire rayonner la Tunisie à l’international.
+                Get Entrepreneurial se profile à l’horizon comme un projet stratégique à large échelle, sous l’égide de l’ENSI Junior Entreprise, GET E conçu pour catalyser l'innovation et renforcer les synergies entre les acteurs clés public privé et académique  de l'écosystème économique tunisien
               </p>
             </div>
             <div className={`about-image ${aboutInView ? 'visible' : ''}`}>
@@ -164,7 +159,7 @@ const Section1 = () => {
           </div>
           <div className="stats" ref={statsRef}>
             <div className="stat-item">
-              <span className="stat-number">+{statsInView ? <CountUp end={800} duration={2.5} /> : '0'}</span>
+              <span className="stat-number">+{statsInView ? <CountUp end={700} duration={2.5} /> : '0'}</span>
               <span className="stat-label">Visiteurs</span>
             </div>
             <div className="stat-item">

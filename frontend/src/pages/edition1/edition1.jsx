@@ -13,7 +13,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 // --- VOS IMAGES ---
-import heroImage from '../../assets/images/047.png';
+import heroImage from '../../assets/images/047comp.png';
 import editionImage from './1ereedition.png';
 import galleryImage1 from '../../assets/images/003.png';
 import galleryImage2 from '../../assets/images/015.png';

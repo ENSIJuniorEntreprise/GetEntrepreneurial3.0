@@ -125,17 +125,31 @@ html, body {
   max-width: 200px;
 }
 
-.tab-btn3 {
-  padding: clamp(15px, 3vw, 20px) clamp(15px, 3vw, 25px);
+.tab-btn1 {
+    padding: clamp(15px, 3vw, 20px) clamp(20px, 4vw, 45px);
+  font-size: clamp(1.18rem, 2.5vw, 1.6rem);
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease-out;
+  background-color: var(--beige);
+  color: var(--dark-blue);
+  border: 2px solid var(--orange);
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  text-align: center;
+  white-space: nowrap;
+  min-width: 0;
+  flex: 1;
+  max-width: 223px;
 }
 
-.tab-btn:hover:not(.active), .tab-btn3:hover:not(.active) {
+.tab-btn:hover:not(.active), .tab-btn1:hover:not(.active) {
   background-color: #f5f3ed;
   transform: translateY(-5px);
   box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
 }
 
-.tab-btn.active, .tab-btn3.active {
+.tab-btn.active, .tab-btn1.active {
   background-color: var(--orange);
   color: var(--beige);
   border-color: var(--orange);
@@ -201,7 +215,7 @@ html, body {
     padding: 0 30px;
   }
   
-  .tab-btn, .tab-btn3 {
+  .tab-btn, .tab-btn1 {
     font-size: 1.3rem;
     padding: 18px 25px;
   }
@@ -237,7 +251,7 @@ html, body {
     padding: 0 20px;
   }
   
-  .tab-btn, .tab-btn3 {
+  .tab-btn, .tab-btn1{
     font-size: 1.2rem;
     padding: 15px 20px;
   }
@@ -289,7 +303,7 @@ html, body {
     flex-wrap: wrap;
   }
   
-  .tab-btn, .tab-btn3 {
+  .tab-btn, .tab-btn1 {
     font-size: 1.1rem;
     padding: 12px 15px;
     flex: 1;
@@ -356,7 +370,7 @@ html, body {
     flex-direction: column;
   }
   
-  .tab-btn, .tab-btn3 {
+  .tab-btn, .tab-btn1 {
     font-size: 1rem;
     padding: 12px 15px;
     width: 100%;
@@ -364,9 +378,9 @@ html, body {
   }
   
   .tab-btn:hover:not(.active),
-  .tab-btn3:hover:not(.active),
+  .tab-btn1:hover:not(.active),
   .tab-btn.active,
-  .tab-btn3.active {
+  .tab-btn1.active {
     transform: none;
     box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
   }
@@ -393,7 +407,7 @@ html, body {
     font-size: 0.9rem;
   }
   
-  .tab-btn, .tab-btn3 {
+  .tab-btn, .tab-btn1 {
     font-size: 0.9rem;
     padding: 10px 12px;
   }

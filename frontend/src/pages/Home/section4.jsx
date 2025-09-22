@@ -3,9 +3,9 @@ import './section4.css';
 import { useInView } from 'react-intersection-observer'; // Importation du hook
 
 // Assurez-vous que le chemin vers vos images est correct
-import b2bImage from '../../assets/images/BToB.jpg';
-import b2cImage from '../../assets/images/BtoC.jpg';
-import b2sImage from '../../assets/images/BtoS.jpg';
+import b2bImage from '../../assets/images/B2Bcom.png';
+import b2cImage from '../../assets/images/BtoCcomp.jpg';
+import b2sImage from '../../assets/images/BtoScomp.jpg';
 
 // Le contenu de la face arrière de chaque carte est défini ici
 const BackContent1 = () => (

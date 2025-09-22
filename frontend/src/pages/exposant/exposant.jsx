@@ -92,8 +92,8 @@ const Exposant = () => {
                 <option value="Association / ONG">Association / ONG</option>
                 <option value="Institution publique">Institution publique</option>
                 <option value="Université">Université</option>
-                <option value="Artiste / Créateur / Artisan">Créateur</option>
-                <option value="Partenaire / Sponsor">Investisseur</option>
+                <option value="Artiste / Créateur / Artisan">Artiste / Créateur / Artisan</option>
+                <option value="Partenaire / Sponsor">Partenaire / Sponsor</option>
               </select>
             </div>
             <div className="form-group">

@@ -40,7 +40,7 @@ const Collaboration = () => {
 
       <section className="collab-section partners">
         <div className="section-header">
-          <h2>Nos <span className="highlight">Partenaires</span> Stratégiques</h2>
+          <h2>Nos <span className="highlight">Partenaires</span> </h2>
           <p> Ensemble, nous créons un écosystème où l’innovation prospère.</p>
         </div>
         <div className="partners-grid">
@@ -58,13 +58,13 @@ const Collaboration = () => {
             <img src={ctaImage} alt="Partenaires discutant lors d'un événement" />
           </div>
           <div className="cta-content">
-            <h3>Rejoignez les partenaires stratégiques de GET 3.0</h3>
+            <h3>Rejoignez les partenaires de GET E 3.0</h3>
             <p>
-              Participez à trois jours de coopération, de visibilité ciblée et d’échanges à forte valeur ajoutée. En tant que partenaire, vous accompagnez l’un des plus grands événements tech du continent et affirmez votre engagement pour l’innovation et la transformation digitale en Afrique.
+              À travers Get Entrepreneurial 3.0, vous bénéficiez d’une visibilité stratégique: renforcez votre image de marque et créez des connexions durables avec des startups, investisseurs, institutions et acteurs clés de l’innovation en Tunisie.
             </p>
             <div className="cta-buttons">
               <a href="/exposant" className="cta-btn primary">Devenir Partenaire</a>
-              <a href="/Dossierpartenariat.pdf" className="cta-btn secondary" download="Dossier partenariat.pdf">Dossier de partenariat</a>
+              <a href="/Dossierpartenariat.pdf" className="cta-btn secondary" download="Dossier partenariat.pdf">Dossier de collaboration</a>
             </div>
           </div>
         </div>

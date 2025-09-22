@@ -5,7 +5,7 @@ import './edition2.css';
 // Remplacez les chemins par les vôtres
 
 // Pour la section Hero
-import heroBackgroundImage from '../../assets/images/family2.JPG';
+import heroBackgroundImage from '../../assets/images/famillecompr.png';
 import editionTextImage from './2emeedition.png';
 
 // Pour la section About (Carrousel)

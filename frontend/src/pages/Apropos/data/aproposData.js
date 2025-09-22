@@ -7,32 +7,17 @@ import speakerImage from '../../../assets/images/speakers.JPG';
 export const aproposData = {
   // --- Contenu pour l'onglet "Thème" ---
   grandPublic: {
-    title: "Repenser l’Avenir des Startups en Tunisie",
-    problem: {
-      title: "Le Contexte : Opportunités et Défis",
+    title: "STARTUP HORIZONS ET SOLUTIONS : VISION DES JEUNES",
+    description: "Face au potentiel remarquable de la Tunisie en matière de startups, Get Entrepreneurial 3.0 explore une question essentielle : Comment ne pas rater le virage des opportunités offertes par le startup Act 1.0, et répondre aux nouveaux défis émergents pour toutes les PME  innovants ?",
+    axes: {
+      title: "LES GRANDES AXES",
       points: [
-        "La Tunisie dispose d’un fort potentiel dans plusieurs secteurs stratégiques.",
-        "L’accès aux marchés reste difficile à cause des obstacles à l’internationalisation et à la commande publique.",
-        "Les structures d’accompagnement (SSO) manquent encore de moyens pour répondre aux besoins des jeunes entrepreneurs.",
-        "Le financement des startups est limité et insuffisamment diversifié entre leviers privés, publics et internationaux."
+        'Les <span class="highlight">secteurs</span> dans lesquels la <span class="highlight">Tunisie</span> peut être déterminante.',  
+        'Faciliter l’<span class="highlight">accès</span> aux <span class="highlight">marchés</span> en levant les obstacles à l’internationalisation ',  
+        'Renforcer les <span class="highlight">structures</span> d’<span class="highlight">accompagnement</span> (SSO).',  
+        'Repenser le <span class="highlight">financement</span> des <span class="highlight">startups</span> à travers les leviers privés, publics et internationaux.'
       ]
-    },
-    theme: {
-      title: "Notre Vision : Vers un Écosystème Startup Dynamique et Inclusif",
-      description: "Malgré ces défis, la Tunisie présente des signaux forts de transformation : une jeunesse dynamique et un écosystème startup en pleine croissance. GET 3.0 se positionne comme un tournant stratégique. En mobilisant startups, institutions, investisseurs et talents autour d’un projet ambitieux, nous pouvons réinventer ensemble "
-    },
-    stats: [
-      { value: '55%', label: 'Plus de la moitié des Tunisiens ont moins de 25 ans.' },
-      { value: '+20.5%', label: 'Croissance de l’écosystème startup (2021-2023).' },
-      { value: '65%', label: 'Les services génèrent les deux tiers du PIB.' }
-    ],
-    strategicAxes: [
-      'Les <span class="highlight">secteurs</span> dans lesquels la <span class="highlight">Tunisie</span> peut être déterminante.',  
-'Faciliter l’<span class="highlight">accès</span> aux <span class="highlight">marchés</span> en levant les obstacles à l’internationalisation ',  
-'Renforcer les <span class="highlight">structures</span> d’<span class="highlight">accompagnement</span> (SSO).',  
-'Repenser le <span class="highlight">financement</span> des <span class="highlight">startups</span> à travers les leviers privés, publics et internationaux.'  
-
-    ]
+    }
   },
   
   // --- Contenu pour l'onglet "Panels" ---
@@ -47,7 +32,6 @@ export const aproposData = {
           'Proposition de valeur : Vers un Innovation Act'
         ],
         speakers: [
-          // --- ÉTAPE 2 : Utiliser la variable importée ---
           { name: 'Nom Speaker 1', image: speakerImage },
           { name: 'Nom Speaker 2', image: speakerImage },
           { name: 'Nom Speaker 3', image: speakerImage }
@@ -55,7 +39,8 @@ export const aproposData = {
       },
       {
         id: 2,
-        title: 'Panel Tunisie 2035 : Où miser pour faire la différence ?',
+        // --- MODIFICATION ICI : Préfixe retiré ---
+        title: 'Tunisie 2035 : Où miser pour faire la différence ?',
         items: [
           'Arbitrage stratégique : financer moins mais mieux',
           'Identification des secteurs prioritaires (3 à 5)',
@@ -69,6 +54,7 @@ export const aproposData = {
       },
       {
         id: 3,
+        // --- MODIFICATION ICI : Préfixe retiré ---
         title: 'Accès aux Marchés Publics & Internationaux',
         items: [
           'État acheteur innovant & achats publics',
@@ -84,6 +70,7 @@ export const aproposData = {
       },
       {
         id: 4,
+        // --- MODIFICATION ICI : Préfixe retiré ---
         title: 'Financement et Investissement',
         items: [
           'Gaps structurels (pré-amorçage, scale-up)',
@@ -145,20 +132,6 @@ export const aproposData = {
           ]
         }
       },
-      {
-        id: 4,
-        title: 'Workshop 4',
-        subtitle: 'Freelance et Opportunités : Trouvez vos premiers clients',
-        details: {
-          target: 'Étudiants et jeunes diplômés visant le freelance.',
-          duration: '2h',
-          topics: [
-            'Définir son positionnement et construire une offre claire',
-            'Cibler les startups et comprendre leurs attentes',
-            'Maîtriser les techniques d’approche commerciale et de networking'
-          ]
-        }
-      }
     ]
   }
 };

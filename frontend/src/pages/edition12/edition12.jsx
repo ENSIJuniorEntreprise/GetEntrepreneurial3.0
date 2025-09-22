@@ -2,17 +2,17 @@ import React, { useState, useEffect } from 'react';
 import './edition12.css';
 
 // --- Importations d'images ---
-import heroBackground from "../../assets/images/espace.JPG";
-import galleryImage1 from '../../assets/images/003.png';
-import galleryImage2 from '../../assets/images/015.png';
-import galleryImage3 from '../../assets/images/296.png';
-import galleryImage4 from '../../assets/images/167.png';
-import galleryImage5 from '../../assets/images/073.png';
+import heroBackground from "../../assets/images/edition12.png";
+import galleryImage1 from '../../assets/images/003comp.png';
+import galleryImage2 from '../../assets/images/015comp.png';
+import galleryImage3 from '../../assets/images/296comp.png';
+import galleryImage4 from '../../assets/images/167comp.png';
+import galleryImage5 from '../../assets/images/073comp.png';
 
 // --- Importez les images pour les témoignages ---
-import testimonialImage1 from '../../assets/images/imenlouati.JPG'; 
-import testimonialImage2 from '../../assets/images/SawssenBelhaj Amor.JPG';
-import testimonialImage4 from '../../assets/images/ImenBenJmeiaa.JPG';
+import testimonialImage1 from '../../assets/images/imen.png'; 
+import testimonialImage2 from '../../assets/images/saws.png';
+import testimonialImage4 from '../../assets/images/IMENcomp.png';
 
 // Importations d'icônes
 import { Handshake, Zap, Info, ArrowLeft, ArrowRight } from 'lucide-react';
@@ -151,14 +151,6 @@ const Edition12 = () => {
                             <div className="intro-icon">{item.icon}</div>
                             <h3>{item.title}</h3>
                             <p>{item.text}</p>
-                        </div>
-                    ))}
-                </div>
-                <div className="stats-bar">
-                    {statsData.map((stat, index) => (
-                        <div key={index} className="stat-item">
-                            <AnimatedStat endValue={stat.value} />
-                            <span className="stat-label">{stat.label}</span>
                         </div>
                     ))}
                 </div>

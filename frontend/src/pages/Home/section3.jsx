@@ -4,9 +4,9 @@ import { useInView } from 'react-intersection-observer';
 import { FaArrowLeft } from 'react-icons/fa';
 
 // --- ÉTAPE 1 : Importer vos nouvelles images ---
-import communityImage from '../../assets/images/sociale.png';
-import circularEconomyImage from '../../assets/images/ecocir.png';
-import startupsImage from '../../assets/images/startup.png';
+import communityImage from '../../assets/images/socialecomp.png';
+import circularEconomyImage from '../../assets/images/ecocircomp.png';
+import startupsImage from '../../assets/images/startupcomp.png';
 
 // --- ÉTAPE 2 : Remplacer les données par vos articles ---
 const articlesData = [

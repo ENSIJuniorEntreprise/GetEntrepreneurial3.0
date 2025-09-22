@@ -200,6 +200,7 @@
 
 /* Pour les petits écrans (ex: smartphones) */
 @media (max-width: 768px) {
+  
   .axes-section {
     padding: 4rem 5%;
   }

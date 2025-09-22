@@ -42,7 +42,7 @@ const Footer = () => {
             <div className="footerdetails">
               <p>22 October 2025</p>
               <p>UTICA, Tunis</p>
-              <p>Centre Urbain Nord, 1003 Tunis</p>
+              <p>Cité Elkhadhra</p>
             </div>
           </div>
           <div className="footerlinks">
@@ -65,7 +65,7 @@ const Footer = () => {
             <div className="footercolumn">
               <h3>Contact</h3>
               <ul>
-                <li><p>29 903 814</p></li>
+                <li><p>+216 94 30 50 94</p></li>
                 <li><a href="mailto:ensi-juniorEntreprise@gmail.tn">ensi-juniorEntreprise@gmail.tn</a></li>
               </ul>
             </div>
