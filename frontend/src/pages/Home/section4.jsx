@@ -42,7 +42,7 @@ const Section4 = () => {
   return (
     <section className={`axes-section ${inView ? 'visible' : ''}`} ref={ref}>
       <div className="axes-title-group">
-        <h2>Get Entrepreneurial</h2>
+        <h2>GET ENTREPRENEURIAL</h2>
         <div className="axes-subtitle">
           <span className="line"></span>
           <h3>Trois Axes, Une Destination</h3>
