@@ -10,7 +10,6 @@ const Footer = () => {
   const [loading, setLoading] = useState(false);
 
   const handleSubscribe = async (e) => {
-    // Empêche le comportement par défaut du formulaire (qui est de recharger la page)
     e.preventDefault();
     setLoading(true);
     setMessage('');
@@ -74,7 +73,8 @@ const Footer = () => {
 
         <div className="footermiddle">
           <div className="footernewsletter">
-            <p>Rejoignez notre communauté pour recevoir des mises à jour</p>
+            {/* --- MODIFICATION ICI --- */}
+            <p>Rejoignez notre communauté pour ne rien manquer de nos actualités</p>
             <form onSubmit={handleSubscribe} className="newsletterform">
               <input
                 type="email"
@@ -84,18 +84,17 @@ const Footer = () => {
                 required
                 disabled={loading}
               />
+              {/* --- MODIFICATION ICI --- */}
               <button type="submit" disabled={loading}>
-                {loading ? 'Envoi...' : 'Abonner'}
+                {loading ? 'Envoi...' : "S'abonner"}
               </button>
             </form>
 
-            {/* Affiche le message de retour (succès ou erreur) */}
             {message && <p className="footer-message">{message}</p>}
           </div>
           <div className="footersocial">
             <p>Suivez-nous</p>
             <div className="socialicons">
-              {/* --- MODIFICATIONS ICI --- */}
               <a href="https://www.facebook.com/ENSI.Junior.Entreprise" target="_blank" rel="noopener noreferrer" aria-label="Facebook" ><FaFacebookF /></a>
               <a href="https://www.instagram.com/ensijunior" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><FaInstagram /></a>
               <a href="https://www.linkedin.com/company/ensi-junior-entreprise/posts/?feedView=all" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><FaLinkedinIn /></a>

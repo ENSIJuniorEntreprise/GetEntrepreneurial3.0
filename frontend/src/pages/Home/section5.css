@@ -278,6 +278,7 @@
   font-size: 1.5rem;
   font-weight: 800;
   margin-bottom: 0.5rem;
+  padding-left: 55px;
 }
 .overlay-speaker-title {
   font-size: 0.85rem;
@@ -287,11 +288,14 @@
   max-width: 90%;
   margin-left: auto;
   margin-right: auto;
+  padding-left: 55px; 
 }
 .overlay-speaker-description {
   font-size: 1rem;
   font-weight: 600;
   line-height: 1.5;
+  justify-content: center;
+  padding-left: 60px;
 }
 .card-linkedin-link {
   color: var(--dark-blue);

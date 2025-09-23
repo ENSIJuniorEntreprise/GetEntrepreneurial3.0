@@ -122,8 +122,8 @@
 }
 .category-tag {
   background-color: var(--orange);
-  color: var(--dark-blue);
-  padding: 0.4rem 0.8rem;
+  color: var(--light-beige);
+  padding: 0.5rem 0.8rem;
   border-radius: 8px;
   font-weight: 700;
   font-size: 0.8rem;
@@ -134,7 +134,7 @@
 }
 .article-date {
   font-size: 1.3rem;
-  color: #E0DED2;
+  color: #fff;
   margin: 0 0 0.5rem 0;
   font-weight: 600;
 }
