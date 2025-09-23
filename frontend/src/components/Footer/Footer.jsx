@@ -65,7 +65,7 @@ const Footer = () => {
               <h3>Contact</h3>
               <ul>
                 <li><p>+216 94 30 50 94</p></li>
-                <li><a href="mailto:ensi-juniorEntreprise@gmail.tn">ensi-juniorEntreprise@gmail.tn</a></li>
+                <li><a href="mailto:ensi-juniorEntreprise@gmail.tn">commercial.ensi.junior@gmail.com</a></li>
               </ul>
             </div>
           </div>
