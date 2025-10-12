@@ -17,12 +17,6 @@
   max-width: 900px;
   margin: 0 auto;
   color: var(--dark-blue);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: clamp(15px, 4vw, 20px);
-  flex-wrap: wrap;
-  padding: 0 clamp(10px, 3vw, 20px);
 }
 
 /* --- GRILLE DES PANELS --- */
@@ -31,23 +25,24 @@
   grid-template-columns: 1fr;
   gap: clamp(30px, 6vw, 40px);
   padding: 0 clamp(10px, 3vw, 20px);
+  /* La propriété align-items a été retirée pour permettre aux blocs de s'étirer */
 }
 
 /* --- CARTE DE PANEL --- */
 .b2b-panel-card {
-  background-color: var(--light-beige);
+  background-color: #f0eee5;
   color: var(--dark-blue);
   padding: clamp(25px, 5vw, 30px);
   border-radius: 12px;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .b2b-panel-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
 }
 
 /* --- TITRE DU PANEL --- */
@@ -56,283 +51,118 @@
   color: var(--dark-blue);
   margin-top: 0;
   margin-bottom: clamp(15px, 3vw, 20px);
-  border-bottom: 2px solid rgba(31, 33, 45, 0.1);
   padding-bottom: clamp(12px, 2.5vw, 15px);
   line-height: 1.4;
-}
-
-/* --- NUMÉRO DU PANEL --- */
-.panel-number {
-  color: var(--orange);
-  margin-right: 10px;
   font-weight: 700;
 }
 
-/* --- NOUVELLE CLASSE AJOUTÉE --- */
-.highlight-orange {
-  color: var(--orange);
+/* --- NUMÉRO ET SURBRILLANCE ORANGE --- */
+.panel-number, .highlight-orange {
+  color: #f39c12;
+  margin-right: 10px;
+  font-weight: 700;
 }
 
 /* --- LISTE DES ITEMS --- */
 .b2b-panel-items-list {
   list-style: none;
   padding-left: clamp(20px, 4vw, 25px);
-  margin-bottom: 0;
-  padding-bottom: 10px;
-  flex-grow: 1;
 }
 
 .b2b-panel-items-list li {
   position: relative;
   margin-bottom: clamp(10px, 2vw, 12px);
   font-size: clamp(1.1rem, 2.5vw, 1.2rem);
-  font-weight: 400;
   color: var(--dark-blue);
   line-height: 1.6;
-  padding-right: 10px;
 }
 
 .b2b-panel-items-list li::before {
   content: '✓';
   position: absolute;
   left: clamp(-20px, -4vw, -25px);
-  color: var(--orange);
+  color: #f39c12;
   font-weight: bold;
-  font-size: 1.1em;
+}
+
+/* --- SECTION DES INTERVENANTS --- */
+.b2b-panel-speakers {
+  padding-top: clamp(15px, 3vw, 20px);
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.speakers-section-title {
+  font-size: clamp(1.2rem, 2.5vw, 1.3rem);
+  color: var(--dark-blue);
+  margin-top: 0;
+  margin-bottom: clamp(15px, 3vw, 20px);
+  font-weight: 600;
+}
+
+.speakers-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 15px;
+}
+
+.speaker-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background-color: #f0eee5;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.speaker-item:hover {
+  transform: scale(1.03);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+.speaker-image {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #f39c12;
+  flex-shrink: 0;
+}
+
+.speaker-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.speaker-name {
+  font-size: clamp(0.9rem, 2vw, 1rem);
+  font-weight: 600;
+  color: var(--dark-blue);
+  margin: 0;
+}
+
+.speaker-role {
+  font-size: clamp(0.8rem, 1.8vw, 0.85rem);
+  color: #f39c12;
+  margin: 0;
+  font-style: normal;
+  font-weight: 500;
 }
 
 /* --- RESPONSIVE BREAKPOINTS --- */
-
-/* Large Desktop - 1200px+ */
 @media (min-width: 1200px) {
   .b2b-panels-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 50px;
+    gap: 40px;
     padding: 0;
   }
-  
-  .b2b-panel-card {
-    padding: 35px;
-  }
 }
 
-/* Desktop - 992px to 1199px */
-@media (max-width: 1199px) and (min-width: 992px) {
-  .b2b-panels-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 40px;
-  }
-}
-
-/* Tablet Large - 768px to 991px */
-@media (max-width: 991px) and (min-width: 768px) {
+@media (max-width: 991px) {
   .b2b-panels-grid {
     grid-template-columns: 1fr;
     max-width: 700px;
     margin: 0 auto;
-  }
-  
-  .b2b-tab-header p {
-    flex-direction: column;
-    gap: 15px;
-  }
-  
-  .b2b-tab-header p::before,
-  .b2b-tab-header p::after {
-    width: 120px;
-  }
-}
-
-/* Tablet Portrait - 576px to 767px */
-@media (max-width: 767px) and (min-width: 576px) {
-  .b2b-tab-header {
-    margin-bottom: 40px;
-  }
-  
-  .b2b-tab-header h2 {
-    font-size: 2.2rem;
-  }
-  
-  .b2b-tab-header p {
-    font-size: 1.3rem;
-    flex-direction: column;
-    gap: 12px;
-  }
-  
-  .b2b-tab-header p::before,
-  .b2b-tab-header p::after {
-    width: 100px;
-    height: 3px;
-  }
-  
-  .b2b-panels-grid {
-    gap: 30px;
-    padding: 0 10px;
-  }
-  
-  .b2b-panel-card {
-    padding: 25px 20px;
-  }
-  
-  .b2b-panel-title {
-    font-size: 1.5rem;
-  }
-  
-  .b2b-panel-items-list {
-    padding-left: 22px;
-  }
-  
-  .b2b-panel-items-list li {
-    font-size: 1.15rem;
-    margin-bottom: 10px;
-  }
-}
-
-/* Mobile Large - 480px to 575px */
-@media (max-width: 575px) and (min-width: 480px) {
-  .b2b-tab-header {
-    margin-bottom: 35px;
-  }
-  
-  .b2b-tab-header h2 {
-    font-size: 2rem;
-  }
-  
-  .b2b-tab-header p {
-    font-size: 1.2rem;
-    flex-direction: column;
-    gap: 10px;
-    padding: 0 15px;
-  }
-  
-  .b2b-tab-header p::before,
-  .b2b-tab-header p::after {
-    width: 80px;
-    height: 3px;
-  }
-  
-  .b2b-panels-grid {
-    gap: 25px;
-    padding: 0 5px;
-  }
-  
-  .b2b-panel-card {
-    padding: 22px 18px;
-    border-radius: 10px;
-  }
-  
-  .b2b-panel-title {
-    font-size: 1.4rem;
-    margin-bottom: 18px;
-    padding-bottom: 12px;
-  }
-  
-  .b2b-panel-items-list {
-    padding-left: 20px;
-  }
-  
-  .b2b-panel-items-list li {
-    font-size: 1.1rem;
-    margin-bottom: 10px;
-  }
-  
-  .b2b-panel-items-list li::before {
-    left: -20px;
-  }
-}
-
-/* Mobile Small - under 480px */
-@media (max-width: 479px) {
-  .b2b-tab-header {
-    margin-bottom: 30px;
-  }
-  
-  .b2b-tab-header h2 {
-    font-size: 1.8rem;
-    line-height: 1.2;
-  }
-  
-  .b2b-tab-header p {
-    font-size: 1.1rem;
-    flex-direction: column;
-    gap: 8px;
-    padding: 0 10px;
-  }
-  
-  .b2b-tab-header p::before,
-  .b2b-tab-header p::after {
-    width: 60px;
-    height: 2px;
-  }
-  
-  .b2b-panels-grid {
-    gap: 20px;
-    padding: 0;
-  }
-  
-  .b2b-panel-card {
-    padding: 20px 15px;
-    border-radius: 8px;
-    margin: 0 5px;
-  }
-  
-  .b2b-panel-title {
-    font-size: 1.3rem;
-    margin-bottom: 15px;
-    padding-bottom: 10px;
-    line-height: 1.3;
-  }
-  
-  .panel-number {
-    display: block;
-    margin-bottom: 5px;
-    margin-right: 0;
-  }
-  
-  .b2b-panel-items-list {
-    padding-left: 18px;
-  }
-  
-  .b2b-panel-items-list li {
-    font-size: 1rem;
-    margin-bottom: 8px;
-    line-height: 1.5;
-  }
-  
-  .b2b-panel-items-list li::before {
-    left: -18px;
-    font-size: 1em;
-  }
-}
-
-/* --- CORRECTIONS POUR LES TRÈS PETITS ÉCRANS --- */
-@media (max-width: 320px) {
-  .b2b-tab-header h2 {
-    font-size: 1.6rem;
-  }
-  
-  .b2b-tab-header p {
-    font-size: 1rem;
-  }
-  
-  .b2b-panel-card {
-    padding: 18px 12px;
-    margin: 0 2px;
-  }
-  
-  .b2b-panel-title {
-    font-size: 1.2rem;
-  }
-  
-  .b2b-panel-items-list {
-    padding-left: 15px;
-  }
-  
-  .b2b-panel-items-list li {
-    font-size: 0.95rem;
-  }
-  
-  .b2b-panel-items-list li::before {
-    left: -15px;
   }
 }

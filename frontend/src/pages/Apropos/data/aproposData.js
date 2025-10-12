@@ -1,8 +1,24 @@
-// --- ÉTAPE 1 : Importer l'image ---
-// Le chemin remonte de deux dossiers (depuis 'data' vers 'Apropos', puis vers 'pages')
-// pour ensuite descendre dans 'assets/images'.
-import speakerImage from '../../../assets/images/speakers.JPG';
+// --- ÉTAPE 1 : Importer les images des intervenants ---
+// Les chemins et noms de fichiers sont basés sur votre capture d'écran.
+import adelChouariImg from '../../../assets/images/Adel Chouari.jpg';
+import fatmaTaghoutiImg from '../../../assets/images/Fatma_Taghouti.jpg';
+import jiheneElOukadiImg from '../../../assets/images/Jihene El Oukadi.jpg';
+import karimAhresImg from '../../../assets/images/Karim Ahres.webp';
+import omarBouzouadaImg from '../../../assets/images/Omar_Bouzouada.jpg';
+import ridhaDriraImg from '../../../assets/images/Ridha Drira (1).jpg';
+import wahbOuertaniImg from '../../../assets/images/Wahb Ouertani.webp';
+import sawsenHajAmorImg from '../../../assets/images/sawsen-Haj-Amor.webp';
+import raziMilaniImg from '../../../assets/images/Razi Milani.jpg';
+import chirazArfaouiImg from '../../../assets/images/chiraz.jpg';
+import karimBououniImg from '../../../assets/images/Karim bououni.jpg';
+import mehdiFarhatImg from '../../../assets/images/mehdi farhat.png';
 
+// --- Images non trouvées dans la liste, utilisation d'une image générique ---
+import walidHadjAmorImg from '../../../assets/images/walid.png'; 
+import rymGmatiImg from '../../../assets/images/gmati.png';
+
+// Image générique pour les panels non définis
+import speakerImage from '../../../assets/images/speakers.JPG';
 
 export const aproposData = {
   // --- Contenu pour l'onglet "Thème" ---
@@ -25,21 +41,19 @@ export const aproposData = {
     panels: [
       {
         id: 1,
-        title: 'Conférence Plénière',
+        title: 'Conférence',
         items: [
           'Rétrospective du Startup Act 1.0',
-          'Analyse critique du Startup Act 1.0 et état des lieux',
+          'Analyse critique et état des lieux',
           'Proposition de valeur : Vers un Innovation Act'
         ],
         speakers: [
-          { name: 'Nom Speaker 1', image: speakerImage },
-          { name: 'Nom Speaker 2', image: speakerImage },
-          { name: 'Nom Speaker 3', image: speakerImage }
+          { name: 'Jihene EL Ouakdi', role: 'Conférencière', image: jiheneElOukadiImg },
+          { name: 'Chiraz Arfaoui', role: 'Conférencière', image: chirazArfaouiImg },
         ]
       },
       {
         id: 2,
-        // --- MODIFICATION ICI : Préfixe retiré ---
         title: 'Tunisie 2035 : Où miser pour faire la différence ?',
         items: [
           'Arbitrage stratégique : financer moins mais mieux',
@@ -47,14 +61,14 @@ export const aproposData = {
           'Cadre sélectif et comité multi-acteurs'
         ],
         speakers: [
-          { name: 'Nom Speaker 4', image: speakerImage },
-          { name: 'Nom Speaker 5', image: speakerImage },
-          { name: 'Nom Speaker 6', image: speakerImage }
+          { name: 'Sawsen Haj Amor', role: 'Modératrice', image: sawsenHajAmorImg },
+          { name: 'Adel Chouari', role: 'Paneliste', image: adelChouariImg },
+          { name: 'Wahb Ouertani', role: 'Paneliste', image: wahbOuertaniImg },
+          { name: 'Omar Bouzouada', role: 'Paneliste', image: omarBouzouadaImg }
         ]
       },
       {
         id: 3,
-        // --- MODIFICATION ICI : Préfixe retiré ---
         title: 'Accès aux Marchés Publics & Internationaux',
         items: [
           'État acheteur innovant & achats publics',
@@ -63,14 +77,15 @@ export const aproposData = {
           'Programmes soft landing & partenariats internationaux'
         ],
         speakers: [
-          { name: 'Nom Speaker 7', image: speakerImage },
-          { name: 'Nom Speaker 8', image: speakerImage },
-          { name: 'Nom Speaker 9', image: speakerImage }
+          { name: 'Fatma Taghouti', role: 'Modératrice', image: fatmaTaghoutiImg },
+          { name: 'Ridha Drira', role: 'Paneliste', image: ridhaDriraImg },
+          { name: 'Razi Milani', role: 'Paneliste', image: raziMilaniImg },
+          { name: 'Karim Ahres', role: 'Paneliste', image: karimAhresImg },
+          { name: 'Walid Hadj Amor', role: 'Paneliste', image: walidHadjAmorImg }
         ]
       },
       {
         id: 4,
-        // --- MODIFICATION ICI : Préfixe retiré ---
         title: 'Financement et Investissement',
         items: [
           'Gaps structurels (pré-amorçage, scale-up)',
@@ -79,14 +94,13 @@ export const aproposData = {
           'Bonnes pratiques internationales'
         ],
         speakers: [
-          { name: 'Nom Speaker 10', image: speakerImage },
-          { name: 'Nom Speaker 11', image: speakerImage },
-          { name: 'Nom Speaker 12', image: speakerImage }
+          { name: 'Karim Bououni', role: 'Modérateur', image: karimBououniImg },
+          { name: 'Mehdi Farhat', role: 'Paneliste', image: mehdiFarhatImg },
+          { name: 'Rym Gmati', role: 'Paneliste', image: rymGmatiImg }
         ]
       }
     ]
   },
-
   // --- Contenu pour l'onglet "Workshops" ---
   greenTechDay: {
     workshops: [

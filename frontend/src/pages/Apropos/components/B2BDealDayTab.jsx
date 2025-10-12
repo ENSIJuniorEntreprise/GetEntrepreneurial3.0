@@ -2,30 +2,24 @@ import React from 'react';
 import './B2BDealDayTab.css';
 
 const B2BDealDayTab = ({ data }) => {
-  // --- DÉBUT DE LA MODIFICATION ---
   // Fonction pour mettre en surbrillance un texte spécifique dans un titre
   const renderTitle = (title) => {
-    const textToHighlight = 'Conférence Plénière';
-    // On divise le titre en parties, en gardant le texte à surligner
+    // Le mot à surligner est maintenant "Conférence"
+    const textToHighlight = 'Conférence'; 
     const parts = title.split(new RegExp(`(${textToHighlight})`, 'gi'));
 
     return (
       <>
         {parts.map((part, index) =>
-          // Si la partie correspond au texte (insensible à la casse), on lui donne la classe CSS
           part.toLowerCase() === textToHighlight.toLowerCase() ? (
-            <span key={index} className="highlight-orange">
-              {part}
-            </span>
+            <span key={index} className="highlight-orange">{part}</span>
           ) : (
-            // Sinon, on affiche le texte normalement
             part
           )
         )}
       </>
     );
   };
-  // --- FIN DE LA MODIFICATION ---
 
   return (
     <div className="b2b-tab-container">
@@ -35,21 +29,19 @@ const B2BDealDayTab = ({ data }) => {
       </header>
 
       <div className="b2b-panels-grid">
-        {data.panels.map((panel, index) => (
+        {data.panels.map((panel) => (
           <div key={panel.id} className="b2b-panel-card">
             
             <h3 className="b2b-panel-title">
-              {index === 0
-                // On utilise la fonction renderTitle pour le premier élément
-                ? renderTitle(panel.title)
-                // Et aussi pour tous les autres
-                : (
-                  <>
-                    <span className="panel-number">Panel {index} :</span>
-                    {renderTitle(panel.title)}
-                  </>
-                )
-              }
+              {/* Logique pour afficher "Conférence" sans numéro, et "Panel X" pour les autres */}
+              {panel.id === 1 ? (
+                renderTitle(panel.title)
+              ) : (
+                <>
+                  <span className="panel-number">Panel {panel.id - 1} :</span>
+                  {renderTitle(panel.title)}
+                </>
+              )}
             </h3>
             
             <ul className="b2b-panel-items-list">
@@ -58,6 +50,23 @@ const B2BDealDayTab = ({ data }) => {
               ))}
             </ul>
 
+            {/* Section pour afficher les intervenants (modérateurs et panélistes) */}
+            {panel.speakers && panel.speakers.length > 0 && (
+              <div className="b2b-panel-speakers">
+                <h4 className="speakers-section-title">Intervenants</h4>
+                <div className="speakers-list">
+                  {panel.speakers.map((speaker, speakerIndex) => (
+                    <div key={speakerIndex} className="speaker-item">
+                      <img src={speaker.image} alt={speaker.name} className="speaker-image" />
+                      <div className="speaker-info">
+                        <p className="speaker-name">{speaker.name}</p>
+                        <p className="speaker-role">{speaker.role}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
         ))}
       </div>

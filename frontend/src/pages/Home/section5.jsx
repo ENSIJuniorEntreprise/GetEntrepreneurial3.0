@@ -3,90 +3,127 @@ import './section5.css';
 import { useInView } from 'react-intersection-observer';
 import { FaLinkedin, FaTimes } from 'react-icons/fa';
 
-// --- ÉTAPE 1 : Importer toutes les images des conférenciers ---
-import raziMilaniImg from '../../assets/images/razi.png';
-import taoufikRajhiImg from '../../assets/images/tawfik.png';
-import walidBelHajAmorImg from '../../assets/images/walid.png';
-import ridhaGouiaImg from '../../assets/images/ridha.png';
-import imenLouatiImg from '../../assets/images/imen.png';
-import karimBenSaidImg from '../../assets/images/karim.jpg';
-import tarekGassaImg from '../../assets/images/tarek.png';
-import amineMezghichImg from '../../assets/images/amin.png';
-import hamedBenidaImg from '../../assets/images/Hamed.jpg';
-import sawssenBelhajAmorImg from '../../assets/images/saws.png';
-// Vous pouvez en ajouter d'autres ici si nécessaire
+// --- VÉRIFIEZ ATTENTIVEMENT CETTE SECTION ---
+// Assurez-vous que chaque nom de fichier correspond EXACTEMENT à ce que vous avez dans vos dossiers.
 
-// --- ÉTAPE 2 : Remplacer les données avec les vraies informations ---
+// Anciens imports (probablement corrects)
+import raziMilaniImg from '../../assets/images/Razi Milani.jpg';
+import sawssenHajAmorImg from '../../assets/images/sawsen-Haj-Amor.webp'; // Notez le .webp et les tirets
+import adelChouariImg from '../../assets/images/Adel Chouari.jpg';
+import fatmaTaghoutiImg from '../../assets/images/Fatma_Taghouti.jpg';
+import jiheneElOukadiImg from '../../assets/images/Jihene El Oukadi.jpg';
+import karimAhresImg from '../../assets/images/Karim Ahres.webp'; // Notez le .webp
+import omarBouzouadaImg from '../../assets/images/Omar_Bouzouada.jpg';
+import ridhaDriraImg from '../../assets/images/Ridha Drira (1).jpg';
+import wahbOuertaniImg from '../../assets/images/Wahb Ouertani.webp'; // Notez le .webp
+
+// Nouveaux imports (ceux qui posent probablement problème)
+import chirazArfaouiImg from '../../assets/images/chiraz.jpg';   // Vérifiez la casse de "arfaoui"
+import karimBououniImg from '../../assets/images/Karim bououni.jpg';    // Vérifiez la casse de "bououni"
+import mehdiFarhatImg from '../../assets/images/mehdi farhat.png';       // Vérifiez la casse et l'extension .png
+import walidHadjAmorImg from '../../assets/images/walid.png';         // Assurez-vous que speakers.JPG existe
+import rymGmatiImg from '../../assets/images/gmatii.png';              // Assurez-vous que speakers.JPG existe
+
+
+// --- Le reste de votre code est correct ---
 const speakersData = [
+  { 
+    name: 'Jihene El Oukadi', 
+    title: 'Émissaire du ministère de l\'Enseignement supérieur', 
+    image: jiheneElOukadiImg, 
+    linkedin: '#',
+    description: 'Engagée dans le développement de la recherche scientifique et la promotion de l\'excellence académique.'
+  },
+  { 
+    name: 'Chiraz Arfaoui', 
+    title: 'DG Wiki startup', 
+    image: chirazArfaouiImg, 
+    linkedin: '#',
+    description: 'Pionnière de l\'écosystème startup, elle guide les innovateurs vers le succès et la croissance.'
+  },
+  { 
+    name: 'Sawsen Haj Amor', 
+    title: 'CEO of YOU.Branded', 
+    image: sawssenHajAmorImg, 
+    linkedin: '#',
+    description: 'Spécialiste du branding et de la stratégie de marque, aidant les entreprises à construire leur identité.'
+  },
+  { 
+    name: 'Adel Chouari', 
+    title: 'DG RNE', 
+    image: adelChouariImg, 
+    linkedin: '#',
+    description: 'Expert en registres nationaux des entreprises, au cœur de la modernisation administrative.'
+  },
+  { 
+    name: 'Wahb Ouertani', 
+    title: 'Président CONECT INTECH', 
+    image: wahbOuertaniImg, 
+    linkedin: '#',
+    description: 'Leader engagé pour la promotion du secteur privé et le développement économique en Tunisie.'
+  },
+  { 
+    name: 'Omar Bouzouada', 
+    title: 'DG APII', 
+    image: omarBouzouadaImg, 
+    linkedin: '#',
+    description: 'Acteur majeur de la promotion de l\'investissement industriel et de l\'innovation en Tunisie.'
+  },
+  { 
+    name: 'Fatma Taghouti', 
+    title: 'Founder of ecospark', 
+    image: fatmaTaghoutiImg, 
+    linkedin: '#',
+    description: 'Experte en entrepreneuriat durable et fondatrice d\'ecospark, un acteur clé de l\'innovation verte.'
+  },
+  { 
+    name: 'Ridha Drira', 
+    title: 'Président de la commission supérieure d\'exclusion', 
+    image: ridhaDriraImg, 
+    linkedin: '#',
+    description: 'Spécialiste des marchés publics et de la régulation économique au sein de la présidence du gouvernement.'
+  },
   { 
     name: 'Razi Milani', 
     title: 'CEO of COGEPHA', 
     image: raziMilaniImg, 
-    linkedin: '#', // Remplacez par le vrai lien LinkedIn
+    linkedin: '#',
     description: 'Une vision stratégique pour l\'industrie pharmaceutique et la croissance durable en Afrique du Nord.'
   },
   { 
-    name: 'Taoufik Rajhi', 
-    title: 'Économiste et Ancien Ministre', 
-    image: taoufikRajhiImg, 
+    name: 'Karim Ahres', 
+    title: 'CEO Netcom Tunisia & BE CONECT', 
+    image: karimAhresImg, 
     linkedin: '#',
-    description: 'Analyse des réformes économiques et des perspectives de développement pour la Tunisie post-transition.'
+    description: 'Visionnaire dans le secteur des technologies de l\'information et des télécommunications en Tunisie.'
   },
   { 
-    name: 'Walid Bel Haj Amor', 
-    title: 'Expert International en Gestion des Contrats', 
-    image: walidBelHajAmorImg, 
+    name: 'Walid Hadj Amor', 
+    title: 'Administrateur Pegazeus International', 
+    image: walidHadjAmorImg, 
     linkedin: '#',
-    description: 'Les clés de la négociation et de la gestion de contrats complexes dans un contexte international.'
+    description: 'Expert en commerce international et en développement de partenariats stratégiques.'
   },
   { 
-    name: 'Ridha Gouia', 
-    title: 'Économiste et Professeur à la FSEG', 
-    image: ridhaGouiaImg, 
+    name: 'Karim Bououni', 
+    title: 'Responsable pôle métier à la CDC', 
+    image: karimBououniImg, 
     linkedin: '#',
-    description: 'Les modèles économiques émergents et leur applicabilité dans l\'écosystème tunisien.'
+    description: 'Spécialiste du financement et de l\'investissement au service du développement économique.'
   },
   { 
-    name: 'Imen Louati', 
-    title: 'Conseillère en ODD et Transition Durable', 
-    image: imenLouatiImg, 
+    name: 'Mehdi Farhat', 
+    title: 'Responsable direction RSE chez UBCI', 
+    image: mehdiFarhatImg, 
     linkedin: '#',
-    description: 'Comment intégrer les Objectifs de Développement Durable au cœur de la stratégie des entreprises.'
+    description: 'Acteur clé de la responsabilité sociétale des entreprises dans le secteur bancaire.'
   },
   { 
-    name: 'Karim Ben Said', 
-    title: 'Auteur et Chroniqueur Économique', 
-    image: karimBenSaidImg, 
+    name: 'Rym Gmati', 
+    title: 'Avocate, Spécialisée en Venture Capital', 
+    image: rymGmatiImg, 
     linkedin: '#',
-    description: 'Décryptage des tendances économiques et des enjeux pour l\'entrepreneuriat en Tunisie.'
-  },
-  { 
-    name: 'Tarek Gassa', 
-    title: 'Consultant en Ressources Humaines', 
-    image: tarekGassaImg, 
-    linkedin: '#',
-    description: 'Le capital humain comme levier de performance : attirer, développer et retenir les talents.'
-  },
-  { 
-    name: 'Amine Mezghich', 
-    title: 'CEO de Smart IT', 
-    image: amineMezghichImg, 
-    linkedin: '#',
-    description: 'La transformation digitale des entreprises : défis, opportunités et retours d\'expérience.'
-  },
-  { 
-    name: 'Hamed Benida', 
-    title: 'Modérateur et Expert en Communication', 
-    image: hamedBenidaImg, 
-    linkedin: '#',
-    description: 'Facilitateur des échanges, il guide les discussions pour en extraire des insights pertinents et concrets.'
-  },
-  { 
-    name: 'Sawssen Belhaj Amor', 
-    title: 'Modératrice et Spécialiste de l\'Écosystème Startup', 
-    image: sawssenBelhajAmorImg, 
-    linkedin: '#',
-    description: 'Animatrice des débats, elle apporte son expertise pour connecter les idées et stimuler l\'innovation.'
+    description: 'Experte juridique en capital-risque, accompagnant les startups dans leurs levées de fonds.'
   },
 ];
 
@@ -94,7 +131,6 @@ const Section5 = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { ref } = useInView({ triggerOnce: true, threshold: 0.1 });
 
-  // Bloque/débloque le scroll de la page quand la modale s'ouvre/se ferme
   const toggleModal = () => {
     setIsModalOpen(!isModalOpen);
     document.body.style.overflow = isModalOpen ? 'auto' : 'hidden';

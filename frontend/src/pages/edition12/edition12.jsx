@@ -142,7 +142,7 @@ const Edition12 = () => {
             {/* --- Section Intro --- */}
             <section className="legacy-section intro-section">
                 <div className="section-header">
-                    <h2>GET Entrepreneurial</h2>
+                    <h2>GET ENTREPRENEURIAL</h2>
                     <p>Plongez au Cœur de l'Événement</p>
                 </div>
                 <div className="intro-grid">

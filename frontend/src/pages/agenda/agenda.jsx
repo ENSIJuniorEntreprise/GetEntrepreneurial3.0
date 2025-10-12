@@ -80,7 +80,7 @@ const Agenda = () => {
   const [activeTab, setActiveTab] = useState('friday');
 
   const getActiveDayName = () => {
-    if (activeTab === 'tuesday') return 'Green Tech Day';
+    if (activeTab === 'tuesday') return 'GREEN&TECH DAY';
     if (activeTab === 'wednesday') return 'B2B Deal Day';
     return '';
   };
@@ -88,13 +88,13 @@ const Agenda = () => {
   return (
     <div className="agenda-container">
       <div className="agenda-header">
-        <h1>Get Entrepreneurial 3.0 <br /><span>Agenda</span></h1>
+        <h1>GET ENTREPRENEURIAL 3.0 <br /><span>Agenda</span></h1>
         <nav className="agenda-nav">
           <button onClick={() => setActiveTab('friday')} className={activeTab === 'friday' ? 'active' : ''}>
             BIG DAY
           </button>
           <button onClick={() => setActiveTab('tuesday')} className={activeTab === 'tuesday' ? 'active' : ''}>
-            Green Tech Day
+            GREEN&TECH DAY
           </button>
         </nav>
       </div>

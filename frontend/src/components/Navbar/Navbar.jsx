@@ -131,6 +131,13 @@ const Navbar = () => {
           <li data-link-name="Contact">
             <a href="/contact" onClick={() => {setActiveLink('Contact'); setIsMobile(false);}} className={activeLink === 'Contact' ? 'active' : ''}>Contact</a>
           </li>
+
+          {/* Lien Inscription pour la version mobile */}
+          {isMobile && (
+            <li data-link-name="Inscription">
+              <a href="/inscription" onClick={() => {setActiveLink('Inscription'); setIsMobile(false);}} className={activeLink === 'Inscription' ? 'active' : ''}>Inscription</a>
+            </li>
+          )}
           
           {/* Magic line - ne s'affiche que sur desktop et pas sur la page inscription */}
           {!isMobile && activeLink !== 'Inscription' && <div className="magic-line" style={lineStyle}></div>}

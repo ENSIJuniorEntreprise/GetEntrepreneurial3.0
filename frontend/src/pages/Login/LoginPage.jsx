@@ -12,7 +12,6 @@ const LoginPage = () => {
       localStorage.setItem('adminInfo', JSON.stringify(data));
       // Rediriger vers le tableau de bord ici
     } catch (error) {
-      // Gérer l'erreur de connexion
     }
   };
 
