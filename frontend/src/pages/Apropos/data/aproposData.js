@@ -14,8 +14,14 @@ import karimBououniImg from '../../../assets/images/Karim bououni.jpg';
 import mehdiFarhatImg from '../../../assets/images/mehdi farhat.png';
 
 // --- Images non trouvées dans la liste, utilisation d'une image générique ---
-import walidHadjAmorImg from '../../../assets/images/walid.png'; 
-import rymGmatiImg from '../../../assets/images/gmati.png';
+import walidHadjAmorImg from '../../../assets/images/waalid.jpg'; 
+import rymGmatiImg from '../../../assets/images/riim.jpg';
+// AJOUTS : Chemins vers des images génériques pour les nouveaux intervenants
+import hanaChoyakhImg from '../../../assets/images/hana.jpg'; 
+import mohamedLahianiImg from '../../../assets/images/lahy.png';
+import oussemaMessaoudImg from '../../../assets/images/oussema.jpg';
+import mohamedThamerChagourImg from '../../../assets/images/thaa.png'; // Remplacez par le chemin réel
+import wassimZehaniImg from '../../../assets/images/wass.jpg'; 
 
 // Image générique pour les panels non définis
 import speakerImage from '../../../assets/images/speakers.JPG';
@@ -48,8 +54,12 @@ export const aproposData = {
           'Proposition de valeur : Vers un Innovation Act'
         ],
         speakers: [
+          { name: 'Mohamed Lahiani', role: 'Modérateur', image: mohamedLahianiImg },
           { name: 'Jihene EL Ouakdi', role: 'Conférencière', image: jiheneElOukadiImg },
           { name: 'Chiraz Arfaoui', role: 'Conférencière', image: chirazArfaouiImg },
+          // AJOUTS D'APRÈS LA CAPTURE
+          
+          { name: 'Oussema Messaoud', role: 'Conférencier', image: oussemaMessaoudImg },
         ]
       },
       {
@@ -61,6 +71,7 @@ export const aproposData = {
           'Cadre sélectif et comité multi-acteurs'
         ],
         speakers: [
+          // MODIFICATION : Style pour la modératrice
           { name: 'Sawsen Haj Amor', role: 'Modératrice', image: sawsenHajAmorImg },
           { name: 'Adel Chouari', role: 'Paneliste', image: adelChouariImg },
           { name: 'Wahb Ouertani', role: 'Paneliste', image: wahbOuertaniImg },
@@ -77,6 +88,7 @@ export const aproposData = {
           'Programmes soft landing & partenariats internationaux'
         ],
         speakers: [
+          // MODIFICATION : Style pour la modératrice
           { name: 'Fatma Taghouti', role: 'Modératrice', image: fatmaTaghoutiImg },
           { name: 'Ridha Drira', role: 'Paneliste', image: ridhaDriraImg },
           { name: 'Razi Milani', role: 'Paneliste', image: raziMilaniImg },
@@ -93,8 +105,10 @@ export const aproposData = {
           'Introduction des SAFE Notes & assouplissements réglementaires',
           'Bonnes pratiques internationales'
         ],
+        // MODIFICATIONS : Liste des intervenants mise à jour d'après la capture
         speakers: [
-          { name: 'Karim Bououni', role: 'Modérateur', image: karimBououniImg },
+          { name: 'Hana Choyakh', role: 'Modératrice', image: hanaChoyakhImg },
+          { name: 'Karim Bououni', role: 'Paneliste', image: karimBououniImg },
           { name: 'Mehdi Farhat', role: 'Paneliste', image: mehdiFarhatImg },
           { name: 'Rym Gmati', role: 'Paneliste', image: rymGmatiImg }
         ]
@@ -102,50 +116,18 @@ export const aproposData = {
     ]
   },
   // --- Contenu pour l'onglet "Workshops" ---
-  greenTechDay: {
+ greenTechDay: {
     workshops: [
       {
         id: 1,
-        title: 'Workshop 1',
-        subtitle: 'Build Your Startup from Scratch',
-        details: {
-          target: 'Étudiants et jeunes entrepreneurs en phase d’idéation.',
-          duration: '2h',
-          topics: [
-            'Validation de l’idée qui répond à un vrai problème',
-            'Construction d’un Business Model simple (Canvas)',
-            'Création d’un prototype rapide et test d’hypothèses'
-          ]
-        }
+        title: 'Workshop Ooredoo',
+        subtitle: 'How to land an internship that opens doors',
+        speakers: [
+          { name: 'Mohamed Thamer Chagour', role: '', image: mohamedThamerChagourImg },
+          { name: 'Mohamed Wassim Zehani', role: '', image: wassimZehaniImg },
+        ]
       },
-      {
-        id: 2,
-        title: 'Workshop 2',
-        subtitle: 'Étudiant et Startups – Développez les compétences pour réussir demain',
-        details: {
-          target: 'Étudiants ingénieurs et futurs professionnels de l’écosystème.',
-          duration: '2h',
-          topics: [
-            'Compétences techniques clés (IA, Data, Cybersécurité)',
-            'Maîtrise des Soft Skills stratégiques (Pensée systémique, agilité)',
-            'Ateliers pratiques et simulations de pitch'
-          ]
-        }
-      },
-      {
-        id: 3,
-        title: 'Workshop 3',
-        subtitle: 'AI ERA : Nouvelle Cartographie des Métiers',
-        details: {
-          target: 'Étudiants en fin de cycle et jeunes diplômés.',
-          duration: '2h',
-          topics: [
-            'Comprendre l’impact de l’IA sur les métiers actuels et futurs',
-            'Découvrir les métiers émergents liés à l’IA',
-            'Identifier les compétences clés à développer pour l’avenir'
-          ]
-        }
-      },
+      // Vous pouvez ajouter d'autres workshops ici si nécessaire
     ]
   }
 };

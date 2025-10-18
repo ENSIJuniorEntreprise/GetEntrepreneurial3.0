@@ -34,15 +34,15 @@
   mask: linear-gradient(90deg, transparent, white 5%, white 95%, transparent);
 }
 
+/* --- MODIFICATION CLÉ : Remplacement de flex par inline-block pour la robustesse --- */
 .sponsors-list {
-  display: flex;
-  align-items: center;
-  gap: 100px; 
+  /* display: flex; a été supprimé */
+  /* gap: 100px; a été supprimé */
   margin: 0;
   padding: 20px 0;
   list-style: none;
-  /* MODIFICATION : Durée de l'animation réduite pour un défilement plus rapide */
-  animation: scroll 30s linear infinite;
+  white-space: nowrap; /* Force les éléments à rester sur une seule ligne */
+  animation: scroll 10s linear infinite; /* Vitesse rapide conservée */
 }
 
 .scroller-container:hover .sponsors-list {
@@ -54,11 +54,11 @@
   to { transform: translateX(-50%); }
 }
 
-/* --- Item Sponsor (Logo uniquement) --- */
+/* --- MODIFICATION CLÉ : Ajout de 'display' et 'margin' --- */
 .sponsor-item {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: inline-block; /* Permet aux éléments de s'aligner horizontalement */
+  margin: 0 50px; /* Crée un espacement de 100px entre les logos */
+  vertical-align: middle; /* Centre verticalement les logos s'ils ont des hauteurs différentes */
 }
 
 .sponsor-item img {
@@ -73,48 +73,25 @@
 .sponsor-item:hover img {
   transform: scale(1.1);
 }
-/* === RESPONSIVE === */
 
+/* === RESPONSIVE === */
 @media (max-width: 992px) {
-  .sponsors-section {
-    padding: 60px 0;
-  }
-  .sponsors-header h2 {
-    font-size: 2.5rem;
-  }
-  .sponsor-item img {
-    height: 180px; /* On réduit la hauteur des logos */
-  }
-  .sponsors-list {
-    gap: 80px; /* On réduit l'espace */
-  }
+  .sponsors-section { padding: 60px 0; }
+  .sponsors-header h2 { font-size: 2.5rem; }
+  .sponsor-item img { height: 180px; }
+  .sponsor-item { margin: 0 40px; } /* Espacement réduit */
 }
 
 @media (max-width: 768px) {
-  .sponsors-header h2 {
-    font-size: 2rem;
-  }
-  .sponsor-item img {
-    height: 120px; /* Logos plus petits */
-  }
-  .sponsors-list {
-    gap: 60px;
-    animation-duration: 25s; /* On peut accélérer un peu */
-  }
+  .sponsors-header h2 { font-size: 2rem; }
+  .sponsor-item img { height: 120px; }
+  .sponsor-item { margin: 0 30px; } /* Espacement réduit */
+  .sponsors-list { animation-duration: 18s; }
 }
 
 @media (max-width: 480px) {
-  .sponsors-section {
-    padding: 40px 0;
-  }
-  .sponsors-header h2 {
-    font-size: 1.8rem;
-  }
-  .sponsor-item img {
-    height: 80px; /* Logos bien plus petits pour petits écrans */
-    max-width: 150px;
-  }
-  .sponsors-list {
-    gap: 40px;
-  }
+  .sponsors-section { padding: 40px 0; }
+  .sponsors-header h2 { font-size: 1.8rem; }
+  .sponsor-item img { height: 80px; max-width: 150px; }
+  .sponsor-item { margin: 0 20px; } /* Espacement réduit */
 }

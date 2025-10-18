@@ -3,29 +3,29 @@ import './section5.css';
 import { useInView } from 'react-intersection-observer';
 import { FaLinkedin, FaTimes } from 'react-icons/fa';
 
-// --- VÉRIFIEZ ATTENTIVEMENT CETTE SECTION ---
-// Assurez-vous que chaque nom de fichier correspond EXACTEMENT à ce que vous avez dans vos dossiers.
-
-// Anciens imports (probablement corrects)
+// --- Imports Existants ---
 import raziMilaniImg from '../../assets/images/Razi Milani.jpg';
-import sawssenHajAmorImg from '../../assets/images/sawsen-Haj-Amor.webp'; // Notez le .webp et les tirets
+import sawssenHajAmorImg from '../../assets/images/sawsen-Haj-Amor.webp';
 import adelChouariImg from '../../assets/images/Adel Chouari.jpg';
 import fatmaTaghoutiImg from '../../assets/images/Fatma_Taghouti.jpg';
 import jiheneElOukadiImg from '../../assets/images/Jihene El Oukadi.jpg';
-import karimAhresImg from '../../assets/images/Karim Ahres.webp'; // Notez le .webp
+import karimAhresImg from '../../assets/images/Karim Ahres.webp';
 import omarBouzouadaImg from '../../assets/images/Omar_Bouzouada.jpg';
 import ridhaDriraImg from '../../assets/images/Ridha Drira (1).jpg';
-import wahbOuertaniImg from '../../assets/images/Wahb Ouertani.webp'; // Notez le .webp
+import wahbOuertaniImg from '../../assets/images/Wahb Ouertani.webp';
+import chirazArfaouiImg from '../../assets/images/chiraz.jpg';
+import karimBououniImg from '../../assets/images/Karim bououni.jpg';
+import mehdiFarhatImg from '../../assets/images/mehdi farhat.png';
+import walidHadjAmorImg from '../../assets/images/waalid.jpg';
+import rymGmatiImg from '../../assets/images/riim.jpg';
 
-// Nouveaux imports (ceux qui posent probablement problème)
-import chirazArfaouiImg from '../../assets/images/chiraz.jpg';   // Vérifiez la casse de "arfaoui"
-import karimBououniImg from '../../assets/images/Karim bououni.jpg';    // Vérifiez la casse de "bououni"
-import mehdiFarhatImg from '../../assets/images/mehdi farhat.png';       // Vérifiez la casse et l'extension .png
-import walidHadjAmorImg from '../../assets/images/walid.png';         // Assurez-vous que speakers.JPG existe
-import rymGmatiImg from '../../assets/images/gmatii.png';              // Assurez-vous que speakers.JPG existe
+// --- AJOUT : Imports pour les photos manquantes avec une image générique ---
+import hanaChoyakhImg from '../../assets/images/hana.jpg'; 
+import mohamedLahianiImg from '../../assets/images/lahy.png';
+import oussemaMessaoudImg from '../../assets/images/oussema.jpg';
 
 
-// --- Le reste de votre code est correct ---
+// --- MODIFICATION : Liste des intervenants mise à jour ---
 const speakersData = [
   { 
     name: 'Jihene El Oukadi', 
@@ -106,7 +106,7 @@ const speakersData = [
   },
   { 
     name: 'Karim Bououni', 
-    title: 'Responsable pôle métier à la CDC', 
+    title: 'DG de la CDC gestion', 
     image: karimBououniImg, 
     linkedin: '#',
     description: 'Spécialiste du financement et de l\'investissement au service du développement économique.'
@@ -124,6 +124,28 @@ const speakersData = [
     image: rymGmatiImg, 
     linkedin: '#',
     description: 'Experte juridique en capital-risque, accompagnant les startups dans leurs levées de fonds.'
+  },
+  // --- AJOUT DES NOUVEAUX INTERVENANTS ---
+  { 
+    name: 'Hana Choyakh', 
+    title: 'Director Financial Advisory Deloitte Africa', 
+    image: hanaChoyakhImg, 
+    linkedin: '#',
+    description: ''
+  },
+  { 
+    name: 'Mohamed Lahiani', 
+    title: 'Ex président de ENSI Junior Entreprise', 
+    image: mohamedLahianiImg, 
+    linkedin: '#',
+    description: ''
+  },
+  { 
+    name: 'Oussema Messaoud', 
+    title: 'Chief Operating Officer at Betawaves', 
+    image: oussemaMessaoudImg, 
+    linkedin: '#',
+    description: 'Visionnaire des opérations et de la technologie, il optimise les processus pour l\'innovation et la performance.'
   },
 ];
 

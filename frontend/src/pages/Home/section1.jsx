@@ -4,7 +4,8 @@ import family from '../../assets/images/familycompressé.jpg';
 import edition from '../../assets/images/3éme.png';
 
 // Importez toutes les icônes nécessaires
-import { FaInstagram, FaFacebookF, FaLinkedinIn } from 'react-icons/fa';
+// --- MODIFICATION ICI : Ajout de l'icône YouTube ---
+import { FaInstagram, FaFacebookF, FaLinkedinIn, FaYoutube } from 'react-icons/fa';
 import { FaArrowRight } from 'react-icons/fa6';
 
 // Importations pour les animations
@@ -79,15 +80,17 @@ const Section1 = () => {
             <FaArrowRight className="toggle-arrow" />
           </div>
           <div className="social-links-container">
-            {/* --- MODIFICATION ICI --- */}
+            {/* --- MODIFICATION ICI : Ajout du lien YouTube --- */}
             <a href="https://www.instagram.com/ensijunior/" target="_blank" rel="noopener noreferrer" className="social-link instagram" aria-label="Instagram"><FaInstagram /></a>
             <a href="https://www.facebook.com/ENSI.Junior.Entreprise" target="_blank" rel="noopener noreferrer" className="social-link facebook" aria-label="Facebook"><FaFacebookF /></a>
             <a href="https://www.linkedin.com/company/ensi-junior-entreprise/posts/?feedView=all" target="_blank" rel="noopener noreferrer" className="social-link linkedin" aria-label="LinkedIn"><FaLinkedinIn /></a>
+            <a href="https://www.youtube.com/@ENSIJuniorEntreprise" target="_blank" rel="noopener noreferrer" className="social-link youtube" aria-label="YouTube"><FaYoutube /></a>
           </div>
         </div>
       </section>
 
       <section className="scroll-content">
+        {/* ... (le reste du code JSX est inchangé) ... */}
         <div className="countdown-container">
           {(() => {
             const radius = 50;

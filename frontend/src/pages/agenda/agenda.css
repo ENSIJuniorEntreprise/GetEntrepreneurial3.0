@@ -180,7 +180,7 @@ body {
   text-align: right; 
   font-weight: 700; 
   font-size: 1.1rem; 
-  color: var(--light-text-color); 
+  color: var(--card-color); 
   white-space: nowrap; 
 }
 
@@ -199,8 +199,8 @@ body {
 
 .timeline-title { 
   margin: 0 0 0.5rem 0; 
-  font-size: 1.4rem; 
-  font-weight: 800; 
+  font-size: 1.3rem; 
+  font-weight: 700; 
   color: var(--highlight-color); 
 }
 

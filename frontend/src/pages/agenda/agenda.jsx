@@ -2,79 +2,83 @@ import React, { useState } from 'react';
 import './agenda.css';
 
 const agendaData = {
-  // --- MODIFICATION ICI : Tous les champs 'speaker' ont été vidés ---
   friday: [
     {
       id: 1,
-      type: 'PLÉNIÈRE – INNOVATION ACT: COMMENT CONCRÉTISER ?',
-      time: '09h00 – 10h15',
-      speaker: '', // <- Supprimé
-      description: `• 09h00 – 09h15 | Ouverture officielle<br />• 09h15 – 09h45 | Rétrospective du Startup Act 1.0 et analyse critique<br />• 09h45 – 10h15 | État de lieux`
+      type: 'Accueil des participants',
+      time: '09H00',
+      speaker: '',
+      description: ''
     },
     {
       id: 2,
-      type: 'KEYNOTES',
-      time: '10h30 – 11h00',
-      speaker: '', // <- Supprimé
-      description: `Des diasporants et des locaux présentent leurs trajectoires.<br />Objectif : Illustrer concrètement les leviers et freins rencontrés.`
+      type: "Ouverture de l'événement",
+      time: '09H30',
+      speaker: '',
+      description: ''
     },
     {
       id: 3,
-      type: 'PAUSE CAFÉ',
-      time: '11h00 – 11h30',
-      speaker: '', // <- Supprimé
-      description: 'Favoriser les rencontres et les échanges informels entre les participants.'
+      type: 'Conférence Plénière – Innovation Act : ambition à concrétiser',
+      time: '10H00',
+      speaker: '',
+      description: ''
     },
     {
       id: 4,
-      type: 'PANEL 1 – TUNISIE 2035 : OÙ MISER POUR FAIRE LA DIFFÉRENCE ?',
-      time: '11h30 – 12h15',
-      speaker: '', // <- Supprimé
-      description: `<div class="session-block">
-                      <div class="session-content">• L'arbitrage : financer moins mais mieux<br />• Un cadre sélectif et itératif pour le financement<br />• Les filières où la Tunisie peut être compétitive dans 10 ans</div>
-                    </div>
-                    <div class="session-block">
-                      <h4 class="session-title workshop-title-main">Workshop 1</h4>
-                      <div class="session-content">Build Your Startup from Scratch</div>
-                    </div>`
+      type: 'Keynotes',
+      time: '11H00',
+      speaker: '',
+      // --- MODIFICATION ICI ---
+      description: '<ul><li>Ooredoo</li><li>Gomycode</li></ul>'
     },
     {
-      id: 5,
-      type: 'PANEL 2 – ACCÈS AUX MARCHÉS PUBLICS & INTERNATIONAUX',
-      time: '12h30 – 13h15',
-      speaker: '', // <- Supprimé
-      description: `<div class="session-block">
-                      <div class="session-content">• Marchés publics : vers un État acheteur innovant<br />• Accélérer l'accès aux marchés globaux : Rôle de la Diaspora<br />• Vision internationale dès la création</div>
-                    </div>
-                    <div class="session-block">
-                      <h4 class="session-title workshop-title-main">Workshop 2</h4>
-                      <div class="session-content">Étudiant et Startups – Développez les compétences pour réussir demain</div>
-                    </div>`
+        id: 5,
+        type: 'Worshop Ooredoo : How to land an internship that open doors',
+        time: '11H15',
+        speaker: '',
+        description: ''
     },
     {
       id: 6,
-      type: 'PANEL 3 – FINANCEMENT ET INVESTISSEMENT',
-      time: '13h30 – 14h15',
-      speaker: '', // <- Supprimé
-      description: `<div class="session-block">
-                      <div class="session-content">• Cartographie actuelle du financement<br />• Rôle de la diaspora dans le financement international<br />• Modernisation des mécanismes d'investissement</div>
-                    </div>
-                    <div class="session-block">
-                      <h4 class="session-title workshop-title-main">Workshop 3</h4>
-                      <div class="session-content">AI ERA : Nouvelle Cartographie des Métiers</div>
-                    </div>`
+      type: 'Panel – Tunisie 2035 : Où miser pour faire la différence ?',
+      time: '12H00',
+      speaker: '',
+      description: ''
     },
     {
       id: 7,
-      type: 'CLÔTURE',
-      time: '14h30 – 14h45',
-      speaker: '', // <- Supprimé
-      description: `Mot de clôture et proposition de valeur vers un "Innovation Act".`
+      type: 'Pause Café',
+      time: '12H45',
+      speaker: '',
+      description: ''
     },
+    {
+      id: 8,
+      type: 'Panel – Accès aux Marchés Publics & Internationaux',
+      time: '13H15',
+      speaker: '',
+      description: ''
+    },
+    {
+      id: 9,
+      type: 'Panel – Financement et investissement',
+      time: '14H00',
+      speaker: '',
+      description: ''
+    },
+    {
+      id: 10,
+      type: 'Clôture',
+      time: '15H00',
+      speaker: '',
+      description: ''
+    }
   ],
   tuesday: [],
   wednesday: []
 };
+
 
 const Agenda = () => {
   const [activeTab, setActiveTab] = useState('friday');
@@ -108,9 +112,8 @@ const Agenda = () => {
                   <div className="timeline-time">{activity.time}</div>
                   <div className="timeline-content">
                     <h3 className="timeline-title">{activity.type}</h3>
-                    {/* Le paragraphe <p> ne s'affichera pas s'il est vide */}
-                    <p className="timeline-speaker">{activity.speaker}</p> 
-                    <div className="timeline-description" dangerouslySetInnerHTML={{ __html: activity.description }} />
+                    {activity.speaker && <p className="timeline-speaker" dangerouslySetInnerHTML={{ __html: activity.speaker }} />}
+                    {activity.description && <div className="timeline-description" dangerouslySetInnerHTML={{ __html: activity.description }} />}
                   </div>
                 </li>
               ))}

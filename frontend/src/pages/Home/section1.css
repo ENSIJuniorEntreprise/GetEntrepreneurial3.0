@@ -15,6 +15,8 @@ body, html {
   --white: #FFFFFF;
   --facebook-blue: #1877F2;
   --linkedin-blue: #0A66C2;
+  /* --- AJOUT ICI --- */
+  --youtube-red: #FF0000;
   --font-main: 'Montserrat', sans-serif;
   }
   .hero-container {
@@ -23,7 +25,7 @@ body, html {
   }
   .hero-fullscreen {
   position: relative;
-  height: 100vh; /* <-- Hauteur initiale de 100% de la vue */
+  height: 100vh;
   width: 100%;
   color: var(--white);
   overflow: hidden;
@@ -159,15 +161,22 @@ body, html {
   .social-panel.open .social-link:nth-of-type(1) { transition-delay: 0.2s; }
   .social-panel.open .social-link:nth-of-type(2) { transition-delay: 0.3s; }
   .social-panel.open .social-link:nth-of-type(3) { transition-delay: 0.4s; }
+  /* --- MODIFICATION ICI : Ajout du délai pour la nouvelle icône --- */
+  .social-panel.open .social-link:nth-of-type(4) { transition-delay: 0.5s; }
+
   .social-link:hover { filter: brightness(1.2); }
   .social-link.linkedin { background-color: var(--linkedin-blue); }
   .social-link.facebook { background-color: var(--facebook-blue); }
   .social-link.instagram {
   background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
   }
+  /* --- AJOUT ICI : Style pour le lien YouTube --- */
+  .social-link.youtube { background-color: var(--youtube-red); }
+
   .scroll-content {
     background-color: var(--dark-blue);
   }
+  /* ... (le reste du code CSS est inchangé) ... */
   .countdown-container {
   display: flex; justify-content: center; align-items: flex-start;
   flex-wrap: wrap;
@@ -276,7 +285,6 @@ body, html {
 }
 
 @media (max-width:  486px) {
-  /* === PREMIÈRE RÉDUCTION DE LA HAUTEUR ICI === */
   .hero-fullscreen {
       height: 80vh;
   }
@@ -294,7 +302,6 @@ body, html {
 @media (max-width: 420px) {
   .hero-content h1{ font-size: 2.1rem; }}
 @media (max-width: 385px) {
-  /* === DEUXIÈME RÉDUCTION DE LA HAUTEUR ICI === */
   .hero-fullscreen { height: 70vh; }
   .hero-content h1{ font-size: 2rem; }
   .date-location .day { font-size: 2.8rem;}
@@ -309,7 +316,6 @@ body, html {
   .background-video {
     display: none;
   }
-  /* === ICI, LA PHOTO REMPLACE LA VIDÉO ET LA HAUTEUR EST ENCORE RÉDUITE === */
   .hero-fullscreen {
     background-image: url('../../assets/images/family.JPG');
     background-size: cover;
@@ -338,7 +344,6 @@ body, html {
 @media (max-width: 312px){
   .hero-content h1{ font-size: 1.5rem; }
   .date-location .day { font-size: 2.2rem; }
-    /* === AUTRE RÉDUCTION DE LA HAUTEUR === */
     .hero-fullscreen {
     background-image: url('../../assets/images/family.JPG');
     background-size: cover;
@@ -349,7 +354,6 @@ body, html {
 }
 
 @media (max-width: 280px) {
-    /* === DERNIÈRE RÉDUCTION DE LA HAUTEUR POUR LES PLUS PETITS ÉCRANS === */
     .hero-fullscreen {
     background-image: url('../../assets/images/family.JPG');
     background-size: cover;

@@ -124,6 +124,56 @@
   font-weight: bold;
   font-size: 1.1em;
 }
+/* Ajoutez ceci à votre fichier GreenTechDayTab.css */
+
+.workshop-speakers-content {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid #ddd;
+}
+
+.speakers-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--orange);
+  margin-bottom: 15px;
+}
+
+.speakers-grid-container {
+  display: flex;
+  gap: 25px;
+  flex-wrap: wrap;
+}
+
+.speaker-profile {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.speaker-image {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--orange);
+}
+
+.speaker-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.speaker-name {
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: #333;
+}
+
+.speaker-role {
+  font-size: 0.9rem;
+  color: #666;
+}
 
 /* --- RESPONSIVE BREAKPOINTS --- */
 
