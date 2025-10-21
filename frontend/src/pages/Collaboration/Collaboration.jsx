@@ -56,7 +56,6 @@ const silverPartners = [
 
 const alliesPartners = [
   { image: biasLogo, name: 'BIAS', link: 'https://bias.com.tn/fr' },
-  { image: fondationTunisieLogo, name: 'Fondation de Tunisie', link: 'https://fondationtunisie.org' },
   { image: honorisLogo, name: 'Honoris United Universities', link: 'https://honoris.net/our-institutions/tunisia/' },
   { image: smartCapitalLogo, name: 'Smart Capital', link: 'https://www.smartcapital.tn/' },
   { image: tunisianStartupsLogo, name: 'Tunisian Startups', link: 'https://startup.gov.tn/' },
