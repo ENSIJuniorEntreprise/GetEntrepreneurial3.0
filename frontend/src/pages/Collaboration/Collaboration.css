@@ -1,772 +1,314 @@
 /* --- Variables et Style de Base --- */
 :root {
-    --dark-blue: #1F212D;
-    --orange: #FE9900;
-    --beige: #E0DED2;
-    --white: #FFFFFF;
-  }
-  
-  html, body {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    overflow-x: hidden;
-  }
-  
-  /* MODIFICATION : Nouvelle technique pour l'arrière-plan global */
-  .collaboration-page {
-    font-family: 'Montserrat', sans-serif;
-    color: var(--white);
-    overflow-x: hidden;
-    position: relative; /* Nécessaire pour positionner le pseudo-élément */
-    z-index: 1; /* S'assure que le contenu est au-dessus du pseudo-élément */
-    background-image: url('../../assets/images/colloaboration-title-background.png');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    min-height: 100vh;
-  }
-  
-  /* L'overlay de couleur unie demandé */
-  .collaboration-page::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: var(--dark-blue); /* La couleur exacte demandée */
-    opacity: 0.95; /* Ajustez cette valeur (de 0 à 1) pour plus ou moins de visibilité de l'image */
-    z-index: -1; /* Place l'overlay derrière le contenu mais par-dessus l'image de fond */
-  }
-  
-  /* Styles généraux des sections */
-  .collab-section {
-    padding: 80px 40px;
-    position: relative;
-    z-index: 2;
-  }
-  
-  .section-header {
-    text-align: center;
-    margin-bottom: 70px;
-  }
-  
-  .section-header h2 {
-    font-size: 3rem;
-    font-weight: 700;
-    margin: 0 0 25px 0;
-    color: #E0DED2;
-    line-height: 1.2;
-  }
-  
-  .section-header p {
-    font-size: 1.3rem;
-    max-width: 900px;
-    margin: 0 auto;
-    line-height: 1.7;
-    opacity: 0.9;
-    color: var(--beige);
-  }
-  
-  .section-header .highlight {
-    color: var(--orange);
-  }
-  
-  /* --- Section Partenaires --- */
-  .partners {
-    padding-top: 120px;
-  }
-  
-  .partners .section-header p {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
-  }
-  
-  .partners .section-header p::before,
-  .partners .section-header p::after {
-    content: '';
-    display: block;
-    width: 250px;
-    height: 5px;
-    background-color: var(--orange);
-    border-radius: 20px;
-    flex-shrink: 0;
-  }
-  
-  .partners-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 40px;
-    max-width: 1300px;
-    margin: 0 auto;
-    padding: 0 20px;
-  }
-  
-  /* MODIFICATION : Fond clair pour assurer la visibilité des logos */
-  .partner-card {
-    border-radius: 20px;
-    padding: 25px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 150px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    background-color: var(--beige); /* Fond clair pour le contraste */
-    border: 1px solid #C0C0B6;
-  }
-  
-  .partner-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Effet de surélévation */
-  }
-  
-  /* MODIFICATION : Filtre supprimé pour garder les couleurs originales */
-  .partner-card img {
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: contain;
-    transition: transform 0.3s ease;
-  }
-  
-  /* --- Section "Devenez Partenaire" (CTA) --- */
-  .become-partner-cta {
-    padding: 80px 20px;
+  --dark-blue: #1F212D;
+  --orange: #FE9900;
+  --beige: #E0DED2;
+  --white: #FFFFFF;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.collaboration-page {
+  font-family: 'Montserrat', sans-serif;
+  color: var(--white);
+  overflow-x: hidden;
+  position: relative;
+  z-index: 1;
+  background-image: url('../../assets/images/colloaboration-title-background.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
+.collaboration-page::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--dark-blue);
+  opacity: 0.95;
+  z-index: -1;
+}
+
+/* --- En-tête principal de la page --- */
+.collab-header {
+  text-align: center;
+  /* MODIFICATION : L'espace en bas est supprimé pour rapprocher le titre de la section suivante */
+  padding: 120px 40px 0 40px; 
+}
+
+.collab-header h2 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin: 0 0 25px 0;
+  color: #E0DED2;
+  line-height: 1.2;
+}
+
+.collab-header p {
+  font-size: 1.3rem;
+  max-width: 900px;
+  margin: 0 auto;
+  line-height: 1.7;
+  opacity: 0.9;
+  color: var(--beige);
+}
+
+.collab-header .highlight {
+  color: var(--orange);
+}
+
+/* --- Style pour les sections de catégories de partenaires --- */
+.partners-category {
+  /* MODIFICATION : Espace en haut réduit pour se rapprocher de l'en-tête */
+  padding: 20px 40px 40px 40px; 
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+.category-title {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--beige);
+  margin-bottom: 40px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid var(--orange);
+  display: inline-block;
+  position: relative;
+}
+
+/* --- Grille des partenaires --- */
+.partners-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 40px;
+}
+
+/* Carte individuelle d'un partenaire */
+.partner-card {
+  border-radius: 20px;
+  padding: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 150px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background-color: var(--beige);
+  border: 1px solid #C0C0B6;
+}
+
+.partner-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.partner-card img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+/* --- Section "Devenez Partenaire" (CTA) --- */
+.become-partner-cta {
+  padding: 80px 20px;
+}
+
+.cta-card {
+  display: flex;
+  background-color: var(--beige);
+  color: var(--dark-blue);
+  max-width: 1200px;
+  border-radius: 24px;
+  margin: 0 auto;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.cta-image { 
+  flex: 0 0 40%; 
+}
+
+.cta-image img { 
+  width: 100%; 
+  height: 100%; 
+  object-fit: cover; 
+}
+
+.cta-content { 
+  flex: 1; 
+  padding: 50px; 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.cta-content h3 { 
+  font-size: 2rem; 
+  font-weight: 700; 
+  margin: 0 0 20px 0; 
+  line-height: 1.3;
+}
+
+.cta-content p { 
+  font-size: 1.1rem; 
+  line-height: 1.8; 
+  margin: 0 0 30px 0; 
+}
+
+.cta-buttons { 
+  display: flex; 
+  gap: 20px; 
+  flex-wrap: wrap;
+}
+
+.cta-btn {
+  padding: 15px 30px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 700;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+  display: inline-block;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.cta-btn.primary, .cta-btn.secondary {
+  background-color: var(--orange);
+  color: var(--beige);
+}
+
+.cta-btn:hover {
+  background-color: #e08a00;
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(254, 153, 0, 0.3);
+}
+
+/* === RESPONSIVE DESIGN COMPLET === */
+
+/* RÈGLE GLOBALE : Masquer l'image CTA sur mobile */
+@media (max-width: 767px) {
+  .cta-image {
+    display: none !important;
   }
   
   .cta-card {
-    display: flex;
-    background-color: var(--beige);
-    color: var(--dark-blue);
-    max-width: 1200px;
-    border-radius: 24px;
-    margin: 0 auto;
-    overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(135deg, var(--beige) 0%, #f5f3eb 100%) !important;
+    flex-direction: column !important;
   }
   
-  .cta-image { 
-    flex: 0 0 40%; 
+  .cta-content {
+    text-align: center !important;
+    color: var(--dark-blue) !important;
   }
   
-  .cta-image img { 
-    width: 100%; 
-    height: 100%; 
-    object-fit: cover; 
+  .cta-content h3,
+  .cta-content p {
+    color: var(--dark-blue) !important;
   }
   
-  .cta-content { 
-    flex: 1; 
-    padding: 50px; 
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+  .cta-content p {
+    opacity: 0.8 !important;
   }
   
-  .cta-content h3 { 
-    font-size: 2rem; 
-    font-weight: 700; 
-    margin: 0 0 20px 0; 
-    line-height: 1.3;
+  .cta-buttons {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 15px !important;
   }
-  
-  .cta-content p { 
-    font-size: 1.1rem; 
-    line-height: 1.8; 
-    margin: 0 0 30px 0; 
-  }
-  
-  .cta-buttons { 
-    display: flex; 
-    gap: 20px; 
-    flex-wrap: wrap;
-  }
-  
-  .cta-btn {
-    padding: 15px 30px;
-    border-radius: 50px;
-    text-decoration: none;
-    font-weight: 700;
-    transition: all 0.3s ease;
-    border: none;
-    cursor: pointer;
-    display: inline-block;
-    text-align: center;
-    white-space: nowrap;
-  }
-  
-  .cta-btn.primary {
-    background-color: var(--orange);
-    color: var(--beige);
-  }
-  
-  .cta-btn.secondary {
-    background-color: var(--orange);
-    color: var(--beige);
-  }
-  
-  .cta-btn.primary:hover {
-    background-color: #e08a00;
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(254, 153, 0, 0.3);
-  }
-  
-  .cta-btn.secondary:hover {
-    background-color: #e08a00;
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(254, 153, 0, 0.3);
-  }
-  
-  /* === RESPONSIVE DESIGN COMPLET === */
-  
-  /* RÈGLE GLOBALE : Masquer l'image CTA sur mobile */
-  @media (max-width: 767px) {
-    .cta-image {
-      display: none !important;
-    }
-    
-    .cta-card {
-      background: linear-gradient(135deg, var(--beige) 0%, #f5f3eb 100%) !important;
-      flex-direction: column !important;
-    }
-    
-    .cta-content {
-      text-align: center !important;
-      color: var(--dark-blue) !important;
-    }
-    
-    .cta-content h3,
-    .cta-content p {
-      color: var(--dark-blue) !important;
-    }
-    
-    .cta-content p {
-      opacity: 0.8 !important;
-    }
-    
-    .cta-buttons {
-      display: flex !important;
-      flex-direction: column !important;
-      align-items: center !important;
-      justify-content: center !important;
-      gap: 15px !important;
-    }
-  }
-  
-  /* Large Desktop (1400px+) */
-  @media (min-width: 1400px) {
-    .collab-section {
-      padding: 100px 60px;
-    }
-    
-    .section-header h2 {
-      font-size: 3.5rem;
-    }
-    
-    .section-header p {
-      font-size: 1.4rem;
-    }
-    
-    .partners-grid {
-      gap: 50px;
-      max-width: 1500px;
-    }
-    
-    .partner-card {
-      height: 180px;
-      padding: 30px;
-    }
-    
-    .cta-content {
-      padding: 60px;
-    }
-    
-    .cta-content h3 {
-      font-size: 2.3rem;
-    }
-    
-    .cta-content p {
-      font-size: 1.2rem;
-    }
-  }
-  
-  /* Desktop (1200px - 1399px) */
-  @media (max-width: 1399px) and (min-width: 1200px) {
-    .partners-grid {
-      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-      gap: 35px;
-    }
-    
-    .partner-card {
-      height: 140px;
-      padding: 20px;
-    }
-  }
-  
-  /* Large Tablet (992px - 1199px) */
-  @media (max-width: 1199px) and (min-width: 992px) {
-    .collab-section {
-      padding: 70px 30px;
-    }
-    
-    .section-header h2 {
-      font-size: 2.8rem;
-    }
-    
-    .section-header p {
-      font-size: 1.2rem;
-    }
-    
-    .partners-grid {
-      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-      gap: 30px;
-    }
-    
-    .partner-card {
-      height: 130px;
-      padding: 20px;
-    }
-    
-    .cta-card {
-      margin: 0 20px;
-    }
-    
-    .cta-content {
-      padding: 40px;
-    }
-    
-    .cta-content h3 {
-      font-size: 1.8rem;
-    }
-    
-    .cta-content p {
-      font-size: 1rem;
-    }
-  }
-  
-  /* Standard Tablet (768px - 991px) */
-  @media (max-width: 991px) and (min-width: 768px) {
-    .collab-section {
-      padding: 60px 25px;
-    }
-    
-    .section-header h2 {
-      font-size: 2.5rem;
-    }
-    
-    .section-header p {
-      font-size: 1.1rem;
-      max-width: 700px;
-    }
-    
-    .partners .section-header p::before,
-    .partners .section-header p::after {
-      width: 100px;
-    }
-    
-    .partners-grid {
-      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-      gap: 25px;
-      padding: 0 10px;
-    }
-    
-    .partner-card {
-      height: 120px;
-      padding: 15px;
-      border-radius: 15px;
-    }
-    
-    .cta-card {
-      flex-direction: column;
-      margin: 0 15px;
-    }
-    
-    .cta-image {
-      height: 300px;
-      flex: none;
-    }
-    
-    .cta-content {
-      padding: 35px 30px;
-    }
-    
-    .cta-content h3 {
-      font-size: 1.7rem;
-    }
-    
-    .cta-content p {
-      font-size: 1rem;
-      margin-bottom: 25px;
-    }
-    
-    .cta-buttons {
-      gap: 15px;
-    }
-    
-    .cta-btn {
-      padding: 12px 25px;
-      font-size: 0.95rem;
-    }
-  }
-  
-  /* Large Mobile (576px - 767px) */
-  @media (max-width: 767px) and (min-width: 576px) {
-    .collab-section {
-      padding: 50px 20px;
-    }
-    
-    .section-header {
-      margin-bottom: 50px;
-    }
-    
-    .section-header h2 {
-      font-size: 2.2rem;
-      margin-bottom: 20px;
-    }
-    
-    .section-header p {
-      font-size: 1rem;
-      max-width: 600px;
-      line-height: 1.6;
-    }
-    
-    .partners {
-      padding-top: 100px;
-    }
-    
-    .partners .section-header p {
-      flex-direction: column;
-      gap: 15px;
-    }
-    
-    .partners .section-header p::before,
-    .partners .section-header p::after {
-      width: 80px;
-      height: 3px;
-    }
-    
-    .partners-grid {
-      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-      gap: 20px;
-      padding: 0;
-    }
-    
-    .partner-card {
-      height: 100px;
-      padding: 12px;
-      border-radius: 12px;
-    }
-    
-    .become-partner-cta {
-      padding: 60px 15px;
-    }
-    
-    .cta-card {
-      flex-direction: column;
-      margin: 0 10px;
-      border-radius: 20px;
-    }
-    
-    .cta-image {
-      height: 250px;
-    }
-    
-    .cta-content {
-      padding: 30px 25px;
-    }
-    
-    .cta-content h3 {
-      font-size: 1.5rem;
-      margin-bottom: 15px;
-    }
-    
-    .cta-content p {
-      font-size: 0.95rem;
-      margin-bottom: 20px;
-    }
-    
-    .cta-buttons {
-      flex-direction: column;
-      gap: 12px;
-    }
-    
-    .cta-btn {
-      padding: 12px 20px;
-      font-size: 0.9rem;
-      width: 100%;
-    }
-  }
-  
-  /* Standard Mobile (481px - 575px) */
-  @media (max-width: 575px) and (min-width: 481px) {
-    .collab-section {
-      padding: 40px 15px;
-    }
-    
-    .section-header h2 {
-      font-size: 2rem;
-      line-height: 1.1;
-    }
-    
-    .section-header p {
-      font-size: 0.95rem;
-    }
-    
-    .partners {
-      padding-top: 90px;
-    }
-    
-    .partners .section-header p::before,
-    .partners .section-header p::after {
-      width: 60px;
-      height: 3px;
-    }
-    
-    .partners-grid {
-      grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
-      gap: 15px;
-    }
-    
-    .partner-card {
-      height: 90px;
-      padding: 10px;
-    }
-    
-    .become-partner-cta {
-      padding: 50px 10px;
-    }
-    
-    .cta-card {
-      margin: 0 5px;
-      border-radius: 16px;
-    }
-    
-    .cta-image {
-      height: 220px;
-    }
-    
-    .cta-content {
-      padding: 25px 20px;
-    }
-    
-    .cta-content h3 {
-      font-size: 1.4rem;
-    }
-    
-    .cta-content p {
-      font-size: 0.9rem;
-      line-height: 1.5;
-    }
-    
-    .cta-btn {
-      padding: 11px 18px;
-      font-size: 0.85rem;
-    }
-  }
-  
-  /* Small Mobile (320px - 480px) */
-  @media (max-width: 480px) {
-    .collab-section {
-      padding: 35px 12px;
-    }
-    
-    .section-header {
-      margin-bottom: 40px;
-    }
-    
-    .section-header h2 {
-      font-size: 1.8rem;
-      line-height: 1.1;
-      margin-bottom: 15px;
-    }
-    
-    .section-header p {
-      font-size: 0.9rem;
-      line-height: 1.5;
-    }
-    
-    .partners {
-      padding-top: 80px;
-    }
-    
-    .partners .section-header p {
-      flex-direction: column;
-      gap: 12px;
-    }
-    
-    .partners .section-header p::before,
-    .partners .section-header p::after {
-      width: 50px;
-      height: 2px;
-    }
-    
-    .partners-grid {
-      grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-      gap: 12px;
-    }
-    
-    .partner-card {
-      height: 80px;
-      padding: 8px;
-      border-radius: 10px;
-    }
-    
-    .become-partner-cta {
-      padding: 40px 8px;
-    }
-    
-    .cta-card {
-      margin: 0;
-      border-radius: 12px;
-    }
-    
-    .cta-image {
-      height: 200px;
-    }
-    
-    .cta-content {
-      padding: 20px 15px;
-    }
-    
-    .cta-content h3 {
-      font-size: 1.25rem;
-      margin-bottom: 12px;
-    }
-    
-    .cta-content p {
-      font-size: 0.85rem;
-      line-height: 1.4;
-      margin-bottom: 18px;
-    }
-    
-    .cta-buttons {
-      gap: 10px;
-    }
-    
-    .cta-btn {
-      padding: 10px 15px;
-      font-size: 0.8rem;
-      border-radius: 25px;
-    }
-  }
-  
-  /* Extra Small Mobile (moins de 320px) */
-  @media (max-width: 319px) {
-    .collab-section {
-      padding: 30px 8px;
-    }
-    
-    .section-header h2 {
-      font-size: 1.6rem;
-    }
-    
-    .section-header p {
-      font-size: 0.8rem;
-    }
-    
-    .partners {
-      padding-top: 110px; /* Ajusté pour très petits écrans */
-    }
-    
-    .partners-grid {
-      grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
-      gap: 10px;
-    }
-    
-    .partner-card {
-      height: 70px;
-      padding: 6px;
-    }
-    
-    /* CTA ultra-compact */
-    .cta-image {
-      display: none;
-    }
-    
-    .cta-content {
-      padding: 25px 12px;
-      text-align: center;
-    }
-    
-    .cta-content h3 {
-      font-size: 1.1rem;
-      margin-bottom: 12px;
-      color: var(--dark-blue);
-    }
-    
-    .cta-content p {
-      font-size: 0.8rem;
-      margin-bottom: 16px;
-      color: var(--dark-blue);
-      opacity: 0.85;
-    }
-    
-    .cta-btn {
-      padding: 10px 15px;
-      font-size: 0.75rem;
-      width: 100%;
-      max-width: 200px;
-    }
-  }
-  
-  /* Optimisations pour les écrans tactiles */
-  @media (pointer: coarse) {
-    .partner-card {
-      min-height: 100px;
-    }
-    
-    .cta-btn {
-      min-height: 44px;
-      min-width: 120px;
-    }
-    
-    .partner-card:hover {
-      transform: none;
-    }
-    
-    .partner-card:active {
-      transform: scale(0.95);
-    }
-    
-    .cta-btn:hover {
-      transform: none;
-    }
-    
-    .cta-btn:active {
-      transform: scale(0.95);
-    }
-  }
-  
-  /* Mode paysage sur mobile */
-  @media (max-height: 500px) and (orientation: landscape) {
-    .collab-section {
-      padding: 30px 20px;
-    }
-    
-    .section-header {
-      margin-bottom: 30px;
-    }
-    
-    .section-header h2 {
-      font-size: 1.8rem;
-    }
-    
-    .partners {
-      padding-top: 60px;
-    }
-    
-    .cta-card {
-      flex-direction: row;
-    }
-    
-    .cta-image {
-      height: auto;
-      flex: 0 0 40%;
-    }
-    
-    .cta-content {
-      padding: 20px;
-    }
-  }
+}
+
+/* Large Desktop (1400px+) */
+@media (min-width: 1400px) {
+  .collab-header { padding: 140px 60px 0 60px; }
+  .partners-category { padding: 20px 60px 50px 60px; max-width: 1500px; }
+  .partners-grid { gap: 50px; }
+  .partner-card { height: 180px; padding: 30px; }
+  .cta-content { padding: 60px; }
+  .cta-content h3 { font-size: 2.3rem; }
+  .cta-content p { font-size: 1.2rem; }
+}
+
+/* Tablette (992px - 1199px) */
+@media (max-width: 1199px) and (min-width: 992px) {
+  .collab-header { padding: 100px 30px 0 30px; }
+  .partners-category { padding: 20px 30px 35px 30px; }
+  .partners-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 30px; }
+  .partner-card { height: 130px; padding: 20px; }
+  .cta-card { margin: 0 20px; }
+  .cta-content { padding: 40px; }
+  .cta-content h3 { font-size: 1.8rem; }
+  .cta-content p { font-size: 1rem; }
+}
+
+/* Tablette (768px - 991px) */
+@media (max-width: 991px) {
+  .collab-header { padding: 90px 25px 0 25px; }
+  .partners-category { padding: 20px 25px 30px 25px; }
+  .partners-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 25px; }
+  .partner-card { height: 120px; padding: 15px; border-radius: 15px; }
+  .cta-card { flex-direction: column; margin: 0 15px; }
+  .cta-image { height: 300px; flex: none; }
+  .cta-content { padding: 35px 30px; }
+  .cta-content h3 { font-size: 1.7rem; }
+  .cta-content p { font-size: 1rem; margin-bottom: 25px; }
+  .cta-btn { padding: 12px 25px; font-size: 0.95rem; }
+}
+
+/* Mobile (jusqu'à 767px) */
+@media (max-width: 767px) {
+  .collab-header { padding: 80px 20px 0 20px; }
+  .collab-header h2 { font-size: 2.2rem; }
+  .collab-header p { font-size: 1rem; }
+  .partners-category { padding: 20px; }
+  .category-title { font-size: 1.5rem; margin-bottom: 30px; }
+  .partners-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; }
+  .partner-card { height: 100px; }
+  .become-partner-cta { padding: 60px 15px; }
+  .cta-content { padding: 30px 25px; }
+  .cta-content h3 { font-size: 1.5rem; }
+  .cta-content p { font-size: 0.95rem; }
+  .cta-btn { width: 100%; max-width: 250px; }
+}
+
+/* Petit Mobile (jusqu'à 480px) */
+@media (max-width: 480px) {
+  .collab-header h2 { font-size: 1.8rem; }
+  .collab-header p { font-size: 0.9rem; }
+  .category-title { font-size: 1.4rem; }
+  .partners-grid { gap: 12px; }
+  .partner-card { height: 80px; padding: 8px; border-radius: 10px; }
+  .cta-content { padding: 20px 15px; }
+  .cta-content h3 { font-size: 1.25rem; }
+  .cta-content p { font-size: 0.85rem; }
+  .cta-btn { font-size: 0.8rem; }
+}
+
+/* Optimisations pour les écrans tactiles */
+@media (pointer: coarse) {
+  .partner-card:hover { transform: none; }
+  .partner-card:active { transform: scale(0.95); }
+  .cta-btn:hover { transform: none; }
+  .cta-btn:active { transform: scale(0.95); }
+}
+
+/* Mode paysage sur mobile */
+@media (max-height: 500px) and (orientation: landscape) {
+  .collab-header { padding: 60px 20px 0 20px; }
+  .collab-header h2 { font-size: 1.8rem; }
+  .cta-card { flex-direction: row; }
+  .cta-image { display: block !important; height: auto; flex: 0 0 40%; }
+  .cta-content { padding: 20px; text-align: left !important; }
+}

@@ -25,7 +25,7 @@ import honorisLogo from '../../assets/images/honoo.png';
 import hotelLogo from '../../assets/images/hotell.png';
 import ooredooLogo from '../../assets/images/oreedo-.png';
 import tachghilLogo from '../../assets/images/tachghill.png';
-import tunisianStartupsLogo from '../../assets/images/Tunisian startups.png';
+import tunisianStartupsLogo from '../../assets/images/cdcc.png';
 import umaLogo from '../../assets/images/umaa.png';
 import villageLogo from '../../assets/images/villagee.png';
 
@@ -34,8 +34,8 @@ const sponsorsData = [
   // Catégorie : Partenaires Institutionnels & Publics
   { logo: apiiLogo },
   { logo: ooredooLogo },
-  { logo: asteelflashLogo },
-  { logo: talysLogo },
+  { logo: tunisianStartupsLogo },
+  { logo: villageLogo },
   { logo: anetiLogo },
   { logo: tachghilLogo },
   { logo: conectLogo },
