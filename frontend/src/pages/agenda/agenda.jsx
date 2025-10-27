@@ -29,7 +29,6 @@ const agendaData = {
       type: 'Keynotes',
       time: '11H00',
       speaker: '',
-      // --- MODIFICATION ICI ---
       description: '<ul><li>Ooredoo</li><li>Gomycode</li></ul>'
     },
     {
@@ -75,7 +74,37 @@ const agendaData = {
       description: ''
     }
   ],
-  tuesday: [],
+  // --- MODIFICATION ICI ---
+  tuesday: [
+    {
+      id: 1,
+      type: 'Coffee time',
+      time: '09H30',
+      speaker: '',
+      description: ''
+    },
+    {
+      id: 2,
+      type: 'Présentation des candidats & Workshop',
+      time: '10H00 - 11H00',
+      speaker: '',
+      description: '<ul><li>Session de pitch </li><li>Workshop en parallèle</li></ul>'
+    },
+    {
+      id: 3,
+      type: 'Pause Café',
+      time: '11H00',
+      speaker: '',
+      description: ''
+    },
+    {
+      id: 4,
+      type: 'Présentation des candidats & Workshop',
+      time: '11H30 - 12H30',
+      speaker: '',
+      description: '<ul><li>Session de pitch </li><li>Workshop en parallèle</li></ul>'
+    }
+  ],
   wednesday: []
 };
 
@@ -84,7 +113,7 @@ const Agenda = () => {
   const [activeTab, setActiveTab] = useState('friday');
 
   const getActiveDayName = () => {
-    if (activeTab === 'tuesday') return 'GREEN&TECH DAY';
+    if (activeTab === 'tuesday') return 'GREEN & TECH DAY';
     if (activeTab === 'wednesday') return 'B2B Deal Day';
     return '';
   };
@@ -98,7 +127,7 @@ const Agenda = () => {
             BIG DAY
           </button>
           <button onClick={() => setActiveTab('tuesday')} className={activeTab === 'tuesday' ? 'active' : ''}>
-            GREEN&TECH DAY
+            GREEN & TECH DAY
           </button>
         </nav>
       </div>
