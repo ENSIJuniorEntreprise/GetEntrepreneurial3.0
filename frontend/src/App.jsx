@@ -1,5 +1,5 @@
 import React, { useState, useEffect, Suspense } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import './App.css';
 import Navbar from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer';
@@ -16,9 +16,7 @@ const Agenda = React.lazy(() => import('./pages/agenda/agenda'));
 const Collaboration = React.lazy(() => import('./pages/Collaboration/Collaboration'));
 const Contact = React.lazy(() => import('./pages/Contact/Contact'));
 const Inscription = React.lazy(() => import('./pages/Inscription/Inscription'));
-const Edition12 = React.lazy(() => import('./pages/edition12/edition12'));
-const Edition1 = React.lazy(() => import('./pages/edition1/edition1'));
-const Edition2 = React.lazy(() => import('./pages/edition2/edition2'));
+const EditionPage = React.lazy(() => import('./pages/EditionPage/EditionPage'));
 const Participant = React.lazy(() => import('./pages/participant/participant'));
 const Exposant = React.lazy(() => import('./pages/exposant/exposant'));
 
@@ -102,36 +100,20 @@ function App() {
             </>
             } 
             />
-            <Route 
-            path="/edition1"
-            element={
-            <>
-            <Navbar />
-            <Edition1 />
-            <Footer />
-            </>
-            } 
-            />
             <Route
-            path="/edition2" 
+            path="/editions/:slug"
             element={
             <>
             <Navbar />
-            <Edition2 />
+            <EditionPage />
             <Footer />
             </>
             }
             />
-            <Route
-            path="/legacy" 
-            element={
-            <>
-            <Navbar />
-            <Edition12 />
-            <Footer />
-            </>
-            }
-            />
+            {/* Anciennes URLs figées — redirigées vers les slugs dynamiques */}
+            <Route path="/edition1" element={<Navigate to="/editions/edition1" replace />} />
+            <Route path="/edition2" element={<Navigate to="/editions/edition2" replace />} />
+            <Route path="/legacy" element={<Navigate to="/editions/legacy" replace />} />
             <Route
               path="/login"
               element={

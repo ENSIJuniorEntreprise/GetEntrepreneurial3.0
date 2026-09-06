@@ -24,6 +24,19 @@ app.use('/api/inscriptions', require('./routes/inscriptionRoutes'));
 // NOUVELLE LIGNE : Ajouter la route pour les statistiques du dashboard
 app.use('/api/stats', require('./routes/dashboardRoutes'));
 
+app.use('/api/auth', require('./routes/authRoutes'));
+app.use('/api/upload', require('./routes/uploadRoutes'));
+app.use('/api/content/settings', require('./routes/eventSettingsRoutes'));
+app.use('/api/content/agenda', require('./routes/agendaRoutes'));
+app.use('/api/content/panels', require('./routes/panelRoutes'));
+app.use('/api/content/sponsors', require('./routes/sponsorRoutes'));
+app.use('/api/content/site', require('./routes/siteContentRoutes'));
+app.use('/api/content/articles', require('./routes/articleRoutes'));
+app.use('/api/content/axes', require('./routes/axisRoutes'));
+app.use('/api/content/speakers', require('./routes/speakerRoutes'));
+app.use('/api/content/editions', require('./routes/editionRoutes'));
+app.use('/api/content/form-options', require('./routes/formOptionsRoutes'));
+
 
 const PORT = process.env.PORT || 5000;
 

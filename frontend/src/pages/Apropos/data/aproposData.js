@@ -21,12 +21,13 @@ import hanaChoyakhImg from '../../../assets/images/hana.jpg';
 import mohamedLahianiImg from '../../../assets/images/lahy.png';
 import oussemaMessaoudImg from '../../../assets/images/oussema.jpg';
 import mohamedThamerChagourImg from '../../../assets/images/thaa.png'; // Remplacez par le chemin réel
-import wassimZehaniImg from '../../../assets/images/wass.jpg'; 
+import wassimZehaniImg from '../../../assets/images/wass.jpg';
 
-// Image générique pour les panels non définis
-import speakerImage from '../../../assets/images/speakers.JPG';
-
-export const aproposData = {
+// Contenu de secours utilisé si l'API CMS (panels/workshops) est indisponible
+// ou si l'admin n'a pas encore saisi de contenu pour l'édition en cours.
+// NB : l'onglet "Thème" (grandPublic) n'est pas encore géré par le CMS et reste
+// modifiable uniquement ici, dans le code.
+export const FALLBACK_APROPOS_DATA = {
   // --- Contenu pour l'onglet "Thème" ---
   grandPublic: {
     title: "STARTUP HORIZONS ET SOLUTIONS : VISION DES JEUNES",

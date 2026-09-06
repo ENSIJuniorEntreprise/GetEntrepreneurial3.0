@@ -1,0 +1,234 @@
+.cms-section {
+  max-width: 1000px;
+}
+
+.cms-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.cms-tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.cms-tab {
+  padding: 0.6rem 1.25rem;
+  border-radius: 999px;
+  border: 1px solid var(--border-color);
+  background-color: var(--card-bg);
+  color: var(--text-secondary);
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--global-transition);
+}
+
+.cms-tab.active {
+  background-color: var(--sidebar-active-bg);
+  color: white;
+  border-color: var(--sidebar-active-bg);
+}
+
+.cms-card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: var(--global-radius);
+  box-shadow: var(--shadow-sm);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.cms-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+}
+
+.cms-list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: var(--global-radius);
+  padding: 1rem 1.5rem;
+}
+
+.cms-list-item-info h4 {
+  margin: 0 0 0.25rem;
+  color: var(--text-primary);
+}
+
+.cms-list-item-info p {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.cms-list-item-actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.cms-form-row {
+  margin-bottom: 1.1rem;
+}
+
+.cms-form-row label {
+  display: block;
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.4rem;
+}
+
+.cms-input,
+.cms-textarea,
+.cms-select {
+  width: 100%;
+  padding: 0.65rem 0.9rem;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-family: inherit;
+  box-sizing: border-box;
+}
+
+.cms-textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.cms-form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+}
+
+.cms-btn {
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  background-color: var(--card-bg);
+  color: var(--text-primary);
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--global-transition);
+}
+
+.cms-btn:hover {
+  background-color: #f4f6fa;
+}
+
+.cms-btn-primary {
+  background-color: var(--sidebar-active-bg);
+  border-color: var(--sidebar-active-bg);
+  color: white;
+}
+
+.cms-btn-primary:hover {
+  opacity: 0.9;
+}
+
+.cms-btn-danger {
+  color: #c81e1e;
+  border-color: #f3caca;
+}
+
+.cms-btn-danger:hover {
+  background-color: #fef2f2;
+}
+
+.cms-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.cms-speaker-row {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-end;
+  border: 1px dashed var(--border-color);
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.cms-speaker-row .cms-form-row {
+  margin-bottom: 0;
+  flex: 1;
+}
+
+.cms-uploader {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.cms-uploader-preview {
+  width: 64px;
+  height: 64px;
+  border-radius: 8px;
+  object-fit: cover;
+  border: 1px solid var(--border-color);
+  background-color: var(--content-bg);
+}
+
+.cms-alert-success {
+  background-color: #f0fdf4;
+  color: #16a34a;
+  border: 1px solid #bbf7d0;
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.cms-alert-error {
+  background-color: #fef2f2;
+  color: #c81e1e;
+  border: 1px solid #f3caca;
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.cms-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(17, 24, 39, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.cms-modal {
+  background-color: var(--card-bg);
+  border-radius: var(--global-radius);
+  padding: 1.75rem;
+  max-width: 420px;
+  width: 90%;
+  box-shadow: var(--shadow-md);
+}
+
+.cms-modal h3 {
+  margin-top: 0;
+}
+
+.cms-modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}

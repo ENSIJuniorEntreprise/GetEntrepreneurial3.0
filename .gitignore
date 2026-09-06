@@ -1,1 +1,4 @@
-// .gitignore placeholder
+node_modules/
+.env
+.env.local
+frontend/build/

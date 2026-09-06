@@ -1,13 +1,69 @@
-import React, { useState } from 'react';
-import axios from 'axios';
+import React, { useState, useEffect } from 'react';
+import axiosClient from '../../api/axiosClient';
+import { getCached, setCached } from '../../api/contentCache';
 import './Footer.css';
 import logo from '../../assets/images/log.png';
-import { FaFacebookF, FaInstagram, FaLinkedinIn, FaYoutube } from 'react-icons/fa';
+import { FaFacebookF, FaInstagram, FaLinkedinIn, FaYoutube, FaGlobe } from 'react-icons/fa';
+
+const SOCIAL_ICONS = {
+  facebook: FaFacebookF,
+  instagram: FaInstagram,
+  linkedin: FaLinkedinIn,
+  youtube: FaYoutube,
+};
+
+const FALLBACK_FOOTER = {
+  columns: [
+    { title: 'Navigation', links: [
+      { label: 'A propos', href: '/apropos' },
+      { label: 'Accueil', href: '/' },
+      { label: 'Programme', href: '/programme' },
+      { label: 'Collaboration', href: '/collaboration' },
+    ] },
+    { title: 'Legacy', links: [
+      { label: '1ère édition', href: '/editions/edition1' },
+      { label: '2ème édition', href: '/editions/edition2' },
+    ] },
+  ],
+  socialLinks: [
+    { platform: 'facebook', url: 'https://www.facebook.com/ENSI.Junior.Entreprise' },
+    { platform: 'instagram', url: 'https://www.instagram.com/ensijunior' },
+    { platform: 'linkedin', url: 'https://www.linkedin.com/company/ensi-junior-entreprise/posts/?feedView=all' },
+    { platform: 'youtube', url: 'https://www.youtube.com/@ENSIJuniorEntreprise' },
+  ],
+  contactPhone: '+216 94 30 50 94',
+  contactEmail: 'commercial.ensi.junior@gmail.com',
+  tagline: '#Forge_The_Future',
+  copyrightText: '© All rights reserved - ENSI JE 2025',
+};
+
+const FALLBACK_ADDRESS_LINES = ['22 October 2025', 'UTICA, Tunis', 'Cité Elkhadhra'];
+
+const deriveFooter = (siteContent) =>
+  siteContent.footer && siteContent.footer.columns?.length > 0
+    ? { ...FALLBACK_FOOTER, ...siteContent.footer }
+    : FALLBACK_FOOTER;
 
 const Footer = () => {
+  const cachedSite = getCached('/content/site');
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
   const [loading, setLoading] = useState(false);
+  const [footer, setFooter] = useState(cachedSite ? deriveFooter(cachedSite) : null);
+
+  useEffect(() => {
+    if (getCached('/content/site')) return;
+    let isMounted = true;
+    axiosClient.get('/content/site')
+      .then(({ data }) => {
+        setCached('/content/site', data.data);
+        if (isMounted) setFooter(deriveFooter(data.data));
+      })
+      .catch(() => {
+        if (isMounted) setFooter(FALLBACK_FOOTER);
+      });
+    return () => { isMounted = false; };
+  }, []);
 
   const handleSubscribe = async (e) => {
     e.preventDefault();
@@ -15,10 +71,7 @@ const Footer = () => {
     setMessage('');
 
     try {
-      await axios.post(
-        'http://localhost:5000/api/newsletter',
-        { email: email }
-      );
+      await axiosClient.post('/newsletter', { email });
       setMessage('Merci, votre inscription a bien été prise en compte !');
       setEmail('');
     } catch (error) {
@@ -39,41 +92,34 @@ const Footer = () => {
           <div className="footerinfo">
             <img src={logo} alt="Get Entrepreneurial Logo" className="footerlogo" />
             <div className="footerdetails">
-              <p>22 October 2025</p>
-              <p>UTICA, Tunis</p>
-              <p>Cité Elkhadhra</p>
+              {FALLBACK_ADDRESS_LINES.map((line) => <p key={line}>{line}</p>)}
             </div>
           </div>
           <div className="footerlinks">
-            <div className="footercolumn">
-              <h3>Navigation</h3>
-              <ul>
-                <li><a href="/apropos">A propos</a></li>
-                <li><a href="/">Accueil</a></li>
-                <li><a href="/programme">Programme</a></li>
-                <li><a href="/collaboration">Collaboration</a></li>
-              </ul>
-            </div>
-            <div className="footercolumn">
-              <h3>Legacy</h3>
-              <ul>
-                <li><a href="/edition1">1ère édition</a></li>
-                <li><a href="/edition2">2ème édition</a></li>
-              </ul>
-            </div>
-            <div className="footercolumn">
-              <h3>Contact</h3>
-              <ul>
-                <li><p>+216 94 30 50 94</p></li>
-                <li><a href="mailto:ensi-juniorEntreprise@gmail.tn">commercial.ensi.junior@gmail.com</a></li>
-              </ul>
-            </div>
+            {footer && footer.columns.map((column) => (
+              <div className="footercolumn" key={column.title}>
+                <h3>{column.title}</h3>
+                <ul>
+                  {column.links.map((link) => (
+                    <li key={link.href}><a href={link.href}>{link.label}</a></li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+            {footer && (
+              <div className="footercolumn">
+                <h3>Contact</h3>
+                <ul>
+                  <li><p>{footer.contactPhone}</p></li>
+                  <li><a href={`mailto:${footer.contactEmail}`}>{footer.contactEmail}</a></li>
+                </ul>
+              </div>
+            )}
           </div>
         </div>
 
         <div className="footermiddle">
           <div className="footernewsletter">
-            {/* --- MODIFICATION ICI --- */}
             <p>Rejoignez notre communauté pour ne rien manquer de nos actualités</p>
             <form onSubmit={handleSubscribe} className="newsletterform">
               <input
@@ -84,7 +130,6 @@ const Footer = () => {
                 required
                 disabled={loading}
               />
-              {/* --- MODIFICATION ICI --- */}
               <button type="submit" disabled={loading}>
                 {loading ? 'Envoi...' : "S'abonner"}
               </button>
@@ -95,17 +140,21 @@ const Footer = () => {
           <div className="footersocial">
             <p>Suivez-nous</p>
             <div className="socialicons">
-              <a href="https://www.facebook.com/ENSI.Junior.Entreprise" target="_blank" rel="noopener noreferrer" aria-label="Facebook" ><FaFacebookF /></a>
-              <a href="https://www.instagram.com/ensijunior" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><FaInstagram /></a>
-              <a href="https://www.linkedin.com/company/ensi-junior-entreprise/posts/?feedView=all" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><FaLinkedinIn /></a>
-              <a href="https://www.youtube.com/@ENSIJuniorEntreprise" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><FaYoutube /></a>
+              {footer && footer.socialLinks.map((social) => {
+                const Icon = SOCIAL_ICONS[social.platform?.toLowerCase()] || FaGlobe;
+                return (
+                  <a key={social.platform} href={social.url} target="_blank" rel="noopener noreferrer" aria-label={social.platform}>
+                    <Icon />
+                  </a>
+                );
+              })}
             </div>
           </div>
         </div>
 
         <div className="footerbottom">
-          <div className="footerhashtag">#Forge_The_Future</div>
-          <div className="footercopyright">© All rights reserved - ENSI JE 2025</div>
+          <div className="footerhashtag">{footer?.tagline}</div>
+          <div className="footercopyright">{footer?.copyrightText}</div>
         </div>
       </div>
     </footer>

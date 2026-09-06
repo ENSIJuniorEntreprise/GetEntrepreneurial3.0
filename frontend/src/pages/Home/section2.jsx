@@ -1,16 +1,36 @@
 import React, { useState, useEffect } from 'react'; // Ajout de useEffect
+import axiosClient from '../../api/axiosClient';
+import { getCached, setCached } from '../../api/contentCache';
 import './section2.css';
 
 // IMPORTANT : Assurez-vous que les chemins d'accès à vos images sont corrects
-import ensiLogo from '../../assets/images/logo.png'; 
+import ensiLogo from '../../assets/images/logo.png';
 import groupPhoto1 from '../../assets/images/eje2025.jpg';
 import groupPhoto2 from '../../assets/images/couverture.png';
 import groupPhoto3 from '../../assets/images/slider1.jpg';
 import groupPhoto4 from '../../assets/images/slider3.jpg';
 
+const FALLBACK_ABOUT_TEXT = "ENSI Junior Enterprise, fondée en 2006, est une association étudiante affiliée à l’École Nationale des Sciences de l’Informatique (ENSI).\n\nNotre mission est d'introduire les étudiants tunisiens à la vie professionnelle à travers des activités axées sur trois principaux piliers : la formation, les événements et le développement de projets TIC. De plus, nous assumons activement la responsabilité de promouvoir un esprit entrepreneurial au sein de l'écosystème tunisien, grâce à nos activités, notamment les événements qui renforcent le lien entre les étudiants et les entreprises.";
+
 const Section2 = () => {
   const sliderImages = [groupPhoto1, groupPhoto2, groupPhoto3, groupPhoto4];
+  const cachedSettings = getCached('/content/settings');
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [aboutText, setAboutText] = useState(cachedSettings ? (cachedSettings.aboutText || FALLBACK_ABOUT_TEXT) : null);
+
+  useEffect(() => {
+    if (getCached('/content/settings')) return;
+    let isMounted = true;
+    axiosClient.get('/content/settings')
+      .then(({ data }) => {
+        setCached('/content/settings', data.data);
+        if (isMounted) setAboutText(data.data.aboutText || FALLBACK_ABOUT_TEXT);
+      })
+      .catch(() => {
+        if (isMounted) setAboutText(FALLBACK_ABOUT_TEXT);
+      });
+    return () => { isMounted = false; };
+  }, []);
 
   // MODIFICATION : Logique pour le slide automatique
   useEffect(() => {
@@ -43,12 +63,9 @@ const Section2 = () => {
           </div>
 
           <div className="text-content">
-            <p>
-              <span className="highlight">ENSI Junior Enterprise</span>, fondée en 2006, est une association étudiante affiliée à l’École Nationale des Sciences de l’Informatique (ENSI).
-            </p>
-            <p>
-              Notre mission est d'introduire les étudiants tunisiens à la vie professionnelle à travers des activités axées sur trois principaux piliers : la formation, les événements et le développement de projets TIC. De plus, nous assumons activement la responsabilité de promouvoir un esprit entrepreneurial au sein de l'écosystème tunisien, grâce à nos activités, notamment les événements qui renforcent le lien entre les étudiants et les entreprises.
-            </p>
+            {aboutText && aboutText.split('\n\n').map((paragraph, index) => (
+              <p key={index}>{paragraph}</p>
+            ))}
           </div>
           
           <div className="about-button-container">
