@@ -1,7 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './section3.css';
 import { useInView } from 'react-intersection-observer';
 import { FaArrowLeft } from 'react-icons/fa';
+import axiosClient from '../../api/axiosClient';
+import { getCached, setCached } from '../../api/contentCache';
+import Spinner from '../../components/Spinner/Spinner';
 
 // --- ÉTAPE 1 : Importer vos nouvelles images ---
 import communityImage from '../../assets/images/socialecomp.png';
@@ -9,7 +12,7 @@ import circularEconomyImage from '../../assets/images/ecocircomp.png';
 import startupsImage from '../../assets/images/startupcomp.png';
 
 // --- ÉTAPE 2 : Remplacer les données par vos articles ---
-const articlesData = [
+const FALLBACK_ARTICLES = [
   {
     image: communityImage,
     category: 'ÉCONOMIE SOCIALE',
@@ -35,8 +38,24 @@ const articlesData = [
 
 const Section3 = () => {
   const [selectedArticle, setSelectedArticle] = useState(null);
+  const [articlesData, setArticlesData] = useState(() => getCached('/content/articles') || null);
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 });
-  
+
+  useEffect(() => {
+    if (getCached('/content/articles')) return;
+    let isMounted = true;
+    axiosClient.get('/content/articles')
+      .then(({ data }) => {
+        const resolved = data.data.length > 0 ? data.data : FALLBACK_ARTICLES;
+        setCached('/content/articles', resolved);
+        if (isMounted) setArticlesData(resolved);
+      })
+      .catch(() => {
+        if (isMounted) setArticlesData(FALLBACK_ARTICLES);
+      });
+    return () => { isMounted = false; };
+  }, []);
+
   const handleCardClick = (article) => setSelectedArticle(article);
   const handleClose = () => setSelectedArticle(null);
 
@@ -53,7 +72,8 @@ const Section3 = () => {
         </div>
 
         <div className="articles-grid">
-          {articlesData.map((article, index) => (
+          {!articlesData && <Spinner />}
+          {articlesData && articlesData.map((article, index) => (
             <div 
               className="article-card"
               key={index} 

@@ -6,25 +6,29 @@ import './LoginForm.css'
 const LoginForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
   const navigate = useNavigate();
   const location = useLocation();
   const { login } = useAuth();
-  const { from } = location.state || { from: { pathname: '/' } };
-  console.log(from)
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    await login(email, password);
-  
-    // Redirect to the originally requested route or home if no route was specified
-    const redirectPath = location.state && location.state.from
-      ? location.state.from
-      : '/dashboard';
-  
-    // Use the navigate function to perform the redirection
-    navigate(redirectPath);
+    setError('');
+    try {
+      await login(email, password);
+
+      // Redirect to the originally requested route or home if no route was specified
+      const redirectPath = location.state && location.state.from
+        ? location.state.from
+        : '/dashboard';
+
+      // Use the navigate function to perform the redirection
+      navigate(redirectPath);
+    } catch (err) {
+      setError('Email ou mot de passe incorrect.');
+    }
   };
-  
+
 
   return (
     <div className='login'>
@@ -39,6 +43,7 @@ const LoginForm = () => {
         <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
       </label>
       <br />
+      {error && <p className="login-error">{error}</p>}
       <button type="submit">Login</button>
     </form>
     </div>

@@ -1,7 +1,10 @@
-import React, { useState } from 'react';
-import axios from 'axios'; // 1. On importe axios
+import React, { useState, useEffect } from 'react';
+import axiosClient from '../../api/axiosClient';
+import { getCached, setCached } from '../../api/contentCache';
 import './exposant.css';
 import { FaBuilding, FaBullhorn, FaUser, FaEnvelope, FaPhone, FaLink, FaArrowLeft, FaSitemap } from 'react-icons/fa';
+
+const FALLBACK_ORG_TYPES = ['Entreprise', 'Startup / Entrepreneur', 'Association / ONG', 'Institution publique', 'Université', 'Artiste / Créateur / Artisan', 'Partenaire / Sponsor'];
 
 const Exposant = () => {
   // 2. On s'assure que les clés de l'état correspondent aux modèles Mongoose
@@ -21,6 +24,24 @@ const Exposant = () => {
   const [message, setMessage] = useState('');
   const [loading, setLoading] = useState(false);
   const [isError, setIsError] = useState(false);
+  const cachedOptions = getCached('/content/form-options');
+  const [orgTypes, setOrgTypes] = useState(
+    cachedOptions?.orgTypes?.length > 0 ? cachedOptions.orgTypes : FALLBACK_ORG_TYPES
+  );
+
+  useEffect(() => {
+    if (getCached('/content/form-options')) return;
+    let isMounted = true;
+    axiosClient.get('/content/form-options')
+      .then(({ data }) => {
+        setCached('/content/form-options', data.data);
+        if (isMounted && data.data.orgTypes?.length > 0) setOrgTypes(data.data.orgTypes);
+      })
+      .catch(() => {
+        // Les options restent sur le contenu de secours en cas d'échec réseau.
+      });
+    return () => { isMounted = false; };
+  }, []);
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -39,10 +60,7 @@ const Exposant = () => {
 
     try {
       // 5. On envoie les données à l'API des exposants
-      await axios.post(
-        'http://localhost:5000/api/inscriptions/exposants',
-        formData
-      );
+      await axiosClient.post('/inscriptions/exposants', formData);
 
       setMessage('Votre demande a été envoyée avec succès ! Nous vous contacterons bientôt.');
       // On réinitialise le formulaire
@@ -87,13 +105,7 @@ const Exposant = () => {
               <label htmlFor="typeOrganisation"><FaSitemap className="form-icon" /> Type d'organisation</label>
               <select id="typeOrganisation" name="typeOrganisation" value={formData.typeOrganisation} onChange={handleChange} required disabled={loading}>
                 <option value="">Sélectionner le type</option>
-                <option value="Entreprise">Entreprise</option>
-                <option value="Startup / Entrepreneur">Startup / Entrepreneur</option>
-                <option value="Association / ONG">Association / ONG</option>
-                <option value="Institution publique">Institution publique</option>
-                <option value="Université">Université</option>
-                <option value="Artiste / Créateur / Artisan">Artiste / Créateur / Artisan</option>
-                <option value="Partenaire / Sponsor">Partenaire / Sponsor</option>
+                {orgTypes.map((type) => <option key={type} value={type}>{type}</option>)}
               </select>
             </div>
             <div className="form-group">

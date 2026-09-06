@@ -1,7 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './section5.css';
 import { useInView } from 'react-intersection-observer';
-import { FaLinkedin, FaTimes } from 'react-icons/fa';
+import { FaTimes } from 'react-icons/fa';
+import axiosClient from '../../api/axiosClient';
+import { getCached, setCached } from '../../api/contentCache';
+import Spinner from '../../components/Spinner/Spinner';
 
 // --- Imports Existants ---
 import raziMilaniImg from '../../assets/images/Razi Milani.jpg';
@@ -26,7 +29,7 @@ import oussemaMessaoudImg from '../../assets/images/oussema.jpg';
 
 
 // --- MODIFICATION : Liste des intervenants mise à jour ---
-const speakersData = [
+const FALLBACK_SPEAKERS = [
   { 
     name: 'Jihene El Oukadi', 
     title: 'Émissaire du ministère de l\'Enseignement supérieur', 
@@ -151,7 +154,23 @@ const speakersData = [
 
 const Section5 = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [speakersData, setSpeakersData] = useState(() => getCached('/content/speakers') || null);
   const { ref } = useInView({ triggerOnce: true, threshold: 0.1 });
+
+  useEffect(() => {
+    if (getCached('/content/speakers')) return;
+    let isMounted = true;
+    axiosClient.get('/content/speakers')
+      .then(({ data }) => {
+        const resolved = data.data.length > 0 ? data.data : FALLBACK_SPEAKERS;
+        setCached('/content/speakers', resolved);
+        if (isMounted) setSpeakersData(resolved);
+      })
+      .catch(() => {
+        if (isMounted) setSpeakersData(FALLBACK_SPEAKERS);
+      });
+    return () => { isMounted = false; };
+  }, []);
 
   const toggleModal = () => {
     setIsModalOpen(!isModalOpen);
@@ -165,7 +184,8 @@ const Section5 = () => {
       </div>
       <div className="gallery-container">
         <div className="gallery">
-          {speakersData.slice(0, 8).map((speaker, index) => (
+          {!speakersData && <Spinner />}
+          {speakersData && speakersData.slice(0, 8).map((speaker, index) => (
             <span key={index} style={{ '--i': index + 1 }}>
               <img src={speaker.image} alt={speaker.name} />
               <div className="gallery-speaker-info">
@@ -186,7 +206,7 @@ const Section5 = () => {
         <div className="modal-content">
           <h2>Nos Conférenciers</h2>
           <div className="speakers-grid">
-            {speakersData.map((speaker, index) => (
+            {speakersData && speakersData.map((speaker, index) => (
               <div className="grid-speaker-card" key={index}>
                 <div className="card-image-container">
                   <img src={speaker.image} alt={speaker.name} className="card-speaker-image" />

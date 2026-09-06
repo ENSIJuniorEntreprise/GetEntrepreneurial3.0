@@ -42,18 +42,20 @@ body {
 /* === STRUCTURE PRINCIPALE DU DASHBOARD === */
 .dashboard-layout {
   display: flex;
-  min-height: 100vh;
+  height: 100vh;
   background-color: var(--content-bg);
 }
 
 .dashboard-sidebar {
   width: 260px;
+  flex-shrink: 0;
   background-color: var(--sidebar-bg);
   color: var(--sidebar-text);
   display: flex;
   flex-direction: column;
   padding: 1.5rem 0;
   border-right: 1px solid var(--border-color);
+  overflow-y: auto;
 }
 
 .dashboard-main-content {

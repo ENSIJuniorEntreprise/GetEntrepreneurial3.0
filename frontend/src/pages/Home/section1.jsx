@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import axiosClient from '../../api/axiosClient';
+import { getCached, setCached } from '../../api/contentCache';
 import './section1.css';
 import family from '../../assets/images/familycompressé.jpg';
 import edition from '../../assets/images/3éme.png';
@@ -12,14 +14,51 @@ import { FaArrowRight } from 'react-icons/fa6';
 import { useInView } from 'react-intersection-observer';
 import CountUp from 'react-countup';
 
+const FALLBACK_EVENT_DATE = '2025-10-22';
+const FALLBACK_HERO_VIDEO = '/getecomp.mp4';
+const MONTH_LABELS = ['JAN', 'FÉV', 'MAR', 'AVR', 'MAI', 'JUIN', 'JUIL', 'AOÛT', 'SEP', 'OCT', 'NOV', 'DÉC'];
+
+const deriveEventDate = (settings) => {
+  const bigDay = (settings.days || []).find((d) => d.key === 'bigDay');
+  return bigDay?.date || FALLBACK_EVENT_DATE;
+};
+const deriveHeroVideo = (settings) => settings.heroVideoUrl || FALLBACK_HERO_VIDEO;
+
 const Section1 = () => {
   const [isSocialsOpen, setIsSocialsOpen] = useState(false);
-  
+
+  const cachedSettings = getCached('/content/settings');
+
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+  const [eventDate, setEventDate] = useState(cachedSettings ? deriveEventDate(cachedSettings) : null);
+  const [heroVideoUrl, setHeroVideoUrl] = useState(cachedSettings ? deriveHeroVideo(cachedSettings) : null);
+  const [heroReady, setHeroReady] = useState(!!cachedSettings);
 
   useEffect(() => {
+    if (getCached('/content/settings')) return; // déjà en cache, rien à refaire
+    let isMounted = true;
+    axiosClient.get('/content/settings')
+      .then(({ data }) => {
+        if (!isMounted) return;
+        setCached('/content/settings', data.data);
+        setEventDate(deriveEventDate(data.data));
+        setHeroVideoUrl(deriveHeroVideo(data.data));
+      })
+      .catch(() => {
+        if (!isMounted) return;
+        setEventDate(FALLBACK_EVENT_DATE);
+        setHeroVideoUrl(FALLBACK_HERO_VIDEO);
+      })
+      .finally(() => {
+        if (isMounted) setHeroReady(true);
+      });
+    return () => { isMounted = false; };
+  }, []);
+
+  useEffect(() => {
+    if (!eventDate) return;
     const calculateTimeLeft = () => {
-      const difference = +new Date('2025-10-22') - +new Date();
+      const difference = +new Date(eventDate) - +new Date();
       if (difference > 0) {
         setTimeLeft({
           days: Math.floor(difference / (1000 * 60 * 60 * 24)),
@@ -27,11 +66,16 @@ const Section1 = () => {
           minutes: Math.floor((difference / 1000 / 60) % 60),
           seconds: Math.floor((difference / 1000) % 60),
         });
+      } else {
+        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
       }
     };
+    calculateTimeLeft();
     const timer = setInterval(calculateTimeLeft, 1000);
     return () => clearInterval(timer);
-  }, []);
+  }, [eventDate]);
+
+  const eventDateObj = eventDate ? new Date(eventDate) : null;
 
   const { ref: aboutRef, inView: aboutInView } = useInView({
     triggerOnce: true,
@@ -47,19 +91,25 @@ const Section1 = () => {
   return (
     <div className="hero-container">
       <section className="hero-fullscreen">
-        <video autoPlay loop muted className="background-video">
-          <source src="/getecomp.mp4" type="video/mp4" />
-          Votre navigateur ne supporte pas la vidéo.
-        </video>
+        {heroReady && (
+          <video autoPlay loop muted className="background-video">
+            <source src={heroVideoUrl} type="video/mp4" />
+            Votre navigateur ne supporte pas la vidéo.
+          </video>
+        )}
         <div className="video-overlay"></div>
 
         <div className="hero-content">
           <div className="date-location">
-            <span className="day1">22</span>
-            <div className="month-year">
-              <span className="month">OCT</span>
-              <span className="year">2025</span>
-            </div>
+            {heroReady && (
+              <>
+                <span className="day1">{eventDateObj.getDate()}</span>
+                <div className="month-year">
+                  <span className="month">{MONTH_LABELS[eventDateObj.getMonth()]}</span>
+                  <span className="year">{eventDateObj.getFullYear()}</span>
+                </div>
+              </>
+            )}
             <span className="location">UTICA</span>
           </div>
           <h1>

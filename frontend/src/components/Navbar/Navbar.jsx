@@ -1,8 +1,15 @@
 import logo from '../../assets/images/logogete.png';
 import React, { useState, useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
+import axiosClient from '../../api/axiosClient';
+import { getCached, setCached } from '../../api/contentCache';
 import './Navbar.css';
 import { FaBars, FaTimes } from "react-icons/fa";
+
+const FALLBACK_EDITIONS = [
+  { slug: 'edition1', editionLabel: '1ère édition' },
+  { slug: 'edition2', editionLabel: '2ème édition' },
+];
 
 const Navbar = () => {
   const [activeLink, setActiveLink] = useState('Accueil');
@@ -10,7 +17,34 @@ const Navbar = () => {
   const navLinksRef = useRef(null);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const cachedEditions = getCached('/content/editions');
+  const cachedSite = getCached('/content/site');
+  const [editions, setEditions] = useState(
+    cachedEditions ? (cachedEditions.length > 0 ? cachedEditions : FALLBACK_EDITIONS) : FALLBACK_EDITIONS
+  );
+  const [extraLinks, setExtraLinks] = useState(cachedSite ? (cachedSite.navLinks || []) : []);
   const location = useLocation();
+
+  useEffect(() => {
+    let isMounted = true;
+    if (!getCached('/content/editions')) {
+      axiosClient.get('/content/editions')
+        .then(({ data }) => {
+          setCached('/content/editions', data.data);
+          if (isMounted && data.data.length > 0) setEditions(data.data);
+        })
+        .catch(() => {});
+    }
+    if (!getCached('/content/site')) {
+      axiosClient.get('/content/site')
+        .then(({ data }) => {
+          setCached('/content/site', data.data);
+          if (isMounted && data.data.navLinks?.length > 0) setExtraLinks(data.data.navLinks);
+        })
+        .catch(() => {});
+    }
+    return () => { isMounted = false; };
+  }, []);
 
   useEffect(() => {
     if (navLinksRef.current && !isMobile) {
@@ -25,20 +59,21 @@ const Navbar = () => {
   }, [activeLink, isMobile]);
 
   useEffect(() => {
+    if (location.pathname === '/legacy' || location.pathname.startsWith('/editions/') || location.pathname.startsWith('/edition')) {
+      setActiveLink('Legacy');
+      return;
+    }
     const pathToLinkName = {
       '/': 'Accueil',
       '/apropos': 'A propos',
       '/collaboration': 'Collaboration',
       '/programme': 'Programme',
-      '/legacy': 'Legacy',
       '/contact': 'Contact',
       '/inscription': 'Inscription',
-      '/edition1': 'Legacy',
-      '/edition2': 'Legacy',
     };
     const currentLinkName = pathToLinkName[location.pathname] || '';
     setActiveLink(currentLinkName);
-  }, [location]); 
+  }, [location]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -105,8 +140,9 @@ const Navbar = () => {
             <li className="dropdown" data-link-name="Legacy">
               <a href="/legacy" onClick={() => {setActiveLink('Legacy'); setIsMobile(false);}} className={activeLink === 'Legacy' ? 'active' : ''}>Legacy</a>
               <ul className="dropdown-menu">
-                <li><a href="/edition1" onClick={() => setActiveLink('Legacy')}>1ère édition</a></li>
-                <li><a href="/edition2" onClick={() => setActiveLink('Legacy')}>2ème édition</a></li>
+                {editions.map((ed) => (
+                  <li key={ed.slug}><a href={`/editions/${ed.slug}`} onClick={() => setActiveLink('Legacy')}>{ed.editionLabel}</a></li>
+                ))}
               </ul>
             </li>
           )}
@@ -117,16 +153,20 @@ const Navbar = () => {
               <li data-link-name="Legacy">
                 <a href="/legacy" onClick={() => {setActiveLink('Legacy'); setIsMobile(false);}} className={activeLink === 'Legacy' ? 'active' : ''}>Legacy</a>
               </li>
-              
-              <li data-link-name="Edition1">
-                <a href="/edition1" onClick={() => {setActiveLink('Legacy'); setIsMobile(false);}} className={location.pathname === '/edition1' ? 'active' : ''}>1ère édition</a>
-              </li>
-              
-              <li data-link-name="Edition2">
-                <a href="/edition2" onClick={() => {setActiveLink('Legacy'); setIsMobile(false);}} className={location.pathname === '/edition2' ? 'active' : ''}>2ème édition</a>
-              </li>
+
+              {editions.map((ed) => (
+                <li key={ed.slug} data-link-name={ed.slug}>
+                  <a href={`/editions/${ed.slug}`} onClick={() => {setActiveLink('Legacy'); setIsMobile(false);}} className={location.pathname === `/editions/${ed.slug}` ? 'active' : ''}>{ed.editionLabel}</a>
+                </li>
+              ))}
             </>
           )}
+
+          {extraLinks.map((link) => (
+            <li key={link.href}>
+              <a href={link.href} onClick={() => setIsMobile(false)}>{link.label}</a>
+            </li>
+          ))}
 
           <li data-link-name="Contact">
             <a href="/contact" onClick={() => {setActiveLink('Contact'); setIsMobile(false);}} className={activeLink === 'Contact' ? 'active' : ''}>Contact</a>

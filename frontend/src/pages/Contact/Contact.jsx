@@ -1,6 +1,21 @@
-import React, { useState } from 'react';
-import axios from 'axios';
+import React, { useState, useEffect } from 'react';
+import axiosClient from '../../api/axiosClient';
+import { getCached, setCached } from '../../api/contentCache';
+import Spinner from '../../components/Spinner/Spinner';
 import './Contact.css';
+
+const FALLBACK_CONTACT = {
+  introTitle: 'Prenez contact avec nous',
+  introText: "Nous vous encourageons à partager vos demandes ou préoccupations en remplissant le formulaire afin d'obtenir de plus amples informations.",
+  phones: ['+(216) 25 540 762', '+(216) 94 305 094', '+(216) 93 071 049'],
+  emails: ['contact.junior.ensi@gmail.com', 'commercial.ensi.junior@gmail.com'],
+  address: 'Campus Universitaire، ENSI, Manouba 2010',
+};
+
+const deriveContact = (siteContent) =>
+  siteContent.contactPage && siteContent.contactPage.phones?.length > 0
+    ? { ...FALLBACK_CONTACT, ...siteContent.contactPage }
+    : FALLBACK_CONTACT;
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -14,6 +29,22 @@ const Contact = () => {
   const [feedbackMessage, setFeedbackMessage] = useState('');
   const [loading, setLoading] = useState(false);
   const [isError, setIsError] = useState(false);
+  const cachedSite = getCached('/content/site');
+  const [contactInfo, setContactInfo] = useState(cachedSite ? deriveContact(cachedSite) : null);
+
+  useEffect(() => {
+    if (getCached('/content/site')) return;
+    let isMounted = true;
+    axiosClient.get('/content/site')
+      .then(({ data }) => {
+        setCached('/content/site', data.data);
+        if (isMounted) setContactInfo(deriveContact(data.data));
+      })
+      .catch(() => {
+        if (isMounted) setContactInfo(FALLBACK_CONTACT);
+      });
+    return () => { isMounted = false; };
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -30,10 +61,7 @@ const Contact = () => {
     setIsError(false);
 
     try {
-      const response = await axios.post(
-        'http://localhost:5000/api/contact',
-        formData
-      );
+      const response = await axiosClient.post('/contact', formData);
 
       setFeedbackMessage(response.data.message || 'Message envoyé avec succès !');
       setFormData({
@@ -56,6 +84,8 @@ const Contact = () => {
     }
   };
 
+  if (!contactInfo) return <Spinner />;
+
   return (
     <div className="contact-page">
       <div className="background-overlay"></div>
@@ -73,82 +103,79 @@ const Contact = () => {
           <div className="contact-info-box">
             <div className="icon-container"><i className="fas fa-phone-alt"></i></div>
             <h3>Phone</h3>
-            <p>Mobile: +(216) 25 540 762 </p>
-            <p>Mobile: +(216) 94 305 094</p>
-            <p>Mobile: +(216) 93 071 049 </p>
+            {contactInfo.phones.map((phone) => <p key={phone}>Mobile: {phone}</p>)}
           </div>
           <div className="contact-info-box">
             <div className="icon-container"><i className="fas fa-envelope"></i></div>
             <h3>Email</h3>
-            <p>contact.junior.ensi@gmail.com</p>
-            <p>commercial.ensi.junior@gmail.com</p>
+            {contactInfo.emails.map((email) => <p key={email}>{email}</p>)}
           </div>
           <div className="contact-info-box">
             <div className="icon-container"><i className="fas fa-map-marker-alt"></i></div>
             <h3>Address</h3>
-            <p>Campus Universitaire، ENSI, Manouba 2010</p>
+            <p>{contactInfo.address}</p>
           </div>
         </div>
 
         <div className="contact-form-section">
           <div className="form-text-content">
-            <h2>Prenez contact avec nous</h2>
-            <p>Nous vous encourageons à partager vos demandes ou préoccupations en remplissant le formulaire afin d'obtenir de plus amples informations.</p>
+            <h2>{contactInfo.introTitle}</h2>
+            <p>{contactInfo.introText}</p>
           </div>
-          
+
           <form className="contact-form" onSubmit={handleSubmit}>
             <div className="form-row">
-              <input 
-                type="text" 
-                name="prenom" 
-                placeholder="Prénom" 
-                value={formData.prenom} 
-                onChange={handleChange} 
-                required 
-                disabled={loading} 
+              <input
+                type="text"
+                name="prenom"
+                placeholder="Prénom"
+                value={formData.prenom}
+                onChange={handleChange}
+                required
+                disabled={loading}
               />
-              <input 
-                type="text" 
-                name="nom" 
-                placeholder="Nom" 
-                value={formData.nom} 
-                onChange={handleChange} 
-                required 
-                disabled={loading} 
-              />
-            </div>
-            <div className="form-row">
-              <input 
-                type="email" 
-                name="email" 
-                placeholder="Adresse e-mail" 
-                className="full-width" 
-                value={formData.email} 
-                onChange={handleChange} 
-                required 
-                disabled={loading} 
+              <input
+                type="text"
+                name="nom"
+                placeholder="Nom"
+                value={formData.nom}
+                onChange={handleChange}
+                required
+                disabled={loading}
               />
             </div>
             <div className="form-row">
-              <input 
-                type="text" 
-                name="sujet" 
-                placeholder="Sujet" 
-                className="full-width" 
-                value={formData.sujet} 
-                onChange={handleChange} 
-                required 
-                disabled={loading} 
+              <input
+                type="email"
+                name="email"
+                placeholder="Adresse e-mail"
+                className="full-width"
+                value={formData.email}
+                onChange={handleChange}
+                required
+                disabled={loading}
               />
             </div>
             <div className="form-row">
-              <textarea 
-                name="message" 
-                placeholder="Message..." 
-                className="full-width" 
-                value={formData.message} 
-                onChange={handleChange} 
-                required 
+              <input
+                type="text"
+                name="sujet"
+                placeholder="Sujet"
+                className="full-width"
+                value={formData.sujet}
+                onChange={handleChange}
+                required
+                disabled={loading}
+              />
+            </div>
+            <div className="form-row">
+              <textarea
+                name="message"
+                placeholder="Message..."
+                className="full-width"
+                value={formData.message}
+                onChange={handleChange}
+                required
                 disabled={loading}>
               </textarea>
             </div>

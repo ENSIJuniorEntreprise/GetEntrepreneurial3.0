@@ -1,4 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import axiosClient from '../../api/axiosClient';
+import { getCached, setCached } from '../../api/contentCache';
+import Spinner from '../../components/Spinner/Spinner';
 import './section6.css';
 
 // --- Imports (tous les logos sont ici) ---
@@ -30,7 +33,7 @@ import umaLogo from '../../assets/images/umaa.png';
 import villageLogo from '../../assets/images/villagee.png';
 
 // --- MODIFICATION : Nouvel ordre logique des sponsors ---
-const sponsorsData = [
+const FALLBACK_SPONSORS = [
   // Catégorie : Partenaires Institutionnels & Publics
   { logo: apiiLogo },
   { logo: ooredooLogo },
@@ -70,23 +73,49 @@ const sponsorsData = [
   { logo: fondationTunisieLogo },
 ];
 
+const toTicker = (rawSponsors) => rawSponsors.map((s) => ({ logo: s.logoUrl, name: s.name }));
+
 const Section6 = () => {
-  const duplicatedSponsors = [...sponsorsData, ...sponsorsData];
+  const cachedSponsors = getCached('/content/sponsors');
+  const [sponsorsData, setSponsorsData] = useState(
+    cachedSponsors ? (cachedSponsors.length > 0 ? toTicker(cachedSponsors) : FALLBACK_SPONSORS) : null
+  );
+
+  useEffect(() => {
+    if (getCached('/content/sponsors')) return;
+    let isMounted = true;
+    axiosClient.get('/content/sponsors')
+      .then(({ data }) => {
+        setCached('/content/sponsors', data.data);
+        if (!isMounted) return;
+        setSponsorsData(data.data.length > 0 ? toTicker(data.data) : FALLBACK_SPONSORS);
+      })
+      .catch(() => {
+        if (isMounted) setSponsorsData(FALLBACK_SPONSORS);
+      });
+    return () => { isMounted = false; };
+  }, []);
+
+  const duplicatedSponsors = sponsorsData ? [...sponsorsData, ...sponsorsData] : [];
 
   return (
     <section className="sponsors-section">
       <div className="sponsors-header">
         <h2>Nos Précieux Alliés</h2>
       </div>
-      <div className="scroller-container"> 
-        <ul className="sponsors-list">
-          {duplicatedSponsors.map((sponsor, index) => (
-            <li className="sponsor-item" key={index}>
-              <img src={sponsor.logo} alt={`Logo partenaire ${index + 1}`} />
-            </li>
-          ))}
-        </ul>
-      </div>
+      {!sponsorsData ? (
+        <Spinner />
+      ) : (
+        <div className="scroller-container">
+          <ul className="sponsors-list">
+            {duplicatedSponsors.map((sponsor, index) => (
+              <li className="sponsor-item" key={index}>
+                <img src={sponsor.logo} alt={`Logo partenaire ${index + 1}`} />
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
     </section>
   );
 };
